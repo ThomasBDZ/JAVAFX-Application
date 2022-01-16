@@ -95,3 +95,9 @@ Thumbs.db
 .project
 .classpath
 .settings/
+bin/
+
+#VsCode
+.vscode/
+
+
