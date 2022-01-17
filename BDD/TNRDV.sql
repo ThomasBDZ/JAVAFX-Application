@@ -1,3 +1,10 @@
+CREATE TABLE connection(
+  id INTEGER NOT NULL,
+  mail TEXT NOT NULL,
+  MDP TEXT NOT NULL,
+  typeUser TEXT NOT NULL,
+  PRIMARY KEY (id)
+);
 CREATE TABLE admin(
   id INTEGER NOT NULL,
   nom TEXT NOT NULL,
