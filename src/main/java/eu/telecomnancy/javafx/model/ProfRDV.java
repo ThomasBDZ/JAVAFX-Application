@@ -1,4 +1,4 @@
-package eu.telecomnancy.javafx.modèle;
+package eu.telecomnancy.javafx.model;
 
 public class ProfRDV {
 

@@ -1,7 +1,7 @@
 package eu.telecomnancy.javafx;
 
 import eu.telecomnancy.javafx.controller.Connexion;
-import eu.telecomnancy.javafx.modèle.ProfRDV;
+import eu.telecomnancy.javafx.model.ProfRDV;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

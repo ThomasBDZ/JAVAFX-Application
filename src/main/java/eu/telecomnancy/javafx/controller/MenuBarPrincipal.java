@@ -1,6 +1,6 @@
 package eu.telecomnancy.javafx.controller;
 
-import eu.telecomnancy.javafx.modèle.ProfRDV;
+import eu.telecomnancy.javafx.model.ProfRDV;
 
 public class MenuBarPrincipal {
     /**
