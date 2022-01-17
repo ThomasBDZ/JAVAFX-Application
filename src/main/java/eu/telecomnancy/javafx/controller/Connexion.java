@@ -2,6 +2,8 @@ package eu.telecomnancy.javafx.controller;
 
 import eu.telecomnancy.javafx.controller.Erreurs.ConnexionError;
 import eu.telecomnancy.javafx.model.ProfRDV;
+import javafx.scene.control.MenuItem;
+import javafx.fxml.FXML;
     /**
      * Controleur de la vue Connexion.fxml
      */
@@ -9,6 +11,9 @@ import eu.telecomnancy.javafx.model.ProfRDV;
 public class Connexion {
 
     ProfRDV profRDV;
+
+    @FXML
+    MenuItem menuItemAccueil;
 
     public Connexion(ProfRDV profRDV){
         this.profRDV = profRDV;

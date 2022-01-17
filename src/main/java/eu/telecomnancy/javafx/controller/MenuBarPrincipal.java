@@ -1,6 +1,7 @@
 package eu.telecomnancy.javafx.controller;
 
 import eu.telecomnancy.javafx.model.ProfRDV;
+import javafx.application.Platform;
 
 public class MenuBarPrincipal {
     
@@ -38,8 +39,8 @@ public class MenuBarPrincipal {
      */
     public void quitter(){
         //TODO: ajout de la demande de confirmation avant de quitter
+        Platform.exit();
 
-        
     }
     
     
