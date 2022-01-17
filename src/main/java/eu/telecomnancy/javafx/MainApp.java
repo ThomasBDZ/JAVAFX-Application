@@ -11,17 +11,6 @@ import javafx.stage.Stage;
 
 public class MainApp extends Application {
 
-    // @Override
-    // public void start(Stage stage) throws Exception {
-    //     Parent root = FXMLLoader.load(getClass().getResource("/fxml/scene.fxml"));
-
-    //     Scene scene = new Scene(root);
-    //     scene.getStylesheets().add(getClass().getResource("/stylesheet/style.css").toExternalForm());
-
-    //     stage.setTitle("JavaFX and Gradle");
-    //     stage.setScene(scene);
-    //     stage.show();
-    // }
     @Override
     public void start(Stage primaryStage) throws Exception {
 
@@ -34,6 +23,7 @@ public class MainApp extends Application {
         else return null ;
         });
         Parent root = loader.load() ;
+        // scene.getStylesheets().add(getClass().getResource("/stylesheet/style.css").toExternalForm());
         primaryStage.setScene(new Scene(root, 1000, 1000));
         primaryStage.show();
     }
