@@ -1,6 +1,7 @@
 package eu.telecomnancy.javafx;
 
 import eu.telecomnancy.javafx.controller.Connexion;
+import eu.telecomnancy.javafx.controller.MenuBarPrincipal;
 import eu.telecomnancy.javafx.model.ProfRDV;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -18,8 +19,10 @@ public class MainApp extends Application {
         FXMLLoader loader = new FXMLLoader(); 
         loader.setLocation(getClass().getResource("/fxml/Principale.fxml"));
         Connexion connexionController = new Connexion(profRDV);
+        MenuBarPrincipal menuBarPrincipal = new MenuBarPrincipal(profRDV);
         loader.setControllerFactory(ic -> {
         if (ic.equals(eu.telecomnancy.javafx.controller.Connexion.class)) return connexionController;
+        if (ic.equals(eu.telecomnancy.javafx.controller.MenuBarPrincipal.class)) return menuBarPrincipal;
         else return null ;
         });
         Parent root = loader.load() ;
