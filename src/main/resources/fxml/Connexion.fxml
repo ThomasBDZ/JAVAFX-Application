@@ -1,14 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="fxml.Connexion"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxml.Connexion">
+   <children>
+      <VBox layoutX="174.0" layoutY="148.0" prefHeight="211.0" prefWidth="255.0">
+         <children>
+            <TextField fx:id="ID" promptText="Ecrivez votre ID..." />
+            <PasswordField fx:id="MDP" promptText="Ecrivez votre mot de passe...">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin></PasswordField>
+            <Button fx:id="Connexion" mnemonicParsing="false" text="Connexion" textAlignment="CENTER">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin></Button>
+         </children></VBox>
+   </children>
 </AnchorPane>
