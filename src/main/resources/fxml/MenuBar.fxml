@@ -2,14 +2,14 @@
 
 <?import javafx.scene.control.*?>
 
-<MenuBar prefHeight="26.0" prefWidth="265.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.2">
+<MenuBar prefHeight="26.0" prefWidth="265.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.2" fx:controller="eu.telecomnancy.javafx.controller.MenuBarPrincipal">
   <menus>
-    <Menu fx:id="Acceuil" mnemonicParsing="false" text="Acceuil">
+    <Menu fx:id="Accueil" mnemonicParsing="false" text="Accueil">
       <items>
         <MenuItem mnemonicParsing="false" text="Close" />
       </items>
     </Menu>
-    <Menu fx:id="Deconexxion" mnemonicParsing="false" text="Déconnexion">
+    <Menu fx:id="Deconnexion" mnemonicParsing="false" text="Déconnexion">
       <items>
         <MenuItem mnemonicParsing="false" text="About" />
       </items>
