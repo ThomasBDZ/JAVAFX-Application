@@ -7,8 +7,7 @@
 
 ## Codes:
 
-Autocompletion:
-- https://gist.github.com/floralvikings/10290131#file-autocompletetextbox-java
+Autocompletion avec ControlsFX
 
 
 
