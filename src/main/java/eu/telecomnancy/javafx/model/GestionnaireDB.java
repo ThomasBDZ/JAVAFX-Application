@@ -1,6 +1,6 @@
 package eu.telecomnancy.javafx.model;
 
-import eu.telecomnancy.javafx.Connection.ConnectionClass;
+import eu.telecomnancy.javafx.ConnectionClass;
 import eu.telecomnancy.javafx.ConnectionClass;
 import eu.telecomnancy.javafx.model.ProfRDV;
 import javafx.event.ActionEvent;
