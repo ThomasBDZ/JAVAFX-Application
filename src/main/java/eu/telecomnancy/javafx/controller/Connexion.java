@@ -16,6 +16,9 @@ public class Connexion {
     private ProfRDV profRDV;
 
     @FXML
+    private Vbox vboxConnexion;
+
+    @FXML
     private MenuItem menuItemAccueil;
 
     @FXML
@@ -34,15 +37,16 @@ public class Connexion {
      * Gère les erreurs qui peuvent être remontée (MailInexistant et MauvaisMdp)
      */
     public void validationConnexion(){
+        try {
 
-        GestionnaireDB gestionnaireDB = new GestionnaireDB();
-        gestionnaireDB.login(mdp,id);
-        
-        // try {
+            GestionnaireDB gestionnaireDB = new GestionnaireDB();
+            gestionnaireDB.login(mdp,id);
             
-        // } catch (ConnexionError e) {
-        //     //TODO: handle exception
-        // }
+        } catch (ConnexionError e) {
+             Label erreur = e.getError();
+             vboxConnexion.getChildren().add(erreur);
+            //TODO: handle exception
+        }
     }
     
 }
