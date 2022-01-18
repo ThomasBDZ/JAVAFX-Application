@@ -1,15 +1,18 @@
 package eu.telecomnancy.javafx.controller.Erreurs;
 
+import javafx.scene.control.Label;
+
 public class ConnexionError extends Exception{
 
-    private String erreur;
+    private Label erreur;
 
     public ConnexionError(String erreur){
         super();
-        this.erreur = erreur;
+        this.erreur = new Label(erreur);
+        this.erreur.setTextFill(Color.RED);
     }
 
-    public String getError() {
+    public Label getError() {
        return this.erreur;
     }
 
