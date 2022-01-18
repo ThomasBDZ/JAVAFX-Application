@@ -13,7 +13,7 @@
             <Insets top="10.0" />
          </VBox.margin>
       </PasswordField>
-      <Button fx:id="Connexion" mnemonicParsing="false" text="Connexion" textAlignment="CENTER" onMouseClicked="#validationConnexion">
+      <Button fx:id="connexion" mnemonicParsing="false" text="Connexion" textAlignment="CENTER" onMouseClicked="#validationConnexion">
          <VBox.margin>
             <Insets top="10.0" />
          </VBox.margin>
