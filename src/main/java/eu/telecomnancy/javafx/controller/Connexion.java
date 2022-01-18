@@ -1,6 +1,7 @@
 package eu.telecomnancy.javafx.controller;
 
 import eu.telecomnancy.javafx.controller.Erreurs.ConnexionError;
+import eu.telecomnancy.javafx.model.AccesAccueil;
 import eu.telecomnancy.javafx.model.GestionnaireDB;
 import eu.telecomnancy.javafx.model.ProfRDV;
 import javafx.scene.Node;
@@ -49,10 +50,32 @@ public class Connexion {
      */
     public void validationConnexion(){
         // try {
+    
+        GestionnaireDB gestionnaireDB = new GestionnaireDB();
+        String type = "enseignant";
+        Node node=(Node) connexion;
+        String path = "/fxml/";
+        AccesAccueil accesAccueil = new AccesAccueil(profRDV);
+        //     String type = gestionnaireDB.login(mdp,id);
+        switch (type) {
+            case "admin":
+                path= path + "AccueilAdmin.fxml";
+                break;
 
-        //     GestionnaireDB gestionnaireDB = new GestionnaireDB();
-        //     gestionnaireDB.login(mdp,id);
-            
+            case "eleve":
+                path= path + "AccueilEtudiant.fxml";
+                break;
+
+            case "enseignant":
+                path= path + "AccueilEnseignant.fxml";
+                break;
+        
+        
+            default:
+                break;
+        }
+        
+        accesAccueil.accesAccueil(node,path);
         // } catch (Error e){
 
         // }
@@ -62,20 +85,7 @@ public class Connexion {
         //     //TODO: handle exception
         // }
 
-        Node node=(Node) connexion;
-        Stage stage =(Stage) node.getScene().getWindow();
-        FXMLLoader loader = new FXMLLoader(); 
-        loader.setLocation(getClass().getResource("/fxml/Calendrier.fxml"));
-        try {
-            Parent root = loader.load();
-            Scene scene = new Scene(root, 1000, 1000);
-            stage.setScene(scene);
-            stage.show();
-        } catch (Exception e) {
-            //TODO: handle exception
-        }
-
-
+        
     }
     
 }
