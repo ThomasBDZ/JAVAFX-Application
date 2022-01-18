@@ -17,7 +17,7 @@ public class MainApp extends Application {
 
         ProfRDV profRDV = new ProfRDV();
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/fxml/RecapRDV.fxml"));
+        loader.setLocation(getClass().getResource("/fxml/DescriptionRDV.fxml"));
         Connexion connexionController = new Connexion(profRDV);
         MenuBarPrincipal menuBarPrincipal = new MenuBarPrincipal(profRDV);
         loader.setControllerFactory(ic -> {
