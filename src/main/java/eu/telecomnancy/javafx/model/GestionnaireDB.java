@@ -20,8 +20,8 @@ import java.sql.Statement;
 
 public class GestionnaireDB {
 
-    public PasswordField MDP;
-    public TextField ID;
+    public PasswordField mdp;
+    public TextField id;
     public Button Connexion;
     public Label isConnected;
     ProfRDV profRDV;
@@ -30,8 +30,7 @@ public class GestionnaireDB {
     @FXML
     MenuItem menuItemAccueil;
 
-    public GestionnaireDB(ProfRDV profRDV) {
-        this.profRDV = profRDV;
+    public GestionnaireDB() {
     }
 
 
@@ -42,13 +41,13 @@ public class GestionnaireDB {
 
 
 
-    public void login(ActionEvent actionEvent) {
+    public void login(PasswordField mdp, TextField id) {
         ConnectionClass connectionClass = new ConnectionClass();
         Connection connection = connectionClass.getConnection();
 
         try {
             Statement statement=connection.createStatement();
-            String sql="SELECT * FROM admin WHERE mail = '"+ID.getText()+"' AND MDP = '"+ MDP.getText()+"';";
+            String sql="SELECT * FROM admin WHERE mail = '"+id.getText()+"' AND MDP = '"+ mdp.getText()+"';";
             ResultSet resultSet=statement.executeQuery(sql);
 
             if (resultSet.next()){
