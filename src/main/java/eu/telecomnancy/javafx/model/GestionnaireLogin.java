@@ -10,6 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+
 /**
      * Gestionnaire de la vue Connexion.fxml
      */
@@ -48,6 +49,13 @@ public class GestionnaireLogin {
         }
         String result;
         result = resultTypeUser.getString(0);
+
+        try { resultSetMail.close(); } catch (Exception e) { /* Ignored */ }
+        try { resultSetMdp.close(); } catch (Exception e) { /* Ignored */ }
+        try { resultTypeUser.close(); } catch (Exception e) { /* Ignored */ }
+        try { statement.close(); } catch (Exception e) { /* Ignored */ }
+        try { connection.close(); } catch (Exception e) { /* Ignored */ }
+
         return result;
     }
 
@@ -68,6 +76,10 @@ public class GestionnaireLogin {
             //TODO: handle exception
         } catch (ConnexionError e){
             throw e;
+        } finally {
+            try { resultSet.close(); } catch (Exception e) { /* Ignored */ }
+            try { statement.close(); } catch (Exception e) { /* Ignored */ }
+            try { connection.close(); } catch (Exception e) { /* Ignored */ }
         }
 
         return type;
