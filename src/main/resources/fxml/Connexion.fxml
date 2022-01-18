@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 
 
-<VBox alignment="CENTER" prefHeight="211.0" prefWidth="255.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="eu.telecomnancy.javafx.controller.Connexion">
+<VBox fx:id="vboxConnexion" alignment="CENTER" prefHeight="211.0" prefWidth="255.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="eu.telecomnancy.javafx.controller.Connexion">
    <children>
       <TextField fx:id="id" promptText="Ecrivez votre ID..." />
       <PasswordField fx:id="mdp" promptText="Ecrivez votre mot de passe...">
