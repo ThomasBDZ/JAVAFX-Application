@@ -25,17 +25,20 @@ public class GestionnaireLogin {
     public GestionnaireLogin() {
     }
 
-    public void VerifMailMdp(String username, String password) throws SQLException, ConnexionError {
+    public String VerifMailMdp(String username, String password) throws SQLException, ConnexionError {
 
         Connection connection = ConnectionClass.getInstance().getConnection();
 
         Statement statement = connection.createStatement();
 
-        String mail = "SELECT * FROM connection WHERE mail = '" + username + "';";
-        String mdp = "SELECT * FROM connection WHERE MDP = '" + password + "';";
+        String typeUser = "select typeUser from connection where mail = '" + username + "' and MDP = '" + password + "';";
+
+        String mail = "SELECT mail FROM connection WHERE mail = '" + username + "';";
+        String mdp = "SELECT MDP FROM connection WHERE MDP = '" + password + "';";
 
         ResultSet resultSetMail = statement.executeQuery(mail);
         ResultSet resultSetMdp = statement.executeQuery(mdp);
+        ResultSet resultTypeUser = statement.executeQuery(typeUser);
 
         if (!(resultSetMail.next())) {
             throw new MailInexistant();
@@ -43,8 +46,9 @@ public class GestionnaireLogin {
         if (!(resultSetMdp.next())) {
             throw new MauvaisMdp();
         }
-
-        // return le type issus des ResultSet
+        String result;
+        result = resultTypeUser.getString(0);
+        return result;
     }
 
     public void login(String username, String password, String type) throws SQLException, ConnexionError {
