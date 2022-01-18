@@ -55,12 +55,11 @@ public class Connexion {
         String idStr = id.getText();
     
         GestionnaireLogin gestionnaireLogin = new GestionnaireLogin();
-        String type = "enseignant";
         Node node=(Node) connexion;
         String path = "/fxml/";
         AccesAccueil accesAccueil = new AccesAccueil(profRDV);
         try {
-            gestionnaireLogin.login(mdpStr,idStr,"zoienfzoief");
+            String type = gestionnaireLogin.login(mdpStr,idStr);
                  //     String type = gestionnaireDB.login(mdp,id);
         } catch (ConnexionError e) {
             Label erreur = e.getError();
