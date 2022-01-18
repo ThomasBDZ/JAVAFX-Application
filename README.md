@@ -1,3 +1,17 @@
+
+# Projet Javafx
+
+
+# Modules ou codes utilisés :
+
+
+## Codes:
+
+Autocompletion:
+- https://gist.github.com/floralvikings/10290131#file-autocompletetextbox-java
+
+
+
 # Template Gradle JDK/JavaFX
 
 Ce projet fournit un template pour créer un projet JavaFX en utilisant Gradle.
