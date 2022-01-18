@@ -3,9 +3,11 @@ package eu.telecomnancy.javafx.controller;
 import eu.telecomnancy.javafx.controller.Erreurs.ConnexionError;
 import eu.telecomnancy.javafx.model.GestionnaireDB;
 import eu.telecomnancy.javafx.model.ProfRDV;
+import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.VBox;
 import javafx.fxml.FXML;
     /**
      * Controleur de la vue Connexion.fxml
@@ -16,7 +18,7 @@ public class Connexion {
     private ProfRDV profRDV;
 
     @FXML
-    private Vbox vboxConnexion;
+    private VBox vboxConnexion;
 
     @FXML
     private MenuItem menuItemAccueil;
@@ -42,11 +44,14 @@ public class Connexion {
             GestionnaireDB gestionnaireDB = new GestionnaireDB();
             gestionnaireDB.login(mdp,id);
             
-        } catch (ConnexionError e) {
-             Label erreur = e.getError();
-             vboxConnexion.getChildren().add(erreur);
-            //TODO: handle exception
+        } catch (Error e){
+
         }
+        // catch (ConnexionError e) {
+        //      Label erreur = e.getError();
+        //      vboxConnexion.getChildren().add(erreur);
+        //     //TODO: handle exception
+        // }
     }
     
 }

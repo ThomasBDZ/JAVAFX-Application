@@ -1,6 +1,7 @@
 package eu.telecomnancy.javafx.controller.Erreurs;
 
 import javafx.scene.control.Label;
+import javafx.scene.paint.Color;
 
 public class ConnexionError extends Exception{
 
