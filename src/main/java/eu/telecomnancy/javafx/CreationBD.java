@@ -23,6 +23,8 @@ public class CreationBD {
             statement.executeUpdate("drop table if exists eleve");
             statement.executeUpdate("drop table if exists prof");
             statement.executeUpdate("drop table if exists rdv");
+            statement.executeUpdate("drop table if exists classe");
+            statement.executeUpdate("drop table if exists matiere");
             statement.executeUpdate("CREATE TABLE connection(\n" +
                     "  id INTEGER NOT NULL,\n" +
                     "  mail TEXT NOT NULL,\n" +
@@ -63,7 +65,15 @@ public class CreationBD {
                     "  heure TEXT NOT NULL,\n" +
                     "  statut INTEGER NOT NULL,\n" +
                     "  PRIMARY KEY (id_prof, id_eleve, date, heure))");
-            statement.executeUpdate("insert into admin values(2,'hey' ,'yui')");
+            statement.executeUpdate("CREATE TABLE classe(\n" +
+                    "  id INTEGER NOT NULL,\n" +
+                    "  className TEXT NOT NULL,\n" +
+                    "  PRIMARY KEY (id))");
+            statement.executeUpdate("CREATE TABLE matiere(\n" +
+                    "  id INTEGER NOT NULL,\n" +
+                    "  disciplineName TEXT NOT NULL,\n" +
+                    "  PRIMARY KEY (id))");
+            statement.executeUpdate("insert into admin values(1,'admin' ,'admin')");
             ResultSet rs = statement.executeQuery("select * from admin");
             while(rs.next())
             {
