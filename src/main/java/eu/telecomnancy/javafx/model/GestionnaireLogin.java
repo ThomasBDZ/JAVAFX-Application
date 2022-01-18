@@ -1,11 +1,6 @@
 package eu.telecomnancy.javafx.model;
 
 import eu.telecomnancy.javafx.ConnectionClass;
-import eu.telecomnancy.javafx.ConnectionClass;
-import eu.telecomnancy.javafx.model.ProfRDV;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.scene.control.*;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -13,79 +8,72 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 /**
-     * Controleur de la vue Connexion.fxml
+     * Gestionnaire de la vue Connexion.fxml
      */
 
 
 
 public class GestionnaireLogin {
 
-    @FXML
-    private TextField id;
-
-    @FXML
-    private PasswordField mdp;
-
-    @FXML
-    private Button Connexion;
-
-    ProfRDV profRDV;
-
-
-    @FXML
-    MenuItem menuItemAccueil;
+    String profType = "prof";
+    String eleveType = "eleve";
+    String adminType = "admin";
 
     public GestionnaireLogin() {
     }
 
-
-    /**
-     * Méthode pour valider la connexion issue de la vue Connexion.fxml.
-     * Gère les erreurs qui peuvent être remontée (MailInexistant et MauvaisMdp)
-     */
-
-    @FXML
-    void login(MouseEvent event) {
-
-        String username, password;
-
-        username=id.getText();
-        password=mdp.getText();
+    public void VerifMailMdp(String username, String password) throws SQLException {
 
         Connection connection = ConnectionClass.getInstance().getConnection();
 
         Statement statement = connection.createStatement();
 
-        String sql="SELECT * FROM admin WHERE mail = '"+username+"' AND MDP = '"+ password+"';";
+        String mail = "SELECT * FROM connection WHERE mail = '" + username + "';";
+        String mdp = "SELECT * FROM connection WHERE MDP = '" + password + "';";
 
-        ResultSet resultSet= statement.executeQuery(sql);
+        ResultSet resultSetMail = statement.executeQuery(mail);
+        ResultSet resultSetMdp = statement.executeQuery(mdp);
 
-        if (resultSet.next()){
-            Parent root = FXMLLoader.load(getClass().getRessource("/fxml/Principale.fxml"));
-            Node node = (Node) event.getSource();
-            Stage stage = (Stage) node.getScene().getWindow();
-            stage.setScene(new Scene(root));
-        }else {
-            /* message d'erreur */
+        if (!(resultSetMail.next())) {
+            System.out.println("MailInexistant");
+        }
+        if (!(resultSetMdp.next())) {
+            System.out.println("MauvaisMdp");
         }
     }
 
-    public void login(PasswordField mdp, TextField id) {
-        ConnectionClass connectionClass = new ConnectionClass();
-        Connection connection = connectionClass.getConnection();
+    public void login(String username, String password, String type) throws SQLException {
 
-        try {
-            Statement statement=connection.createStatement();
-            String sql="SELECT * FROM admin WHERE mail = '"+id.getText()+"' AND MDP = '"+ mdp.getText()+"';";
-            ResultSet resultSet=statement.executeQuery(sql);
 
-            if (resultSet.next()){
-                isConnected.setText("Connected");
-            }else {
-                isConnected.setText("Not Connected");
+
+        Connection connection = ConnectionClass.getInstance().getConnection();
+
+        Statement statement = connection.createStatement();
+
+        String sql="SELECT * FROM connection WHERE mail = '"+username+"' AND MDP = '"+ password+"';";
+        System.out.println(sql);
+        ResultSet resultSet = statement.executeQuery(sql);
+
+        if (type.equals(adminType)) {
+            if (resultSet.next()) {
+                System.out.println("Aller dans le menu admin");
+            } else {
+                VerifMailMdp(username, password);
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
+        }else if (type.equals(eleveType)){
+            if (resultSet.next()){
+                System.out.println("Aller dans le menu eleve");
+            }else {
+                VerifMailMdp(username, password);
+            }
+        }else if (type.equals(profType)){
+            if (resultSet.next()){
+                System.out.println("Aller dans le menu prof");
+            }else {
+                VerifMailMdp(username, password);
+            }
+        }else{
+            System.out.println("Connexion Error");
         }
     }
 }
