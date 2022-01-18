@@ -1,6 +1,7 @@
 package eu.telecomnancy.javafx.controller;
 
 import eu.telecomnancy.javafx.controller.Erreurs.ConnexionError;
+import eu.telecomnancy.javafx.model.GestionnaireDB;
 import eu.telecomnancy.javafx.model.ProfRDV;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.PasswordField;
@@ -34,8 +35,8 @@ public class Connexion {
      */
     public void validationConnexion(){
 
-        String identifiant = id.getText();
-        String motDePasse = mdp.getText();
+        GestionnaireDB gestionnaireDB = new GestionnaireDB();
+        gestionnaireDB.login(mdp,id);
         
         // try {
             
