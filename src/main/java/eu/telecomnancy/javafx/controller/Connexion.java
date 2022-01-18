@@ -1,8 +1,10 @@
 package eu.telecomnancy.javafx.controller;
 
+import java.sql.SQLException;
+
 import eu.telecomnancy.javafx.controller.Erreurs.ConnexionError;
 import eu.telecomnancy.javafx.model.AccesAccueil;
-import eu.telecomnancy.javafx.model.GestionnaireDB;
+import eu.telecomnancy.javafx.model.GestionnaireLogin;
 import eu.telecomnancy.javafx.model.ProfRDV;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -49,14 +51,24 @@ public class Connexion {
      * Gère les erreurs qui peuvent être remontée (MailInexistant et MauvaisMdp)
      */
     public void validationConnexion(){
-        // try {
+        String mdpStr = mdp.getText();
+        String idStr = id.getText();
     
-        GestionnaireDB gestionnaireDB = new GestionnaireDB();
+        GestionnaireLogin gestionnaireLogin = new GestionnaireLogin();
         String type = "enseignant";
         Node node=(Node) connexion;
         String path = "/fxml/";
         AccesAccueil accesAccueil = new AccesAccueil(profRDV);
-        //     String type = gestionnaireDB.login(mdp,id);
+        try {
+            gestionnaireLogin.login(mdpStr,idStr,"zoienfzoief");
+                 //     String type = gestionnaireDB.login(mdp,id);
+        } catch (ConnexionError e) {
+            Label erreur = e.getError();
+            vboxConnexion.getChildren().add(erreur);
+            //TODO: handle exception
+        } catch (SQLException e){
+            System.out.println(e.getMessage());
+        }
         switch (type) {
             case "admin":
                 path= path + "AccueilAdmin.fxml";
@@ -76,15 +88,6 @@ public class Connexion {
         }
         
         accesAccueil.accesAccueil(node,path);
-        // } catch (Error e){
-
-        // }
-        // catch (ConnexionError e) {
-        //      Label erreur = e.getError();
-        //      vboxConnexion.getChildren().add(erreur);
-        //     //TODO: handle exception
-        // }
-
         
     }
     

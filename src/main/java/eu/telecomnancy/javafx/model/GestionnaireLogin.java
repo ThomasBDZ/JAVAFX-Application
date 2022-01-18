@@ -1,6 +1,9 @@
 package eu.telecomnancy.javafx.model;
 
 import eu.telecomnancy.javafx.ConnectionClass;
+import eu.telecomnancy.javafx.controller.Erreurs.ConnexionError;
+import eu.telecomnancy.javafx.controller.Erreurs.MailInexistant;
+import eu.telecomnancy.javafx.controller.Erreurs.MauvaisMdp;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -22,7 +25,7 @@ public class GestionnaireLogin {
     public GestionnaireLogin() {
     }
 
-    public void VerifMailMdp(String username, String password) throws SQLException {
+    public void VerifMailMdp(String username, String password) throws SQLException, ConnexionError {
 
         Connection connection = ConnectionClass.getInstance().getConnection();
 
@@ -35,15 +38,16 @@ public class GestionnaireLogin {
         ResultSet resultSetMdp = statement.executeQuery(mdp);
 
         if (!(resultSetMail.next())) {
-            System.out.println("MailInexistant");
+            throw new MailInexistant();
         }
         if (!(resultSetMdp.next())) {
-            System.out.println("MauvaisMdp");
+            throw new MauvaisMdp();
         }
+
+        // return le type issus des ResultSet
     }
 
-    public void login(String username, String password, String type) throws SQLException {
-
+    public void login(String username, String password, String type) throws SQLException, ConnexionError {
 
 
         Connection connection = ConnectionClass.getInstance().getConnection();
@@ -53,27 +57,15 @@ public class GestionnaireLogin {
         String sql="SELECT * FROM connection WHERE mail = '"+username+"' AND MDP = '"+ password+"';";
         System.out.println(sql);
         ResultSet resultSet = statement.executeQuery(sql);
-
-        if (type.equals(adminType)) {
-            if (resultSet.next()) {
-                System.out.println("Aller dans le menu admin");
-            } else {
-                VerifMailMdp(username, password);
-            }
-        }else if (type.equals(eleveType)){
-            if (resultSet.next()){
-                System.out.println("Aller dans le menu eleve");
-            }else {
-                VerifMailMdp(username, password);
-            }
-        }else if (type.equals(profType)){
-            if (resultSet.next()){
-                System.out.println("Aller dans le menu prof");
-            }else {
-                VerifMailMdp(username, password);
-            }
-        }else{
-            System.out.println("Connexion Error");
+        try {
+            // String type = VerifMailMdp(username, password);
+            VerifMailMdp(username, password);
+        } catch (SQLException e) {
+            //TODO: handle exception
+            System.out.println("oups");
+        } catch (ConnexionError e){
+            throw e;
         }
+        
     }
 }
