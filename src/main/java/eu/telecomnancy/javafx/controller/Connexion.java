@@ -58,9 +58,9 @@ public class Connexion {
         Node node=(Node) connexion;
         String path = "/fxml/";
         AccesAccueil accesAccueil = new AccesAccueil(profRDV);
+        String type = "-----";
         try {
-            String type = gestionnaireLogin.login(mdpStr,idStr);
-                 //     String type = gestionnaireDB.login(mdp,id);
+            type = gestionnaireLogin.login(mdpStr,idStr);
         } catch (ConnexionError e) {
             Label erreur = e.getError();
             vboxConnexion.getChildren().add(erreur);

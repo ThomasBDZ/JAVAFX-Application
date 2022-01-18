@@ -14,7 +14,7 @@ public class CreationBD {
         try
         {
             // create a database connection
-            connection = DriverManager.getConnection("jdbc:sqlite:BDD\\TNRDV.db");
+            connection = DriverManager.getConnection("jdbc:sqlite:BDD/TNRDV.db");
             Statement statement = connection.createStatement();
             statement.setQueryTimeout(30);  // set timeout to 30 sec.
 
