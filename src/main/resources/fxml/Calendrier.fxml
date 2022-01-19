@@ -21,7 +21,7 @@
       </HBox>
    </top>
    <center>
-      <ScrollPane fitToWidth="true" hbarPolicy="ALWAYS" prefHeight="222.0" prefWidth="503.0" vbarPolicy="ALWAYS" BorderPane.alignment="CENTER">
+      <ScrollPane fitToWidth="true" prefHeight="222.0" prefWidth="503.0" vbarPolicy="ALWAYS" BorderPane.alignment="CENTER">
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1093.0" prefWidth="585.0">
                <children>
