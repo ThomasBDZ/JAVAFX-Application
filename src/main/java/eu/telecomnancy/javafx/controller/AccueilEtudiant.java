@@ -15,13 +15,13 @@ import javafx.stage.Stage;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 
+import java.time.temporal.WeekFields;
+
 public class AccueilEtudiant {
 
     private ProfRDV profRDV;
 
-    public AccueilEtudiant(ProfRDV profRDV){
-        this.profRDV = profRDV;
-    }
+
 
 
     
