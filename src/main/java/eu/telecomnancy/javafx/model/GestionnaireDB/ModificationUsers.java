@@ -1,8 +1,7 @@
-package eu.telecomnancy.javafx.model;
+package eu.telecomnancy.javafx.model.GestionnaireDB;
 
 import eu.telecomnancy.javafx.ConnectionClass;
 import eu.telecomnancy.javafx.controller.Erreurs.ConnexionException;
-import eu.telecomnancy.javafx.model.GestionnaireDB.testRegex;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -10,9 +9,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 
-public class Admin {
+public class ModificationUsers {
 
-    public Admin(){
+    public ModificationUsers(){
 
     }
 
