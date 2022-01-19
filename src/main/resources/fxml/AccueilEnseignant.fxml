@@ -4,14 +4,15 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1">
 
+
+<BorderPane prefHeight="211.0" prefWidth="255.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="eu.telecomnancy.javafx.controller.AccueilEnseignant">
    <top>
-      <fx:include source="MenuBar.fxml" BorderPane.alignment="CENTER" />
+      <fx:include fx:id="menuBar" source="MenuBar.fxml" BorderPane.alignment="CENTER" />
    </top>
 
    <center>
-      <fx:include source="Calendrier.fxml" BorderPane.alignment="CENTER" />
+      <fx:include fx:id="calendrier" source="Calendrier.fxml" BorderPane.alignment="CENTER" />
    </center>
 
    <right>
@@ -26,3 +27,4 @@
       </VBox>
    </right>
 </BorderPane>
+

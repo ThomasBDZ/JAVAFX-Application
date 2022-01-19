@@ -100,4 +100,6 @@ bin/
 #VsCode
 .vscode/
 
+#BDD
+.BDD
 

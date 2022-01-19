@@ -1,7 +1,9 @@
 package eu.telecomnancy.javafx.controller;
 
+
 import eu.telecomnancy.javafx.controller.Erreurs.ConnexionError;
-import eu.telecomnancy.javafx.model.GestionnaireDB;
+import eu.telecomnancy.javafx.model.AccesAccueil;
+import eu.telecomnancy.javafx.model.GestionnaireLogin;
 import eu.telecomnancy.javafx.model.ProfRDV;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -15,13 +17,16 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+
+
     /**
      * Controleur de la vue Connexion.fxml
      */
-   
 public class Connexion {
 
     private ProfRDV profRDV;
+    private Label erreur;
+    private Boolean erreurShown;
 
     @FXML
     private VBox vboxConnexion;
@@ -41,6 +46,7 @@ public class Connexion {
 
     public Connexion(ProfRDV profRDV){
         this.profRDV = profRDV;
+        this.erreurShown = false;
     }
 
     /**
@@ -48,34 +54,47 @@ public class Connexion {
      * Gère les erreurs qui peuvent être remontée (MailInexistant et MauvaisMdp)
      */
     public void validationConnexion(){
-        // try {
-
-        //     GestionnaireDB gestionnaireDB = new GestionnaireDB();
-        //     gestionnaireDB.login(mdp,id);
-            
-        // } catch (Error e){
-
-        // }
-        // catch (ConnexionError e) {
-        //      Label erreur = e.getError();
-        //      vboxConnexion.getChildren().add(erreur);
-        //     //TODO: handle exception
-        // }
-
+        String mdpStr = mdp.getText();
+        String idStr = id.getText();
+    
+        GestionnaireLogin gestionnaireLogin = new GestionnaireLogin();
         Node node=(Node) connexion;
-        Stage stage =(Stage) node.getScene().getWindow();
-        FXMLLoader loader = new FXMLLoader(); 
-        loader.setLocation(getClass().getResource("/fxml/Calendrier.fxml"));
+        String path = "/fxml/";
+        AccesAccueil accesAccueil = new AccesAccueil(profRDV);
+        String type = "";
         try {
-            Parent root = loader.load();
-            Scene scene = new Scene(root, 1000, 1000);
-            stage.setScene(scene);
-            stage.show();
-        } catch (Exception e) {
+            type = gestionnaireLogin.login(mdpStr,idStr);
+        } catch (ConnexionError e) {
+            if(erreurShown){
+                vboxConnexion.getChildren().remove(erreur);
+            }
+            this.erreur = e.getError();
+            this.erreurShown = true;
+            vboxConnexion.getChildren().add(erreur);
+            
             //TODO: handle exception
+        } 
+
+        switch (type) {
+            case "admin":
+                path= path + "AccueilAdmin.fxml";
+                break;
+
+            case "eleve":
+                path= path + "AccueilEtudiant.fxml";
+                break;
+
+            case "prof":
+                path= path + "AccueilEnseignant.fxml";
+                break;
+        
+        
+            default:
+                break;
         }
-
-
+        
+        accesAccueil.accesAccueil(node,path);
+        
     }
     
 }
