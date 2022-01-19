@@ -3,6 +3,7 @@ package eu.telecomnancy.javafx.model;
 import eu.telecomnancy.javafx.ConnectionClass;
 import eu.telecomnancy.javafx.controller.Erreurs.ConnexionError;
 
+
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -15,19 +16,27 @@ public class Admin {
 
     }
 
-    public void Add(String nom, String prenom, String mail, int sexe, String date,String address, String tel, String table) throws SQLException {
+    public void Add(String nom, String prenom, String mail, String sexe, String date,String address, String tel, String table) throws SQLException {
 
         Connection connection = ConnectionClass.getInstance().getConnection();
+        testRegex testeur = new testRegex();
+        testeur.validateTel(tel);
+        testeur.validateAddress(address);
+        testeur.validateMail(mail);
+        testeur.validateSexe(sexe);
+        testeur.validateNom(nom);
+        testeur.validateNom(prenom);
 
 
         try {
             Statement statement2 = connection.createStatement();
             String preQueryStatement = "SELECT * FROM " + table + " WHERE nom = '" + nom + "' AND prenom = '" + prenom + "';";
             ResultSet rs = statement2.executeQuery(preQueryStatement);
-            if (!rs.next()) {
+            if (!rs.next()) { // si il n'y pas deja l'info dans la bdd
                 Statement statement = connection.createStatement();
                 String sql = "INSERT INTO " + table + " (nom, prenom, sexe, date, adresse, mail, telephone) values " +
-                        "('" + nom + "','" + prenom + "','" + sexe + "','" + date + "','" + address + "','" + mail + "','" + tel + "')";
+                        "('" + nom + "','" + prenom + "','" + sexe + "','" + date + "','" + address + "','" + mail + "','" + tel + "'); INSERT INTO" +
+                        " connection"+ " (mail, MDP, typeUser) values ('" + mail + "','" + nom + "','" + table + "');";
 
                 int status = statement.executeUpdate(sql);
                 if (status > 0) {
@@ -52,10 +61,19 @@ public class Admin {
     public void update(String nom, String prenom, String newElementValeur, String table, String oldElement){
 
         Connection connection = ConnectionClass.getInstance().getConnection();
+        testRegex testeur = new testRegex();
+        testeur.validateNom(nom);
+        testeur.validateNom(prenom);
+
         try {
             Statement statement = connection.createStatement();
             String sql = "UPDATE '"+table+"' SET '"+oldElement+"' = '"+newElementValeur+"' WHERE nom = '"+nom+"' AND prenom = '"+prenom+"';";
             int status = statement.executeUpdate(sql);
+            if (oldElement.equals("mail")){
+                Statement updateMail = connection.createStatement();
+                String sqlUpdate = "UPDATE connection SET mail = '"+newElementValeur+"' WHERE MDP = '"+nom+"';";
+                int update1 = updateMail.executeUpdate(sqlUpdate);
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }finally {
@@ -71,9 +89,14 @@ public class Admin {
     public void delete(String nom, String prenom, String table){
 
         Connection connection = ConnectionClass.getInstance().getConnection();
+        testRegex testeur = new testRegex();
+        testeur.validateNom(nom);
+        testeur.validateNom(prenom);
+
         try {
             Statement statement = connection.createStatement();
-            String sql = "DELETE FROM '"+table+"' WHERE nom = '"+nom+"' AND prenom = '"+prenom+"';";
+            String sql = "DELETE FROM '"+table+"' WHERE nom = '"+nom+"' AND prenom = '"+prenom+"'; DELETE FROM connection WHERE" +
+                    " MDP = '"+nom+"';";
             int status = statement.executeUpdate(sql);
         } catch (SQLException e) {
             e.printStackTrace();
@@ -87,3 +110,4 @@ public class Admin {
         }
     }
 }
+
