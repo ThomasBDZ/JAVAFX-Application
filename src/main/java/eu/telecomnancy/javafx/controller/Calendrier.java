@@ -15,15 +15,11 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.ResourceBundle;
 
-public class Calendrier {
-    
-    private ProfRDV profRDV;
+public class Calendrier extends Controlleur{
 
-    public Calendrier(ProfRDV profRDV){
-        this.profRDV = profRDV;
+    public Calendrier(ProfRDV profRDV) {
+        super(profRDV);
     }
-
-
 
     @FXML
     private Button prochain;

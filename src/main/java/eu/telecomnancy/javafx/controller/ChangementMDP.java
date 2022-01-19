@@ -2,10 +2,10 @@ package eu.telecomnancy.javafx.controller;
 
 import eu.telecomnancy.javafx.model.ProfRDV;
 
-public class ChangementMDP {
-    private ProfRDV profRDV;
+public class ChangementMDP extends Controlleur{
 
-    public ChangementMDP(ProfRDV profRDV){
-        this.profRDV = profRDV;
+    public ChangementMDP(ProfRDV profRDV) {
+        super(profRDV);
     }
+    
 }

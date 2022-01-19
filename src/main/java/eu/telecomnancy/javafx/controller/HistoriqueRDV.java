@@ -2,10 +2,11 @@ package eu.telecomnancy.javafx.controller;
 
 import eu.telecomnancy.javafx.model.ProfRDV;
 
-public class HistoriqueRDV {
-    private ProfRDV profRDV;
+public class HistoriqueRDV extends Controlleur{
 
-    public HistoriqueRDV(ProfRDV profRDV){
-        this.profRDV = profRDV;
+    public HistoriqueRDV(ProfRDV profRDV) {
+        super(profRDV);
     }
+
+
 }

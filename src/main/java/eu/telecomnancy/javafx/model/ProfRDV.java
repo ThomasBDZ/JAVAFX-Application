@@ -1,5 +1,6 @@
 package eu.telecomnancy.javafx.model;
 
+import eu.telecomnancy.javafx.controller.Controlleur;
 import eu.telecomnancy.javafx.controller.utils.AccesPages;
 
 /**
@@ -12,12 +13,71 @@ public class ProfRDV {
     public String utilisateur; //mail de l'utilisateur courant
     public GestionnaireRDV gestionnaireRDV;
     public GestionnaireCreneauDispo gestionnaireCreneauDispo;
+    String instance = ""; // Soit "eleve", "prof", "admin", soit ""
+    Controlleur currentControlleur;
 
     public ProfRDV(){
 
         this.accesPages = new AccesPages(this);
         this.gestionnaireCreneauDispo= new GestionnaireCreneauDispo();
         this.gestionnaireRDV = new GestionnaireRDV();
+    }
+
+    /**
+     * Setter for currentControlleur
+     * @param controlleur
+     */
+    public void setControlleur(Controlleur controlleur){
+        this.currentControlleur = controlleur;
+    }
+
+    /**
+     * Getter for currentControlleur
+     * @return the currentControlleur
+     */
+    public Controlleur getCurrentControlleur(){
+        return currentControlleur;
+    }
+
+    /**
+     * Setter for instance (eleve,admin,prof)
+     * @param instance
+     * @throws Exception
+     */
+    public void setInstance(String instance){
+        switch (instance) {
+            case "eleve":
+                this.instance = "eleve";
+                break;
+
+            case "prof":
+                this.instance = "prof";
+                break;
+
+            case "admin":
+                this.instance = "admin";
+                break;
+
+            default:
+                System.out.println("Mauvais type d'instance ('eleve','prof','admin')");
+                
+        }
+
+    }
+
+    /**
+     * Getter for the instance (eleve,admin,prof)
+     * @return instance 
+     */
+    public String getInstance(){
+        return this.instance;
+    }
+
+    /**
+     * Reinitialize the instance to ""
+     */
+    public void reinitializeInstance(){
+        this.instance="";
     }
 
 

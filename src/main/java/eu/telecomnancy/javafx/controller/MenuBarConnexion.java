@@ -8,15 +8,15 @@ import javafx.scene.control.ButtonType;
 
 import java.util.Optional;
 
-public class MenuBarConnexion {
-    ProfRDV profRDV;
+public class MenuBarConnexion extends Controlleur{
 
     public MenuBarConnexion(ProfRDV profRDV){
+        super(profRDV);
         this.profRDV = profRDV;
     }
 
     /**
-            * Controle du bouton quitter dans le menu bar principale.
+    * Controle du bouton quitter dans le menu bar principale.
      * --> Quitte la page.
      */
     public void quitter(){

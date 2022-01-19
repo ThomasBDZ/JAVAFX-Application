@@ -36,6 +36,8 @@ public class AccesPages {
         loader.setLocation(getClass().getResource("/fxml/Connexion.fxml"));
         MenuBarConnexion menuBar = new MenuBarConnexion(profRDV);
         Connexion connexionController = new Connexion(profRDV);
+        profRDV.setControlleur(connexionController);
+        profRDV.reinitializeInstance();
         loader.setControllerFactory(ic -> {
         if (ic.equals(eu.telecomnancy.javafx.controller.Connexion.class)) return connexionController;
         if (ic.equals(eu.telecomnancy.javafx.controller.MenuBar.class)) return menuBar;
@@ -60,6 +62,8 @@ public class AccesPages {
         AccueilEtudiant accueilEtudiant = new AccueilEtudiant(profRDV);
         MenuBar menuBar = new MenuBar(profRDV);
         Calendrier calendrier = new Calendrier(profRDV);
+        profRDV.setControlleur(accueilEtudiant);
+        profRDV.setInstance("eleve");
         loader.setLocation(getClass().getResource("/fxml/AccueilEtudiant.fxml"));
         loader.setControllerFactory(ic -> {
         if (ic.equals(eu.telecomnancy.javafx.controller.MenuBar.class)) return menuBar;
@@ -85,6 +89,8 @@ public class AccesPages {
         AccueilEnseignant accueilEnseignant = new AccueilEnseignant(profRDV);
         MenuBar menuBar = new MenuBar(profRDV);
         Calendrier calendrier = new Calendrier(profRDV);
+        profRDV.setControlleur(accueilEnseignant);
+        profRDV.setInstance("prof");
         loader.setLocation(getClass().getResource("/fxml/AccueilEnseignant.fxml"));
         loader.setControllerFactory(ic -> {
         if (ic.equals(eu.telecomnancy.javafx.controller.MenuBar.class)) return menuBar;
@@ -109,6 +115,8 @@ public class AccesPages {
         FXMLLoader loader = new FXMLLoader(); 
         AccueilAdmin accueilAdmin = new AccueilAdmin(profRDV);
         MenuBar menuBar = new MenuBar(profRDV);
+        profRDV.setControlleur(accueilAdmin);
+        profRDV.setInstance("admin");
         loader.setLocation(getClass().getResource("/fxml/AccueilAdmin.fxml"));
         loader.setControllerFactory(ic -> {
         if (ic.equals(eu.telecomnancy.javafx.controller.MenuBar.class)) return menuBar;

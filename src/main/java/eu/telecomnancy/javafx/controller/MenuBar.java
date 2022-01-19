@@ -2,21 +2,36 @@ package eu.telecomnancy.javafx.controller;
 
 import eu.telecomnancy.javafx.model.ProfRDV;
 import javafx.application.Platform;
+import javafx.fxml.FXML;
+import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.MenuItem;
 
 import java.util.Optional;
 
-public class MenuBar {
-    
-    /**
-     * Controleur de la vue MenuBar.fxml
-     */
 
-    ProfRDV profRDV;
+
+/**
+ * Controleur de la vue MenuBar.fxml
+ */
+public class MenuBar extends Controlleur {
+    
+    @FXML
+    private MenuItem accueil;
+
+    @FXML
+    private MenuItem changeMdp;
+
+    @FXML
+    private MenuItem deconnexion;
+
+
 
     public MenuBar(ProfRDV profRDV){
+        super(profRDV);
         this.profRDV = profRDV;
     }
    
@@ -26,6 +41,8 @@ public class MenuBar {
      * Non affiché si on est pas connecté.
      */
     public void deconnexion(){
+        Node node= (Node) deconnexion.getGraphic();
+        profRDV.getAccesPages().accesAccueilConnexion(node);
 
     }
 
@@ -35,7 +52,9 @@ public class MenuBar {
      * --> Ne fait rien sinon.
      */
     public void accueil(){
-
+        Node node= (Node) accueil.getGraphic(); // accueil mais on aurait pu prendre n'importe quel bouton, genre deconnexion...
+        // Parent parent = node.getParentNode();
+        // profRDV.getAccesPages().accesAccueil(node);
     }
 
     /**

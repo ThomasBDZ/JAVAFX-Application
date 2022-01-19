@@ -24,6 +24,7 @@ public class MainApp extends Application {
         loader.setLocation(getClass().getResource("/fxml/Connexion.fxml"));
         MenuBarConnexion menuBarConnexion = new MenuBarConnexion(profRDV);
         Connexion connexionController = new Connexion(profRDV);
+        profRDV.setControlleur(connexionController);
         loader.setControllerFactory(ic -> {
         if (ic.equals(eu.telecomnancy.javafx.controller.Connexion.class)) return connexionController;
         if (ic.equals(eu.telecomnancy.javafx.controller.MenuBarConnexion.class)) return menuBarConnexion;
