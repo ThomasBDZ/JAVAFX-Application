@@ -2,23 +2,28 @@ package eu.telecomnancy.javafx;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
 
 public class ConnectionClass {
 
-    public Connection connection;
+    private ConnectionClass() {
+
+    }
+
+    public static ConnectionClass getInstance(){
+        return new ConnectionClass();
+    }
 
     public Connection getConnection(){
 
 
-        String dbName="TNRDV";
-        String userName="root";
-        String password="";
+        String connectDbString="jdbc:sqlite:BDD/TNRDV.db";
+        Connection connection = null;
 
         try {
+            connection = DriverManager.getConnection(connectDbString);
 
-            connection = DriverManager.getConnection("jdbc:sqlite://localhost/"+dbName,userName,password);
-
-        } catch (Exception e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
 
