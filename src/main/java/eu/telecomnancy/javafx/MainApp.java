@@ -20,7 +20,7 @@ public class MainApp extends Application {
         
         ProfRDV profRDV = new ProfRDV();
         FXMLLoader loader = new FXMLLoader(); 
-        loader.setLocation(getClass().getResource("/fxml/Connexion.fxml"));
+        loader.setLocation(getClass().getResource("/fxml/AccueilEtudiant.fxml"));
         MenuBarPrincipal menuBarPrincipal = new MenuBarPrincipal(profRDV);
         Connexion connexionController = new Connexion(profRDV);
         loader.setControllerFactory(ic -> {
