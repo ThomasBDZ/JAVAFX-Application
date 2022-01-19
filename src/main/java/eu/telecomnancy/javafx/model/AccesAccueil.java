@@ -53,7 +53,7 @@ public class AccesAccueil {
             stage.setScene(scene);
             stage.show();
         } catch (Exception e) {
-            System.out.println("exception");
+            System.out.println("exception ---- ");
             //TODO: handle exception
         }
 

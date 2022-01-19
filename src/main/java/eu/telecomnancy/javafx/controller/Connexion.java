@@ -78,22 +78,23 @@ public class Connexion {
         switch (type) {
             case "admin":
                 path= path + "AccueilAdmin.fxml";
+                accesAccueil.accesAccueil(node,path);
                 break;
 
             case "eleve":
                 path= path + "AccueilEtudiant.fxml";
+                accesAccueil.accesAccueil(node,path);
                 break;
 
             case "prof":
                 path= path + "AccueilEnseignant.fxml";
+                accesAccueil.accesAccueil(node,path);
                 break;
         
         
             default:
                 break;
         }
-        
-        accesAccueil.accesAccueil(node,path);
         
     }
     
