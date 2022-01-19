@@ -1,6 +1,11 @@
 package eu.telecomnancy.javafx;
 
-import eu.telecomnancy.javafx.controller.*;
+import eu.telecomnancy.javafx.controller.AccueilEnseignant;
+import eu.telecomnancy.javafx.controller.AccueilEtudiant;
+import eu.telecomnancy.javafx.controller.Calendrier;
+import eu.telecomnancy.javafx.controller.Connexion;
+import eu.telecomnancy.javafx.controller.MenuBar;
+import eu.telecomnancy.javafx.controller.MenuBarConnexion;
 import eu.telecomnancy.javafx.model.ProfRDV;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

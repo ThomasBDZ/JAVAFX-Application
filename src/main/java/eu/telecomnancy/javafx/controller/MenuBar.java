@@ -8,7 +8,7 @@ import javafx.scene.control.ButtonType;
 
 import java.util.Optional;
 
-public class MenuBarPrincipal {
+public class MenuBar {
     
     /**
      * Controleur de la vue MenuBar.fxml
@@ -16,7 +16,7 @@ public class MenuBarPrincipal {
 
     ProfRDV profRDV;
 
-    public MenuBarPrincipal(ProfRDV profRDV){
+    public MenuBar(ProfRDV profRDV){
         this.profRDV = profRDV;
     }
    

@@ -2,7 +2,7 @@ package eu.telecomnancy.javafx.controller;
 
 
 import eu.telecomnancy.javafx.controller.Erreurs.ConnexionError;
-import eu.telecomnancy.javafx.model.AccesAccueil;
+import eu.telecomnancy.javafx.controller.utils.AccesPages;
 import eu.telecomnancy.javafx.model.GestionnaireLogin;
 import eu.telecomnancy.javafx.model.ProfRDV;
 import javafx.scene.Node;
@@ -60,7 +60,7 @@ public class Connexion {
         GestionnaireLogin gestionnaireLogin = new GestionnaireLogin();
         Node node=(Node) connexion;
         String path = "/fxml/";
-        AccesAccueil accesAccueil = new AccesAccueil(profRDV);
+        AccesPages accesPages= profRDV.getAccesPages();
         String type = "";
         try {
             type = gestionnaireLogin.login(mdpStr,idStr);
@@ -78,22 +78,23 @@ public class Connexion {
         switch (type) {
             case "admin":
                 path= path + "AccueilAdmin.fxml";
+                accesPages.accesAccueilAdmin(node);
                 break;
 
             case "eleve":
                 path= path + "AccueilEtudiant.fxml";
+                accesPages.accesAccueilEtudiant(node);
                 break;
 
             case "prof":
                 path= path + "AccueilEnseignant.fxml";
+                accesPages.accesAccueilEnseignant(node);
                 break;
         
         
             default:
                 break;
         }
-        
-        accesAccueil.accesAccueil(node,path);
         
     }
     
