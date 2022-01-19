@@ -2,10 +2,9 @@ package eu.telecomnancy.javafx.controller;
 
 import eu.telecomnancy.javafx.model.ProfRDV;
 
-public class Demandes {
-    private ProfRDV profRDV;
+public class Demandes extends Controlleur{
 
     public Demandes(ProfRDV profRDV){
-        this.profRDV = profRDV;
+        super(profRDV);
     }
 }

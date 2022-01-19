@@ -6,9 +6,9 @@
    <menus>
       <Menu mnemonicParsing="false" text="Menu Principal">
         <items>
-          <MenuItem fx:id="Accueil" mnemonicParsing="false" text="Accueil" />
-            <MenuItem mnemonicParsing="false" text="Changer mon mot de passe" />
-            <MenuItem mnemonicParsing="false" text="Déconnexion" />
+          <MenuItem fx:id="accueil" mnemonicParsing="false" text="Accueil" />
+            <MenuItem fx:id="changeMdp" mnemonicParsing="false" text="Changer mon mot de passe" />
+            <MenuItem fx:id="deconnexion" mnemonicParsing="false" text="Déconnexion" />
           <MenuItem id="quitter" fx:id="Quitter" mnemonicParsing="false" onAction="#quitter" text="Quitter" />
         </items>
       </Menu>

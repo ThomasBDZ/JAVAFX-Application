@@ -2,11 +2,10 @@ package eu.telecomnancy.javafx.controller;
 
 import eu.telecomnancy.javafx.model.ProfRDV;
 
-public class Calendrier {
-    
-    private ProfRDV profRDV;
+public class Calendrier extends Controlleur{
 
-    public Calendrier(ProfRDV profRDV){
-        this.profRDV = profRDV;
+    public Calendrier(ProfRDV profRDV) {
+        super(profRDV);
     }
+    
 }

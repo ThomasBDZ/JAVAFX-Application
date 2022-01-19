@@ -15,14 +15,11 @@ import javafx.stage.Stage;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 
-public class AccueilEtudiant {
+public class AccueilEtudiant extends Controlleur {
 
-    private ProfRDV profRDV;
-
-    public AccueilEtudiant(ProfRDV profRDV){
-        this.profRDV = profRDV;
+    public AccueilEtudiant(ProfRDV profRDV) {
+        super(profRDV);
     }
-
 
     
 }

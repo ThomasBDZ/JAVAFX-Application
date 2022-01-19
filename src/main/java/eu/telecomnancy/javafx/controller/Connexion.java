@@ -22,9 +22,8 @@ import javafx.fxml.FXMLLoader;
     /**
      * Controleur de la vue Connexion.fxml
      */
-public class Connexion {
+public class Connexion extends Controlleur {
 
-    private ProfRDV profRDV;
     private Label erreur;
     private Boolean erreurShown;
 
@@ -45,7 +44,7 @@ public class Connexion {
 
 
     public Connexion(ProfRDV profRDV){
-        this.profRDV = profRDV;
+        super(profRDV);
         this.erreurShown = false;
     }
 
@@ -58,7 +57,7 @@ public class Connexion {
         String idStr = id.getText();
     
         GestionnaireLogin gestionnaireLogin = new GestionnaireLogin();
-        Node node=(Node) connexion;
+        Node node= (Node) connexion;
         String path = "/fxml/";
         AccesPages accesPages= profRDV.getAccesPages();
         String type = "";

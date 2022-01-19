@@ -2,10 +2,9 @@ package eu.telecomnancy.javafx.controller;
 
 import eu.telecomnancy.javafx.model.ProfRDV;
 
-public class ModifierUtilisateur {
-    private ProfRDV profRDV;
+public class ModifierUtilisateur extends Controlleur{
 
     public ModifierUtilisateur(ProfRDV profRDV){
-        this.profRDV = profRDV;
+        super(profRDV);
     }
 }
