@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <ListView prefHeight="400.0" prefWidth="302.0" BorderPane.alignment="CENTER" />
+   </center>
+   <right>
+      <VBox prefHeight="400.0" prefWidth="415.0" BorderPane.alignment="CENTER_LEFT">
+         <children>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+               <children>
+                  <CheckBox mnemonicParsing="false" text="Etudiant" />
+                  <CheckBox mnemonicParsing="false" text="Enseigant" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="5.0">
+               <children>
+                  <Label text="Utilisateur" />
+                  <TextField />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="5.0">
+               <children>
+                  <Label text="Nouveau téléphone" />
+                  <TextField />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="5.0">
+               <children>
+                  <Label text="Nouvelle adresse mail" />
+                  <TextField />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="5.0">
+               <children>
+                  <Label text="Nouvelle adresse" />
+                  <TextField />
+               </children>
+            </HBox>
+            <Button mnemonicParsing="false" text="Valider">
+               <VBox.margin>
+                  <Insets left="150.0" />
+               </VBox.margin></Button>
+         </children>
+         <padding>
+            <Insets top="100.0" />
+         </padding>
+      </VBox>
+   </right>
+</BorderPane>

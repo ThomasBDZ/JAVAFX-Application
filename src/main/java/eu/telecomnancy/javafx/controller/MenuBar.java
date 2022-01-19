@@ -2,8 +2,13 @@ package eu.telecomnancy.javafx.controller;
 
 import eu.telecomnancy.javafx.model.ProfRDV;
 import javafx.application.Platform;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonBar;
+import javafx.scene.control.ButtonType;
 
-public class MenuBarPrincipal {
+import java.util.Optional;
+
+public class MenuBar {
     
     /**
      * Controleur de la vue MenuBar.fxml
@@ -11,7 +16,7 @@ public class MenuBarPrincipal {
 
     ProfRDV profRDV;
 
-    public MenuBarPrincipal(ProfRDV profRDV){
+    public MenuBar(ProfRDV profRDV){
         this.profRDV = profRDV;
     }
    
@@ -38,10 +43,13 @@ public class MenuBarPrincipal {
      * --> Quitte la page.
      */
     public void quitter(){
-        //TODO: ajout de la demande de confirmation avant de quitter
-        Platform.exit();
-
+            ButtonType stay = new ButtonType("Rester", ButtonBar.ButtonData.YES);
+            ButtonType leave = new ButtonType("Quitter", ButtonBar.ButtonData.NO);
+            Alert alert = new Alert(Alert.AlertType.WARNING, "Voulez-vous vraiment quitter?",leave,stay);
+            alert.setTitle("Quitter");
+            Optional<ButtonType> result = alert.showAndWait();
+        if (result.orElse(leave) == leave) {
+            Platform.exit();
+        }
     }
-    
-    
 }

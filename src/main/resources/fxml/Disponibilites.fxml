@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.collections.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1">
+   <top>
+      <fx:include source="MenuBar.fxml" BorderPane.alignment="CENTER" />
+   </top>
+   <center>
+      <fx:include source="Calendrier.fxml" BorderPane.alignment="CENTER" />
+   </center>
+
+   <right>
+      <VBox alignment="CENTER" prefWidth="400.0" spacing="20.0" BorderPane.alignment="CENTER">
+         <children>
+            <CheckBox mnemonicParsing="false" text="Permanent" />
+            <DatePicker promptText="Sélectionner la date..." />
+            <HBox alignment="CENTER" prefHeight="20.0" prefWidth="200.0">
+               <children>
+                  <Label text="Heure de début:" />
+                  <ChoiceBox layoutX="16.0" layoutY="52.0" prefWidth="150.0" value="8h">
+                     <items>
+                        <FXCollections fx:factory="observableArrayList">
+                           <String fx:value="8h" />
+                           <String fx:value="9h" />
+                           <String fx:value="10h" />
+                           <String fx:value="11h" />
+                           <String fx:value="12h" />
+                           <String fx:value="13h" />
+                           <String fx:value="14h" />
+                           <String fx:value="15h" />
+                           <String fx:value="16h" />
+                           <String fx:value="17h" />
+                           <String fx:value="18h" />
+                           <String fx:value="19h" />
+                        </FXCollections>
+                     </items>
+                  </ChoiceBox>
+                  <ChoiceBox layoutX="16.0" layoutY="52.0" prefWidth="150.0" value="00">
+                     <items>
+                        <FXCollections fx:factory="observableArrayList">
+                           <String fx:value="20" />
+                           <String fx:value="40" />
+                        </FXCollections>
+                     </items>
+                  </ChoiceBox>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label text="Heure de fin:" />
+                  <ChoiceBox layoutX="16.0" layoutY="52.0" prefWidth="150.0" value="8h">
+                     <items>
+                        <FXCollections fx:factory="observableArrayList">
+                           <String fx:value="8h" />
+                           <String fx:value="9h" />
+                           <String fx:value="10h" />
+                           <String fx:value="11h" />
+                           <String fx:value="12h" />
+                           <String fx:value="13h" />
+                           <String fx:value="14h" />
+                           <String fx:value="15h" />
+                           <String fx:value="16h" />
+                           <String fx:value="17h" />
+                           <String fx:value="18h" />
+                           <String fx:value="19h" />
+                        </FXCollections>
+                     </items>
+                  </ChoiceBox>
+                  <ChoiceBox layoutX="16.0" layoutY="52.0" prefWidth="150.0" value="00">
+                     <items>
+                        <FXCollections fx:factory="observableArrayList">
+                           <String fx:value="20" />
+                           <String fx:value="40" />
+                        </FXCollections>
+                     </items>
+                  </ChoiceBox>
+               </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </HBox>
+            <Button mnemonicParsing="false" text="Valider" />
+
+         </children>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+         <padding>
+            <Insets right="60.0" />
+         </padding></VBox>
+   </right>
+</BorderPane>

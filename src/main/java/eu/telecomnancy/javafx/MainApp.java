@@ -1,7 +1,11 @@
 package eu.telecomnancy.javafx;
 
+import eu.telecomnancy.javafx.controller.AccueilEnseignant;
+import eu.telecomnancy.javafx.controller.AccueilEtudiant;
+import eu.telecomnancy.javafx.controller.Calendrier;
 import eu.telecomnancy.javafx.controller.Connexion;
-import eu.telecomnancy.javafx.controller.MenuBarPrincipal;
+import eu.telecomnancy.javafx.controller.MenuBar;
+import eu.telecomnancy.javafx.controller.MenuBarConnexion;
 import eu.telecomnancy.javafx.model.ProfRDV;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -14,15 +18,15 @@ public class MainApp extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-
+        
         ProfRDV profRDV = new ProfRDV();
         FXMLLoader loader = new FXMLLoader(); 
-        loader.setLocation(getClass().getResource("/fxml/Principale.fxml"));
+        loader.setLocation(getClass().getResource("/fxml/Connexion.fxml"));
+        MenuBarConnexion menuBarConnexion = new MenuBarConnexion(profRDV);
         Connexion connexionController = new Connexion(profRDV);
-        MenuBarPrincipal menuBarPrincipal = new MenuBarPrincipal(profRDV);
         loader.setControllerFactory(ic -> {
         if (ic.equals(eu.telecomnancy.javafx.controller.Connexion.class)) return connexionController;
-        if (ic.equals(eu.telecomnancy.javafx.controller.MenuBarPrincipal.class)) return menuBarPrincipal;
+        if (ic.equals(eu.telecomnancy.javafx.controller.MenuBarConnexion.class)) return menuBarConnexion;
         else return null ;
         });
         Parent root = loader.load() ;
