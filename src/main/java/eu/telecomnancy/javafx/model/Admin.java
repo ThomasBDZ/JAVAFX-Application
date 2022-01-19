@@ -1,8 +1,8 @@
 package eu.telecomnancy.javafx.model;
 
 import eu.telecomnancy.javafx.ConnectionClass;
-import eu.telecomnancy.javafx.controller.Erreurs.ConnexionError;
-
+import eu.telecomnancy.javafx.controller.Erreurs.ConnexionException;
+import eu.telecomnancy.javafx.model.GestionnaireDB.testRegex;
 
 import java.sql.Connection;
 import java.sql.ResultSet;

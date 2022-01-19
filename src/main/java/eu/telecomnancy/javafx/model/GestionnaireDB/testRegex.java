@@ -1,7 +1,9 @@
-package eu.telecomnancy.javafx.model;
+package eu.telecomnancy.javafx.model.GestionnaireDB;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import eu.telecomnancy.javafx.controller.Erreurs.InsertionException;
 
 public class testRegex {
 
@@ -22,35 +24,35 @@ public class testRegex {
 
 
 
-    public void validateMail(String emailStr) {
+    public void validateMail(String emailStr) throws InsertionException {
         Matcher matcher = patternMail.matcher(emailStr);
         if (!matcher.find()){
-            System.out.println("Mail invalide ! Réessayer.");
+            throw new InsertionException("Mail");
         }
 
     }
-    public void validateTel(String telStr) {
+    public void validateTel(String telStr) throws InsertionException {
         Matcher matcher = patternTel.matcher(telStr);
         if (!matcher.find()) {
-            System.out.println("Numéro de téléphone invalide ! Réessayer.");
+            throw new InsertionException("Numéro de téléphone");
         }
     }
-    public void validateAddress(String addressStr) {
+    public void validateAddress(String addressStr) throws InsertionException{
         Matcher matcher = patternAddress.matcher(addressStr);
         if (!matcher.find()) {
-            System.out.println("adresse invalide ! Réessayer.");
+            throw new InsertionException("Adresse");
         }
     }
-    public void validateSexe (String sexe){
+    public void validateSexe (String sexe) throws InsertionException{
         Matcher matcher = patternSexe.matcher(sexe);
         if (!matcher.find()) {
-            System.out.println("Genre invalide ! Réessayer. (M, F ou ND)");
+            throw new InsertionException("Genre","(M, F ou ND)");
         }
     }
-    public void validateNom (String nom){
+    public void validateNom (String nom) throws InsertionException{
         Matcher matcher = patternNom.matcher(nom);
         if (!matcher.find()) {
-            System.out.println("Nom invalide ! Réessayer.");
+            throw new InsertionException("Nom");
         }
     }
 }
