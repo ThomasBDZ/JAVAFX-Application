@@ -9,11 +9,11 @@
    <top>
       <HBox alignment="CENTER" prefHeight="65.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="Dernier" mnemonicParsing="false" text="&lt;">
+            <Button fx:id="dernier" mnemonicParsing="false" onAction="#dernier" text="&lt;">
                <HBox.margin>
                   <Insets right="400.0" top="-10.0" />
                </HBox.margin></Button>
-            <Button fx:id="Prochain" mnemonicParsing="false" text="&gt;">
+            <Button fx:id="prochain" mnemonicParsing="false" onAction="#prochain" text="&gt;">
                <HBox.margin>
                   <Insets top="-10.0" />
                </HBox.margin></Button>
@@ -25,7 +25,7 @@
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1093.0" prefWidth="585.0">
                <children>
-                  <GridPane fx:id="GrilleCalendrier" gridLinesVisible="true" layoutY="1.0" prefHeight="1093.0" prefWidth="585.0">
+                  <GridPane fx:id="Grille" gridLinesVisible="true" layoutY="1.0" prefHeight="1093.0" prefWidth="585.0">
                     <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />

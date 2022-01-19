@@ -1,8 +1,6 @@
 package eu.telecomnancy.javafx.model;
 
-import eu.telecomnancy.javafx.model.utils.GlobalVariables;
 
-import java.time.LocalTime;
 import java.util.Date;
 
 import static eu.telecomnancy.javafx.model.utils.GlobalVariables.*;
