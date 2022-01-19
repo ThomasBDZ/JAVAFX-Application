@@ -1,5 +1,6 @@
 package eu.telecomnancy.javafx.controller;
 
+import eu.telecomnancy.javafx.controller.utils.AccesPages;
 import eu.telecomnancy.javafx.model.ProfRDV;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -11,6 +12,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.MenuItem;
 
 import java.util.Optional;
+import java.util.ResourceBundle.Control;
 
 
 
@@ -43,7 +45,7 @@ public class MenuBar extends Controlleur {
     public void deconnexion(){
         Node node= (Node) deconnexion.getGraphic();
         profRDV.getAccesPages().accesAccueilConnexion(node);
-
+        
     }
 
     /**
@@ -53,9 +55,54 @@ public class MenuBar extends Controlleur {
      */
     public void accueil(){
         Node node= (Node) accueil.getGraphic(); // accueil mais on aurait pu prendre n'importe quel bouton, genre deconnexion...
-        // Parent parent = node.getParentNode();
-        // profRDV.getAccesPages().accesAccueil(node);
+        String instance = profRDV.getInstance();
+        AccesPages accesPages = profRDV.getAccesPages();
+
+        switch (instance) {
+            case "admin":
+                accesPages.accesAccueilAdmin(node);
+                break;
+
+            case "eleve":
+                accesPages.accesAccueilEtudiant(node);
+                break;
+
+            case "prof":
+                accesPages.accesAccueilEnseignant(node);
+                break;
+            default:
+                break;
+        }
     }
+
+    /**
+     * Controle du bouton accueil dans le menu bar principale. 
+     * --> Renvoit vers la page d'accueil si connecté.
+     * --> Ne fait rien sinon.
+     */
+    public void changeMdp(){
+        Node node= (Node) accueil.getGraphic(); // accueil mais on aurait pu prendre n'importe quel bouton, genre deconnexion...
+        String instance = profRDV.getInstance();
+        AccesPages accesPages = profRDV.getAccesPages();
+
+        switch (instance) {
+            case "admin":
+                accesPages.accesAccueilAdmin(node);
+                break;
+
+            case "eleve":
+                accesPages.accesAccueilEtudiant(node);
+                break;
+
+            case "prof":
+                accesPages.accesAccueilEnseignant(node);
+                break;
+            default:
+                break;
+        }
+    }
+
+    
 
     /**
      * Controle du bouton quitter dans le menu bar principale. 

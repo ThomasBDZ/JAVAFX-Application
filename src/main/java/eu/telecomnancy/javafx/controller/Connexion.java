@@ -58,7 +58,6 @@ public class Connexion extends Controlleur {
     
         GestionnaireLogin gestionnaireLogin = new GestionnaireLogin();
         Node node= (Node) connexion;
-        String path = "/fxml/";
         AccesPages accesPages= profRDV.getAccesPages();
         String type = "";
         try {
@@ -70,23 +69,18 @@ public class Connexion extends Controlleur {
             this.erreur = e.getError();
             this.erreurShown = true;
             vboxConnexion.getChildren().add(erreur);
-            
-            //TODO: handle exception
         } 
 
         switch (type) {
             case "admin":
-                path= path + "AccueilAdmin.fxml";
                 accesPages.accesAccueilAdmin(node);
                 break;
 
             case "eleve":
-                path= path + "AccueilEtudiant.fxml";
                 accesPages.accesAccueilEtudiant(node);
                 break;
 
             case "prof":
-                path= path + "AccueilEnseignant.fxml";
                 accesPages.accesAccueilEnseignant(node);
                 break;
         
