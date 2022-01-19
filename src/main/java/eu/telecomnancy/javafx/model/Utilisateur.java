@@ -39,4 +39,8 @@ public abstract class Utilisateur {
     public void setTelephone(String telephone) {
         this.telephone = telephone;
     }
+
+    public void setRdv(ArrayList<RDV> rdv) {
+        this.rdv = rdv;
+    }
 }
