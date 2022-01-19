@@ -26,6 +26,7 @@ public class CreationBD {
             statement.executeUpdate("drop table if exists archive");
             statement.executeUpdate("drop table if exists classe");
             statement.executeUpdate("drop table if exists matiere");
+            statement.executeUpdate("drop table if exists availableRDV");
             statement.executeUpdate("CREATE TABLE connection(\n" +
                     "  id INTEGER NOT NULL,\n" +
                     "  mail TEXT NOT NULL,\n" +
@@ -71,12 +72,22 @@ public class CreationBD {
             statement.executeUpdate("CREATE TABLE rdv(\n" +
                     "  id INTEGER NOT NULL,\n" +
                     "  id_prof INTEGER NOT NULL,\n" +
+                    "  id_dispo INTEGER NOT NULL,\n" +
                     "  id_eleve INTEGER NOT NULL,\n" +
                     "  salle INTEGER NOT NULL,\n" +
                     "  date TEXT NOT NULL,\n" +
                     "  heure TEXT NOT NULL,\n" +
-                    "  statut INTEGER NOT NULL,\n" +
-                    "  PRIMARY KEY (id_prof, id_eleve, date, heure))");
+                    "  PRIMARY KEY (id),\n" +
+                    "  FOREIGN KEY (id_prof) REFERENCES prof(id),\n" +
+                    "  FOREIGN KEY (id_eleve) REFERENCES eleve(id),\n" +
+                    "  FOREIGN KEY (id_dispo) REFERENCES availableRDV(id))");
+            statement.executeUpdate("CREATE TABLE availableRDV(\n" +
+                    "  id INTEGER NOT NULL,\n" +
+                    "  id_prof INTEGER NOT NULL,\n" +
+                    "  indice INTEGER NOT NULL,\n" +
+                    "  date TEXT NOT NULL,\n" +
+                    "  PRIMARY KEY (id),\n" +
+                    "  FOREIGN KEY (id_prof) REFERENCES prof(id))");
             statement.executeUpdate("CREATE TABLE classe(\n" +
                     "  id INTEGER NOT NULL,\n" +
                     "  className TEXT NOT NULL,\n" +
@@ -86,6 +97,9 @@ public class CreationBD {
                     "  disciplineName TEXT NOT NULL,\n" +
                     "  PRIMARY KEY (id))");
             statement.executeUpdate("insert into admin values(1,'admin' ,'admin')");
+            statement.executeUpdate("insert into prof values(1, 'Oster', 'Gerald', 'M', '26/04/1980', '23 rue des collines', 'geroster@gmail.com', '0612343338')");
+            statement.executeUpdate("insert into prof values(2, 'Dada', 'Seb', 'M', '26/04/1980', '23 rue des montagnes', 'sebdada@gmail.com', '0612345678')");
+            statement.executeUpdate("insert into prof values(3, 'Suzi', 'Collin', 'F', '26/04/1980', '23 rue des plaines', 'suzicoco@gmail.com', '0671029384')");
             ResultSet rs = statement.executeQuery("select * from admin");
             while(rs.next())
             {
