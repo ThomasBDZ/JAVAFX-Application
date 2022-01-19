@@ -20,11 +20,11 @@ import javafx.stage.Stage;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 
-public class AccesAccueil {
+public class AccesPages {
 
     private ProfRDV profRDV;
 
-    public AccesAccueil(ProfRDV profRDV){
+    public AccesPages(ProfRDV profRDV){
         this.profRDV = profRDV;
     }
     
@@ -59,6 +59,4 @@ public class AccesAccueil {
 
     }
 
-
-    
 }
