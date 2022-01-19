@@ -1,4 +1,4 @@
-package eu.telecomnancy.javafx;
+package eu.telecomnancy.javafx.utils;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -73,7 +73,7 @@ public class CreationBD {
                     "  id INTEGER NOT NULL,\n" +
                     "  disciplineName TEXT NOT NULL,\n" +
                     "  PRIMARY KEY (id))");
-            statement.executeUpdate("insert into admin values(1,'admin' ,'admin')");
+            statement.executeUpdate("insert into connection values(1,'admin','admin','admin')");
             ResultSet rs = statement.executeQuery("select * from admin");
             while(rs.next())
             {

@@ -72,3 +72,10 @@ jar {
 test {
     useJUnitPlatform()
 }
+
+task runApp(type:JavaExec) {
+    classpath = sourceSets.main.runtimeClasspath
+    main = project.hasProperty("mainClass") ? project.getProperty("mainClass") : "package.MyDefaultMain"
+}
+
+// gradle -PmainClass='eu.telecomnancy.javafx.CreationBD' runApp
