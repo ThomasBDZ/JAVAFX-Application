@@ -29,6 +29,12 @@
                   <TextField />
                </children>
             </HBox>
+            <HBox alignment="CENTER" layoutX="10.0" layoutY="91.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+               <children>
+                  <Label text="Sexe" />
+                  <TextField />
+               </children>
+            </HBox>
             <HBox alignment="CENTER" layoutX="10.0" layoutY="27.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                <children>
                   <Label text="Mail" />
