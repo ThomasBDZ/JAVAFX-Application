@@ -1,8 +1,9 @@
 package eu.telecomnancy.javafx.controller;
 
 
-import eu.telecomnancy.javafx.controller.Erreurs.ConnexionException;
-import eu.telecomnancy.javafx.model.AccesAccueil;
+import eu.telecomnancy.javafx.controller.Erreurs.ConnexionError;
+import eu.telecomnancy.javafx.controller.utils.AccesPages;
+import eu.telecomnancy.javafx.model.GestionnaireLogin;
 import eu.telecomnancy.javafx.model.ProfRDV;
 import eu.telecomnancy.javafx.model.GestionnaireDB.GestionnaireLogin;
 import javafx.scene.Node;
@@ -22,9 +23,8 @@ import javafx.fxml.FXMLLoader;
     /**
      * Controleur de la vue Connexion.fxml
      */
-public class Connexion {
+public class Connexion extends Controlleur {
 
-    private ProfRDV profRDV;
     private Label erreur;
     private Boolean erreurShown;
 
@@ -45,7 +45,7 @@ public class Connexion {
 
 
     public Connexion(ProfRDV profRDV){
-        this.profRDV = profRDV;
+        super(profRDV);
         this.erreurShown = false;
     }
 
@@ -58,9 +58,8 @@ public class Connexion {
         String idStr = id.getText();
     
         GestionnaireLogin gestionnaireLogin = new GestionnaireLogin();
-        Node node=(Node) connexion;
-        String path = "/fxml/";
-        AccesAccueil accesAccueil = new AccesAccueil(profRDV);
+        Node node= (Node) connexion;
+        AccesPages accesPages= profRDV.getAccesPages();
         String type = "";
         try {
             type = gestionnaireLogin.login(mdpStr,idStr);
@@ -71,29 +70,25 @@ public class Connexion {
             this.erreur = e.getError();
             this.erreurShown = true;
             vboxConnexion.getChildren().add(erreur);
-            
-            //TODO: handle exception
         } 
 
         switch (type) {
             case "admin":
-                path= path + "AccueilAdmin.fxml";
+                accesPages.accesAccueilAdmin(node);
                 break;
 
             case "eleve":
-                path= path + "AccueilEtudiant.fxml";
+                accesPages.accesAccueilEtudiant(node);
                 break;
 
             case "prof":
-                path= path + "AccueilEnseignant.fxml";
+                accesPages.accesAccueilEnseignant(node);
                 break;
         
         
             default:
                 break;
         }
-        
-        accesAccueil.accesAccueil(node,path);
         
     }
     

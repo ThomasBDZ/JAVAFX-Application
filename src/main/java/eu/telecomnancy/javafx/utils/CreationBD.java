@@ -1,4 +1,4 @@
-package eu.telecomnancy.javafx;
+package eu.telecomnancy.javafx.utils;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -96,7 +96,7 @@ public class CreationBD {
                     "  id INTEGER NOT NULL,\n" +
                     "  disciplineName TEXT NOT NULL,\n" +
                     "  PRIMARY KEY (id))");
-            statement.executeUpdate("insert into admin values(1,'admin' ,'admin')");
+            statement.executeUpdate("insert into connection values(1,'admin','admin','admin')");
             statement.executeUpdate("insert into prof values(1, 'Oster', 'Gerald', 'M', '26/04/1980', '23 rue des collines', 'geroster@gmail.com', '0612343338')");
             statement.executeUpdate("insert into prof values(2, 'Dada', 'Seb', 'M', '26/04/1980', '23 rue des montagnes', 'sebdada@gmail.com', '0612345678')");
             statement.executeUpdate("insert into prof values(3, 'Suzi', 'Collin', 'F', '26/04/1980', '23 rue des plaines', 'suzicoco@gmail.com', '0671029384')");

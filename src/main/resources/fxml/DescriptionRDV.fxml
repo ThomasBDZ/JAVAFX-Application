@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="eu.telecomnancy.javafx.controller.DescriptionRDV">
+   <top>
+      <fx:include source="MenuBar.fxml" BorderPane.alignment="CENTER" />
+   </top>
+   <center>
+      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label text="Description du Rendez-Vous :" />
+            <HBox alignment="CENTER" prefHeight="35.0" prefWidth="600.0" spacing="5.0">
+               <children>
+                  <Label text="Rendez-Vous le" />
+                  <Label text="date" textFill="#ff004d" />
+                  <Label text="à" />
+                  <Label text="heure" textFill="#fa0606" />
+                  <Label text="avec" />
+                  <Label text="Nom Enseignant" textFill="RED" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="20.0" prefWidth="200.0" spacing="20.0">
+               <children>
+                  <Label text="Lieu du rendez-vous :" />
+                  <Label alignment="CENTER" text="lieu" textFill="#f50303" />
+               </children>
+            </HBox>
+            <Label text="Participants :" />
+            <ListView prefHeight="100.0" prefWidth="200.0">
+               <VBox.margin>
+                  <Insets left="120.0" right="120.0" />
+               </VBox.margin>
+            </ListView>
+            <Label text="Description :" />
+            <TextField editable="false" prefHeight="90.0">
+               <VBox.margin>
+                  <Insets left="120.0" right="120.0" />
+               </VBox.margin></TextField>
+         </children></VBox>
+   </center>
+</BorderPane>
