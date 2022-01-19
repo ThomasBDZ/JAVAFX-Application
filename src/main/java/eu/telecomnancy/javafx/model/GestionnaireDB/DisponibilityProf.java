@@ -11,38 +11,7 @@ public class DisponibilityProf {
     public final static int INDICE_MAX = HEURE_MAX*3 ;
 
     public DisponibilityProf(){}
-
-    /**return if prof is available for the desired time**/
-    public void dispoProf(String profName,String profPrenom,String profMail, int heureDebut, int heureFin, String date){
-
-        int nbCreneau = heureFin - heureDebut ;
-
-        String sql = "SELECT COUNT(*) FROM rdv,prof WHERE rdv.id_prof = prof.id " +
-                "AND rdv.id_eleve = ";
-
-        int id_prof = getIdProf(profName,profPrenom,profMail);
-
-        try {
-            Connection connection = ConnectionClass.getInstance().getConnection();
-            PreparedStatement statement = connection.prepareStatement(sql);
-
-            for (int indice = heureDebut+1;indice<heureFin+1;indice++){
-                statement.setInt(1,id_prof);
-                statement.setInt(2, indice);
-                statement.setString(3, date);
-                statement.addBatch();
-                System.out.println(indice);
-                if (indice == heureFin){
-                    statement.executeBatch();
-                }
-            }
-            statement.close();
-            connection.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
+    
     /**add in availableRDV table prof's free appointments**/
     //TODO: mettre date au lieu de String
     public void insertCreneauProf(String profName,String profPrenom,String profMail, int heureDebut, int heureFin, String date){
