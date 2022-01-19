@@ -9,9 +9,6 @@ import eu.telecomnancy.javafx.controller.utils.AccesPages;
 public class ProfRDV {
 
     AccesPages accesPages;
-    /**
-     * String instance 
-     */
     String instance = ""; // Soit "eleve", "prof", "admin", soit ""
     Controlleur currentControlleur;
 
@@ -33,6 +30,46 @@ public class ProfRDV {
      */
     public Controlleur getCurrentControlleur(){
         return currentControlleur;
+    }
+
+    /**
+     * Setter for instance (eleve,admin,prof)
+     * @param instance
+     * @throws Exception
+     */
+    public void setInstance(String instance) throws Exception{
+        switch (instance) {
+            case "eleve":
+                this.instance = "eleve";
+                break;
+
+            case "prof":
+                this.instance = "prof";
+                break;
+
+            case "admin":
+                this.instance = "admin";
+                break;
+
+            default:
+                throw new Exception("Mauvais type d'instance ('eleve','prof','admin')");
+        }
+
+    }
+
+    /**
+     * Getter for the instance (eleve,admin,prof)
+     * @return instance 
+     */
+    public String getInstance(){
+        return this.instance;
+    }
+
+    /**
+     * Reinitialize the instance to ""
+     */
+    public void reinitializeInstance(){
+        this.instance="";
     }
 
 
