@@ -1,6 +1,5 @@
 package eu.telecomnancy.javafx.controller;
 
-import java.sql.SQLException;
 
 import eu.telecomnancy.javafx.controller.Erreurs.ConnexionError;
 import eu.telecomnancy.javafx.model.AccesAccueil;
@@ -62,7 +61,7 @@ public class Connexion {
         Node node=(Node) connexion;
         String path = "/fxml/";
         AccesAccueil accesAccueil = new AccesAccueil(profRDV);
-        String type = "-----";
+        String type = "";
         try {
             type = gestionnaireLogin.login(mdpStr,idStr);
         } catch (ConnexionError e) {
@@ -74,9 +73,8 @@ public class Connexion {
             vboxConnexion.getChildren().add(erreur);
             
             //TODO: handle exception
-        } catch (SQLException e){
-            System.out.println(e.getMessage());
-        }
+        } 
+
         switch (type) {
             case "admin":
                 path= path + "AccueilAdmin.fxml";
@@ -86,7 +84,7 @@ public class Connexion {
                 path= path + "AccueilEtudiant.fxml";
                 break;
 
-            case "enseignant":
+            case "prof":
                 path= path + "AccueilEnseignant.fxml";
                 break;
         
