@@ -8,6 +8,7 @@
         <items>
           <MenuItem fx:id="Accueil" mnemonicParsing="false" text="Accueil" />
             <MenuItem mnemonicParsing="false" text="Changer mon mot de passe" />
+            <MenuItem mnemonicParsing="false" text="Déconnexion" />
           <MenuItem id="quitter" fx:id="Quitter" mnemonicParsing="false" onAction="#quitter" text="Quitter" />
         </items>
       </Menu>
