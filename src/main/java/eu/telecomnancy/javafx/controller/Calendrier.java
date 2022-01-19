@@ -32,11 +32,7 @@ public class Calendrier extends Controlleur{
 
     @FXML
     public void initialize(URL url, ResourceBundle rb){
-        /*switch (this.profRDV.){
 
-            default:
-                throw new IllegalStateException("Unexpected value: " + this.profRDV);
-        }*/
 
         ArrayList<RDV> liste_rdv = new ArrayList<>();
 
@@ -56,8 +52,9 @@ public class Calendrier extends Controlleur{
         ArrayList<Creneau> liste_creneau_dispnibles= new ArrayList<>();
         liste_creneau_dispnibles=this.profRDV.gestionnaireCreneauDispo.pickDispoWeek(date,this.profRDV.utilisateur);
 
-        for(int i=1;i<36;i++){
 
-        }
+
+        
+
     }
 }

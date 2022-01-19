@@ -22,5 +22,20 @@ public class AccueilEtudiant extends Controlleur {
         super(profRDV);
     }
 
-    
+    @FXML
+    public void Historique(){}
+
+    @FXML
+    public void ajouterRDV(){
+
+    }
+
+    @FXML
+    public void prochain(){}
+
+    @FXML
+    public void dernier(){
+
+    }
+
 }

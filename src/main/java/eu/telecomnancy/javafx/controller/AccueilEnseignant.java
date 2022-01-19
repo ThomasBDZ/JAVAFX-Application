@@ -21,4 +21,12 @@ public class AccueilEnseignant extends Controlleur{
         super(profRDV);
     }
 
+    @FXML
+    public void dernier(){}
+
+    @FXML
+    public void prochain(){
+
+    }
+
 }
