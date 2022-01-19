@@ -1,5 +1,11 @@
 
-# Projet Javafx
+# Utilisation 
+
+## Creation de la base de donnée:
+
+```
+gradle -PmainClass='eu.telecomnancy.javafx.CreationBD' runApp
+```
 
 
 # Modules ou codes utilisés :
