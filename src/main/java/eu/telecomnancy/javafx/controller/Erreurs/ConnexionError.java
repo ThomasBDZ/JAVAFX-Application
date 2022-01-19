@@ -7,17 +7,14 @@ public class ConnexionError extends Exception{
 
     private Label erreur;
 
-    public ConnexionError(String erreur){
+    public ConnexionError(){
         super();
-        this.erreur = new Label(erreur);
+        this.erreur = new Label("Mauvais Mail ou Mot de Passe !");
         this.erreur.setTextFill(Color.RED);
     }
 
     public Label getError() {
        return this.erreur;
     }
-
-
-
     
 }

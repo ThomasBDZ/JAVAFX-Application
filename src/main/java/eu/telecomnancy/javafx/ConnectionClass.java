@@ -21,7 +21,6 @@ public class ConnectionClass {
         Connection connection = null;
 
         try {
-            //Class.forName("org.sqlite.JDBC");
             connection = DriverManager.getConnection(connectDbString);
 
         } catch (SQLException e) {

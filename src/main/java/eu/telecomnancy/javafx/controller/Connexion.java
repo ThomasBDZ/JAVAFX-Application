@@ -1,6 +1,5 @@
 package eu.telecomnancy.javafx.controller;
 
-import java.sql.SQLException;
 
 import eu.telecomnancy.javafx.controller.Erreurs.ConnexionError;
 import eu.telecomnancy.javafx.model.AccesAccueil;
@@ -18,13 +17,16 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+
+
     /**
      * Controleur de la vue Connexion.fxml
      */
-   
 public class Connexion {
 
     private ProfRDV profRDV;
+    private Label erreur;
+    private Boolean erreurShown;
 
     @FXML
     private VBox vboxConnexion;
@@ -44,6 +46,7 @@ public class Connexion {
 
     public Connexion(ProfRDV profRDV){
         this.profRDV = profRDV;
+        this.erreurShown = false;
     }
 
     /**
@@ -58,16 +61,20 @@ public class Connexion {
         Node node=(Node) connexion;
         String path = "/fxml/";
         AccesAccueil accesAccueil = new AccesAccueil(profRDV);
-        String type = "-----";
+        String type = "";
         try {
             type = gestionnaireLogin.login(mdpStr,idStr);
         } catch (ConnexionError e) {
-            Label erreur = e.getError();
+            if(erreurShown){
+                vboxConnexion.getChildren().remove(erreur);
+            }
+            this.erreur = e.getError();
+            this.erreurShown = true;
             vboxConnexion.getChildren().add(erreur);
+            
             //TODO: handle exception
-        } catch (SQLException e){
-            System.out.println(e.getMessage());
-        }
+        } 
+
         switch (type) {
             case "admin":
                 path= path + "AccueilAdmin.fxml";
@@ -77,7 +84,7 @@ public class Connexion {
                 path= path + "AccueilEtudiant.fxml";
                 break;
 
-            case "enseignant":
+            case "prof":
                 path= path + "AccueilEnseignant.fxml";
                 break;
         
