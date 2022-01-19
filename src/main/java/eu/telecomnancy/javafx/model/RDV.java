@@ -12,5 +12,6 @@ public class RDV {
     public String libelle;
     public String Enseignant;
     public ArrayList<String> Etudiants;
+    public Creneau creneau;
 
 }
