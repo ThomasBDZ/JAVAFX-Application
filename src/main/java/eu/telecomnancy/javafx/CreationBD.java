@@ -23,6 +23,7 @@ public class CreationBD {
             statement.executeUpdate("drop table if exists eleve");
             statement.executeUpdate("drop table if exists prof");
             statement.executeUpdate("drop table if exists rdv");
+            statement.executeUpdate("drop table if exists archive");
             statement.executeUpdate("drop table if exists classe");
             statement.executeUpdate("drop table if exists matiere");
             statement.executeUpdate("CREATE TABLE connection(\n" +
@@ -40,7 +41,7 @@ public class CreationBD {
                     "  id INTEGER NOT NULL,\n" +
                     "  nom TEXT NOT NULL,\n" +
                     "  prenom TEXT NOT NULL,\n" +
-                    "  sexe INTEGER NOT NULL,\n" +
+                    "  sexe TEXT NOT NULL,\n" +
                     "  date TEXT NOT NULL,\n" +
                     "  adresse TEXT NOT NULL,\n" +
                     "  mail TEXT NOT NULL,\n" +
@@ -50,11 +51,22 @@ public class CreationBD {
                     "  id INTEGER NOT NULL,\n" +
                     "  nom TEXT NOT NULL,\n" +
                     "  prenom TEXT NOT NULL,\n" +
-                    "  sexe INTEGER NOT NULL,\n" +
+                    "  sexe TEXT NOT NULL,\n" +
                     "  date TEXT NOT NULL,\n" +
                     "  adresse TEXT NOT NULL,\n" +
                     "  mail TEXT NOT NULL,\n" +
                     "  telephone TEXT NOT NULL,\n" +
+                    "  PRIMARY KEY (id))");
+            statement.executeUpdate("CREATE TABLE archive(\n" +
+                    "  id INTEGER NOT NULL,\n" +
+                    "  nom TEXT NOT NULL,\n" +
+                    "  prenom TEXT NOT NULL,\n" +
+                    "  sexe TEXT NOT NULL,\n" +
+                    "  date TEXT NOT NULL,\n" +
+                    "  adresse TEXT NOT NULL,\n" +
+                    "  mail TEXT NOT NULL,\n" +
+                    "  telephone TEXT NOT NULL,\n" +
+                    "  typeUser TEXT NOT NULL,\n" +
                     "  PRIMARY KEY (id))");
             statement.executeUpdate("CREATE TABLE rdv(\n" +
                     "  id INTEGER NOT NULL,\n" +
