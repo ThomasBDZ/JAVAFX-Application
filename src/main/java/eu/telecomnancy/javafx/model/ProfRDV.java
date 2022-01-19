@@ -37,7 +37,7 @@ public class ProfRDV {
      * @param instance
      * @throws Exception
      */
-    public void setInstance(String instance) throws Exception{
+    public void setInstance(String instance){
         switch (instance) {
             case "eleve":
                 this.instance = "eleve";
@@ -52,7 +52,8 @@ public class ProfRDV {
                 break;
 
             default:
-                throw new Exception("Mauvais type d'instance ('eleve','prof','admin')");
+                System.out.println("Mauvais type d'instance ('eleve','prof','admin')");
+                
         }
 
     }
