@@ -2,6 +2,7 @@ package eu.telecomnancy.javafx.model.GestionnaireDB;
 
 import eu.telecomnancy.javafx.ConnectionClass;
 import eu.telecomnancy.javafx.controller.Erreurs.ConnexionException;
+import eu.telecomnancy.javafx.controller.Erreurs.InsertionException;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -15,7 +16,7 @@ public class ModificationUsers {
 
     }
 
-    public void Add(String nom, String prenom, String mail, String sexe, String date,String address, String tel, String table) throws SQLException {
+    public void Add(String nom, String prenom, String mail, String sexe, String date,String address, String tel, String table) throws SQLException, InsertionException {
 
         Connection connection = ConnectionClass.getInstance().getConnection();
         testRegex testeur = new testRegex();
@@ -57,7 +58,7 @@ public class ModificationUsers {
     }
 
     /** Ici Oldelement = mail, telephone ou adresse, newElement aussi (le nouveau), table = eleve ou professeur**/
-    public void update(String nom, String prenom, String newElementValeur, String table, String oldElement){
+    public void update(String nom, String prenom, String newElementValeur, String table, String oldElement) throws InsertionException{
 
         Connection connection = ConnectionClass.getInstance().getConnection();
         testRegex testeur = new testRegex();
@@ -85,7 +86,7 @@ public class ModificationUsers {
         }
     }
 
-    public void delete(String nom, String prenom, String table){
+    public void delete(String nom, String prenom, String table) throws InsertionException{
 
         Connection connection = ConnectionClass.getInstance().getConnection();
         testRegex testeur = new testRegex();
