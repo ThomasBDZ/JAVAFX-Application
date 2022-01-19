@@ -66,11 +66,11 @@ public class ModificationUsers {
         try {
             Statement statement = connection.createStatement();
             String sql = "UPDATE '"+table+"' SET '"+oldElement+"' = '"+newElementValeur+"' WHERE nom = '"+nom+"' AND prenom = '"+prenom+"';";
-            int status = statement.executeUpdate(sql);
+            statement.executeUpdate(sql);
             if (oldElement.equals("mail")){
                 Statement updateMail = connection.createStatement();
                 String sqlUpdate = "UPDATE connection SET mail = '"+newElementValeur+"' WHERE MDP = '"+nom+"';";
-                int update1 = updateMail.executeUpdate(sqlUpdate);
+                updateMail.executeUpdate(sqlUpdate);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -106,7 +106,7 @@ public class ModificationUsers {
             rs.close();
             String sqlArhiveUpdate = "INSERT INTO archive (nom, prenom, sexe, date, adresse, mail, telephone, typeUser) values " +
                     "('" + nom + "','" + prenom + "','" + sexe + "','" + date + "','" + adresse + "','" + mail + "','" + telephone + "','" + table +"');";
-            int status = statementArchive.executeUpdate(sqlArhiveUpdate);
+            statementArchive.executeUpdate(sqlArhiveUpdate);
             statementArchive.close();
             Statement statement = connection.createStatement();
             String sql = "DELETE FROM '"+table+"' WHERE nom = '"+nom+"' AND prenom = '"+prenom+"'; DELETE FROM connection WHERE" +
