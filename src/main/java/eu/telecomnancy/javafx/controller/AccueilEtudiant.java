@@ -21,7 +21,9 @@ public class AccueilEtudiant {
 
     private ProfRDV profRDV;
 
-
+    public AccueilEtudiant(ProfRDV profRDV){
+        this.profRDV = profRDV;
+    }
 
 
     
