@@ -17,6 +17,11 @@ public class InsertionException extends Exception{
         this.erreur = new Label(String.format("%s invalide ! Réessayer. %s", typeInvalide,specificationType));
         this.erreur.setTextFill(Color.RED);
     }
+    public InsertionException(String table, String nom, String prenom){
+        super();
+        this.erreur = new Label(String.format("%s's user already in data base ( %s %s )",table,prenom,nom));
+        this.erreur.setTextFill(Color.RED);
+    }
 
     public Label getError() {
        return this.erreur;

@@ -16,7 +16,7 @@ public class ModificationUsers {
 
     }
 
-    public void Add(String nom, String prenom, String mail, String sexe, String date,String address, String tel, String table) throws SQLException, InsertionException {
+    public void Add(String nom, String prenom, String mail, String sexe, String date,String address, String tel, String table) throws SQLException, InsertionException{
 
         Connection connection = ConnectionClass.getInstance().getConnection();
         testRegex testeur = new testRegex();
@@ -39,11 +39,9 @@ public class ModificationUsers {
                         " connection"+ " (mail, MDP, typeUser) values ('" + mail + "','" + nom + "','" + table + "');";
 
                 int status = statement.executeUpdate(sql);
-                if (status > 0) {
-                    System.out.println(table + " registered");
+                if (status == 0) {
+                    throw new InsertionException(table,nom,prenom);
                 }
-            }else {
-                System.out.println(table + "'s user already in data base ( "+nom+" "+prenom+" )");
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -92,12 +90,28 @@ public class ModificationUsers {
         testRegex testeur = new testRegex();
         testeur.validateNom(nom);
         testeur.validateNom(prenom);
+        String sexe = null, date = null, adresse = null, mail = null, telephone = null;
 
         try {
+            Statement statementArchive = connection.createStatement();
+            String sqlArchive = "SELECT * FROM "+table+" WHERE nom = '"+nom+"' AND prenom = '"+prenom+"';";
+            ResultSet rs = statementArchive.executeQuery(sqlArchive);
+            while (rs.next()){
+                sexe = rs.getString("sexe");
+                date = rs.getString("date");
+                adresse = rs.getString("adresse");
+                mail = rs.getString("mail");
+                telephone = rs.getString("telephone");
+            }
+            rs.close();
+            String sqlArhiveUpdate = "INSERT INTO archive (nom, prenom, sexe, date, adresse, mail, telephone, typeUser) values " +
+                    "('" + nom + "','" + prenom + "','" + sexe + "','" + date + "','" + adresse + "','" + mail + "','" + telephone + "','" + table +"');";
+            int status = statementArchive.executeUpdate(sqlArhiveUpdate);
+            statementArchive.close();
             Statement statement = connection.createStatement();
             String sql = "DELETE FROM '"+table+"' WHERE nom = '"+nom+"' AND prenom = '"+prenom+"'; DELETE FROM connection WHERE" +
                     " MDP = '"+nom+"';";
-            int status = statement.executeUpdate(sql);
+            statement.executeUpdate(sql);
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
@@ -110,4 +124,3 @@ public class ModificationUsers {
         }
     }
 }
-
