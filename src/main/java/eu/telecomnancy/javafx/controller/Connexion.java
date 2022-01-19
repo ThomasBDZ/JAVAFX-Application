@@ -18,13 +18,16 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+
+
     /**
      * Controleur de la vue Connexion.fxml
      */
-   
 public class Connexion {
 
     private ProfRDV profRDV;
+    private Label erreur;
+    private Boolean erreurShown;
 
     @FXML
     private VBox vboxConnexion;
@@ -44,6 +47,7 @@ public class Connexion {
 
     public Connexion(ProfRDV profRDV){
         this.profRDV = profRDV;
+        this.erreurShown = false;
     }
 
     /**
@@ -62,8 +66,13 @@ public class Connexion {
         try {
             type = gestionnaireLogin.login(mdpStr,idStr);
         } catch (ConnexionError e) {
-            Label erreur = e.getError();
+            if(erreurShown){
+                vboxConnexion.getChildren().remove(erreur);
+            }
+            this.erreur = e.getError();
+            this.erreurShown = true;
             vboxConnexion.getChildren().add(erreur);
+            
             //TODO: handle exception
         } catch (SQLException e){
             System.out.println(e.getMessage());
