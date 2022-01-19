@@ -46,7 +46,7 @@ public class DisponibilityProf {
     /**add in availableRDV table prof's free appointments**/
     //TODO: mettre date au lieu de String
     public void insertCreneauProf(String profName,String profPrenom,String profMail, int heureDebut, int heureFin, String date){
-
+        //TODO : adapter avec en entré objet utilisateur + créneau
         String sql = "INSERT INTO availableRDV ( id_prof, indice, date) values (?,?,?);";
 
         int id_prof = getIdProf(profName,profPrenom,profMail);
