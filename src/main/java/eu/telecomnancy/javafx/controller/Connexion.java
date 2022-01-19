@@ -2,7 +2,7 @@ package eu.telecomnancy.javafx.controller;
 
 
 import eu.telecomnancy.javafx.controller.Erreurs.ConnexionError;
-import eu.telecomnancy.javafx.model.AccesPages;
+import eu.telecomnancy.javafx.controller.utils.AccesPages;
 import eu.telecomnancy.javafx.model.GestionnaireLogin;
 import eu.telecomnancy.javafx.model.ProfRDV;
 import javafx.scene.Node;
@@ -78,17 +78,17 @@ public class Connexion {
         switch (type) {
             case "admin":
                 path= path + "AccueilAdmin.fxml";
-                accesPages.accesAccueil(node,path);
+                accesPages.accesAccueilAdmin(node);
                 break;
 
             case "eleve":
                 path= path + "AccueilEtudiant.fxml";
-                accesPages.accesAccueil(node,path);
+                accesPages.accesAccueilEtudiant(node);
                 break;
 
             case "prof":
                 path= path + "AccueilEnseignant.fxml";
-                accesPages.accesAccueil(node,path);
+                accesPages.accesAccueilEnseignant(node);
                 break;
         
         
