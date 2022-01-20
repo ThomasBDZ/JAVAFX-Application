@@ -9,8 +9,8 @@ public class GestionnaireCreneauDispo {
 
     }
 
-    public ArrayList<Creneaux> pickDispoWeek(Date date, String mail_utilisateur ){
-        ArrayList<Creneaux> liste=new ArrayList<>();
+    public ArrayList<Creneau> pickDispoWeek(Date date, String mail_utilisateur ){
+        ArrayList<Creneau> liste=new ArrayList<>();
 
 
         return liste;

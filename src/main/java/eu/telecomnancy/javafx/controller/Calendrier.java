@@ -1,6 +1,6 @@
 package eu.telecomnancy.javafx.controller;
 
-import eu.telecomnancy.javafx.model.Creneaux;
+import eu.telecomnancy.javafx.model.Creneau;
 import eu.telecomnancy.javafx.model.ProfRDV;
 import eu.telecomnancy.javafx.model.RDV;
 import javafx.fxml.FXML;
@@ -49,7 +49,7 @@ public class Calendrier extends Controlleur{
 
         liste_rdv=this.profRDV.gestionnaireRDV.pickRDVWeek(date,this.profRDV.utilisateur);
 
-        ArrayList<Creneaux> liste_creneau_dispnibles= new ArrayList<>();
+        ArrayList<Creneau> liste_creneau_dispnibles= new ArrayList<>();
         liste_creneau_dispnibles=this.profRDV.gestionnaireCreneauDispo.pickDispoWeek(date,this.profRDV.utilisateur);
 
 

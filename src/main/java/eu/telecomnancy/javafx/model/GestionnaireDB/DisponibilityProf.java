@@ -3,7 +3,7 @@ package eu.telecomnancy.javafx.model.GestionnaireDB;
 import java.sql.*;
 import java.util.ArrayList;
 import eu.telecomnancy.javafx.ConnectionClass;
-import eu.telecomnancy.javafx.model.Creneaux;
+import eu.telecomnancy.javafx.model.Creneau;
 
 public class DisponibilityProf {
 
@@ -42,13 +42,13 @@ public class DisponibilityProf {
         }
     }
 
-    public ArrayList<Creneaux> getProfCreneau(String profName, String profPrenom, String profMail){
+    public ArrayList<Creneau> getProfCreneau(String profName, String profPrenom, String profMail){
 
         int id_prof = getIdProf(profName,profPrenom,profMail);
         String sql = "SELECT * FROM availableRDV WHERE id_prof = '" + id_prof + "';";
         String date = null;
         int indice,id = 0;
-        ArrayList<Creneaux> ListeCreneau = new ArrayList<>();
+        ArrayList<Creneau> ListeCreneau = new ArrayList<>();
 
         try {
             Connection connection = ConnectionClass.getInstance().getConnection();
@@ -59,7 +59,7 @@ public class DisponibilityProf {
                 id_prof = rs.getInt("id_prof");
                 indice = rs.getInt("indice");
                 date = rs.getString("date");
-                Creneaux creneau = new Creneaux(id,id_prof,indice,date);
+                Creneau creneau = new Creneau(id,id_prof,indice,date);
                 ListeCreneau.add(creneau);
             }
             rs.close();
