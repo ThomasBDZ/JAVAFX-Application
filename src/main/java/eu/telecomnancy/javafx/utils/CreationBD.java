@@ -79,7 +79,7 @@ public class CreationBD {
                     "  lieu TEXT NOT NULL,\n" +
                     "  libelle TEXT NOT NULL,\n" +
                     "  date DATE NOT NULL,\n" +
-                    "  heure DATE NOT NULL,\n" +
+                    "  heure TEXT NOT NULL,\n" +
                     "  PRIMARY KEY (id),\n" +
                     "  FOREIGN KEY (id_prof) REFERENCES prof(id),\n" +
                     "  FOREIGN KEY (id_eleve) REFERENCES eleve(id),\n" +
