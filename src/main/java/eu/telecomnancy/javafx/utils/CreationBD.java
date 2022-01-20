@@ -74,7 +74,8 @@ public class CreationBD {
                     "  id_prof INTEGER NOT NULL,\n" +
                     "  id_dispo INTEGER NOT NULL,\n" +
                     "  id_eleve INTEGER NOT NULL,\n" +
-                    "  status INTEGER NOT NULL,\n" +
+                    "  status BOOLEAN NOT NULL,\n" +
+                    "  archive BOOLEAN NOT NULL,\n" +
                     "  lieu TEXT NOT NULL,\n" +
                     "  libelle TEXT NOT NULL,\n" +
                     "  date DATE NOT NULL,\n" +

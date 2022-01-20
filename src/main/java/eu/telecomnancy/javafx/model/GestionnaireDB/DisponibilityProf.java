@@ -36,7 +36,6 @@ public class DisponibilityProf {
                 statement.setInt(2, indice);
                 statement.setDate(3, datesql);
                 statement.addBatch();
-                System.out.println(indice);
                 if (indice == heureFin){
                     statement.executeBatch();
                 }
