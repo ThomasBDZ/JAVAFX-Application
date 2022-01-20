@@ -46,11 +46,8 @@ public class PriseRDV extends Controlleur implements Initializable {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
     }
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
 
-    }
-/*
+
     @FXML
     public javafx.scene.control.Button prochain;
 
@@ -82,7 +79,7 @@ public class PriseRDV extends Controlleur implements Initializable {
    /* @FXML
     public DatePicker datePicker;*/
 
-  /*  @FXML
+    @FXML
     public ListView listeEtudiant;
 
 
@@ -95,7 +92,7 @@ public class PriseRDV extends Controlleur implements Initializable {
         /**
          * calendrier
          */
-  /*     prochain.setOnAction(event -> {
+       prochain.setOnAction(event -> {
             grille.getChildren().clear();
             Calendar calendar = Calendar.getInstance();
             calendar.setTime(date_calendrier);
@@ -120,7 +117,7 @@ public class PriseRDV extends Controlleur implements Initializable {
          * enseignants
          */
     // arrayEnseignants=;
-  /*      ObservableList<String> obvs_enseignants = FXCollections.observableArrayList(arrayEnseignants);
+        ObservableList<String> obvs_enseignants = FXCollections.observableArrayList(arrayEnseignants);
         enseignant=new ChoiceBox<String>();
         enseignant.setItems(obvs_enseignants);
 
@@ -150,7 +147,7 @@ public class PriseRDV extends Controlleur implements Initializable {
         /**
          * etudiants
          */
-    /*    validerEtudiant.setOnAction(event -> {
+        validerEtudiant.setOnAction(event -> {
             arrayEtudiants.add(etudiant.getText());
             //update_list_view();
         });
@@ -159,7 +156,7 @@ public class PriseRDV extends Controlleur implements Initializable {
         /**
          * valider
          */
-  /*      valider.setOnAction(event -> {
+       valider.setOnAction(event -> {
 
         });
 
@@ -187,12 +184,12 @@ public class PriseRDV extends Controlleur implements Initializable {
             grille.setValignment(b, VPos.CENTER); // To align vertically in the cell
     }}
 
-  /*  private void update_list_view() {
+    private void update_list_view() {
         ObservableList<String> obvs_etudiants = FXCollections.observableArrayList(arrayEtudiants);
         listeEtudiant.setItems(obvs_etudiants);
     }
 
-*/
+
 
 
 
