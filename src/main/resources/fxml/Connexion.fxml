@@ -12,7 +12,7 @@
       <VBox fx:id="vboxConnexion" alignment="CENTER">
          <children>
             <TextField fx:id="id" maxWidth="300.0" promptText="Ecrivez votre ID..." />
-            <PasswordField fx:id="mdp" maxWidth="300.0" promptText="Ecrivez votre mot de passe...">
+            <PasswordField fx:id="mdp" maxWidth="300.0" promptText="Ecrivez votre mot de passe..." onAction="#validationConnexion">
                <VBox.margin>
                   <Insets top="10.0" />
                </VBox.margin>

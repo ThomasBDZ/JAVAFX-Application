@@ -20,20 +20,7 @@ public class MainApp extends Application {
     public void start(Stage primaryStage) throws Exception {
         ProfRDV profRDV = new ProfRDV();
         profRDV.setStage(primaryStage);
-        FXMLLoader loader = new FXMLLoader(); 
-        loader.setLocation(getClass().getResource("/fxml/AccueilEnseignant.fxml"));
-        MenuBarController menuBar = new MenuBarController(profRDV);
-        AccueilEnseignant connexionController = new AccueilEnseignant(profRDV);
-        profRDV.setControlleur(connexionController);
-        loader.setControllerFactory(ic -> {
-        if (ic.equals(eu.telecomnancy.javafx.controller.AccueilEnseignant.class)) return connexionController;
-        if (ic.equals(eu.telecomnancy.javafx.controller.MenuBarController.class)) return menuBar;
-        else return null ;
-        });
-        Parent root = loader.load();
-        // scene.getStylesheets().add(getClass().getResource("/stylesheet/style.css").toExternalForm());
-        primaryStage.setScene(new Scene(root, 1000, 1000));
-        primaryStage.show();
+        profRDV.getAccesPages().accesAccueilConnexion();
     }
     
 

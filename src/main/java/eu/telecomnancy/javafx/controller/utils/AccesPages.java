@@ -1,13 +1,7 @@
 package eu.telecomnancy.javafx.controller.utils;
 
 
-import eu.telecomnancy.javafx.controller.AccueilAdmin;
-import eu.telecomnancy.javafx.controller.AccueilEnseignant;
-import eu.telecomnancy.javafx.controller.AccueilEtudiant;
-import eu.telecomnancy.javafx.controller.Calendrier;
-import eu.telecomnancy.javafx.controller.Connexion;
-import eu.telecomnancy.javafx.controller.MenuBarController;
-import eu.telecomnancy.javafx.controller.MenuBarConnexion;
+import eu.telecomnancy.javafx.controller.*;
 import eu.telecomnancy.javafx.model.ProfRDV;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -25,114 +19,76 @@ import javafx.fxml.FXMLLoader;
 public class AccesPages {
 
     private ProfRDV profRDV;
+    private MenuBarConnexion menuBarConnexion;
+    private Connexion connexionController;
+    private AccueilEtudiant accueilEtudiant;
+    private MenuBarController menuBarController;
+    private Calendrier calendrier;
+    private AccueilEnseignant accueilEnseignant;
+    private AccueilAdmin accueilAdmin;
 
     public AccesPages(ProfRDV profRDV){
         this.profRDV = profRDV;
+        menuBarConnexion = new MenuBarConnexion(profRDV);
+        connexionController = new Connexion(profRDV);
+        accueilEtudiant = new AccueilEtudiant(profRDV);
+        menuBarController = new MenuBarController(profRDV);
+        calendrier = new Calendrier(profRDV);
+        accueilEnseignant = new AccueilEnseignant(profRDV);
+        accueilAdmin = new AccueilAdmin(profRDV);
     }
-    
-    public void accesAccueilConnexion(){
-        Stage stage = profRDV.getStage();
+
+    public void loadPage(String path){
         FXMLLoader loader = new FXMLLoader(); 
-        loader.setLocation(getClass().getResource("/fxml/Connexion.fxml"));
-        MenuBarConnexion menuBarConnexion = new MenuBarConnexion(profRDV);
-        Connexion connexionController = new Connexion(profRDV);
-        profRDV.setControlleur(connexionController);
-        profRDV.reinitializeInstance();
+        loader.setLocation(getClass().getResource(path));
+        Stage stage = profRDV.getStage();
         loader.setControllerFactory(ic -> {
         if (ic.equals(eu.telecomnancy.javafx.controller.Connexion.class)) return connexionController;
         if (ic.equals(eu.telecomnancy.javafx.controller.MenuBarConnexion.class)) return menuBarConnexion;
+        if (ic.equals(eu.telecomnancy.javafx.controller.MenuBarController.class)) return menuBarController;
+        if (ic.equals(eu.telecomnancy.javafx.controller.AccueilEtudiant.class)) return accueilEtudiant;
+        if (ic.equals(eu.telecomnancy.javafx.controller.Calendrier.class)) return calendrier;
+        if (ic.equals(eu.telecomnancy.javafx.controller.AccueilEnseignant.class)) return accueilEnseignant;
+        if (ic.equals(eu.telecomnancy.javafx.controller.AccueilAdmin.class)) return accueilAdmin;
         else return null ;
         });
         try {
             Parent root = loader.load();
             Scene scene = new Scene(root, 1000, 1000);
+            // scene.getStylesheets().add(getClass().getResource("/stylesheet/style.css").toExternalForm());
             stage.setScene(scene);
             stage.show();
         } catch (Exception e) {
-            System.out.println("exception chargement page AccueilConnexion - AccesAccueil");
+            System.out.println("exception chargement page " + path );
             System.out.println(e.getMessage());
         }
 
     }
+    
+    public void accesAccueilConnexion(){
+        String path = "/fxml/Connexion.fxml";
+        loadPage(path);
+        profRDV.reinitializeInstance();
+    }
 
 
-    public void accesAccueilEtudiant(){
-        Stage stage = profRDV.getStage();
-        FXMLLoader loader = new FXMLLoader(); 
-        AccueilEtudiant accueilEtudiant = new AccueilEtudiant(profRDV);
-        MenuBarController menuBar = new MenuBarController(profRDV);
-        Calendrier calendrier = new Calendrier(profRDV);
-        profRDV.setControlleur(accueilEtudiant);
+    public void accesAccueilEtudiant(){       
+        String path = "/fxml/AccueilEtudiant.fxml";
+        loadPage(path);
         profRDV.setInstance("eleve");
-        loader.setLocation(getClass().getResource("/fxml/AccueilEtudiant.fxml"));
-        loader.setControllerFactory(ic -> {
-        if (ic.equals(eu.telecomnancy.javafx.controller.MenuBarController.class)) return menuBar;
-        if (ic.equals(eu.telecomnancy.javafx.controller.AccueilEtudiant.class)) return accueilEtudiant;
-        if (ic.equals(eu.telecomnancy.javafx.controller.Calendrier.class)) return calendrier;
-        else return null ;
-        });
-        try {
-            Parent root = loader.load();
-            Scene scene = new Scene(root, 1000, 1000);
-            stage.setScene(scene);
-            stage.show();
-        } catch (Exception e) {
-            System.out.println("exception chargement page AccueilEtudiant - AccesAccueil");
-            System.out.println(e.getMessage());
-        }
-
     }
 
     public void accesAccueilEnseignant(){
-        Stage stage = profRDV.getStage();
-        FXMLLoader loader = new FXMLLoader(); 
-        AccueilEnseignant accueilEnseignant = new AccueilEnseignant(profRDV);
-        MenuBarController menuBar = new MenuBarController(profRDV);
-        Calendrier calendrier = new Calendrier(profRDV);
-        profRDV.setControlleur(accueilEnseignant);
+        String path = "/fxml/AccueilEnseignant.fxml";
+        loadPage(path);
         profRDV.setInstance("prof");
-        loader.setLocation(getClass().getResource("/fxml/AccueilEnseignant.fxml"));
-        loader.setControllerFactory(ic -> {
-        if (ic.equals(eu.telecomnancy.javafx.controller.MenuBarController.class)) return menuBar;
-        if (ic.equals(eu.telecomnancy.javafx.controller.AccueilEnseignant.class)) return accueilEnseignant;
-        if (ic.equals(eu.telecomnancy.javafx.controller.Calendrier.class)) return calendrier;
-        else return null ;
-        });
-        try {
-            Parent root = loader.load();
-            Scene scene = new Scene(root, 1000, 1000);
-            stage.setScene(scene);
-            stage.show();
-        } catch (Exception e) {
-            System.out.println("exception chargement page AccueilEnseignant - AccesAccueil");
-            System.out.println(e.getMessage());
-        }
-
     }
 
     public void accesAccueilAdmin(){
-        Stage stage = profRDV.getStage(); 
-        FXMLLoader loader = new FXMLLoader(); 
-        AccueilAdmin accueilAdmin = new AccueilAdmin(profRDV);
-        MenuBarController menuBar = new MenuBarController(profRDV);
-        profRDV.setControlleur(accueilAdmin);
+        String path = "/fxml/AccueilAdmin.fxml";
+        loadPage(path);
         profRDV.setInstance("admin");
-        loader.setLocation(getClass().getResource("/fxml/AccueilAdmin.fxml"));
-        loader.setControllerFactory(ic -> {
-        if (ic.equals(eu.telecomnancy.javafx.controller.MenuBarController.class)) return menuBar;
-        if (ic.equals(eu.telecomnancy.javafx.controller.AccueilEtudiant.class)) return accueilAdmin;
-        else return null ;
-        });
-        try {
-            Parent root = loader.load();
-            Scene scene = new Scene(root, 1000, 1000);
-            stage.setScene(scene);
-            stage.show();
-        } catch (Exception e) {
-            System.out.println("exception chargement page AccueilAdmin - AccesAccueil");
-            System.out.println(e.getMessage());
-        }
-
     }
+
 
 }
