@@ -10,12 +10,19 @@ import javafx.stage.Stage;
 public class ProfRDV {
 
     AccesPages accesPages;
+
+    public String utilisateur; //mail de l'utilisateur courant
+    public GestionnaireRDV gestionnaireRDV;
+    public GestionnaireCreneauDispo gestionnaireCreneauDispo;
     String instance = ""; // Soit "eleve", "prof", "admin", soit ""
     Controlleur currentControlleur;
     Stage stage;
 
     public ProfRDV(){
+
         this.accesPages = new AccesPages(this);
+        this.gestionnaireCreneauDispo= new GestionnaireCreneauDispo();
+        this.gestionnaireRDV = new GestionnaireRDV();
     }
 
     /**

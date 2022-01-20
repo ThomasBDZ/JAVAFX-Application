@@ -14,6 +14,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import java.time.temporal.WeekFields;
 
 public class AccueilEtudiant extends Controlleur {
 
@@ -21,5 +22,20 @@ public class AccueilEtudiant extends Controlleur {
         super(profRDV);
     }
 
-    
+    @FXML
+    public void Historique(){}
+
+    @FXML
+    public void ajouterRDV(){
+
+    }
+
+    @FXML
+    public void prochain(){}
+
+    @FXML
+    public void dernier(){
+
+    }
+
 }

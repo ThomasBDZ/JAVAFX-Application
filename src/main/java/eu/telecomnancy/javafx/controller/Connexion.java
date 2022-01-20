@@ -65,8 +65,6 @@ public class Connexion extends Controlleur {
             this.erreur = e.getError();
             this.erreurShown = true;
             vboxConnexion.getChildren().add(erreur);
-            
-            //TODO: handle exception
         } 
 
         switch (type) {
