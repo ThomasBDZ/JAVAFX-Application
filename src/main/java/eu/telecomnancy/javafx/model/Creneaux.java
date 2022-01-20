@@ -1,4 +1,4 @@
-package eu.telecomnancy.javafx.model.GestionnaireDB;
+package eu.telecomnancy.javafx.model;
 
 import eu.telecomnancy.javafx.model.utils.GlobalVariables;
 

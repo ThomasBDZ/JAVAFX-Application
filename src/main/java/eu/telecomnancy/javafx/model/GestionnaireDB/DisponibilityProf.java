@@ -3,6 +3,7 @@ package eu.telecomnancy.javafx.model.GestionnaireDB;
 import java.sql.*;
 import java.util.ArrayList;
 import eu.telecomnancy.javafx.ConnectionClass;
+import eu.telecomnancy.javafx.model.Creneaux;
 
 public class DisponibilityProf {
 
