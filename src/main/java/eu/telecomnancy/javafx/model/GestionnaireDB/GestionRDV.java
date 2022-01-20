@@ -41,7 +41,7 @@ public class GestionRDV {
 
         String sql = "INSERT INTO rdv (id_prof, id_dispo, id_eleve, status, archive, lieu, libelle, date, heure) values " +
                 "('" + id_prof + "',?,?,'"+status+ "','"+archive+ "','"+
-                lieu+ "','"+libelle+ "','"+date+ "','"+creneau.getHeure()+ "')";
+                lieu+ "','"+libelle+ "','"+datesql+ "','"+creneau.getHeure()+ "')";
 
         try {
             Connection connection = ConnectionClass.getInstance().getConnection();

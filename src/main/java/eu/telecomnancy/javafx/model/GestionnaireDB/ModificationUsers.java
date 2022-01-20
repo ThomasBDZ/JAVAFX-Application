@@ -28,7 +28,7 @@ public class ModificationUsers {
         String address = user.addresse;
         String tel = user.telephone;
         Boolean typeUser = user.etudiant;
-        Date date = user.birthDate;
+        String date = user.birthDate;
 
 
         Connection connection = ConnectionClass.getInstance().getConnection();
@@ -41,14 +41,11 @@ public class ModificationUsers {
         testeur.validateNom(prenom);
 
         String table;
-        if (typeUser){
+        if (!typeUser){
             table="prof";
         } else {
             table="eleve";
         }
-        DateConversion newDate = new DateConversion(date);
-
-        java.sql.Date datesql = newDate.javaToSql(date);
 
         try {
             Statement statement2 = connection.createStatement();
@@ -57,7 +54,7 @@ public class ModificationUsers {
             if (!rs.next()) { // si il n'y pas deja l'info dans la bdd
                 Statement statement = connection.createStatement();
                 String sql = "INSERT INTO " + table + " (nom, prenom, sexe, date, adresse, mail, telephone) values " +
-                        "('" + nom + "','" + prenom + "','" + sexe + "','" + datesql + "','" + address + "','" + mail + "','" + tel + "'); INSERT INTO" +
+                        "('" + nom + "','" + prenom + "','" + sexe + "','" + date + "','" + address + "','" + mail + "','" + tel + "'); INSERT INTO" +
                         " connection"+ " (mail, MDP, typeUser) values ('" + mail + "','" + nom + "','" + table + "');";
 
                 int status = statement.executeUpdate(sql);
@@ -91,7 +88,7 @@ public class ModificationUsers {
         testeur.validateNom(prenom);
 
         String table;
-        if (typeUser){
+        if (!typeUser){
             table="prof";
         } else {
             table="eleve";
@@ -125,7 +122,7 @@ public class ModificationUsers {
         Boolean typeUser = user.etudiant;
 
         String table;
-        if (typeUser){
+        if (!typeUser){
             table="prof";
         } else {
             table="eleve";

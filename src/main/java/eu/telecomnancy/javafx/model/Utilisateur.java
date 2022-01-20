@@ -10,7 +10,7 @@ public abstract class Utilisateur {
     public String telephone;
     public String addresse;
     public String sexe;
-    public Date birthDate;
+    public String birthDate;
     public Boolean etudiant;
     public ArrayList<RDV> rdv;
 
@@ -46,5 +46,5 @@ public abstract class Utilisateur {
         this.rdv = rdv;
     }
 
-    public void setBirthDate(Date birthDate) { this.birthDate = birthDate;}
+    public void setBirthDate(String birthDate) { this.birthDate = birthDate;}
 }
