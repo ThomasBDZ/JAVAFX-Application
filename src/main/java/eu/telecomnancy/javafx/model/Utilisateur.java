@@ -1,6 +1,7 @@
 package eu.telecomnancy.javafx.model;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public abstract class Utilisateur {
     public String nom;
@@ -9,6 +10,7 @@ public abstract class Utilisateur {
     public String telephone;
     public String addresse;
     public String sexe;
+    public Date birthDate;
     public Boolean etudiant;
     public ArrayList<RDV> rdv;
 
@@ -43,4 +45,6 @@ public abstract class Utilisateur {
     public void setRdv(ArrayList<RDV> rdv) {
         this.rdv = rdv;
     }
+
+    public void setBirthDate(Date birthDate) { this.birthDate = birthDate;}
 }
