@@ -15,7 +15,6 @@ public class ProfRDV {
     public GestionnaireRDV gestionnaireRDV;
     public GestionnaireCreneauDispo gestionnaireCreneauDispo;
     String instance = ""; // Soit "eleve", "prof", "admin", soit ""
-    Controlleur currentControlleur;
     Stage stage;
 
     public ProfRDV(){
@@ -23,22 +22,6 @@ public class ProfRDV {
         this.accesPages = new AccesPages(this);
         this.gestionnaireCreneauDispo= new GestionnaireCreneauDispo();
         this.gestionnaireRDV = new GestionnaireRDV();
-    }
-
-    /**
-     * Setter for currentControlleur
-     * @param controlleur
-     */
-    public void setControlleur(Controlleur controlleur){
-        this.currentControlleur = controlleur;
-    }
-
-    /**
-     * Getter for currentControlleur
-     * @return the currentControlleur
-     */
-    public Controlleur getCurrentControlleur(){
-        return currentControlleur;
     }
 
     /**

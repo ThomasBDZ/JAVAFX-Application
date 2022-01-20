@@ -59,8 +59,8 @@ public class DisponibilityProf {
                 id_prof = rs.getInt("id_prof");
                 indice = rs.getInt("indice");
                 date = rs.getString("date");
-                Creneau creneau = new Creneau(id,id_prof,indice,date);
-                ListeCreneau.add(creneau);
+                // Creneau creneau = new Creneau(id,id_prof,indice,date);
+                // ListeCreneau.add(creneau);
             }
             rs.close();
             statement.close();
