@@ -37,10 +37,16 @@ public class AccueilEtudiant extends Controlleur implements Initializable {
 
     public AccueilEtudiant(ProfRDV profRDV) {
         super(profRDV);
+        LocalDate date_now= LocalDate.now(); //get the current date
+        ZoneId defaultZoneId = ZoneId.systemDefault();
+        date = Date.from(date_now.atStartOfDay(defaultZoneId).toInstant());
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
     }
 
     @FXML
-    public void Historique(){}
+    public void Historique(){
+
+    }
 
     @FXML
     public void ajouterRDV(){
@@ -52,7 +58,6 @@ public class AccueilEtudiant extends Controlleur implements Initializable {
 
     @FXML
     public Button dernier;
-
 
 
     @FXML

@@ -14,7 +14,7 @@ public class AccesPages {
     private ProfRDV profRDV;
     private MenuBarConnexion menuBarConnexion;
     private Connexion connexionController;
-    private AccueilEtudiant accueilEtudiant;
+    private PriseRDV accueilEtudiant;
     private MenuBarController menuBarController;
     private Calendrier calendrier;
     private AccueilEnseignant accueilEnseignant;
@@ -40,7 +40,7 @@ public class AccesPages {
         this.profRDV = profRDV;
         menuBarConnexion = new MenuBarConnexion(profRDV);
         connexionController = new Connexion(profRDV);
-        accueilEtudiant = new AccueilEtudiant(profRDV);
+        accueilEtudiant = new PriseRDV(profRDV);
         menuBarController = new MenuBarController(profRDV);
         calendrier = new Calendrier(profRDV);
         accueilEnseignant = new AccueilEnseignant(profRDV);
@@ -64,7 +64,7 @@ public class AccesPages {
         if (ic.equals(eu.telecomnancy.javafx.controller.Connexion.class)) return connexionController;
         if (ic.equals(eu.telecomnancy.javafx.controller.MenuBarConnexion.class)) return menuBarConnexion;
         if (ic.equals(eu.telecomnancy.javafx.controller.MenuBarController.class)) return menuBarController;
-        if (ic.equals(eu.telecomnancy.javafx.controller.AccueilEtudiant.class)) return accueilEtudiant;
+        if (ic.equals(PriseRDV.class)) return accueilEtudiant;
         if (ic.equals(eu.telecomnancy.javafx.controller.Calendrier.class)) return calendrier;
         if (ic.equals(eu.telecomnancy.javafx.controller.AccueilEnseignant.class)) return accueilEnseignant;
         if (ic.equals(eu.telecomnancy.javafx.controller.AccueilAdmin.class)) return accueilAdmin;

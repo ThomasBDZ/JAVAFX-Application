@@ -11,10 +11,10 @@ public class RDV {
     public String lieu;
     public String libelle;
     public String Enseignant;
-    public ArrayList<String> Etudiants;
+    public ArrayList<Etudiant> Etudiants;
     public Creneau creneau;
 
-    public RDV(Boolean confirmed,Boolean refused,Boolean archived,String lieu,String libelle,String Enseignant, ArrayList<String> Etudiants,Creneau creneau){
+    public RDV(Boolean confirmed,Boolean refused,Boolean archived,String lieu,String libelle,String Enseignant, ArrayList<Etudiant> Etudiants,Creneau creneau){
         this.confirmed=confirmed;
         this.refused=refused;
         this.archived=archived;
