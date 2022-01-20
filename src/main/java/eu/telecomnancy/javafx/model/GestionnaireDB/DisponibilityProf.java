@@ -9,7 +9,7 @@ import eu.telecomnancy.javafx.model.utils.DateConversion;
 public class DisponibilityProf {
 
     public DisponibilityProf(){}
-    
+
     /**add in availableRDV table prof's free appointments**/
     public void insertCreneauProf(Enseignant prof, Creneau creneauDebut, Creneau creneauFin){
 
@@ -18,14 +18,11 @@ public class DisponibilityProf {
         String profMail = prof.mail;
         int heureDebut = creneauDebut.indice;
         int heureFin = creneauFin.indice;
-        java.util.Date date = creneauDebut.date;
+        String date = creneauDebut.date;
 
         String sql = "INSERT INTO availableRDV ( id_prof, indice, date) values (?,?,?);";
 
         int id_prof = getIdProf(prof);
-        DateConversion newDate = new DateConversion(date);
-
-        java.sql.Date datesql = newDate.javaToSql(date);
 
         try {
             Connection connection = ConnectionClass.getInstance().getConnection();
@@ -34,7 +31,7 @@ public class DisponibilityProf {
             for (int indice = heureDebut+1;indice<heureFin+1;indice++){
                 statement.setInt(1,id_prof);
                 statement.setInt(2, indice);
-                statement.setDate(3, datesql);
+                statement.setString(3, date);
                 statement.addBatch();
                 if (indice == heureFin){
                     statement.executeBatch();
@@ -55,7 +52,7 @@ public class DisponibilityProf {
 
         int id_prof = getIdProf(prof);
         String sql = "SELECT * FROM availableRDV WHERE id_prof = '" + id_prof + "';";
-        Date date = null;
+        String date;
         int indice= 0;
 
         ArrayList<Creneau> ListeCreneau = new ArrayList<>();
@@ -67,10 +64,8 @@ public class DisponibilityProf {
             while (rs.next()){
                 id_prof = rs.getInt("id_prof");
                 indice = rs.getInt("indice");
-                date = rs.getDate("date");
-                DateConversion newDate = new DateConversion(date);
-                java.util.Date dateJava = newDate.sqlToJava(date);
-                Creneau creneau = new Creneau(indice,dateJava,id_prof);
+                date = rs.getString("date");
+                Creneau creneau = new Creneau(indice,date,id_prof);
                 ListeCreneau.add(creneau);
             }
             rs.close();
@@ -81,6 +76,7 @@ public class DisponibilityProf {
         }
         return ListeCreneau;
     }
+
 
     public int getIdProf(Enseignant prof){
 
