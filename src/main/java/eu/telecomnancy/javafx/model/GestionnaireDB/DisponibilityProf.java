@@ -18,7 +18,7 @@ public class DisponibilityProf {
         String profMail = prof.mail;
         int heureDebut = creneauDebut.indice;
         int heureFin = creneauFin.indice;
-        String date = creneauDebut.date;
+        String date = DateConversion.dateToString(creneauDebut.date);
 
         String sql = "INSERT INTO availableRDV ( id_prof, indice, date) values (?,?,?);";
 
@@ -65,7 +65,8 @@ public class DisponibilityProf {
                 id_prof = rs.getInt("id_prof");
                 indice = rs.getInt("indice");
                 date = rs.getString("date");
-                Creneau creneau = new Creneau(indice,date,id_prof);
+                java.util.Date dateBis = DateConversion.stringToDate(date);
+                Creneau creneau = new Creneau(indice,dateBis,id_prof);
                 ListeCreneau.add(creneau);
             }
             rs.close();

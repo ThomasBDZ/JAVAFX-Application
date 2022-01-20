@@ -24,7 +24,7 @@ public class GestionRDV {
         Etudiant etudiant = rdv.etudiant;
         Creneau creneau = rdv.creneau;
         int id_creneau = creneau.indice;
-        String date = creneau.date;
+        String date = DateConversion.dateToString(creneau.date);
         int id_prof = creneau.id_prof; //= getId(prof);
         int id_eleve = getId(etudiant);
 

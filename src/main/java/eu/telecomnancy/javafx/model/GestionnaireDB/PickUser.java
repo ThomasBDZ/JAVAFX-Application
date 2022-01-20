@@ -21,7 +21,7 @@ public class PickUser {
 
     public PickUser(){}
 
-    public int Pick(String mail) throws InsertionException{
+    public static int Pick(String mail) throws Exception{
 
         testRegex testeur = new testRegex();
         testeur.validateMail(mail);

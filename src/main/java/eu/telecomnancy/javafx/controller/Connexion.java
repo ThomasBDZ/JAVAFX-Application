@@ -4,7 +4,9 @@ package eu.telecomnancy.javafx.controller;
 import eu.telecomnancy.javafx.controller.Erreurs.ConnexionException;
 import eu.telecomnancy.javafx.controller.utils.AccesPages;
 import eu.telecomnancy.javafx.model.GestionnaireDB.*;
+import eu.telecomnancy.javafx.model.Etudiant;
 import eu.telecomnancy.javafx.model.ProfRDV;
+import eu.telecomnancy.javafx.model.Utilisateur;
 import eu.telecomnancy.javafx.model.GestionnaireDB.GestionnaireLogin;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -74,10 +76,23 @@ public class Connexion extends Controlleur {
                 break;
 
             case "eleve":
+                try {
+                    int idEleve = PickUser.Pick(idStr);
+                    profRDV.utilisateur = GetterUser.getInfoEleve(idEleve);
+                    System.out.println(profRDV.utilisateur.birthDate);
+                } catch (Exception e) {
+                    System.err.println(e.getMessage());
+                }
                 accesPages.accesAccueilEtudiant();
                 break;
 
             case "prof":
+                try {
+                    int idProf = PickUser.Pick(idStr);
+                    profRDV.utilisateur = GetterUser.getInfoProf(idProf);
+                } catch (Exception e) {
+                   System.err.println(e.getMessage());
+                }
                 accesPages.accesAccueilEnseignant();
                 break;
         
