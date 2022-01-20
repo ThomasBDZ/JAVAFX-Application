@@ -30,7 +30,7 @@ import java.util.*;
 
 public class PriseRDV extends Controlleur implements Initializable {
 
-   private Date date_calendrier;
+    private Date date_calendrier;
     int noOfDays = 7;
     ArrayList<Creneau> liste_creneau = new ArrayList<>();
     private ArrayList<String> arrayEtudiants;
@@ -119,7 +119,7 @@ public class PriseRDV extends Controlleur implements Initializable {
         /**
          * enseignants
          */
-       // arrayEnseignants=;
+    // arrayEnseignants=;
   /*      ObservableList<String> obvs_enseignants = FXCollections.observableArrayList(arrayEnseignants);
         enseignant=new ChoiceBox<String>();
         enseignant.setItems(obvs_enseignants);
