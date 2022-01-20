@@ -1,10 +1,11 @@
 package eu.telecomnancy.javafx.controller;
 
 
-import eu.telecomnancy.javafx.controller.Erreurs.ConnexionError;
+import eu.telecomnancy.javafx.controller.Erreurs.ConnexionException;
 import eu.telecomnancy.javafx.controller.utils.AccesPages;
-import eu.telecomnancy.javafx.model.GestionnaireLogin;
+import eu.telecomnancy.javafx.model.GestionnaireDB.*;
 import eu.telecomnancy.javafx.model.ProfRDV;
+import eu.telecomnancy.javafx.model.GestionnaireDB.GestionnaireLogin;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -58,7 +59,7 @@ public class Connexion extends Controlleur {
         String type = "";
         try {
             type = gestionnaireLogin.login(mdpStr,idStr);
-        } catch (ConnexionError e) {
+        } catch (ConnexionException e) {
             if(erreurShown){
                 vboxConnexion.getChildren().remove(erreur);
             }
