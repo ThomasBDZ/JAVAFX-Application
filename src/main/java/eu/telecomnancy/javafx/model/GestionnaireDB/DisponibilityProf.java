@@ -3,6 +3,7 @@ package eu.telecomnancy.javafx.model.GestionnaireDB;
 import java.sql.*;
 import java.util.ArrayList;
 import eu.telecomnancy.javafx.ConnectionClass;
+import eu.telecomnancy.javafx.controller.Erreurs.InsertionException;
 import eu.telecomnancy.javafx.model.*;
 import eu.telecomnancy.javafx.model.utils.DateConversion;
 
@@ -44,16 +45,17 @@ public class DisponibilityProf {
         }
     }
 
-    public ArrayList<Creneau> getProfCreneau(Enseignant prof){
+    public ArrayList<Creneau> getProfCreneau(String mailProf, String dateCreneau) throws InsertionException {
 
-        String profName = prof.nom;
-        String profPrenom = prof.prenom;
-        String profMail = prof.mail;
-
-        int id_prof = getIdProf(prof);
-        String sql = "SELECT * FROM availableRDV WHERE id_prof = '" + id_prof + "';";
+        PickUser picker = new PickUser();
+        int id_prof = picker.Pick(mailProf);
         String date;
-        int indice= 0;
+        int indice;
+        int week = DateConversion.getWeek(dateCreneau);
+
+        String sql = "SELECT * FROM availableRDV WHERE id_prof = " + id_prof + " AND "+
+                "(4*(CAST(SUBSTR(date,6,2) as decimal)-1)+1+CAST(SUBSTR(date,9,2) as decimal)/7) == "+week+";";
+
 
         ArrayList<Creneau> ListeCreneau = new ArrayList<>();
 
