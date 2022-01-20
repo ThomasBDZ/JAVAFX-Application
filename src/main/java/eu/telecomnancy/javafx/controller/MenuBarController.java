@@ -45,9 +45,25 @@ public class MenuBarController extends Controlleur {
      * --> Ne fait rien sinon.
      */
     public void accueil(){
-        // Stage stage = (Stage) ((Node) menuBar).getScene().getWindow();
-        // Parent parent = node.getParentNode();
-        // profRDV.getAccesPages().accesAccueil(node);
+        String type = profRDV.getInstance();
+        AccesPages accesPages = profRDV.getAccesPages();
+        switch (type) {
+            case "admin":
+                accesPages.accesAccueilAdmin();
+                break;
+
+            case "eleve":
+                accesPages.accesAccueilEtudiant();
+                break;
+
+            case "prof":
+                accesPages.accesAccueilEnseignant();
+                break;
+        
+        
+            default:
+                break;
+        }
     }
 
      /**
