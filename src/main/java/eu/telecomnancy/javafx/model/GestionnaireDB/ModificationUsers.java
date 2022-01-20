@@ -3,11 +3,15 @@ package eu.telecomnancy.javafx.model.GestionnaireDB;
 import eu.telecomnancy.javafx.ConnectionClass;
 import eu.telecomnancy.javafx.controller.Erreurs.ConnexionException;
 import eu.telecomnancy.javafx.controller.Erreurs.InsertionException;
+import eu.telecomnancy.javafx.model.Etudiant;
+import eu.telecomnancy.javafx.model.Utilisateur;
+import eu.telecomnancy.javafx.model.utils.DateConversion;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Date;
 
 
 public class ModificationUsers {
@@ -16,7 +20,20 @@ public class ModificationUsers {
 
     }
 
-    public void Add(String nom, String prenom, String mail, String sexe, String date,String address, String tel, String table) throws SQLException, InsertionException{
+    public void Add(Utilisateur user) throws SQLException, InsertionException{
+
+        String nom = user.nom;
+        String prenom = user.prenom;
+        String mail = user.mail;
+        String sexe = user.sexe;
+        String address = user.addresse;
+        String tel = user.telephone;
+        Boolean typeUser = false;
+        if(user instanceof Etudiant){
+            typeUser = true;
+        }
+        String date = user.birthDate;
+
 
         Connection connection = ConnectionClass.getInstance().getConnection();
         testRegex testeur = new testRegex();
@@ -27,6 +44,12 @@ public class ModificationUsers {
         testeur.validateNom(nom);
         testeur.validateNom(prenom);
 
+        String table;
+        if (!typeUser){
+            table="prof";
+        } else {
+            table="eleve";
+        }
 
         try {
             Statement statement2 = connection.createStatement();
@@ -56,12 +79,27 @@ public class ModificationUsers {
     }
 
     /** Ici Oldelement = mail, telephone ou adresse, newElement aussi (le nouveau), table = eleve ou professeur**/
-    public void update(String nom, String prenom, String newElementValeur, String table, String oldElement) throws InsertionException{
+    public void update(Utilisateur user, String newElementValeur,  String oldElement) throws InsertionException{
+
+        String nom = user.nom;
+        String prenom = user.prenom;
+        Boolean typeUser = false;
+        if(user instanceof Etudiant){
+            typeUser = true;
+        }
+
 
         Connection connection = ConnectionClass.getInstance().getConnection();
         testRegex testeur = new testRegex();
         testeur.validateNom(nom);
         testeur.validateNom(prenom);
+
+        String table;
+        if (!typeUser){
+            table="prof";
+        } else {
+            table="eleve";
+        }
 
         try {
             Statement statement = connection.createStatement();
@@ -84,7 +122,22 @@ public class ModificationUsers {
         }
     }
 
-    public void delete(String nom, String prenom, String table) throws InsertionException{
+    public void delete(Utilisateur user) throws InsertionException{
+
+        String nom = user.nom;
+        String prenom = user.prenom;
+
+        Boolean typeUser = false;
+        if(user instanceof Etudiant){
+            typeUser = true;
+        }
+
+        String table;
+        if (!typeUser){
+            table="prof";
+        } else {
+            table="eleve";
+        }
 
         Connection connection = ConnectionClass.getInstance().getConnection();
         testRegex testeur = new testRegex();

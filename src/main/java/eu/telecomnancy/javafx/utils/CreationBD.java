@@ -74,8 +74,11 @@ public class CreationBD {
                     "  id_prof INTEGER NOT NULL,\n" +
                     "  id_dispo INTEGER NOT NULL,\n" +
                     "  id_eleve INTEGER NOT NULL,\n" +
-                    "  salle INTEGER NOT NULL,\n" +
-                    "  date TEXT NOT NULL,\n" +
+                    "  status BOOLEAN NOT NULL,\n" +
+                    "  archive BOOLEAN NOT NULL,\n" +
+                    "  lieu TEXT NOT NULL,\n" +
+                    "  libelle TEXT NOT NULL,\n" +
+                    "  date DATE NOT NULL,\n" +
                     "  heure TEXT NOT NULL,\n" +
                     "  PRIMARY KEY (id),\n" +
                     "  FOREIGN KEY (id_prof) REFERENCES prof(id),\n" +
@@ -99,6 +102,7 @@ public class CreationBD {
             statement.executeUpdate("insert into connection values(1,'admin','admin','admin')");
             statement.executeUpdate("insert into connection values(2,'prof','prof','prof')");
             statement.executeUpdate("insert into connection values(3,'eleve','eleve','eleve')");
+            statement.executeUpdate("insert into connection values(3,'test@test3.fr','test','eleve')");
             statement.executeUpdate("insert into prof values(1, 'Oster', 'Gerald', 'M', '26/04/1980', '23 rue des collines', 'geroster@gmail.com', '0612343338')");
             statement.executeUpdate("insert into prof values(2, 'Dada', 'Seb', 'M', '26/04/1980', '23 rue des montagnes', 'sebdada@gmail.com', '0612345678')");
             statement.executeUpdate("insert into prof values(3, 'Suzi', 'Collin', 'F', '26/04/1980', '23 rue des plaines', 'suzicoco@gmail.com', '0671029384')");
