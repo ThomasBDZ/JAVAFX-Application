@@ -19,16 +19,23 @@ import javafx.fxml.FXMLLoader;
 public class AccesPages {
 
     private ProfRDV profRDV;
-    private MenuBarConnexion menuBarConnexion = new MenuBarConnexion(profRDV);
-    private Connexion connexionController = new Connexion(profRDV);
-    private AccueilEtudiant accueilEtudiant = new AccueilEtudiant(profRDV);
-    private MenuBarController menuBarController = new MenuBarController(profRDV);
-    private Calendrier calendrier = new Calendrier(profRDV);
-    private AccueilEnseignant accueilEnseignant = new AccueilEnseignant(profRDV);
-    private AccueilAdmin accueilAdmin = new AccueilAdmin(profRDV);
+    private MenuBarConnexion menuBarConnexion;
+    private Connexion connexionController;
+    private AccueilEtudiant accueilEtudiant;
+    private MenuBarController menuBarController;
+    private Calendrier calendrier;
+    private AccueilEnseignant accueilEnseignant;
+    private AccueilAdmin accueilAdmin;
 
     public AccesPages(ProfRDV profRDV){
         this.profRDV = profRDV;
+        menuBarConnexion = new MenuBarConnexion(profRDV);
+        connexionController = new Connexion(profRDV);
+        accueilEtudiant = new AccueilEtudiant(profRDV);
+        menuBarController = new MenuBarController(profRDV);
+        calendrier = new Calendrier(profRDV);
+        accueilEnseignant = new AccueilEnseignant(profRDV);
+        accueilAdmin = new AccueilAdmin(profRDV);
     }
 
     public void loadPage(String path){
@@ -48,6 +55,7 @@ public class AccesPages {
         try {
             Parent root = loader.load();
             Scene scene = new Scene(root, 1000, 1000);
+            // scene.getStylesheets().add(getClass().getResource("/stylesheet/style.css").toExternalForm());
             stage.setScene(scene);
             stage.show();
         } catch (Exception e) {
