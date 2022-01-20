@@ -31,9 +31,6 @@ public class Connexion extends Controlleur {
     private VBox vboxConnexion;
 
     @FXML
-    private MenuItem menuItemAccueil;
-
-    @FXML
     private TextField id;
 
     @FXML
@@ -57,8 +54,6 @@ public class Connexion extends Controlleur {
         String idStr = id.getText();
     
         GestionnaireLogin gestionnaireLogin = new GestionnaireLogin();
-        Node node= (Node) connexion;
-        String path = "/fxml/";
         AccesPages accesPages= profRDV.getAccesPages();
         String type = "";
         try {
@@ -76,18 +71,15 @@ public class Connexion extends Controlleur {
 
         switch (type) {
             case "admin":
-                path= path + "AccueilAdmin.fxml";
-                accesPages.accesAccueilAdmin(node);
+                accesPages.accesAccueilAdmin();
                 break;
 
             case "eleve":
-                path= path + "AccueilEtudiant.fxml";
-                accesPages.accesAccueilEtudiant(node);
+                accesPages.accesAccueilEtudiant();
                 break;
 
             case "prof":
-                path= path + "AccueilEnseignant.fxml";
-                accesPages.accesAccueilEnseignant(node);
+                accesPages.accesAccueilEnseignant();
                 break;
         
         
