@@ -10,7 +10,7 @@ public class ProfRDV {
 
     AccesPages accesPages;
 
-    public String utilisateur; //mail de l'utilisateur courant
+    public Utilisateur utilisateur; //mail de l'utilisateur courant
     public GestionnaireRDV gestionnaireRDV;
     public GestionnaireCreneauDispo gestionnaireCreneauDispo;
     String instance = ""; // Soit "eleve", "prof", "admin", soit ""

@@ -13,10 +13,10 @@ public class GestionnaireRDV {
     /**
      *
      * @param date
-     * @param mail_utilisateur
+     * @param user
      * @return
      */
-    public ArrayList<RDV> pickRDVWeek(Date date, String mail_utilisateur ){
+    public ArrayList<RDV> pickRDVWeek(Date date, Utilisateur user){
         ArrayList<RDV> liste=new ArrayList<>();
 
 
