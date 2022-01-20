@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.collections.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
@@ -11,7 +13,7 @@
    </top>
 
    <center>
-      <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" >
+      <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0">
          <top>
             <HBox alignment="CENTER" prefHeight="65.0" prefWidth="600.0" BorderPane.alignment="CENTER">
                <children>
@@ -119,11 +121,42 @@
          <children>
             <HBox prefHeight="26.0" prefWidth="231.0">
                <children>
-                  <TextField alignment="TOP_LEFT" prefHeight="26.0" prefWidth="203.0" promptText="Choissisez un eiseignant..." />
+                  <TextField fx:id="enseignant" alignment="TOP_LEFT" onAction="#enseignant" prefHeight="26.0" prefWidth="203.0" promptText="Choissisez un enseignant..." />
                   <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="84.0" text="Valider" />
                </children>
             </HBox>
-            <DatePicker prefHeight="26.0" prefWidth="265.0" promptText="Choissisez une date..." />
+            <DatePicker fx:id="datepicker" onAction="#datepicker" prefHeight="26.0" prefWidth="265.0" promptText="Choissisez une date..." />
+            <HBox alignment="CENTER" prefHeight="20.0" prefWidth="200.0">
+               <children>
+                  <Label text="Heure de début:" />
+                  <ChoiceBox layoutX="16.0" layoutY="52.0" prefWidth="150.0" value="8h">
+                     <items>
+                        <FXCollections fx:factory="observableArrayList">
+                           <String fx:value="8" />
+                           <String fx:value="9" />
+                           <String fx:value="10" />
+                           <String fx:value="11" />
+                           <String fx:value="12" />
+                           <String fx:value="13" />
+                           <String fx:value="14" />
+                           <String fx:value="15" />
+                           <String fx:value="16" />
+                           <String fx:value="17" />
+                           <String fx:value="18" />
+                           <String fx:value="19" />
+                        </FXCollections>
+                     </items>
+                  </ChoiceBox>
+                  <ChoiceBox layoutX="16.0" layoutY="52.0" prefWidth="150.0" value="00">
+                     <items>
+                        <FXCollections fx:factory="observableArrayList">
+                           <String fx:value="20" />
+                           <String fx:value="40" />
+                        </FXCollections>
+                     </items>
+                  </ChoiceBox>
+               </children>
+            </HBox>
             <VBox prefHeight="200.0" prefWidth="100.0">
                <children>
                   <HBox prefHeight="28.0" prefWidth="264.0">

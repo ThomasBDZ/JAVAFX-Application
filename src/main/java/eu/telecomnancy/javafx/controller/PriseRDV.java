@@ -3,8 +3,12 @@ package eu.telecomnancy.javafx.controller;
 
 import eu.telecomnancy.javafx.model.ProfRDV;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 
-public class PriseRDV extends Controlleur{
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class PriseRDV extends Controlleur implements Initializable {
 
     public PriseRDV(ProfRDV profRDV){
         super(profRDV);
@@ -18,4 +22,8 @@ public class PriseRDV extends Controlleur{
 
     }
 
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+
+    }
 }

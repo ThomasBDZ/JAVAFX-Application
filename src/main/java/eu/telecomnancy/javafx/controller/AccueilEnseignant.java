@@ -21,6 +21,7 @@ public class AccueilEnseignant extends Controlleur implements Initializable {
     private Date date;
     int noOfDays = 7;
     ArrayList<RDV> liste_rdv = new ArrayList<>();
+
     public AccueilEnseignant(ProfRDV profRDV){
         super(profRDV);
 
@@ -29,31 +30,18 @@ public class AccueilEnseignant extends Controlleur implements Initializable {
         date = Date.from(date_now.atStartOfDay(defaultZoneId).toInstant());
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
         //Date date = new Date();
-        System.out.println(dateFormat.format(date));
+        //System.out.println(dateFormat.format(date));
 
 
     }
 
     @FXML
     public void dernier(){
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(date);
-        calendar.add(Calendar.DAY_OF_YEAR, -noOfDays);
-
-        date = calendar.getTime();
-       // SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
-       // System.out.println(dateFormat.format(date));
     }
 
     @FXML
     public void prochain(){
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(date);
-        calendar.add(Calendar.DAY_OF_YEAR, noOfDays);
-        date = calendar.getTime();
 
-       // SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
-       // System.out.println(dateFormat.format(date));
 
     }
 
@@ -66,42 +54,26 @@ public class AccueilEnseignant extends Controlleur implements Initializable {
     @FXML
     private Button dernier;
 
-    public void construireGrille(){
-        System.out.println("hiiiii\n");
-
-        liste_rdv=this.profRDV.gestionnaireRDV.pickRDVWeek(date,this.profRDV.utilisateur);
-        Calendar c = Calendar.getInstance();
-        int dayOfWeek;
-        for(RDV rdv : liste_rdv){
-
-            c.setTime(rdv.creneau.date);
-            dayOfWeek  = c.get(Calendar.DAY_OF_WEEK);
-            //int dayOfWeek = c.get(Calendar.DAY_OF_WEEK); //day of the week (1=sunday)
-            Button b= new Button();
-            b.setText("Rendez-Vous "+rdv.creneau.getHeure());
-            //System.out.println("dayOfWeek; "+c.get(Calendar.DAY_OF_WEEK)+"indice: "+rdv.creneau.indice+"\n");
-            //b.setOnAction(event-> );
-
-            grille.add(b,dayOfWeek-2,rdv.creneau.indice);
-            grille.setHalignment(b, HPos.CENTER); // To align horizontally in the cell
-            grille.setValignment(b, VPos.CENTER); // To align vertically in the cell
-            grille.add(new Button(),3,10);
-
-        }
-    }
-
     @FXML
     public void initialize(URL url, ResourceBundle rb){
 
         prochain.setOnAction(event -> {
-            System.out.println("hoooola\n");
+
             Calendar calendar = Calendar.getInstance();
             calendar.setTime(date);
             calendar.add(Calendar.DAY_OF_YEAR, noOfDays);
             date = calendar.getTime();
             update_page();
         });
-        System.out.println("hola\n");
+
+        dernier.setOnAction(event -> {
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(date);
+            calendar.add(Calendar.DAY_OF_YEAR, -noOfDays);
+            date = calendar.getTime();
+            update_page();
+        });
+
 
         liste_rdv=this.profRDV.gestionnaireRDV.pickRDVWeek(date,this.profRDV.utilisateur);
         Calendar c = Calendar.getInstance();
@@ -114,14 +86,14 @@ public class AccueilEnseignant extends Controlleur implements Initializable {
             Button b = new Button();
             b.setText("Rendez-Vous " + rdv.creneau.getHeure());
             //System.out.println("dayOfWeek; "+c.get(Calendar.DAY_OF_WEEK)+"indice: "+rdv.creneau.indice+"\n");
-            //b.setOnAction(event-> );
+            b.setOnAction(event-> profRDV.getAccesPages().accesDescriptionRDV(rdv));
 
             grille.add(b, dayOfWeek - 2, rdv.creneau.indice);
             grille.setHalignment(b, HPos.CENTER); // To align horizontally in the cell
             grille.setValignment(b, VPos.CENTER); // To align vertically in the cell
 
         }
-        grille.add(new Button(), 3, 10);
+
         //ArrayList<RDV> liste_rdv = new ArrayList<>();
 
         //LocalDate date_now= LocalDate.now(); //get the current date
@@ -181,14 +153,12 @@ public class AccueilEnseignant extends Controlleur implements Initializable {
             Button b = new Button();
             b.setText("Rendez-Vous " + rdv.creneau.getHeure());
             //System.out.println("dayOfWeek; "+c.get(Calendar.DAY_OF_WEEK)+"indice: "+rdv.creneau.indice+"\n");
-            //b.setOnAction(event-> );
+            b.setOnAction(event-> profRDV.getAccesPages().accesDescriptionRDV(rdv));
 
             grille.add(b, dayOfWeek - 2, rdv.creneau.indice);
             grille.setHalignment(b, HPos.CENTER); // To align horizontally in the cell
             grille.setValignment(b, VPos.CENTER); // To align vertically in the cell
-
         }
-        grille.add(new Button(), 4, 10);
 
     }
 }
