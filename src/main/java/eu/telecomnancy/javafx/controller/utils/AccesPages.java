@@ -82,7 +82,7 @@ public class AccesPages {
         });
         try {
             Parent root = loader.load();
-            Scene scene = new Scene(root, 1000, 1000);
+            Scene scene = new Scene(root, 600, 600);
             // scene.getStylesheets().add(getClass().getResource("/stylesheet/style.css").toExternalForm());
             stage.setScene(scene);
             stage.show();

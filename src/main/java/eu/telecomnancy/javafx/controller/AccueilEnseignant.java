@@ -29,7 +29,7 @@ public class AccueilEnseignant extends Controlleur implements Initializable {
         date = Date.from(date_now.atStartOfDay(defaultZoneId).toInstant());
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
         //Date date = new Date();
-        System.out.println(dateFormat.format(date));
+        // System.out.println(dateFormat.format(date));
 
 
     }
@@ -94,14 +94,14 @@ public class AccueilEnseignant extends Controlleur implements Initializable {
     public void initialize(URL url, ResourceBundle rb){
 
         prochain.setOnAction(event -> {
-            System.out.println("hoooola\n");
+            // System.out.println("hoooola\n");
             Calendar calendar = Calendar.getInstance();
             calendar.setTime(date);
             calendar.add(Calendar.DAY_OF_YEAR, noOfDays);
             date = calendar.getTime();
             update_page();
         });
-        System.out.println("hola\n");
+        // System.out.println("hola\n");
 
         liste_rdv=this.profRDV.gestionnaireRDV.pickRDVWeek(date,this.profRDV.utilisateur);
         Calendar c = Calendar.getInstance();

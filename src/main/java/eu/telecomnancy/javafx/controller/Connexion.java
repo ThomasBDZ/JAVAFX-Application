@@ -58,7 +58,7 @@ public class Connexion extends Controlleur {
         AccesPages accesPages= profRDV.getAccesPages();
         String type = "";
         try {
-            type = gestionnaireLogin.login(mdpStr,idStr);
+            type = gestionnaireLogin.login(idStr,mdpStr);
         } catch (ConnexionException e) {
             if(erreurShown){
                 vboxConnexion.getChildren().remove(erreur);

@@ -57,7 +57,7 @@ public class AdminAjoutUtilisateur extends Controlleur{
         if(etudiant.isSelected()){
             table = "eleve";
         }else{
-            table = "enseignant";
+            table = "prof";
         }
         try {
             profRDV.modificationUsers.Add(nom.getText(), prenom.getText(), mail.getText(), sexe.getText(), date.getValue().toString(), adresse.getText(), telephone.getText(), table);   
