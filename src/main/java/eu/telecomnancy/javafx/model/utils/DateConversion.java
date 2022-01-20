@@ -36,7 +36,7 @@ public class DateConversion {
         return utilDate;
     }
 
-    public int getWeek(String date){
+    public static int getWeek(String date){
         String[] dateElement = date.split("/");
         String jour = dateElement[0];
         String mois = dateElement[1];

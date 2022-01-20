@@ -11,7 +11,7 @@ import java.sql.SQLException;
 
 public class GetterUser {
 
-    public Enseignant getInfoProf(int idProf){
+    public static Enseignant getInfoProf(int idProf){
 
         String sql = "SELECT * FROM prof WHERE id = '"+idProf+"';";
         Enseignant prof = new Enseignant();
@@ -36,7 +36,7 @@ public class GetterUser {
         }
         return prof;
     }
-    public Etudiant getInfoEleve(int idEleve){
+    public static Etudiant getInfoEleve(int idEleve){
 
         String sql = "SELECT * FROM eleve WHERE id = '"+idEleve+"';";
         Etudiant eleve = new Etudiant();
