@@ -107,7 +107,7 @@ public class ModificationUsers {
             statement.executeUpdate(sql);
             if (oldElement.equals("mail")){
                 Statement updateMail = connection.createStatement();
-                String sqlUpdate = "UPDATE connection SET mail = '"+newElementValeur+"' WHERE MDP = '"+nom+"';";
+                String sqlUpdate = "UPDATE connection SET mail = '"+newElementValeur+"' WHERE MDP = '"+nom+"' AND typeUser = '"+typeUser+"';";
                 updateMail.executeUpdate(sqlUpdate);
             }
         } catch (SQLException e) {
@@ -175,5 +175,23 @@ public class ModificationUsers {
                 }
             }
         }
+    }
+
+    public void modifMdp(Utilisateur user, String newMdp) throws InsertionException {
+
+        String mail = user.mail;
+        testRegex testeur = new testRegex();
+        testeur.validateMail(mail);
+
+        String sql = "UPDATE connection SET MDP = '"+newMdp+"' WHERE mail = '"+mail+"';";
+
+        try {
+            Connection connection = ConnectionClass.getInstance().getConnection();
+            Statement statement = connection.createStatement();
+            statement.executeUpdate(sql);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
     }
 }
