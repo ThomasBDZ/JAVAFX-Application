@@ -3,6 +3,7 @@ package eu.telecomnancy.javafx.controller;
 import eu.telecomnancy.javafx.model.ProfRDV;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
@@ -24,6 +25,9 @@ public class AdminAjoutUtilisateur extends Controlleur{
 
     @FXML
     private TextField sexe;
+
+    @FXML
+    private DatePicker date;
 
     @FXML
     private TextField mail;
@@ -49,13 +53,19 @@ public class AdminAjoutUtilisateur extends Controlleur{
     }
 
     public void ajoutUser(){
-        // if(etudiant.isSelected()){
-        //     String table = "eleve";
-        // }else{
-        //     String table = "enseignant";
-        // }
-
-        // profRDV.modificationUsers.Add(nom.getText(), prenom.getText(), mail.getText(), sexe.getText(), date.getText(), address.g, tel, table);
+        String table;
+        if(etudiant.isSelected()){
+            table = "eleve";
+        }else{
+            table = "enseignant";
+        }
+        try {
+            profRDV.modificationUsers.Add(nom.getText(), prenom.getText(), mail.getText(), sexe.getText(), date.getValue().toString(), adresse.getText(), telephone.getText(), table);   
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        } 
+        
+        profRDV.getAccesPages().accesAccueilAdmin();
     }
-
+    
 }

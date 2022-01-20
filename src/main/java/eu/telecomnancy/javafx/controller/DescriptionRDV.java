@@ -5,8 +5,11 @@ import eu.telecomnancy.javafx.model.RDV;
 
 public class DescriptionRDV extends Controlleur{
 
-    public DescriptionRDV(ProfRDV profRDV) {
+    RDV rdv;
+    
+    public DescriptionRDV(ProfRDV profRDV, RDV rdv) {
         super(profRDV);
+        this.rdv = rdv;
     }
 
 

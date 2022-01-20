@@ -47,7 +47,6 @@ public class AccesPages {
         accueilAdmin = new AccueilAdmin(profRDV);
         changementMDP = new ChangementMDP(profRDV);
         demandes = new Demandes(profRDV);
-        descriptionRDV = new DescriptionRDV(profRDV);
         disponibilites = new Disponibilites(profRDV);
         historiqueRDV = new HistoriqueRDV(profRDV);
         priseRDV = new PriseRDV(profRDV);
@@ -126,6 +125,7 @@ public class AccesPages {
     }
 
     public void accesDescriptionRDV(RDV rdv){
+        this.descriptionRDV = new DescriptionRDV(profRDV,rdv);
         String path = "/fxml/UtilisateurDescriptionRDV.fxml";
         loadPage(path);
     }
