@@ -59,18 +59,12 @@ public class AccueilEnseignant extends Controlleur implements Initializable {
     public void initialize(URL url, ResourceBundle rb){
 
         prochain.setOnAction(event -> {
-<<<<<<< HEAD
-
-=======
-            // System.out.println("hoooola\n");
->>>>>>> adminFront
             Calendar calendar = Calendar.getInstance();
             calendar.setTime(date);
             calendar.add(Calendar.DAY_OF_YEAR, noOfDays);
             date = calendar.getTime();
             update_page();
         });
-<<<<<<< HEAD
 
         dernier.setOnAction(event -> {
             Calendar calendar = Calendar.getInstance();
@@ -79,10 +73,6 @@ public class AccueilEnseignant extends Controlleur implements Initializable {
             date = calendar.getTime();
             update_page();
         });
-
-=======
-        // System.out.println("hola\n");
->>>>>>> adminFront
 
         liste_rdv=this.profRDV.gestionnaireRDV.pickRDVWeek(date,this.profRDV.utilisateur);
         Calendar c = Calendar.getInstance();
