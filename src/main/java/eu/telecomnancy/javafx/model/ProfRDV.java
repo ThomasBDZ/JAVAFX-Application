@@ -5,12 +5,16 @@ import eu.telecomnancy.javafx.controller.utils.AccesPages;
 import eu.telecomnancy.javafx.model.GestionnaireDB.*;
 import javafx.stage.Stage;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 /**
      * Modèle principal pour notre application ProfRDV
      */
 public class ProfRDV {
 
     AccesPages accesPages;
+
 
     public String utilisateur; //mail de l'utilisateur courant
     public GestionnaireRDV gestionnaireRDV;
@@ -94,5 +98,7 @@ public class ProfRDV {
     public Stage getStage(){
         return this.stage;
     }
+
+
     
 }
