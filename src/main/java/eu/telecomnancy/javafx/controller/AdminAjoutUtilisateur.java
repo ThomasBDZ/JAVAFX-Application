@@ -1,6 +1,9 @@
 package eu.telecomnancy.javafx.controller;
 
+import eu.telecomnancy.javafx.model.Enseignant;
+import eu.telecomnancy.javafx.model.Etudiant;
 import eu.telecomnancy.javafx.model.ProfRDV;
+import eu.telecomnancy.javafx.model.Utilisateur;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
@@ -53,18 +56,19 @@ public class AdminAjoutUtilisateur extends Controlleur{
     }
 
     public void ajoutUser(){
-        String table;
-        if(etudiant.isSelected()){
-            table = "eleve";
-        }else{
-            table = "prof";
-        }
         try {
-            profRDV.modificationUsers.Add(nom.getText(), prenom.getText(), mail.getText(), sexe.getText(), date.getValue().toString(), adresse.getText(), telephone.getText(), table);   
+            Utilisateur user;
+            if(etudiant.isSelected()){
+                user = new Etudiant(nom.getText(), prenom.getText(), mail.getText(), sexe.getText(), telephone.getText(), adresse.getText(), date.getValue().toString());   
+            } else{
+                user = new Enseignant(nom.getText(), prenom.getText(), mail.getText(), sexe.getText(), telephone.getText(), adresse.getText(), date.getValue().toString());   
+            }
+            profRDV.modificationUsers.Add(user);
+
         } catch (Exception e) {
             System.out.println(e.getMessage());
         } 
-        
+    
         profRDV.getAccesPages().accesAccueilAdmin();
     }
     

@@ -4,6 +4,7 @@ package eu.telecomnancy.javafx.controller.utils;
 import eu.telecomnancy.javafx.controller.*;
 import eu.telecomnancy.javafx.model.ProfRDV;
 import eu.telecomnancy.javafx.model.RDV;
+import eu.telecomnancy.javafx.model.Utilisateur;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -97,7 +98,7 @@ public class AccesPages {
         String path = "/fxml/Connexion.fxml";
         loadPage(path);
         profRDV.reinitializeInstance();
-        profRDV.utilisateur = "";
+        profRDV.utilisateur = null;
     }
 
 

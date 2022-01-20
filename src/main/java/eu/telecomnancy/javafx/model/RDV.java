@@ -4,20 +4,18 @@ import java.util.ArrayList;
 
 public class RDV {
 
-    public Boolean confirmed;
-    public Boolean refused;
-    public Boolean archived;
+    public Boolean status;
+    public Boolean archive;
 
     public String lieu;
     public String libelle;
-    public String Enseignant;
-    public ArrayList<String> Etudiants;
+    public Enseignant Enseignant;
+    public ArrayList<Etudiant> Etudiants;
     public Creneau creneau;
 
-    public RDV(Boolean confirmed,Boolean refused,Boolean archived,String lieu,String libelle,String Enseignant, ArrayList<String> Etudiants,Creneau creneau){
-        this.confirmed=confirmed;
-        this.refused=refused;
-        this.archived=archived;
+    public RDV(Boolean status,Boolean archived,String lieu,String libelle,Enseignant Enseignant, ArrayList<Etudiant> Etudiants,Creneau creneau){
+        this.status=status;
+        this.archive=archived;
         this.Enseignant=Enseignant;
         this.Etudiants=Etudiants;
         this.libelle=libelle;

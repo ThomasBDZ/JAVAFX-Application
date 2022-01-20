@@ -3,23 +3,29 @@ package eu.telecomnancy.javafx.model.GestionnaireDB;
 import java.sql.*;
 import java.util.ArrayList;
 import eu.telecomnancy.javafx.ConnectionClass;
-import eu.telecomnancy.javafx.model.Creneau;
+import eu.telecomnancy.javafx.model.*;
+import eu.telecomnancy.javafx.model.utils.DateConversion;
 
 public class DisponibilityProf {
-
-    public final static int HEURE_MIN = 8; // 8H
-    public final static int HEURE_MAX = 20; // 20H
-    public final static int INDICE_MAX = HEURE_MAX*3 ;
 
     public DisponibilityProf(){}
     
     /**add in availableRDV table prof's free appointments**/
-    //TODO: mettre date au lieu de String
-    public void insertCreneauProf(String profName,String profPrenom,String profMail, int heureDebut, int heureFin, String date){
-        //TODO : adapter avec en entré objet utilisateur + créneau
+    public void insertCreneauProf(Enseignant prof, Creneau creneauDebut, Creneau creneauFin){
+
+        String profName = prof.nom;
+        String profPrenom = prof.prenom;
+        String profMail = prof.mail;
+        int heureDebut = creneauDebut.indice;
+        int heureFin = creneauFin.indice;
+        java.util.Date date = creneauDebut.date;
+
         String sql = "INSERT INTO availableRDV ( id_prof, indice, date) values (?,?,?);";
 
-        int id_prof = getIdProf(profName,profPrenom,profMail);
+        int id_prof = getIdProf(prof);
+        DateConversion newDate = new DateConversion(date);
+
+        java.sql.Date datesql = newDate.javaToSql(date);
 
         try {
             Connection connection = ConnectionClass.getInstance().getConnection();
@@ -28,9 +34,8 @@ public class DisponibilityProf {
             for (int indice = heureDebut+1;indice<heureFin+1;indice++){
                 statement.setInt(1,id_prof);
                 statement.setInt(2, indice);
-                statement.setString(3, date);
+                statement.setDate(3, datesql);
                 statement.addBatch();
-                System.out.println(indice);
                 if (indice == heureFin){
                     statement.executeBatch();
                 }
@@ -42,12 +47,17 @@ public class DisponibilityProf {
         }
     }
 
-    public ArrayList<Creneau> getProfCreneau(String profName, String profPrenom, String profMail){
+    public ArrayList<Creneau> getProfCreneau(Enseignant prof){
 
-        int id_prof = getIdProf(profName,profPrenom,profMail);
+        String profName = prof.nom;
+        String profPrenom = prof.prenom;
+        String profMail = prof.mail;
+
+        int id_prof = getIdProf(prof);
         String sql = "SELECT * FROM availableRDV WHERE id_prof = '" + id_prof + "';";
-        String date = null;
-        int indice,id = 0;
+        Date date = null;
+        int indice= 0;
+
         ArrayList<Creneau> ListeCreneau = new ArrayList<>();
 
         try {
@@ -55,12 +65,13 @@ public class DisponibilityProf {
             PreparedStatement statement = connection.prepareStatement(sql);
             ResultSet rs = statement.executeQuery();
             while (rs.next()){
-                id = rs.getInt("id");
                 id_prof = rs.getInt("id_prof");
                 indice = rs.getInt("indice");
-                date = rs.getString("date");
-                // Creneau creneau = new Creneau(id,id_prof,indice,date);
-                // ListeCreneau.add(creneau);
+                date = rs.getDate("date");
+                DateConversion newDate = new DateConversion(date);
+                java.util.Date dateJava = newDate.sqlToJava(date);
+                Creneau creneau = new Creneau(indice,dateJava,id_prof);
+                ListeCreneau.add(creneau);
             }
             rs.close();
             statement.close();
@@ -71,7 +82,11 @@ public class DisponibilityProf {
         return ListeCreneau;
     }
 
-    public int getIdProf(String nom,String prenom, String mail){
+    public int getIdProf(Enseignant prof){
+
+        String nom = prof.nom;
+        String prenom = prof.prenom;
+        String mail = prof.mail;
 
         int id = 0;
         try {
