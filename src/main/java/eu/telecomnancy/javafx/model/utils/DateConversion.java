@@ -2,11 +2,8 @@ package eu.telecomnancy.javafx.model.utils;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.Locale;
+
 
 
 public class DateConversion {
@@ -39,12 +36,13 @@ public class DateConversion {
         return utilDate;
     }
 
-    public int weekOfYear(int year, int month, int day){
-
-        Calendar calendar = Calendar.getInstance(Locale.FRANCE);
-        calendar.set(year, month-1, day);
-        int weekOfYear = calendar.get(Calendar.WEEK_OF_YEAR);
-        return weekOfYear;
+    public int getWeek(String date){
+        String[] dateElement = date.split("/");
+        String jour = dateElement[0];
+        String mois = dateElement[1];
+        int jourInt = Integer.parseInt(jour);
+        int moisInt = Integer.parseInt(mois);
+        return 4*(moisInt-1)+1+(jourInt)/7;
     }
 }
 
