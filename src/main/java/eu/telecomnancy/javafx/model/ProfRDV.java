@@ -2,6 +2,7 @@ package eu.telecomnancy.javafx.model;
 
 import eu.telecomnancy.javafx.controller.Controlleur;
 import eu.telecomnancy.javafx.controller.utils.AccesPages;
+import eu.telecomnancy.javafx.model.GestionnaireDB.*;
 import javafx.stage.Stage;
 
 import java.lang.reflect.Array;
@@ -21,12 +22,15 @@ public class ProfRDV {
     String instance = ""; // Soit "eleve", "prof", "admin", soit ""
     Stage stage;
 
+    //GestionnaireDB
+    public ModificationUsers modificationUsers;
+
     public ProfRDV(){
 
         this.accesPages = new AccesPages(this);
         this.gestionnaireCreneauDispo= new GestionnaireCreneauDispo();
         this.gestionnaireRDV = new GestionnaireRDV();
-
+        this.modificationUsers = new ModificationUsers();
     }
 
     /**

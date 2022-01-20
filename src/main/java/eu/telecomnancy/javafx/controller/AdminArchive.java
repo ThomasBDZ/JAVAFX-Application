@@ -2,10 +2,10 @@ package eu.telecomnancy.javafx.controller;
 
 import eu.telecomnancy.javafx.model.ProfRDV;
 
-public class AjoutUtilisateur extends Controlleur{
+public class AdminArchive extends Controlleur{
 
-    public AjoutUtilisateur(ProfRDV profRDV) {
+    public AdminArchive(ProfRDV profRDV) {
         super(profRDV);
     }
-
+    
 }

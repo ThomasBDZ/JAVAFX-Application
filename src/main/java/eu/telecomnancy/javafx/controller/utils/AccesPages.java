@@ -18,6 +18,10 @@ public class AccesPages {
     private MenuBarController menuBarController;
     private Calendrier calendrier;
     private AccueilEnseignant accueilEnseignant;
+    
+    
+
+    //ADMIN
     private AccueilAdmin accueilAdmin;
     private ChangementMDP changementMDP;
     private Demandes demandes;
@@ -28,6 +32,9 @@ public class AccesPages {
     private RecapRDV recapRDV;
 
 
+    private AdminAjoutUtilisateur adminAjoutUtilisateur;
+    private AdminModifierUtilisateur adminModifierUtilisateur;
+    private AdminArchive adminArchive;
 
     public AccesPages(ProfRDV profRDV){
         this.profRDV = profRDV;
@@ -45,7 +52,9 @@ public class AccesPages {
         historiqueRDV = new HistoriqueRDV(profRDV);
         priseRDV = new PriseRDV(profRDV);
         recapRDV = new RecapRDV(profRDV);
-
+        adminAjoutUtilisateur = new AdminAjoutUtilisateur(profRDV);
+        adminModifierUtilisateur = new AdminModifierUtilisateur(profRDV);
+        adminArchive = new AdminArchive(profRDV);
     }
 
     public void loadPage(String path){
@@ -67,7 +76,9 @@ public class AccesPages {
         if (ic.equals(eu.telecomnancy.javafx.controller.HistoriqueRDV.class)) return historiqueRDV;
         if (ic.equals(eu.telecomnancy.javafx.controller.PriseRDV.class)) return priseRDV;
         if (ic.equals(eu.telecomnancy.javafx.controller.RecapRDV.class)) return recapRDV;
-
+        if (ic.equals(eu.telecomnancy.javafx.controller.AdminAjoutUtilisateur.class)) return adminAjoutUtilisateur;
+        if (ic.equals(eu.telecomnancy.javafx.controller.AdminModifierUtilisateur.class)) return adminModifierUtilisateur;
+        if (ic.equals(eu.telecomnancy.javafx.controller.AdminArchive.class)) return adminArchive;
         else return null ;
         });
         try {
@@ -87,6 +98,7 @@ public class AccesPages {
         String path = "/fxml/Connexion.fxml";
         loadPage(path);
         profRDV.reinitializeInstance();
+        profRDV.utilisateur = "";
     }
 
 
@@ -142,5 +154,21 @@ public class AccesPages {
         String path = "/fxml/EtudiantPriseRDV.fxml";
         loadPage(path);
     }
+    public void AdminAjoutUtilisateur(){
+        String path = "/fxml/AdminAjoutUtilisateur.fxml";
+        loadPage(path);
+    }
+
+    public void AdminArchive(){
+        String path = "/fxml/AdminArchive.fxml";
+        loadPage(path);
+    }
+
+    public void AdminModifierUtilisateur(){
+        String path = "/fxml/AdminModifierUtilisateur.fxml";
+        loadPage(path);
+    }
+
+
 
 }
