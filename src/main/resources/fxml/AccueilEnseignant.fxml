@@ -15,11 +15,11 @@
          <top>
             <HBox alignment="CENTER" prefHeight="65.0" prefWidth="600.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button fx:id="dernier" mnemonicParsing="false" text="&lt;">
+                  <Button fx:id="dernier" mnemonicParsing="false" onAction="#dernier" text="&lt;">
                      <HBox.margin>
                         <Insets right="400.0" top="-10.0" />
                      </HBox.margin></Button>
-                  <Button fx:id="prochain" mnemonicParsing="false" text="&gt;">
+                  <Button fx:id="prochain" mnemonicParsing="false" onAction="#prochain" text="&gt;">
                      <HBox.margin>
                         <Insets top="-10.0" />
                      </HBox.margin></Button>
