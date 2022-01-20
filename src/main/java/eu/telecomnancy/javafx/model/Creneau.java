@@ -1,5 +1,7 @@
 package eu.telecomnancy.javafx.model;
 
+import eu.telecomnancy.javafx.model.utils.GlobalVariables;
+
 import java.util.Date;
 
 import eu.telecomnancy.javafx.model.utils.GlobalVariables;

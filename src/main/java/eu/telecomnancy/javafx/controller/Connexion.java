@@ -1,10 +1,11 @@
 package eu.telecomnancy.javafx.controller;
 
 
-import eu.telecomnancy.javafx.controller.Erreurs.ConnexionError;
+import eu.telecomnancy.javafx.controller.Erreurs.ConnexionException;
 import eu.telecomnancy.javafx.controller.utils.AccesPages;
-import eu.telecomnancy.javafx.model.GestionnaireLogin;
+import eu.telecomnancy.javafx.model.GestionnaireDB.*;
 import eu.telecomnancy.javafx.model.ProfRDV;
+import eu.telecomnancy.javafx.model.GestionnaireDB.GestionnaireLogin;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -31,9 +32,6 @@ public class Connexion extends Controlleur {
     private VBox vboxConnexion;
 
     @FXML
-    private MenuItem menuItemAccueil;
-
-    @FXML
     private TextField id;
 
     @FXML
@@ -57,12 +55,11 @@ public class Connexion extends Controlleur {
         String idStr = id.getText();
     
         GestionnaireLogin gestionnaireLogin = new GestionnaireLogin();
-        Node node= (Node) connexion;
         AccesPages accesPages= profRDV.getAccesPages();
         String type = "";
         try {
             type = gestionnaireLogin.login(mdpStr,idStr);
-        } catch (ConnexionError e) {
+        } catch (ConnexionException e) {
             if(erreurShown){
                 vboxConnexion.getChildren().remove(erreur);
             }
@@ -73,15 +70,15 @@ public class Connexion extends Controlleur {
 
         switch (type) {
             case "admin":
-                accesPages.accesAccueilAdmin(node);
+                accesPages.accesAccueilAdmin();
                 break;
 
             case "eleve":
-                accesPages.accesAccueilEtudiant(node);
+                accesPages.accesAccueilEtudiant();
                 break;
 
             case "prof":
-                accesPages.accesAccueilEnseignant(node);
+                accesPages.accesAccueilEnseignant();
                 break;
         
         

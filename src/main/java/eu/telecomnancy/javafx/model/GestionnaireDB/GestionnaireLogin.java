@@ -1,7 +1,7 @@
-package eu.telecomnancy.javafx.model;
+package eu.telecomnancy.javafx.model.GestionnaireDB;
 
 import eu.telecomnancy.javafx.ConnectionClass;
-import eu.telecomnancy.javafx.controller.Erreurs.ConnexionError;
+import eu.telecomnancy.javafx.controller.Erreurs.ConnexionException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -24,7 +24,7 @@ public class GestionnaireLogin {
     /**
      * Méthode VerifMailMdp qui va aller chercher et vérifier les mots de passes et login dans la base de donnée.
      */
-    public String VerifMailMdp(String username, String password) throws SQLException, ConnexionError {
+    public String VerifMailMdp(String username, String password) throws SQLException, ConnexionException {
 
         Connection connection = ConnectionClass.getInstance().getConnection();
         
@@ -38,19 +38,19 @@ public class GestionnaireLogin {
             try { resultTypeUser.close(); } catch (Exception e) { /* Ignored */ }
             return resultType;
         } catch (Exception e) {
-            throw new ConnexionError();
+            throw new ConnexionException();
         }
     }
 
 
-    public String login(String username, String password) throws ConnexionError {
+    public String login(String username, String password) throws ConnexionException {
 
         try {
             String type = VerifMailMdp(username, password);
             return type;
         } catch (SQLException e) {
             System.out.println("From VerifMailMdp" +e.getMessage());
-        } catch (ConnexionError connexionError){
+        } catch (ConnexionException connexionError){
             throw connexionError;
         }
 
