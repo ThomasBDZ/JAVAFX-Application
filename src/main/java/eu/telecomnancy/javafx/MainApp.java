@@ -22,12 +22,12 @@ public class MainApp extends Application {
         profRDV.setStage(primaryStage);
         FXMLLoader loader = new FXMLLoader(); 
         loader.setLocation(getClass().getResource("/fxml/AccueilEtudiant.fxml"));
-        MenuBar menuBar = new MenuBar(profRDV);
+        MenuBarController menuBar = new MenuBarController(profRDV);
         AccueilEtudiant connexionController = new AccueilEtudiant(profRDV);
         profRDV.setControlleur(connexionController);
         loader.setControllerFactory(ic -> {
         if (ic.equals(eu.telecomnancy.javafx.controller.AccueilEtudiant.class)) return connexionController;
-        if (ic.equals(eu.telecomnancy.javafx.controller.MenuBar.class)) return menuBar;
+        if (ic.equals(eu.telecomnancy.javafx.controller.MenuBarController.class)) return menuBar;
         else return null ;
         });
         Parent root = loader.load();
