@@ -11,6 +11,8 @@ public class DateConversion {
     private Date javaDate;
     private java.sql.Date sqlDate;
 
+    public DateConversion(){}
+
     public DateConversion(Date javaDate){
         this.javaDate=javaDate;
     }
@@ -37,12 +39,17 @@ public class DateConversion {
     }
 
     public static int getWeek(String date){
-        String[] dateElement = date.split("/");
-        String jour = dateElement[0];
+        String[] dateElement = date.split("-");
+        String jour = dateElement[2];
         String mois = dateElement[1];
         int jourInt = Integer.parseInt(jour);
         int moisInt = Integer.parseInt(mois);
         return 4*(moisInt-1)+1+(jourInt)/7;
+    }
+    public static void main(String[] args){
+        DateConversion dater = new DateConversion();
+        int result = getWeek("1234-12-30");
+        System.out.println(result);
     }
 }
 
