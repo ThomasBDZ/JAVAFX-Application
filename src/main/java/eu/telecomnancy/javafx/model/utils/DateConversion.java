@@ -46,11 +46,6 @@ public class DateConversion {
         int moisInt = Integer.parseInt(mois);
         return 4*(moisInt-1)+1+(jourInt)/7;
     }
-    public static void main(String[] args){
-        DateConversion dater = new DateConversion();
-        int result = getWeek("1234-12-30");
-        System.out.println(result);
-    }
 }
 
 
