@@ -1,5 +1,7 @@
 package eu.telecomnancy.javafx.model.GestionnaireDB;
 
+import eu.telecomnancy.javafx.model.utils.GlobalVariables;
+
 import java.util.Date;
 
 public class Creneau {
@@ -7,6 +9,7 @@ public class Creneau {
     public Creneau(){
 
     }
+    
     private int id;
     private int id_prof;
     private int indice;
@@ -51,7 +54,7 @@ public class Creneau {
     }
 
     String getHeure(){
-        int heure= indice/3+HEURE_MIN;
+        int heure= indice/3+ GlobalVariables.HEURE_MIN ;
         int minutes=(indice)%3*20;
         return heure+"h"+minutes;
     }

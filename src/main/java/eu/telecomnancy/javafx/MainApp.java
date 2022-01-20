@@ -5,6 +5,7 @@ import eu.telecomnancy.javafx.controller.AccueilEtudiant;
 import eu.telecomnancy.javafx.controller.Calendrier;
 import eu.telecomnancy.javafx.controller.Connexion;
 import eu.telecomnancy.javafx.controller.MenuBarConnexion;
+import eu.telecomnancy.javafx.controller.MenuBarController;
 import eu.telecomnancy.javafx.model.ProfRDV;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -21,12 +22,12 @@ public class MainApp extends Application {
         profRDV.setStage(primaryStage);
         FXMLLoader loader = new FXMLLoader(); 
         loader.setLocation(getClass().getResource("/fxml/AccueilEnseignant.fxml"));
-        MenuBar menuBar = new MenuBar(profRDV);
+        MenuBarController menuBar = new MenuBarController(profRDV);
         AccueilEnseignant connexionController = new AccueilEnseignant(profRDV);
         profRDV.setControlleur(connexionController);
         loader.setControllerFactory(ic -> {
         if (ic.equals(eu.telecomnancy.javafx.controller.AccueilEnseignant.class)) return connexionController;
-        if (ic.equals(eu.telecomnancy.javafx.controller.MenuBar.class)) return menuBar;
+        if (ic.equals(eu.telecomnancy.javafx.controller.MenuBarController.class)) return menuBar;
         else return null ;
         });
         Parent root = loader.load();

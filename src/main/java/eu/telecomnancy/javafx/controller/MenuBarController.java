@@ -34,8 +34,8 @@ public class MenuBarController extends Controlleur {
      * Si l'utilisateur est connecté.
      * Non affiché si on est pas connecté.
      */
-    @FXML
-    public void deconnexion(ActionEvent event){
+
+    public void deconnexion(){
         profRDV.getAccesPages().accesAccueilConnexion();
     }
 
@@ -70,15 +70,15 @@ public class MenuBarController extends Controlleur {
 
         switch (instance) {
             case "admin":
-                accesPages.accesAccueilAdmin(node);
+                accesPages.accesAccueilAdmin();
                 break;
 
             case "eleve":
-                accesPages.accesAccueilEtudiant(node);
+                accesPages.accesAccueilEtudiant();
                 break;
 
             case "prof":
-                accesPages.accesAccueilEnseignant(node);
+                accesPages.accesAccueilEnseignant();
                 break;
             default:
                 break;
