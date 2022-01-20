@@ -59,35 +59,6 @@ public class MenuBarController extends Controlleur {
     }
 
     /**
-     * Controle du bouton accueil dans le menu bar principale. 
-     * --> Renvoit vers la page d'accueil si connecté.
-     * --> Ne fait rien sinon.
-     */
-    public void changeMdp(){
-        Node node= (Node) accueil.getGraphic(); // accueil mais on aurait pu prendre n'importe quel bouton, genre deconnexion...
-        String instance = profRDV.getInstance();
-        AccesPages accesPages = profRDV.getAccesPages();
-
-        switch (instance) {
-            case "admin":
-                accesPages.accesAccueilAdmin();
-                break;
-
-            case "eleve":
-                accesPages.accesAccueilEtudiant();
-                break;
-
-            case "prof":
-                accesPages.accesAccueilEnseignant();
-                break;
-            default:
-                break;
-        }
-    }
-
-    
-
-    /**
      * Controle du bouton quitter dans le menu bar principale. 
      * --> Quitte la page.
      */

@@ -41,13 +41,13 @@ public class DisponibilityProf {
         }
     }
 
-    public ArrayList<Creneau> getProfCreneau(String profName, String profPrenom, String profMail){
+    public ArrayList<Creneaux> getProfCreneau(String profName, String profPrenom, String profMail){
 
         int id_prof = getIdProf(profName,profPrenom,profMail);
         String sql = "SELECT * FROM availableRDV WHERE id_prof = '" + id_prof + "';";
         String date = null;
         int indice,id = 0;
-        ArrayList<Creneau> ListeCreneau = new ArrayList<>();
+        ArrayList<Creneaux> ListeCreneau = new ArrayList<>();
 
         try {
             Connection connection = ConnectionClass.getInstance().getConnection();
@@ -58,7 +58,7 @@ public class DisponibilityProf {
                 id_prof = rs.getInt("id_prof");
                 indice = rs.getInt("indice");
                 date = rs.getString("date");
-                Creneau creneau = new Creneau(id,id_prof,indice,date);
+                Creneaux creneau = new Creneaux(id,id_prof,indice,date);
                 ListeCreneau.add(creneau);
             }
             rs.close();

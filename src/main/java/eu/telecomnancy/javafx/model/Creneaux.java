@@ -4,9 +4,9 @@ import eu.telecomnancy.javafx.model.utils.GlobalVariables;
 
 import java.util.Date;
 
-public class Creneau {
+public class Creneaux {
 
-    public Creneau(){
+    public Creneaux(){
 
     }
     
@@ -15,13 +15,13 @@ public class Creneau {
     private int indice;
     private java.util.Date date;
 
-    public Creneau(int indice, Date date){
+    public Creneaux(int indice, Date date){
         this.indice=indice;
         this.date=date;
 
     }
 
-    public Creneau(int id, int id_prof, int indice, java.util.Date date){
+    public Creneaux(int id, int id_prof, int indice, java.util.Date date){
         this.date = date;
         this.id = id;
         this.id_prof = id_prof;
