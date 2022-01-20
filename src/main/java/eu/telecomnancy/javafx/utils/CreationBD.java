@@ -74,9 +74,11 @@ public class CreationBD {
                     "  id_prof INTEGER NOT NULL,\n" +
                     "  id_dispo INTEGER NOT NULL,\n" +
                     "  id_eleve INTEGER NOT NULL,\n" +
-                    "  salle INTEGER NOT NULL,\n" +
-                    "  date TEXT NOT NULL,\n" +
-                    "  heure TEXT NOT NULL,\n" +
+                    "  status INTEGER NOT NULL,\n" +
+                    "  lieu TEXT NOT NULL,\n" +
+                    "  libelle TEXT NOT NULL,\n" +
+                    "  date DATE NOT NULL,\n" +
+                    "  heure DATE NOT NULL,\n" +
                     "  PRIMARY KEY (id),\n" +
                     "  FOREIGN KEY (id_prof) REFERENCES prof(id),\n" +
                     "  FOREIGN KEY (id_eleve) REFERENCES eleve(id),\n" +
