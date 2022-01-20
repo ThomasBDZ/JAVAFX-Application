@@ -65,7 +65,7 @@ public class AccesPages {
         if (ic.equals(eu.telecomnancy.javafx.controller.Connexion.class)) return connexionController;
         if (ic.equals(eu.telecomnancy.javafx.controller.MenuBarConnexion.class)) return menuBarConnexion;
         if (ic.equals(eu.telecomnancy.javafx.controller.MenuBarController.class)) return menuBarController;
-        if (ic.equals(PriseRDV.class)) return accueilEtudiant;
+        if (ic.equals(eu.telecomnancy.javafx.controller.AccueilEtudiant.class)) return accueilEtudiant;
         if (ic.equals(eu.telecomnancy.javafx.controller.Calendrier.class)) return calendrier;
         if (ic.equals(eu.telecomnancy.javafx.controller.AccueilEnseignant.class)) return accueilEnseignant;
         if (ic.equals(eu.telecomnancy.javafx.controller.AccueilAdmin.class)) return accueilAdmin;
