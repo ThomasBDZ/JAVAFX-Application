@@ -21,27 +21,30 @@
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                <children>
                   <Label text="Ancien mot de passe :" />
-                  <PasswordField />
-                  <Button mnemonicParsing="false" text="Valider" />
+                  <PasswordField fx:id="oldMdp"/>
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                <children>
                   <Label text="Nouveau mot de passe :" />
-                  <PasswordField />
-                  <Button mnemonicParsing="false" text="Valider" />
+                  <PasswordField fx:id="newMdp1"/>
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                <children>
                   <Label text="Répétez votre nouveau mot de passe :" />
-                  <PasswordField />
-                  <Button mnemonicParsing="false" text="Valider" />
+                  <PasswordField fx:id="newMdp2" />
                </children>
             </HBox>
+            <Button fx:id="confirmer" mnemonicParsing="false" onMouseClicked="#changementMdp" text="Confirmer" textAlignment="CENTER">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </Button>
          </children>
          <BorderPane.margin>
             <Insets left="50.0" />
-         </BorderPane.margin></VBox>
+         </BorderPane.margin>
+      </VBox>
    </center>
 </BorderPane>

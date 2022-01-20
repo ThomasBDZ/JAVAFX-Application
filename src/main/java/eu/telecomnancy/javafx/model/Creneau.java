@@ -32,6 +32,7 @@ public class Creneau {
         this.indice = indice;
     }
 
+
     public String getHeure(){
         int heure= indice/3+ GlobalVariables.HEURE_MIN;
         int minutes=(indice)%3*20;
