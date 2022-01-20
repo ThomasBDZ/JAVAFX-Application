@@ -3,17 +3,10 @@ package eu.telecomnancy.javafx.controller.utils;
 
 import eu.telecomnancy.javafx.controller.*;
 import eu.telecomnancy.javafx.model.ProfRDV;
-import javafx.scene.Node;
+import eu.telecomnancy.javafx.model.RDV;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 
 public class AccesPages {
@@ -26,6 +19,15 @@ public class AccesPages {
     private Calendrier calendrier;
     private AccueilEnseignant accueilEnseignant;
     private AccueilAdmin accueilAdmin;
+    private ChangementMDP changementMDP;
+    private Demandes demandes;
+    private DescriptionRDV descriptionRDV;
+    private Disponibilites disponibilites;
+    private HistoriqueRDV historiqueRDV;
+    private PriseRDV priseRDV;
+    private RecapRDV recapRDV;
+
+
 
     public AccesPages(ProfRDV profRDV){
         this.profRDV = profRDV;
@@ -36,6 +38,14 @@ public class AccesPages {
         calendrier = new Calendrier(profRDV);
         accueilEnseignant = new AccueilEnseignant(profRDV);
         accueilAdmin = new AccueilAdmin(profRDV);
+        changementMDP = new ChangementMDP(profRDV);
+        demandes = new Demandes(profRDV);
+        descriptionRDV = new DescriptionRDV(profRDV);
+        disponibilites = new Disponibilites(profRDV);
+        historiqueRDV = new HistoriqueRDV(profRDV);
+        priseRDV = new PriseRDV(profRDV);
+        recapRDV = new RecapRDV(profRDV);
+
     }
 
     public void loadPage(String path){
@@ -50,6 +60,14 @@ public class AccesPages {
         if (ic.equals(eu.telecomnancy.javafx.controller.Calendrier.class)) return calendrier;
         if (ic.equals(eu.telecomnancy.javafx.controller.AccueilEnseignant.class)) return accueilEnseignant;
         if (ic.equals(eu.telecomnancy.javafx.controller.AccueilAdmin.class)) return accueilAdmin;
+        if (ic.equals(eu.telecomnancy.javafx.controller.ChangementMDP.class)) return changementMDP;
+        if (ic.equals(eu.telecomnancy.javafx.controller.Demandes.class)) return demandes;
+        if (ic.equals(eu.telecomnancy.javafx.controller.DescriptionRDV.class)) return descriptionRDV;
+        if (ic.equals(eu.telecomnancy.javafx.controller.Disponibilites.class)) return disponibilites;
+        if (ic.equals(eu.telecomnancy.javafx.controller.HistoriqueRDV.class)) return historiqueRDV;
+        if (ic.equals(eu.telecomnancy.javafx.controller.PriseRDV.class)) return priseRDV;
+        if (ic.equals(eu.telecomnancy.javafx.controller.RecapRDV.class)) return recapRDV;
+
         else return null ;
         });
         try {
@@ -73,22 +91,56 @@ public class AccesPages {
 
 
     public void accesAccueilEtudiant(){       
-        String path = "/fxml/AccueilEtudiant.fxml";
+        String path = "/fxml/EtudiantAccueil.fxml";
         loadPage(path);
         profRDV.setInstance("eleve");
     }
 
     public void accesAccueilEnseignant(){
-        String path = "/fxml/AccueilEnseignant.fxml";
+        String path = "/fxml/EnseignantAccueil.fxml";
         loadPage(path);
         profRDV.setInstance("prof");
     }
 
     public void accesAccueilAdmin(){
-        String path = "/fxml/AccueilAdmin.fxml";
+        String path = "/fxml/AdminAccueil.fxml";
         loadPage(path);
         profRDV.setInstance("admin");
     }
 
+    public void accesChangementMDP(RDV rdv){
+        String path = "/fxml/UtilisateurChangementMDP.fxml";
+        loadPage(path);
+    }
+
+    public void accesDescriptionRDV(RDV rdv){
+        String path = "/fxml/UtilisateurDescriptionRDV.fxml";
+        loadPage(path);
+    }
+
+    public void accesDemandes(){
+        String path = "/fxml/EnseignantDemandes.fxml";
+        loadPage(path);
+    }
+
+    public void accesDisponibilites(){
+        String path = "/fxml/EnseignantDisponibilites.fxml";
+        loadPage(path);
+    }
+
+    public void accesHistoriqueRDV(){
+        String path = "/fxml/UtilisateurHistoriqueRDV.fxml";
+        loadPage(path);
+    }
+
+    public void accesRecapRDV(){
+        String path = "/fxml/EtudiantRecapRDV.fxml";
+        loadPage(path);
+    }
+
+    public void accesPriseRDV(){
+        String path = "/fxml/EtudiantPriseRDV.fxml";
+        loadPage(path);
+    }
 
 }
