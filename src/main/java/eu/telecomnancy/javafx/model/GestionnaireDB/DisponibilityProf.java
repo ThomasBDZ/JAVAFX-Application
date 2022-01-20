@@ -3,8 +3,8 @@ package eu.telecomnancy.javafx.model.GestionnaireDB;
 import java.sql.*;
 import java.util.ArrayList;
 import eu.telecomnancy.javafx.ConnectionClass;
-import eu.telecomnancy.javafx.model.utils.DateConversion;
 import eu.telecomnancy.javafx.model.*;
+import eu.telecomnancy.javafx.model.utils.DateConversion;
 
 public class DisponibilityProf {
 

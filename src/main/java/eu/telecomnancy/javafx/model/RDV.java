@@ -10,36 +10,22 @@ public class RDV {
     public String lieu;
     public String libelle;
     public Enseignant enseignant;
-    public Etudiant Etudiant;
+    public Etudiant etudiant;
     public Creneau creneau;
 
+    public RDV(){
 
-    public void setStatus(Boolean status) {
-        this.status = status;
     }
 
-    public void setArchive(Boolean archive) {
-        this.archive = archive;
-    }
+    public RDV(Boolean status,Boolean archived,String lieu,String libelle,Enseignant enseignant, Etudiant etudiant,Creneau creneau){
+        this.status=status;
+        this.archive=archived;
+        this.enseignant=enseignant;
+        this.etudiant=etudiant;
+        this.libelle=libelle;
+        this.lieu=lieu;
+        this.creneau=creneau;
 
-    public void setLieu(String lieu) {
-        this.lieu = lieu;
-    }
-
-    public void setLibelle(String libelle) {
-        this.libelle = libelle;
-    }
-
-    public void setEnseignant(Enseignant enseignant) {
-        this.enseignant = enseignant;
-    }
-
-    public void setEtudiants(Etudiant student) {
-        this.Etudiant = student;
-    }
-
-    public void setCreneau(Creneau creneau) {
-        this.creneau = creneau;
     }
 
 }

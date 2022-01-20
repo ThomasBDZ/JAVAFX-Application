@@ -2,6 +2,11 @@ package eu.telecomnancy.javafx.model;
 
 import eu.telecomnancy.javafx.controller.Controlleur;
 import eu.telecomnancy.javafx.controller.utils.AccesPages;
+import eu.telecomnancy.javafx.model.GestionnaireDB.*;
+import javafx.stage.Stage;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 /**
      * Modèle principal pour notre application ProfRDV
@@ -14,29 +19,17 @@ public class ProfRDV {
     public GestionnaireRDV gestionnaireRDV;
     public GestionnaireCreneauDispo gestionnaireCreneauDispo;
     String instance = ""; // Soit "eleve", "prof", "admin", soit ""
-    Controlleur currentControlleur;
+    Stage stage;
+
+    //GestionnaireDB
+    public ModificationUsers modificationUsers;
 
     public ProfRDV(){
 
         this.accesPages = new AccesPages(this);
         this.gestionnaireCreneauDispo= new GestionnaireCreneauDispo();
         this.gestionnaireRDV = new GestionnaireRDV();
-    }
-
-    /**
-     * Setter for currentControlleur
-     * @param controlleur
-     */
-    public void setControlleur(Controlleur controlleur){
-        this.currentControlleur = controlleur;
-    }
-
-    /**
-     * Getter for currentControlleur
-     * @return the currentControlleur
-     */
-    public Controlleur getCurrentControlleur(){
-        return currentControlleur;
+        this.modificationUsers = new ModificationUsers();
     }
 
     /**
@@ -89,7 +82,22 @@ public class ProfRDV {
         return accesPages;
     }
 
-    
-    
+    /**
+     * Setter stage
+     * @param stage
+     */
+    public void setStage(Stage stage){
+        this.stage = stage;
+    }
+
+    /**
+     * Getter for stage
+     * @return Stage
+     */
+    public Stage getStage(){
+        return this.stage;
+    }
+
+
     
 }

@@ -32,9 +32,6 @@ public class Connexion extends Controlleur {
     private VBox vboxConnexion;
 
     @FXML
-    private MenuItem menuItemAccueil;
-
-    @FXML
     private TextField id;
 
     @FXML
@@ -58,11 +55,10 @@ public class Connexion extends Controlleur {
         String idStr = id.getText();
     
         GestionnaireLogin gestionnaireLogin = new GestionnaireLogin();
-        Node node= (Node) connexion;
         AccesPages accesPages= profRDV.getAccesPages();
         String type = "";
         try {
-            type = gestionnaireLogin.login(mdpStr,idStr);
+            type = gestionnaireLogin.login(idStr,mdpStr);
         } catch (ConnexionException e) {
             if(erreurShown){
                 vboxConnexion.getChildren().remove(erreur);
@@ -74,15 +70,15 @@ public class Connexion extends Controlleur {
 
         switch (type) {
             case "admin":
-                accesPages.accesAccueilAdmin(node);
+                accesPages.accesAccueilAdmin();
                 break;
 
             case "eleve":
-                accesPages.accesAccueilEtudiant(node);
+                accesPages.accesAccueilEtudiant();
                 break;
 
             case "prof":
-                accesPages.accesAccueilEnseignant(node);
+                accesPages.accesAccueilEnseignant();
                 break;
         
         

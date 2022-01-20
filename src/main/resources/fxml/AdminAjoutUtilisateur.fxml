@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="eu.telecomnancy.javafx.controller.AdminAjoutUtilisateur">
+   <top>
+      <fx:include source="MenuBar.fxml" BorderPane.alignment="CENTER" />
+   </top>
+   <center>
+      <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="413.0" prefWidth="600.0" vbarPolicy="ALWAYS" BorderPane.alignment="CENTER">
+         <content>
+            <VBox alignment="CENTER" prefHeight="385.0" prefWidth="586.0" spacing="10.0">
+               <children>
+                  <Label text="Ajouter un nouveau utilisateur" />
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+                     <children>
+                        <RadioButton fx:id="etudiant" text="Etudiant" />
+                        <RadioButton fx:id="enseignant" text="Enseignant" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" layoutX="10.0" layoutY="9.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                     <children>
+                        <Label text="Nom" />
+                        <TextField fx:id="nom" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" layoutX="10.0" layoutY="87.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                     <children>
+                        <Label text="Prénom" />
+                        <TextField fx:id="prenom" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" layoutX="10.0" layoutY="91.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                     <children>
+                        <Label text="Sexe" />
+                        <TextField fx:id="sexe" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" layoutX="10.0" layoutY="27.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                     <children>
+                        <Label text="Mail" />
+                        <TextField fx:id="mail" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                     <children>
+                        <Label text="Date de naissance" />
+                        <DatePicker fx:id="date" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" layoutX="10.0" layoutY="207.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                     <children>
+                        <Label text="Adresse" />
+                        <TextField fx:id="adresse" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" layoutX="10.0" layoutY="246.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                     <children>
+                        <Label text="Téléphone" />
+                        <TextField fx:id="telephone" />
+                     </children>
+                  </HBox>
+                  <Button fx:id="valider" mnemonicParsing="false" onAction="#ajoutUser" text="Valider" />
+               </children>
+            </VBox>
+         </content>
+         <BorderPane.margin>
+            <Insets bottom="50.0" />
+         </BorderPane.margin>
+         <padding>
+            <Insets bottom="50.0" />
+         </padding>
+      </ScrollPane>
+   </center>
+</BorderPane>

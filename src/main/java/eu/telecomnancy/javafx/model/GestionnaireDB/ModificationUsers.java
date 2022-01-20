@@ -3,6 +3,7 @@ package eu.telecomnancy.javafx.model.GestionnaireDB;
 import eu.telecomnancy.javafx.ConnectionClass;
 import eu.telecomnancy.javafx.controller.Erreurs.ConnexionException;
 import eu.telecomnancy.javafx.controller.Erreurs.InsertionException;
+import eu.telecomnancy.javafx.model.Etudiant;
 import eu.telecomnancy.javafx.model.Utilisateur;
 import eu.telecomnancy.javafx.model.utils.DateConversion;
 
@@ -27,7 +28,10 @@ public class ModificationUsers {
         String sexe = user.sexe;
         String address = user.addresse;
         String tel = user.telephone;
-        Boolean typeUser = user.etudiant;
+        Boolean typeUser = false;
+        if(user instanceof Etudiant){
+            typeUser = true;
+        }
         String date = user.birthDate;
 
 
@@ -79,7 +83,10 @@ public class ModificationUsers {
 
         String nom = user.nom;
         String prenom = user.prenom;
-        Boolean typeUser = user.etudiant;
+        Boolean typeUser = false;
+        if(user instanceof Etudiant){
+            typeUser = true;
+        }
 
 
         Connection connection = ConnectionClass.getInstance().getConnection();
@@ -119,7 +126,11 @@ public class ModificationUsers {
 
         String nom = user.nom;
         String prenom = user.prenom;
-        Boolean typeUser = user.etudiant;
+
+        Boolean typeUser = false;
+        if(user instanceof Etudiant){
+            typeUser = true;
+        }
 
         String table;
         if (!typeUser){

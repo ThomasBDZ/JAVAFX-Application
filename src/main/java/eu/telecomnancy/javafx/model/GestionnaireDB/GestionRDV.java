@@ -66,7 +66,11 @@ public class GestionRDV {
         String nom = user.nom;
         String prenom = user.prenom;
         String mail = user.mail;
-        Boolean typeUser = user.etudiant;
+
+        Boolean typeUser = false;
+        if(user instanceof Etudiant){
+            typeUser = true;
+        }
 
         String table;
         if (typeUser){

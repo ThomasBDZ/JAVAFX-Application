@@ -3,13 +3,15 @@ package eu.telecomnancy.javafx.controller;
 import eu.telecomnancy.javafx.controller.utils.AccesPages;
 import eu.telecomnancy.javafx.model.ProfRDV;
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
-import javafx.scene.control.MenuItem;
+import javafx.scene.control.MenuBar;
+import javafx.stage.Stage;
 
 import java.util.Optional;
 import java.util.ResourceBundle.Control;
@@ -19,20 +21,10 @@ import java.util.ResourceBundle.Control;
 /**
  * Controleur de la vue MenuBar.fxml
  */
-public class MenuBar extends Controlleur {
-    
-    @FXML
-    private MenuItem accueil;
-
-    @FXML
-    private MenuItem changeMdp;
-
-    @FXML
-    private MenuItem deconnexion;
+public class MenuBarController extends Controlleur {
 
 
-
-    public MenuBar(ProfRDV profRDV){
+    public MenuBarController(ProfRDV profRDV){
         super(profRDV);
         this.profRDV = profRDV;
     }
@@ -42,10 +34,9 @@ public class MenuBar extends Controlleur {
      * Si l'utilisateur est connecté.
      * Non affiché si on est pas connecté.
      */
+
     public void deconnexion(){
-        Node node= (Node) deconnexion.getGraphic();
-        profRDV.getAccesPages().accesAccueilConnexion(node);
-        
+        profRDV.getAccesPages().accesAccueilConnexion();
     }
 
     /**
@@ -54,55 +45,34 @@ public class MenuBar extends Controlleur {
      * --> Ne fait rien sinon.
      */
     public void accueil(){
-        Node node= (Node) accueil.getGraphic(); // accueil mais on aurait pu prendre n'importe quel bouton, genre deconnexion...
-        String instance = profRDV.getInstance();
+        String type = profRDV.getInstance();
         AccesPages accesPages = profRDV.getAccesPages();
-
-        switch (instance) {
+        switch (type) {
             case "admin":
-                accesPages.accesAccueilAdmin(node);
+                accesPages.accesAccueilAdmin();
                 break;
 
             case "eleve":
-                accesPages.accesAccueilEtudiant(node);
+                accesPages.accesAccueilEtudiant();
                 break;
 
             case "prof":
-                accesPages.accesAccueilEnseignant(node);
+                accesPages.accesAccueilEnseignant();
                 break;
+        
+        
             default:
                 break;
         }
     }
 
-    /**
-     * Controle du bouton accueil dans le menu bar principale. 
-     * --> Renvoit vers la page d'accueil si connecté.
-     * --> Ne fait rien sinon.
+     /**
+     * Controle du bouton "changer de mot de passe" dans le menu bar principale. 
+     * --> Affiche la page pour changer son mot de passe
      */
     public void changeMdp(){
-        Node node= (Node) accueil.getGraphic(); // accueil mais on aurait pu prendre n'importe quel bouton, genre deconnexion...
-        String instance = profRDV.getInstance();
-        AccesPages accesPages = profRDV.getAccesPages();
-
-        switch (instance) {
-            case "admin":
-                accesPages.accesAccueilAdmin(node);
-                break;
-
-            case "eleve":
-                accesPages.accesAccueilEtudiant(node);
-                break;
-
-            case "prof":
-                accesPages.accesAccueilEnseignant(node);
-                break;
-            default:
-                break;
-        }
+        
     }
-
-    
 
     /**
      * Controle du bouton quitter dans le menu bar principale. 
