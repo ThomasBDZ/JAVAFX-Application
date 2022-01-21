@@ -123,7 +123,7 @@ public class AccesPages {
 
     public void accesDescriptionRDV(RDV rdv){
         String path = "/fxml/UtilisateurDescriptionRDV.fxml";
-        this.descriptionRDV = new DescriptionRDV(profRDV,rdv);
+        descriptionRDV = new DescriptionRDV(profRDV,rdv);
         loadPage(path);
     }
 
