@@ -101,5 +101,5 @@ bin/
 .vscode/
 
 #BDD
-.db
+*.db
 
