@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 
+import eu.telecomnancy.javafx.model.GestionnaireDB.changeStatus;
 import eu.telecomnancy.javafx.model.Creneau;
 import eu.telecomnancy.javafx.model.ProfRDV;
 import eu.telecomnancy.javafx.model.RDV;
@@ -48,12 +49,26 @@ public class Demandes extends Controlleur{
     public void confirmer(){
 
         Label label = listeView.getSelectionModel().getSelectedItem();
+        listeView.getItems().remove(label);
         int idRdv = Integer.parseInt(label.getId());
+        RDV rdv = GetterRdv.getInfoRdv(idRdv);
+        try {
+            changeStatus.rdvReady(rdv);
+        } catch (Exception e) {
+            System.out.println("Demandes --> changeStatus.rdvReady(rdv);");
+            System.out.println(e.getMessage());
+        }
         
-        
+
     }
 
     public void refuser(){
+
+        Label label = listeView.getSelectionModel().getSelectedItem();
+        listeView.getItems().remove(label);
+        int idRdv = Integer.parseInt(label.getId());
+        RDV rdv = GetterRdv.getInfoRdv(idRdv);
+        changeStatus.archiveYes(rdv);;
 
     }
 
