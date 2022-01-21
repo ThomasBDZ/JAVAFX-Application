@@ -138,7 +138,7 @@ public class PriseRDV extends Controlleur implements Initializable {
                 e.printStackTrace();
                 System.out.println("erreur pour get les disponibilités du prof");
             }
-            liste_creneau=this.profRDV.gestionnaireCreneauDispo.pickDispoWeek(date_calendrier,enseignant); //a remplacer par la foction de Thomas getCreneauProf
+            //liste_creneau=this.profRDV.gestionnaireCreneauDispo.pickDispoWeek(date_calendrier,enseignant); //a remplacer par la foction de Thomas getCreneauProf
 
             Calendar c = Calendar.getInstance();
             int dayOfWeek;
@@ -200,7 +200,7 @@ public class PriseRDV extends Controlleur implements Initializable {
             e.printStackTrace();
             System.out.println("erreur pour get les disponibilités du prof");
         }
-        liste_creneau=this.profRDV.gestionnaireCreneauDispo.pickDispoWeek(date_calendrier,enseignant); //a remplacer par la foction de Thomas getCreneauProf
+        //liste_creneau=this.profRDV.gestionnaireCreneauDispo.pickDispoWeek(date_calendrier,enseignant); //a remplacer par la foction de Thomas getCreneauProf
 
         Calendar c = Calendar.getInstance();
         int dayOfWeek;
