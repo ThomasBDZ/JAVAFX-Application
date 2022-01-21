@@ -129,8 +129,7 @@ public class DisponibilityProf {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        java.util.Date dateBis = DateConversion.stringToDate(date);
-        Creneau creneau = new Creneau(indice,dateBis,id_prof);
+        Creneau creneau = new Creneau(indice,DateConversion.stringToDate(date),id_prof );
         return creneau;
     }
 

@@ -32,7 +32,6 @@ public class GestionnaireRDV {
     //     for(RDV rdv : liste){
     //     }
 
-        
 
 
     // }
