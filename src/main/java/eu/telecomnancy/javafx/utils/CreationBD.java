@@ -101,8 +101,8 @@ public class CreationBD {
             statement.executeUpdate("insert into connection values(2,'prof','prof','prof')");
             statement.executeUpdate("insert into connection values(3,'eleve','eleve','eleve')");
             statement.executeUpdate("insert into eleve values(1, 'eleve', 'eleve', 'M', '2022-01-21', '23 rue des tilleuls', 'eleve', '0638294739')");
-            statement.executeUpdate("insert into prof values(10099, 'prof', 'prof', 'M', '2022-01-21', '23 rue des tilleuls', 'prof', '0638294739')");
-            statement.executeUpdate("insert into prof values(1, 'Oster', 'Gerald', 'M', '2022-01-21', '23 rue des collines', 'geroster@gmail.com', '0612343338')");
+            statement.executeUpdate("insert into prof values(1, 'prof', 'prof', 'M', '2022-01-21', '23 rue des tilleuls', 'prof', '0638294739')");
+        //     statement.executeUpdate("insert into prof values(1, 'Oster', 'Gerald', 'M', '2022-01-21', '23 rue des collines', 'geroster@gmail.com', '0612343338')");
             statement.executeUpdate("insert into prof values(2, 'Dada', 'Seb', 'M', '2022-01-21', '23 rue des montagnes', 'sebdada@gmail.com', '0612345678')");
             statement.executeUpdate("insert into prof values(3, 'Suzi', 'Collin', 'F', '2022-01-21', '23 rue des plaines', 'suzicoco@gmail.com', '0671029384')");
             statement.executeUpdate("insert into prof values(4, 'Waye', 'Anthony', 'M', '2022-01-21', '99 av de la Marne', 'wayeanthony@gmail.com', '0629384710')");
@@ -250,7 +250,7 @@ public class CreationBD {
 
 
 
-            statement.executeUpdate("insert into rdv values(1, 1, 1, 1, 1, 0, 'Le lieu est Nancy', 'Rdv reorientation')");
+            statement.executeUpdate("insert into rdv values(1, 1, 1, 1, 0, 0, 'Le lieu est Nancy', 'Rdv reorientation')");
             statement.executeUpdate("insert into rdv values(2, 1, 2, 2, 1, 0, 'Le lieu est Nancy', 'Projet')");
             statement.executeUpdate("insert into rdv values(3, 2, 5, 5, 1, 1, 'Le lieu est Nancy', 'Consolidation')");
             statement.executeUpdate("insert into rdv values(4, 2, 10, 7, 1, 0, 'Le lieu est Nancy', 'Rdv pédagogique')");
@@ -265,7 +265,7 @@ public class CreationBD {
             statement.executeUpdate("insert into rdv values(13, 1, 75, 4, 1, 0, 'Le lieu est Nancy', 'RDV mobilité académique')");
             statement.executeUpdate("insert into rdv values(14, 1, 3, 5, 1, 0, 'Le lieu est Nancy', 'BBQ entre prof chez Suzanne')");
 
-            statement.executeUpdate("insert into rdv values(15, 1, 96, 1, 1, 0, 'Hotel de ville - Nancy', 'Cérémonie des diplômes')");
+            statement.executeUpdate("insert into rdv values(15, 1, 96, 1, 0, 0, 'Hotel de ville - Nancy', 'Cérémonie des diplômes')");
             statement.executeUpdate("insert into rdv values(17, 2, 97, 1, 1, 0, 'Hotel de ville - Nancy', 'Cérémonie des diplômes')");
             statement.executeUpdate("insert into rdv values(18, 3, 98, 1, 1, 0, 'Hotel de ville - Nancy', 'Cérémonie des diplômes')");
             statement.executeUpdate("insert into rdv values(19, 4, 99, 1, 1, 0, 'Hotel de ville - Nancy', 'Cérémonie des diplômes')");
