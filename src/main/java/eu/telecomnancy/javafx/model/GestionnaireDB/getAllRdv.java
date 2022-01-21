@@ -60,6 +60,7 @@ public class getAllRdv {
                 rdv.etudiant = ((getterUser.getInfoEleve(rs.getInt("id_eleve"))));
                 rdv.status = (rs.getBoolean("status"));
                 rdv.creneau = getterCreneau.getCreneau(rs.getInt("id_dispo"));
+                rdv.description = rs.getString("description");
                 ListeRDV.add(rdv);
             }
         } catch (SQLException e) {
@@ -106,6 +107,7 @@ public class getAllRdv {
                 rdv.etudiant = ((getterUser.getInfoEleve(rs.getInt("id_eleve"))));
                 rdv.status = (rs.getBoolean("status"));
                 rdv.creneau = getterCreneau.getCreneau(rs.getInt("id_dispo"));
+                rdv.description = rs.getString("description");
                 ListeRDV.add(rdv);
             }
         } catch (SQLException e) {
