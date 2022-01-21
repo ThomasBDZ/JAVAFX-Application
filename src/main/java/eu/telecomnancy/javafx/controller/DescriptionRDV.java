@@ -16,6 +16,10 @@ public class DescriptionRDV extends Controlleur implements Initializable {
 
     private RDV rdv;
 
+    public DescriptionRDV(ProfRDV profRDV){
+        super(profRDV);
+    }
+
     public DescriptionRDV(ProfRDV profRDV, RDV rdv) {
         super(profRDV);
         this.rdv = rdv;
