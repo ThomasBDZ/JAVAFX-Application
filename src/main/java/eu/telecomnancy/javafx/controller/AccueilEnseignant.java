@@ -160,4 +160,8 @@ public class AccueilEnseignant extends Controlleur implements Initializable {
         }
 
     }
+
+    public void accesDemandes(){
+        profRDV.getAccesPages().accesDemandes();
+    }
 }
