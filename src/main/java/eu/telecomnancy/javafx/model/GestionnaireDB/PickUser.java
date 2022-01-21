@@ -21,10 +21,15 @@ public class PickUser {
 
     public PickUser(){}
 
-    public static int Pick(String mail) throws Exception{
+    public static int Pick(String mail) {
 
         testRegex testeur = new testRegex();
-        testeur.validateMail(mail);
+        try {
+            testeur.validateMail(mail);
+        } catch (InsertionException e1) {
+            // TODO Auto-generated catch block
+            e1.printStackTrace();
+        }
 
         String typeUser = "";
         int id=0;

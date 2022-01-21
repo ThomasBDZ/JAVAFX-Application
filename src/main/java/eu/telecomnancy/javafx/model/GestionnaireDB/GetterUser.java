@@ -90,7 +90,7 @@ public class GetterUser {
         }
         return mdp;
     }
-    public ArrayList<Enseignant> getAllProfs(){
+    public static ArrayList<Enseignant> getAllProfs(){
 
         String sql = "SELECT * FROM prof";
         ArrayList<Enseignant> listeProf = new ArrayList<>();
@@ -117,6 +117,35 @@ public class GetterUser {
             throwables.printStackTrace();
         }
         return listeProf;
+    }
+
+    public static ArrayList<Etudiant> getAllEleves(){
+
+        String sql = "SELECT * FROM eleve";
+        ArrayList<Etudiant> listeEleve = new ArrayList<>();
+
+        try {
+            Connection connection = ConnectionClass.getInstance().getConnection();
+            PreparedStatement statement = connection.prepareStatement(sql);
+            ResultSet rs = statement.executeQuery();
+            while (rs.next()){
+                Etudiant eleve = new Etudiant();
+                eleve.setAddresse(rs.getString("adresse"));
+                eleve.setBirthDate(rs.getString("date"));
+                eleve.setPrenom(rs.getString("prenom"));
+                eleve.setNom(rs.getString("nom"));
+                eleve.setMail(rs.getString("mail"));
+                eleve.setSexe(rs.getString("sexe"));
+                eleve.setTelephone(rs.getString("telephone"));
+                listeEleve.add(eleve);
+            }
+            rs.close();
+            statement.close();
+            connection.close();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return listeEleve;
     }
 
 }
