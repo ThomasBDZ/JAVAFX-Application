@@ -18,6 +18,7 @@ public class ProfRDV {
     public Utilisateur utilisateur; 
     public GestionRDV gestionnaireRDV;
     public GestionnaireCreneauDispo gestionnaireCreneauDispo;
+    public DisponibilityProf disponibilityProf;
     String instance = ""; // Soit "eleve", "prof", "admin", soit ""
     Stage stage;
 
@@ -30,6 +31,7 @@ public class ProfRDV {
         this.gestionnaireCreneauDispo= new GestionnaireCreneauDispo();
         this.gestionnaireRDV = new GestionRDV();
         this.modificationUsers = new ModificationUsers();
+        this.disponibilityProf=new DisponibilityProf();
     }
 
     /**

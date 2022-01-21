@@ -1,3 +1,5 @@
+package eu.telecomnancy.javafx.model.GestionnaireDB;
+
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -9,6 +11,8 @@ import eu.telecomnancy.javafx.controller.Erreurs.ConnexionException;
 import eu.telecomnancy.javafx.controller.Erreurs.InsertionException;
 import eu.telecomnancy.javafx.model.*;
 import eu.telecomnancy.javafx.model.GestionnaireDB.DisponibilityProf;
+import eu.telecomnancy.javafx.model.GestionnaireDB.GetterRdv;
+import eu.telecomnancy.javafx.model.GestionnaireDB.GetterUser;
 import eu.telecomnancy.javafx.model.utils.DateConversion;
 
 import java.sql.*;

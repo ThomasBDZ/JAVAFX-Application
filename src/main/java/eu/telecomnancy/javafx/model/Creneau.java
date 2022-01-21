@@ -5,6 +5,7 @@ import eu.telecomnancy.javafx.model.utils.GlobalVariables;
 import java.util.Date;
 
 import eu.telecomnancy.javafx.model.utils.GlobalVariables;
+import javafx.scene.Node;
 
 
 public class Creneau {
@@ -42,5 +43,12 @@ public class Creneau {
         return heure+"h"+minutes;
     }
 
-
+    public static String getHeureStatic(int indice){
+        int heure= indice/3+ GlobalVariables.HEURE_MIN;
+        int minutes=(indice)%3*20;
+        if(minutes==0){
+            return heure+"h"+minutes+"0";
+        }
+        return heure+"h"+minutes;
+    }
 }
