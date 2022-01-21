@@ -8,7 +8,7 @@ import eu.telecomnancy.javafx.model.Creneau;
 import eu.telecomnancy.javafx.model.ProfRDV;
 import eu.telecomnancy.javafx.model.RDV;
 import eu.telecomnancy.javafx.model.Utilisateur;
-import eu.telecomnancy.javafx.model.GestionnaireDB.ChangeStatus;
+import eu.telecomnancy.javafx.model.GestionnaireDB.changeStatus;
 import eu.telecomnancy.javafx.model.GestionnaireDB.GestionRDV;
 import eu.telecomnancy.javafx.model.GestionnaireDB.GetterRdv;
 import eu.telecomnancy.javafx.model.utils.DateConversion;
@@ -85,7 +85,7 @@ public class Demandes extends Controlleur{
 
             Label label = new Label(date  +" -  Libellé: "+libelle + " Lieu:  " + lieu +  "\n Étudiant:  " +nomEtudiant + " " + prenomEtudiant + " -  mail:  " + mailEtudiant);
     
-            label.setId(Integer.toString(ChangeStatus.getIdRdv(rdv)));
+            label.setId(Integer.toString(changeStatus.getIdRdv(rdv)));
             label.setOnMouseClicked(event ->{
                 profRDV.getAccesPages().accesDescriptionRDV(rdv);
             });
