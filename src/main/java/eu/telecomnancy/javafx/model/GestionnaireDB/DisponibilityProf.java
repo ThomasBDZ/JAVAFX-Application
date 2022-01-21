@@ -12,14 +12,11 @@ public class DisponibilityProf {
     public DisponibilityProf(){}
 
     /**add in availableRDV table prof's free appointments**/
-    public void insertCreneauProf(Enseignant prof, Creneau creneauDebut, Creneau creneauFin){
+    public void insertCreneauProf(Enseignant prof, int heureDebut, int heureFin, String date){
 
         String profName = prof.nom;
         String profPrenom = prof.prenom;
         String profMail = prof.mail;
-        int heureDebut = creneauDebut.indice;
-        int heureFin = creneauFin.indice;
-        String date = DateConversion.dateToString(creneauDebut.date);
         int id_prof = getIdProf(prof);
 
         String preQuerySql = "SELECT * from availableRDV where indice >= "+heureDebut+" and indice <= "+heureFin+" " +

@@ -111,8 +111,10 @@ public class Disponibilites extends Controlleur implements Initializable {
                 Creneau new_creneau = new Creneau(i,day, PickUser.Pick(profRDV.utilisateur.mail));
                 Button button = new Button(new_creneau.getHeure());
                 int indice=i;
+                final int heurefin = i + 1;
+                final int heuredebut = i ;
                 button.setOnAction(event -> {
-                    profRDV.disponibilityProf.insertCreneauProf((Enseignant) profRDV.utilisateur,new_creneau,new_creneau);
+                    profRDV.disponibilityProf.insertCreneauProf((Enseignant) profRDV.utilisateur,heuredebut,heurefin,DateConversion.dateToString(day));
                     Calendar c1 = Calendar.getInstance();
                     c1.setTime(new_creneau.date);
                     int dayOfWeek = c1.get(Calendar.DAY_OF_WEEK);
@@ -220,8 +222,10 @@ public class Disponibilites extends Controlleur implements Initializable {
                 Creneau new_creneau = new Creneau(i,day, PickUser.Pick(profRDV.utilisateur.mail));
                 Button button = new Button(new_creneau.getHeure());
                 int indice=i;
+                final int heurefin = i + 1;
+                final int heuredebut = i ;
                 button.setOnAction(event -> {
-                    profRDV.disponibilityProf.insertCreneauProf((Enseignant) profRDV.utilisateur,new_creneau,new_creneau);
+                    profRDV.disponibilityProf.insertCreneauProf((Enseignant) profRDV.utilisateur,heuredebut,heurefin,DateConversion.dateToString(day));
                     Calendar c1 = Calendar.getInstance();
                     c1.setTime(new_creneau.date);
                     int dayOfWeek = c1.get(Calendar.DAY_OF_WEEK);
