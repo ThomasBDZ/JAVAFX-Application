@@ -14,6 +14,8 @@ import javafx.fxml.Initializable;
 import javafx.geometry.HPos;
 import javafx.geometry.VPos;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.ListView;
@@ -64,39 +66,37 @@ public class PriseRDV extends Controlleur implements Initializable {
     public Button validerEtudiant;
 
     @FXML
-    public ChoiceBox FieldEnseignant;
+    public ChoiceBox fieldEnseignant;
 
     @FXML
-    public TextField FieldEtudiant;
+    public TextField fieldEtudiant;
+
 
     @FXML
-    public Label FieldDate;
+    public Label fieldHeure;
 
     @FXML
-    public Label FieldHeure;
+    public Label labelSemaine;
 
     @FXML
-    public Label LabelSemaine;
-
-    @FXML
-    public Label LabelDate;
+    public Label labelDate;
 
     @FXML
     private GridPane grille;
 
     @FXML
-    public void initialize(URL url, ResourceBundle rb){
+    public void initialize(URL url, ResourceBundle rb) {
 
         /**
          * calendrier
          */
-       prochain.setOnAction(event -> {
+        prochain.setOnAction(event -> {
             grille.getChildren().clear();
             Calendar calendar = Calendar.getInstance();
             calendar.setTime(date_calendrier);
             calendar.add(Calendar.DAY_OF_YEAR, noOfDays);
             date_calendrier = calendar.getTime();
-            update_page();
+          update_page();
         });
 
         dernier.setOnAction(event -> {
@@ -105,7 +105,7 @@ public class PriseRDV extends Controlleur implements Initializable {
             calendar.setTime(date_calendrier);
             calendar.add(Calendar.DAY_OF_YEAR, -noOfDays);
             date_calendrier = calendar.getTime();
-            update_page();
+           update_page();
         });
 
 
@@ -121,14 +121,13 @@ public class PriseRDV extends Controlleur implements Initializable {
             arrayEnseignants_nom.add( e.prenom+" "+e.nom+","+e.mail);
         }
         ObservableList<String> obvs_enseignants = FXCollections.observableArrayList(arrayEnseignants_nom);
-        //FieldEnseignant=new ChoiceBox<String>();
-        FieldEnseignant.setItems(obvs_enseignants);
+        fieldEnseignant.setItems(obvs_enseignants);
 
         /**
          * si on valide
          */
         validerEnseignant.setOnAction(event -> {
-            String enseignant_nom_mail= (String) FieldEnseignant.getValue(); //pas sur si ça marche, à tester, on obtient prenom+nom , mail
+            String enseignant_nom_mail= (String) fieldEnseignant.getValue(); //pas sur si ça marche, à tester, on obtient prenom+nom , mail
             String[] nom_mail = enseignant_nom_mail.split(",");
             int id_prof = PickUser.Pick(nom_mail[1]);
             enseignant= GetterUser.getInfoProf(id_prof);
@@ -145,7 +144,7 @@ public class PriseRDV extends Controlleur implements Initializable {
             int dayOfWeek;
             int weekOfYear;
             weekOfYear=c.get(Calendar.DAY_OF_WEEK);
-            LabelSemaine.setText("Semaine "+weekOfYear); //on set le label Semaine sur le Calendrier
+            labelSemaine.setText("Semaine "+weekOfYear); //on set le label Semaine sur le Calendrier
 
             for(Creneau creneau_i : liste_creneau) {
                 c.setTime(creneau_i.date);
@@ -155,8 +154,8 @@ public class PriseRDV extends Controlleur implements Initializable {
                 b.setText("Rendez-Vous " + creneau.getHeure());
                 b.setOnAction(e-> {
                     creneau=creneau_i;
-                    FieldHeure.setText(creneau.getHeure());  //si on sélectionne un RDV (boutton), on change les labels date et heure
-                    FieldDate.setText(creneau.date.toString()); //à vérifier
+                    fieldHeure.setText(creneau.getHeure());  //si on sélectionne un RDV (boutton), on change les labels date et heure
+                    labelDate.setText(DateConversion.dateToString(creneau.date)); //à vérifier
                 });
                 grille.add(b, dayOfWeek - 2, creneau_i.indice);
                 grille.setHalignment(b, HPos.CENTER); // To align horizontally in the cell
@@ -170,8 +169,9 @@ public class PriseRDV extends Controlleur implements Initializable {
          * etudiant, text field (l'étudiant insère son mail)
          */
         validerEtudiant.setOnAction(event -> {
-            String etudiant_mail=FieldEtudiant.getText();
-            //etudiant=getUser(etudiant_mail);
+            String etudiant_mail=fieldEtudiant.getText();
+            int id_etudiant=PickUser.Pick(etudiant_mail);
+            etudiant=GetterUser.getInfoEleve(id_etudiant);
 
         });
 
@@ -179,8 +179,8 @@ public class PriseRDV extends Controlleur implements Initializable {
         /**
          * valider
          */
-       valider.setOnAction(event -> {
-           RDV rdv=new RDV(enseignant,etudiant,creneau);
+        valider.setOnAction(event -> {
+            RDV rdv=new RDV(enseignant,etudiant,creneau);
             profRDV.getAccesPages().accesRecapRDV(rdv);
         });
 
@@ -188,9 +188,8 @@ public class PriseRDV extends Controlleur implements Initializable {
 
 
     }
-
     private void update_page() {
-        String enseignant_nom_mail= (String) FieldEnseignant.getValue(); //pas sur si ça marche, à tester, on obtient prenom+nom , mail
+        String enseignant_nom_mail= (String) fieldEnseignant.getValue(); //pas sur si ça marche, à tester, on obtient prenom+nom , mail
         String[] nom_mail = enseignant_nom_mail.split(",");
         int id_prof = PickUser.Pick(nom_mail[1]);
         enseignant= GetterUser.getInfoProf(id_prof);
@@ -207,7 +206,7 @@ public class PriseRDV extends Controlleur implements Initializable {
         int dayOfWeek;
         int weekOfYear;
         weekOfYear=c.get(Calendar.DAY_OF_WEEK);
-        LabelSemaine.setText("Semaine "+weekOfYear); //on set le label Semaine sur le Calendrier
+        labelSemaine.setText("Semaine "+weekOfYear); //on set le label Semaine sur le Calendrier
 
         for(Creneau creneau_i : liste_creneau) {
             c.setTime(creneau_i.date);
@@ -217,14 +216,16 @@ public class PriseRDV extends Controlleur implements Initializable {
             b.setText("Rendez-Vous " + creneau.getHeure());
             b.setOnAction(e-> {
                 creneau=creneau_i;
-                FieldHeure.setText(creneau.getHeure());  //si on sélectionne un RDV (boutton), on change les labels date et heure
-                FieldDate.setText(creneau.date.toString()); //à vérifier
+                fieldHeure.setText(creneau.getHeure());  //si on sélectionne un RDV (boutton), on change les labels date et heure
+                labelDate.setText(DateConversion.dateToString(creneau.date));
             });
             grille.add(b, dayOfWeek - 2, creneau_i.indice);
             grille.setHalignment(b, HPos.CENTER); // To align horizontally in the cell
             grille.setValignment(b, VPos.CENTER); // To align vertically in the cell
 
         }}
+
+
 
 
 
