@@ -78,6 +78,7 @@ public class CreationBD {
                     "  archive BOOLEAN NOT NULL,\n" +
                     "  lieu TEXT NOT NULL,\n" +
                     "  libelle TEXT NOT NULL,\n" +
+                    "  description TEXT,\n" +
                     "  PRIMARY KEY (id),\n" +
                     "  FOREIGN KEY (id_prof) REFERENCES prof(id),\n" +
                     "  FOREIGN KEY (id_eleve) REFERENCES eleve(id),\n" +
@@ -250,44 +251,44 @@ public class CreationBD {
 
 
 
-            statement.executeUpdate("insert into rdv values(1, 1, 1, 1, 0, 0, 'Le lieu est Nancy', 'Rdv reorientation')");
-            statement.executeUpdate("insert into rdv values(2, 1, 2, 2, 1, 0, 'Le rdv se passe au CNRS', 'Projet')");
-            statement.executeUpdate("insert into rdv values(3, 2, 5, 5, 1, 1, 'Viller', 'Consolidation')");
-            statement.executeUpdate("insert into rdv values(4, 2, 10, 7, 0, 1, 'Telecom Nancy', 'Rdv pédagogique')");
-            statement.executeUpdate("insert into rdv values(5, 2, 15, 1, 0, 1, 'Salle gazeau', 'Conseil des élèves')");
-            statement.executeUpdate("insert into rdv values(6, 2, 23, 1, 1, 0, 'Salle 0.15', 'Rencontre parent')");
-            statement.executeUpdate("insert into rdv values(7, 2, 37, 2, 1, 0, 'Telecom Nancy', 'Journée du Numérique')");
-            statement.executeUpdate("insert into rdv values(8, 2, 45, 10, 1, 1, 'Mairie', 'Rdv business')");
-            statement.executeUpdate("insert into rdv values(9, 2, 50, 9, 0, 0, 'Salle 1.18', 'Avant projet')");
-            statement.executeUpdate("insert into rdv values(10, 1, 58, 8, 1, 0, 'Telecom Nancy', 'Préparation exam')");
-            statement.executeUpdate("insert into rdv values(11, 1, 69, 1, 1, 0, 'Le lieu est Nancy', 'Examen')");
-            statement.executeUpdate("insert into rdv values(12, 1, 70, 3, 0, 0, 'Bureau Festor', 'Réunion pédagogique')");
-            statement.executeUpdate("insert into rdv values(13, 1, 75, 4, 1, 0, 'All around the world (Bureau Vanessa Nau)', 'RDV mobilité académique')");
-            statement.executeUpdate("insert into rdv values(14, 1, 3, 5, 0, 1, 'Chez Gerald', 'BBQ entre prof chez Suzanne')");
+            statement.executeUpdate("insert into rdv values(1, 1, 1, 1, 0, 0, 'Le lieu est Nancy', 'Rdv reorientation', '')");
+            statement.executeUpdate("insert into rdv values(2, 1, 2, 2, 1, 0, 'Le rdv se passe au CNRS', 'Projet', '')");
+            statement.executeUpdate("insert into rdv values(3, 2, 5, 5, 1, 1, 'Viller', 'Consolidation', '')");
+            statement.executeUpdate("insert into rdv values(4, 2, 10, 7, 0, 1, 'Telecom Nancy', 'Rdv pédagogique', '')");
+            statement.executeUpdate("insert into rdv values(5, 2, 15, 1, 0, 1, 'Salle gazeau', 'Conseil des élèves', '')");
+            statement.executeUpdate("insert into rdv values(6, 2, 23, 1, 1, 0, 'Salle 0.15', 'Rencontre parent', '')");
+            statement.executeUpdate("insert into rdv values(7, 2, 37, 2, 1, 0, 'Telecom Nancy', 'Journée du Numérique', '')");
+            statement.executeUpdate("insert into rdv values(8, 2, 45, 10, 1, 1, 'Mairie', 'Rdv business', '')");
+            statement.executeUpdate("insert into rdv values(9, 2, 50, 9, 0, 0, 'Salle 1.18', 'Avant projet', '')");
+            statement.executeUpdate("insert into rdv values(10, 1, 58, 8, 1, 0, 'Telecom Nancy', 'Préparation exam', '')");
+            statement.executeUpdate("insert into rdv values(11, 1, 69, 1, 1, 0, 'Le lieu est Nancy', 'Examen', '')");
+            statement.executeUpdate("insert into rdv values(12, 1, 70, 3, 0, 0, 'Bureau Festor', 'Réunion pédagogique', '')");
+            statement.executeUpdate("insert into rdv values(13, 1, 75, 4, 1, 0, 'All around the world (Bureau Vanessa Nau)', 'RDV mobilité académique', '')");
+            statement.executeUpdate("insert into rdv values(14, 1, 3, 5, 0, 1, 'Chez Gerald', 'BBQ entre prof chez Suzanne', '')");
 
-            statement.executeUpdate("insert into rdv values(15, 1, 96, 1, 0, 0, 'Hotel de ville - Nancy', 'Cérémonie des diplômes')");
-            statement.executeUpdate("insert into rdv values(17, 2, 97, 1, 1, 0, 'Hotel de ville - Nancy', 'Cérémonie des diplômes')");
-            statement.executeUpdate("insert into rdv values(18, 3, 98, 1, 1, 0, 'Hotel de ville - Nancy', 'Cérémonie des diplômes')");
-            statement.executeUpdate("insert into rdv values(19, 4, 99, 1, 1, 0, 'Hotel de ville - Nancy', 'Cérémonie des diplômes')");
-            statement.executeUpdate("insert into rdv values(20, 5, 100, 1, 1, 0, 'Hotel de ville - Nancy', 'Cérémonie des diplômes')");
-            statement.executeUpdate("insert into rdv values(21, 6, 101, 1, 1, 0, 'Hotel de ville - Nancy', 'Cérémonie des diplômes')");
-            statement.executeUpdate("insert into rdv values(22, 7, 102, 1, 1, 0, 'Hotel de ville - Nancy', 'Cérémonie des diplômes')");
-            statement.executeUpdate("insert into rdv values(23, 8, 103, 1, 1, 0, 'Hotel de ville - Nancy', 'Cérémonie des diplômes')");
-            statement.executeUpdate("insert into rdv values(24, 9, 104, 1, 1, 0, 'Hotel de ville - Nancy', 'Cérémonie des diplômes')");
-            statement.executeUpdate("insert into rdv values(25, 10, 105, 1, 1, 0, 'Hotel de ville - Nancy', 'Cérémonie des diplômes')");
+            statement.executeUpdate("insert into rdv values(15, 1, 96, 1, 0, 0, 'Hotel de ville - Nancy', 'Cérémonie des diplômes', '')");
+            statement.executeUpdate("insert into rdv values(17, 2, 97, 1, 1, 0, 'Hotel de ville - Nancy', 'Cérémonie des diplômes', '')");
+            statement.executeUpdate("insert into rdv values(18, 3, 98, 1, 1, 0, 'Hotel de ville - Nancy', 'Cérémonie des diplômes', '')");
+            statement.executeUpdate("insert into rdv values(19, 4, 99, 1, 1, 0, 'Hotel de ville - Nancy', 'Cérémonie des diplômes', '')");
+            statement.executeUpdate("insert into rdv values(20, 5, 100, 1, 1, 0, 'Hotel de ville - Nancy', 'Cérémonie des diplômes', '')");
+            statement.executeUpdate("insert into rdv values(21, 6, 101, 1, 1, 0, 'Hotel de ville - Nancy', 'Cérémonie des diplômes', '')");
+            statement.executeUpdate("insert into rdv values(22, 7, 102, 1, 1, 0, 'Hotel de ville - Nancy', 'Cérémonie des diplômes', '')");
+            statement.executeUpdate("insert into rdv values(23, 8, 103, 1, 1, 0, 'Hotel de ville - Nancy', 'Cérémonie des diplômes', '')");
+            statement.executeUpdate("insert into rdv values(24, 9, 104, 1, 1, 0, 'Hotel de ville - Nancy', 'Cérémonie des diplômes', '')");
+            statement.executeUpdate("insert into rdv values(25, 10, 105, 1, 1, 0, 'Hotel de ville - Nancy', 'Cérémonie des diplômes', '')");
 
 
-            statement.executeUpdate("insert into rdv values(27, 11, 85, 1, 1, 0, 'Hotel de ville - Nancy', 'Cérémonie des diplômes')");
-            statement.executeUpdate("insert into rdv values(28, 11, 86, 2, 1, 0, 'Hotel de ville - Nancy', 'Cérémonie des diplômes')");
-            statement.executeUpdate("insert into rdv values(29, 11, 87, 3, 1, 0, 'Hotel de ville - Nancy', 'Cérémonie des diplômes')");
-            statement.executeUpdate("insert into rdv values(30, 11, 88, 4, 1, 0, 'Hotel de ville - Nancy', 'Cérémonie des diplômes')");
-            statement.executeUpdate("insert into rdv values(31, 11, 89, 5, 1, 0, 'Hotel de ville - Nancy', 'Cérémonie des diplômes')");
-            statement.executeUpdate("insert into rdv values(32, 11, 90, 6, 1, 0, 'Hotel de ville - Nancy', 'Cérémonie des diplômes')");
-            statement.executeUpdate("insert into rdv values(33, 11, 91, 7, 1, 0, 'Hotel de ville - Nancy', 'Cérémonie des diplômes')");
-            statement.executeUpdate("insert into rdv values(34, 11, 92, 8, 1, 0, 'Hotel de ville - Nancy', 'Cérémonie des diplômes')");
-            statement.executeUpdate("insert into rdv values(35, 11, 93, 9, 1, 0, 'Hotel de ville - Nancy', 'Cérémonie des diplômes')");
-            statement.executeUpdate("insert into rdv values(36, 11, 94, 10, 1, 0, 'Hotel de ville - Nancy', 'Cérémonie des diplômes')");
-            statement.executeUpdate("insert into rdv values(37, 11, 95, 11, 1, 0, 'Hotel de ville - Nancy', 'Cérémonie des diplômes')");
+            statement.executeUpdate("insert into rdv values(27, 11, 85, 1, 1, 0, 'Hotel de ville - Nancy', 'Cérémonie des diplômes', '')");
+            statement.executeUpdate("insert into rdv values(28, 11, 86, 2, 1, 0, 'Hotel de ville - Nancy', 'Cérémonie des diplômes', '')");
+            statement.executeUpdate("insert into rdv values(29, 11, 87, 3, 1, 0, 'Hotel de ville - Nancy', 'Cérémonie des diplômes', '')");
+            statement.executeUpdate("insert into rdv values(30, 11, 88, 4, 1, 0, 'Hotel de ville - Nancy', 'Cérémonie des diplômes', '')");
+            statement.executeUpdate("insert into rdv values(31, 11, 89, 5, 1, 0, 'Hotel de ville - Nancy', 'Cérémonie des diplômes', '')");
+            statement.executeUpdate("insert into rdv values(32, 11, 90, 6, 1, 0, 'Hotel de ville - Nancy', 'Cérémonie des diplômes', '')");
+            statement.executeUpdate("insert into rdv values(33, 11, 91, 7, 1, 0, 'Hotel de ville - Nancy', 'Cérémonie des diplômes', '')");
+            statement.executeUpdate("insert into rdv values(34, 11, 92, 8, 1, 0, 'Hotel de ville - Nancy', 'Cérémonie des diplômes', '')");
+            statement.executeUpdate("insert into rdv values(35, 11, 93, 9, 1, 0, 'Hotel de ville - Nancy', 'Cérémonie des diplômes', '')");
+            statement.executeUpdate("insert into rdv values(36, 11, 94, 10, 1, 0, 'Hotel de ville - Nancy', 'Cérémonie des diplômes', '')");
+            statement.executeUpdate("insert into rdv values(37, 11, 95, 11, 1, 0, 'Hotel de ville - Nancy', 'Cérémonie des diplômes', '')");
 
 
             ResultSet rs = statement.executeQuery("select * from admin");
