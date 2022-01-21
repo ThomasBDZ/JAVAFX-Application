@@ -122,8 +122,8 @@ public class AccesPages {
     }
 
     public void accesDescriptionRDV(RDV rdv){
-        this.descriptionRDV = new DescriptionRDV(profRDV,rdv);
         String path = "/fxml/UtilisateurDescriptionRDV.fxml";
+        this.descriptionRDV = new DescriptionRDV(profRDV,rdv);
         loadPage(path);
     }
 

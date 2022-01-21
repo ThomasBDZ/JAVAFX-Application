@@ -93,6 +93,7 @@ public class AccueilEtudiant extends Controlleur implements Initializable {
 
         Historique.setOnAction(event -> {
             profRDV.getAccesPages().accesHistoriqueRDV();
+
         });
 
 
