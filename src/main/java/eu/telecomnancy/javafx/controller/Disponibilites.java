@@ -80,6 +80,8 @@ public class Disponibilites extends Controlleur implements Initializable {
             update_page();
         });
 
+        valider.setOnAction(event -> profRDV.getAccesPages().accesAccueilEnseignant());
+
         setDays();
         ArrayList<Date> list_dates = new ArrayList<>();
 
@@ -108,12 +110,21 @@ public class Disponibilites extends Controlleur implements Initializable {
             for(int i=1;i<36;i++){
                 Creneau new_creneau = new Creneau(i,day, PickUser.Pick(profRDV.utilisateur.mail));
                 Button button = new Button(new_creneau.getHeure());
+                int indice=i;
+                final int heurefin = i + 1;
+                final int heuredebut = i ;
                 button.setOnAction(event -> {
-                    profRDV.disponibilityProf.insertCreneauProf((Enseignant) profRDV.utilisateur,new_creneau,new_creneau);
+                    profRDV.disponibilityProf.insertCreneauProf((Enseignant) profRDV.utilisateur,heuredebut,heurefin,DateConversion.dateToString(day));
                     Calendar c1 = Calendar.getInstance();
                     c1.setTime(new_creneau.date);
                     int dayOfWeek = c1.get(Calendar.DAY_OF_WEEK);
                     removeNodeByRowColumnIndex(new_creneau.indice,dayOfWeek - 2,grille);
+                    Label l=new Label("New Dispo");
+                    grille.add(l, dayOfWeek - 2, indice);
+                    grille.setHalignment(l, HPos.CENTER);
+                    grille.setValignment(l, VPos.CENTER);
+
+
                 });
                 Calendar c1 = Calendar.getInstance();
                 c1.setTime(new_creneau.date);
@@ -202,26 +213,38 @@ public class Disponibilites extends Controlleur implements Initializable {
         Date thursday=c.getTime();
         list_dates.add(thursday);
 
-        c.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
+        c.set(Calendar.DAY_OF_WEEK, Calendar.FRIDAY);
         Date friday=c.getTime();
         list_dates.add(friday);
+
         for(Date day : list_dates){
             for(int i=1;i<36;i++){
-                Creneau new_creneau = new Creneau(i,monday, PickUser.Pick(profRDV.utilisateur.mail));
+                Creneau new_creneau = new Creneau(i,day, PickUser.Pick(profRDV.utilisateur.mail));
                 Button button = new Button(new_creneau.getHeure());
+                int indice=i;
+                final int heurefin = i + 1;
+                final int heuredebut = i ;
                 button.setOnAction(event -> {
-                    profRDV.disponibilityProf.insertCreneauProf((Enseignant) profRDV.utilisateur,new_creneau,new_creneau);
+                    profRDV.disponibilityProf.insertCreneauProf((Enseignant) profRDV.utilisateur,heuredebut,heurefin,DateConversion.dateToString(day));
                     Calendar c1 = Calendar.getInstance();
                     c1.setTime(new_creneau.date);
                     int dayOfWeek = c1.get(Calendar.DAY_OF_WEEK);
                     removeNodeByRowColumnIndex(new_creneau.indice,dayOfWeek - 2,grille);
+                    Label l=new Label("New Dispo");
+                    grille.add(l, dayOfWeek - 2, indice);
+                    grille.setHalignment(l, HPos.CENTER);
+                    grille.setValignment(l, VPos.CENTER);
+
+
                 });
-                grille.add(button , 0, i);
+                Calendar c1 = Calendar.getInstance();
+                c1.setTime(new_creneau.date);
+                int dayOfWeek = c1.get(Calendar.DAY_OF_WEEK);
+                grille.add(button , dayOfWeek - 2, i);
                 grille.setHalignment(button, HPos.CENTER);
                 grille.setValignment(button, VPos.CENTER);
             }
         }
-
 
         try {
             liste_rdv= GetterRdv.getRDVWeek(this.profRDV.utilisateur, DateConversion.dateToString(date));
@@ -238,6 +261,9 @@ public class Disponibilites extends Controlleur implements Initializable {
         }
 
         int dayOfWeek;
+
+
+
 
 
         //remplir RDV
@@ -263,7 +289,7 @@ public class Disponibilites extends Controlleur implements Initializable {
             dayOfWeek = c.get(Calendar.DAY_OF_WEEK);
             //int dayOfWeek = c.get(Calendar.DAY_OF_WEEK); //day of the week (1=sunday)
             Label l = new Label();
-            l.setText("Déjà dispo " + creneau.getHeure());
+            l.setText("Deja " + creneau.getHeure());
             //System.out.println("dayOfWeek; "+c.get(Calendar.DAY_OF_WEEK)+"indice: "+rdv.creneau.indice+"\n");
 
             removeNodeByRowColumnIndex(creneau.indice,dayOfWeek - 2,grille);
