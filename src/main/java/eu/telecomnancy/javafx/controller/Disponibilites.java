@@ -100,12 +100,13 @@ public class Disponibilites extends Controlleur implements Initializable {
         Date thursday=c.getTime();
         list_dates.add(thursday);
 
-        c.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
+        c.set(Calendar.DAY_OF_WEEK, Calendar.FRIDAY);
         Date friday=c.getTime();
         list_dates.add(friday);
+
         for(Date day : list_dates){
             for(int i=1;i<36;i++){
-                Creneau new_creneau = new Creneau(i,monday, PickUser.Pick(profRDV.utilisateur.mail));
+                Creneau new_creneau = new Creneau(i,day, PickUser.Pick(profRDV.utilisateur.mail));
                 Button button = new Button(new_creneau.getHeure());
                 button.setOnAction(event -> {
                     profRDV.disponibilityProf.insertCreneauProf((Enseignant) profRDV.utilisateur,new_creneau,new_creneau);
@@ -114,7 +115,10 @@ public class Disponibilites extends Controlleur implements Initializable {
                     int dayOfWeek = c1.get(Calendar.DAY_OF_WEEK);
                     removeNodeByRowColumnIndex(new_creneau.indice,dayOfWeek - 2,grille);
                 });
-                grille.add(button , 0, i);
+                Calendar c1 = Calendar.getInstance();
+                c1.setTime(new_creneau.date);
+                int dayOfWeek = c1.get(Calendar.DAY_OF_WEEK);
+                grille.add(button , dayOfWeek - 2, i);
                 grille.setHalignment(button, HPos.CENTER);
                 grille.setValignment(button, VPos.CENTER);
             }
