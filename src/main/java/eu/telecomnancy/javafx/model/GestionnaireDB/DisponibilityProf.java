@@ -32,7 +32,6 @@ public class DisponibilityProf {
             ResultSet rs = statement2.executeQuery(preQuerySql);
             if(!rs.next()){ // Si les créneaux ne sont pas déjà présents
                 rs.close();
-                System.out.println("I'm in");
                 PreparedStatement statement = connection.prepareStatement(sql);
                 for (int indice = heureDebut;indice<heureFin;indice++){
                     statement.setInt(1,id_prof);

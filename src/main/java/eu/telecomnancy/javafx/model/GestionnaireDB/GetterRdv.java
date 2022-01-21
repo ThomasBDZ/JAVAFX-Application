@@ -16,39 +16,46 @@ public class GetterRdv {
 
     public GetterRdv(){}
 
-    /** Renvoie la liste des rdv pour le user pour la semaine de la date en entrée - Format de la date : yyyy-MM-dd **/
-    public static ArrayList<RDV> getRDVWeek(Utilisateur user, String date) throws SQLException {
+    /** Renvoie la liste des rdv pour le user pour la semaine de la date en entrée**/
+    public ArrayList<RDV> getRDVWeek( Utilisateur user, String date) throws SQLException {
 
         int id = getId(user);
-        DisponibilityProf getterCreneau = new DisponibilityProf();
 
         String typeId;
-        if (user instanceof Etudiant){
+        if (user.etudiant){
             typeId="id_eleve";
         } else {
             typeId="id_prof";
         }
-        String[] dateElement = date.split("-");
-        int week = DateConversion.getWeek(date);
-        System.out.println(week);
+        int week = getWeek(date);
 
         ArrayList<RDV> ListeRDV = new ArrayList<>();
-        String sql = "SELECT * FROM rdv WHERE "+typeId+" = '"+id+"' AND status = 1 "+
-                "AND (4*(CAST(SUBSTR(date,6,2) as decimal)-1)+1+CAST(SUBSTR(date,9,2) as decimal)/7) == "+week+";";
+
+
+
+
+        String sql = "SELECT * FROM rdv inner join availableRDV on rdv.id_prof = availableRDV.id_prof WHERE rdv."+typeId+" = '"+id+"' AND status = 1 "+
+                "AND ((4*(CAST(SUBSTR(availableRDV.date,6,2) as decimal)-1)+1+CAST(SUBSTR(availableRDV.date,9,2) as decimal)/7) == "+week+")";
+
         try {
             Connection connection = ConnectionClass.getInstance().getConnection();
             Statement statement = connection.createStatement();
             ResultSet rs = statement.executeQuery(sql);
             while (rs.next()){
+                System.out.println("l79");
                 RDV rdv = new RDV();
-                rdv.archive=(rs.getBoolean("archive"));
-                rdv.libelle=(rs.getString("libelle"));
-                rdv.lieu=(rs.getString("lieu"));
+                rdv.setArchive(rs.getBoolean("archive"));
+                rdv.setLibelle(rs.getString("libelle"));
+                rdv.setLieu(rs.getString("lieu"));
+                System.out.println("l82");
                 // rdv.creneau.id_prof = rs.getInt("id_prof"); NullPointerException
-                rdv.enseignant=(GetterUser.getInfoProf(rs.getInt("id_prof")));
-                rdv.creneau = getterCreneau.getCreneau(rs.getInt("id_dispo"));
-                rdv.etudiant = ((GetterUser.getInfoEleve(rs.getInt("id_eleve"))));
+
+                System.out.println("l85");
+                rdv.setEnseignant(getInfoProf(rs.getInt("id_prof")));
+                //rdv.setEtudiants((getInfoEleve(rs.getInt("id_eleve")))); NullPointerException
+                System.out.println("l86");
                 ListeRDV.add(rdv);
+                System.out.println("l87");
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -56,6 +63,7 @@ public class GetterRdv {
         System.out.println(ListeRDV.size());
         return ListeRDV;
     }
+
 
     public static int getId(Utilisateur user){
 
