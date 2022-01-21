@@ -15,30 +15,36 @@
             <HBox alignment="CENTER" prefHeight="35.0" prefWidth="600.0" spacing="5.0">
                <children>
                   <Label text="Rendez-Vous le" />
-                  <Label text="date" textFill="#ff004d" />
+                  <Label fx:id="labelDate" text="date" textFill="#ff004d" />
                   <Label text="à" />
-                  <Label text="heure" textFill="#fa0606" />
+                  <Label fx:id="labelHeure" text="heure" textFill="#fa0606" />
                   <Label text="avec" />
-                  <Label text="Nom Enseignant" textFill="RED" />
+                  <Label fx:id="labelEnseignant" text="Nom Enseignant" textFill="RED" />
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="20.0" prefWidth="200.0" spacing="20.0">
                <children>
                   <Label text="Lieu du rendez-vous :" />
-                  <Label alignment="CENTER" text="lieu" textFill="#f50303" />
+                  <Label fx:id="labelLieu" alignment="CENTER" text="lieu" textFill="#f50303" />
                </children>
             </HBox>
-            <Label text="Participants :" />
-            <ListView prefHeight="100.0" prefWidth="200.0">
-               <VBox.margin>
-                  <Insets left="120.0" right="120.0" />
-               </VBox.margin>
-            </ListView>
+            <HBox alignment="CENTER" layoutX="10.0" layoutY="160.0" prefHeight="20.0" prefWidth="200.0" spacing="20.0">
+               <children>
+                  <Label text="Libellé :" />
+                  <Label fx:id="labelLibelle" alignment="CENTER" text="libelle" textFill="#f50303" />
+               </children>
+            </HBox>
             <Label text="Description :" />
-            <TextField editable="false" prefHeight="90.0">
+            <TextField fx:id="fieldDescription" editable="false" prefHeight="90.0">
                <VBox.margin>
                   <Insets left="120.0" right="120.0" />
                </VBox.margin></TextField>
+            <HBox alignment="CENTER" layoutX="10.0" layoutY="175.0" prefHeight="20.0" prefWidth="200.0" spacing="20.0">
+               <children>
+                  <Label text="Statut : " />
+                  <Label fx:id="labelStatut" alignment="CENTER" text="Confirmé / Refusé" textFill="#f50303" />
+               </children>
+            </HBox>
          </children></VBox>
    </center>
 </BorderPane>
