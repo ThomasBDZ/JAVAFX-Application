@@ -90,7 +90,7 @@ public class AccesPages {
         } catch (Exception e) {
             System.out.println("exception chargement page " + path + " set e.printStackTrace in AccesPages to see more");
             System.out.println(e.getMessage());
-            // e.printStackTrace();
+            e.printStackTrace();
         }
 
     }
