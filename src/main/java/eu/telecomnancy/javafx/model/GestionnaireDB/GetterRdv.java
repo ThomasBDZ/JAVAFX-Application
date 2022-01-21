@@ -20,6 +20,7 @@ public class GetterRdv {
     public static ArrayList<RDV> getRDVWeek(Utilisateur user, String date) throws SQLException {
 
         int id = getId(user);
+        DisponibilityProf getterCreneau = new DisponibilityProf();
 
         String typeId;
         if (user instanceof Etudiant){
@@ -45,7 +46,8 @@ public class GetterRdv {
                 rdv.lieu=(rs.getString("lieu"));
                 // rdv.creneau.id_prof = rs.getInt("id_prof"); NullPointerException
                 rdv.enseignant=(GetterUser.getInfoProf(rs.getInt("id_prof")));
-                //rdv.setEtudiants((getInfoEleve(rs.getInt("id_eleve")))); NullPointerException
+                rdv.creneau = getterCreneau.getCreneau(rs.getInt("id_dispo"));
+                rdv.etudiant = ((GetterUser.getInfoEleve(rs.getInt("id_eleve"))));
                 ListeRDV.add(rdv);
             }
         } catch (SQLException e) {
