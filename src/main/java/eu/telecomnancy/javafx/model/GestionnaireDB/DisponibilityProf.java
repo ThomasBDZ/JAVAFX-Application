@@ -20,30 +20,37 @@ public class DisponibilityProf {
         int heureDebut = creneauDebut.indice;
         int heureFin = creneauFin.indice;
         String date = creneauDebut.date;
-
-        String sql = "INSERT INTO availableRDV ( id_prof, indice, date) values (?,?,?);";
-
         int id_prof = getIdProf(prof);
+
+        String preQuerySql = "SELECT * from availableRDV where indice >= "+heureDebut+" and indice <= "+heureFin+" " +
+                "and (CAST(SUBSTR(date,6,2) as decimal)) == "+DateConversion.getMonth(date)+" and (CAST(SUBSTR(date,9,2) as decimal)) == "+DateConversion.getDay(date)+";";
+        String sql = "INSERT INTO availableRDV ( id_prof, indice, date) values (?,?,?);";
 
         try {
             Connection connection = ConnectionClass.getInstance().getConnection();
-            PreparedStatement statement = connection.prepareStatement(sql);
-
-            for (int indice = heureDebut+1;indice<heureFin+1;indice++){
-                statement.setInt(1,id_prof);
-                statement.setInt(2, indice);
-                statement.setString(3, date);
-                statement.addBatch();
-                if (indice == heureFin){
-                    statement.executeBatch();
+            Statement statement2 = connection.createStatement();
+            ResultSet rs = statement2.executeQuery(preQuerySql);
+            if(!rs.next()){ // Si les créneaux ne sont pas déjà présents
+                rs.close();
+                System.out.println("I'm in");
+                PreparedStatement statement = connection.prepareStatement(sql);
+                for (int indice = heureDebut;indice<heureFin;indice++){
+                    statement.setInt(1,id_prof);
+                    statement.setInt(2, indice);
+                    statement.setString(3, date);
+                    statement.addBatch();
+                    if (indice == heureFin-1){
+                        statement.executeBatch();
+                    }
                 }
+                statement.close();
+                connection.close();
             }
-            statement.close();
-            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
+
 
     public ArrayList<Creneau> getProfCreneau(String mailProf, String dateCreneau) throws InsertionException {
 

@@ -46,6 +46,19 @@ public class DateConversion {
         int moisInt = Integer.parseInt(mois);
         return 4*(moisInt-1)+1+(jourInt)/7;
     }
+    public static int getMonth(String date){
+        String[] dateElement = date.split("-");
+        String mois = dateElement[1];
+        int moisInt = Integer.parseInt(mois);
+        return moisInt;
+    }
+
+    public static int getDay(String date){
+        String[] dateElement = date.split("-");
+        String jour = dateElement[2];
+        int dayInt = Integer.parseInt(jour);
+        return dayInt;
+    }
 }
 
 
