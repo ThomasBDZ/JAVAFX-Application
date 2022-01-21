@@ -95,7 +95,7 @@ public class PriseRDV extends Controlleur implements Initializable {
             calendar.setTime(date_calendrier);
             calendar.add(Calendar.DAY_OF_YEAR, noOfDays);
             date_calendrier = calendar.getTime();
-          update_page();
+            update_page();
         });
 
         dernier.setOnAction(event -> {
@@ -104,7 +104,7 @@ public class PriseRDV extends Controlleur implements Initializable {
             calendar.setTime(date_calendrier);
             calendar.add(Calendar.DAY_OF_YEAR, -noOfDays);
             date_calendrier = calendar.getTime();
-           update_page();
+            update_page();
         });
 
 
@@ -191,6 +191,7 @@ public class PriseRDV extends Controlleur implements Initializable {
     }
     private void update_page() {
         grille.getChildren().clear();
+        setDays();
         ProfLabel label = fieldEnseignant.getValue();
         enseignant = label.enseignant;
         String date_string= DateConversion.dateToString(date_calendrier);
@@ -204,20 +205,20 @@ public class PriseRDV extends Controlleur implements Initializable {
 
         Calendar c = Calendar.getInstance();
         int dayOfWeek;
-        int weekOfYear;
-        weekOfYear=c.get(Calendar.DAY_OF_WEEK);
-        labelSemaine.setText("Semaine "+weekOfYear); //on set le label Semaine sur le Calendrier
+           /* int weekOfYear;
+            weekOfYear=c.get(Calendar.DAY_OF_WEEK);
+            labelSemaine.setText("Semaine "+weekOfYear); //on set le label Semaine sur le Calendrier*/
 
         for(Creneau creneau_i : liste_creneau) {
             c.setTime(creneau_i.date);
             dayOfWeek = c.get(Calendar.DAY_OF_WEEK);
             //int dayOfWeek = c.get(Calendar.DAY_OF_WEEK); //day of the week (1=sunday)
-            Button b = new javafx.scene.control.Button();
-            b.setText("Rendez-Vous " + creneau.getHeure());
+            Button b = new Button("Rendez-Vous " + creneau_i.getHeure());
+            //b.setText();
             b.setOnAction(e-> {
                 creneau=creneau_i;
                 fieldHeure.setText(creneau.getHeure());  //si on sélectionne un RDV (boutton), on change les labels date et heure
-                labelDate.setText(DateConversion.dateToString(creneau.date));
+                labelDate.setText(DateConversion.dateToString(creneau.date)); //à vérifier
             });
             grille.add(b, dayOfWeek - 2, creneau_i.indice);
             grille.setHalignment(b, HPos.CENTER); // To align horizontally in the cell
