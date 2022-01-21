@@ -24,16 +24,16 @@ public class GestionnaireRDV {
     }
 
 
-    /**
-     * Retourn une ArrayList de RDV ordonnée temporellement. (plus récent au moins récent)
-     */
-    public ArrayList<RDV> ordonneListeRdv(ArrayList<RDV> liste){
-        ArrayList<RDV> rdvOrdonnée = new  ArrayList<RDV>();
-        for(RDV rdv : liste){
-        }
+    // /**
+    //  * Retourn une ArrayList de RDV ordonnée temporellement. (plus récent au moins récent)
+    //  */
+    // public ArrayList<RDV> ordonneListeRdv(ArrayList<RDV> liste){
+    //     ArrayList<RDV> rdvOrdonnée = new  ArrayList<RDV>();
+    //     for(RDV rdv : liste){
+    //     }
 
         
 
 
-    }
+    // }
 }
