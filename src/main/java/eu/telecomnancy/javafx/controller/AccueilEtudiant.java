@@ -131,15 +131,11 @@ public class AccueilEtudiant extends Controlleur implements Initializable {
             c.setTime(rdv.creneau.date);
             dayOfWeek = c.get(Calendar.DAY_OF_WEEK);
             //int dayOfWeek = c.get(Calendar.DAY_OF_WEEK); //day of the week (1=sunday)
-            Button b = new Button();
-            b.setText("Rendez-Vous " + rdv.creneau.getHeure());
+            Button b = new Button("Rendez-Vous " + rdv.creneau.getHeure());
+            //b.setText();
             //System.out.println("dayOfWeek; "+c.get(Calendar.DAY_OF_WEEK)+"indice: "+rdv.creneau.indice+"\n");
             b.setOnAction(event-> {
-                if(rdv!=null){
-                    System.out.println("no es null\n");
-                    profRDV.getAccesPages().accesDescriptionRDV(rdv);
-                }
-
+                profRDV.getAccesPages().accesDescriptionRDV(rdv);
             });
 
             grille.add(b, dayOfWeek - 2, rdv.creneau.indice);

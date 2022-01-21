@@ -49,17 +49,18 @@ public class DescriptionRDV extends Controlleur implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-            labelDate.setText(DateConversion.dateToString(rdv.creneau.date));
+           labelDate.setText(DateConversion.dateToString(rdv.creneau.date));
             labelLieu.setText(rdv.lieu);
             labelHeure.setText(rdv.creneau.getHeure());
             labelLibelle.setText(rdv.libelle);
             fieldDescription.setText(rdv.description);
-            labelEnseignant.setText(rdv.enseignant.prenom+ " "+rdv.enseignant.nom );
-            if(rdv.status == true){
-                labelStatut.setText("Confirmé");
+           labelEnseignant.setText(rdv.enseignant.prenom+ " "+rdv.enseignant.nom );
+            boolean s= rdv.status;
+             if(s){
+                 labelStatut.setText("Confirmé");
             }
-            if(rdv.status == false){
-                if(rdv.archive==true){
+             else{
+                if(rdv.archive){
                     labelStatut.setText("Refusé");
                 }
                 else{
