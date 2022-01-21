@@ -39,6 +39,8 @@ public class AccueilEnseignant extends Controlleur implements Initializable {
 
     }
 
+
+
     @FXML
     public void dernier(){
     }
@@ -177,4 +179,10 @@ public class AccueilEnseignant extends Controlleur implements Initializable {
     public void accesDemandes(){
         profRDV.getAccesPages().accesDemandes();
     }
+
+    public void disponibilite(){
+        profRDV.getAccesPages().accesDisponibilites();
+    }
+
+    
 }

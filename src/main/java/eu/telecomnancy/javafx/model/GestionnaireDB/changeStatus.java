@@ -10,13 +10,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class changeStatus {
+public class ChangeStatus {
 
-    public changeStatus(){}
+    public ChangeStatus(){}
 
 
     /** Si le rdv est terminé, on change son status**/
-    public void rdvFinish(RDV rdv) {
+    public static void rdvFinish(RDV rdv) {
 
         int idRdv = getIdRdv(rdv);
 
@@ -32,7 +32,7 @@ public class changeStatus {
     }
 
     /** pour activer un rdv**/
-    public void rdvReady(RDV rdv) {
+    public static void rdvReady(RDV rdv) {
 
         int idRdv = getIdRdv(rdv);
 
@@ -48,7 +48,7 @@ public class changeStatus {
     }
 
     /** Si le rdv est archivé, on change son archive**/
-    public void archiveYes(RDV rdv) {
+    public static void archiveYes(RDV rdv) {
 
         int idRdv = getIdRdv(rdv);
 
@@ -64,7 +64,7 @@ public class changeStatus {
     }
 
     /** Si le rdv n'est pas archivé, on change son archive**/
-    public void archiveNo(RDV rdv) {
+    public static void archiveNo(RDV rdv) {
 
         int idRdv = getIdRdv(rdv);
         String sql = "UPDATE rdv SET archive = false WHERE id = '"+idRdv+"';";
@@ -78,7 +78,7 @@ public class changeStatus {
         }
     }
     /**Obtenir l'id du rdv**/
-    public int getIdRdv(RDV rdv){
+    public static int getIdRdv(RDV rdv){
 
 
         GestionRDV grdv = new GestionRDV();

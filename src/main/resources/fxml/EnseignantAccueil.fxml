@@ -117,7 +117,7 @@
    <right>
       <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="50.0" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" text="Disponibilités" />
+            <Button onAction="#disponibilite" mnemonicParsing="false" text="Disponibilités" />
             <Button onAction="#accesDemandes" mnemonicParsing="false" text="Demandes" />
          </children>
          <BorderPane.margin>
