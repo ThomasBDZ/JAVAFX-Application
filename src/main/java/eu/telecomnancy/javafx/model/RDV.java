@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 public class RDV {
 
-    public Boolean status;
-    public Boolean archive;
+    public boolean status;
+    public boolean archive;
 
     public String lieu;
     public String libelle;
@@ -18,7 +18,7 @@ public class RDV {
 
     }
 
-    public RDV(Boolean status,Boolean archived,String lieu,String libelle,Enseignant enseignant, Etudiant etudiant,Creneau creneau,String description){
+    public RDV(boolean status,boolean archived,String lieu,String libelle,Enseignant enseignant, Etudiant etudiant,Creneau creneau,String description){
         this.status=status;
         this.archive=archived;
         this.enseignant=enseignant;
