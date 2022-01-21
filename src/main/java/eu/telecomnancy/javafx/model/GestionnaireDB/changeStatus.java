@@ -10,9 +10,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class ChangeStatus {
+public class changeStatus {
 
-    public ChangeStatus(){}
+    public changeStatus(){}
 
 
     /** Si le rdv est terminé, on change son status**/
