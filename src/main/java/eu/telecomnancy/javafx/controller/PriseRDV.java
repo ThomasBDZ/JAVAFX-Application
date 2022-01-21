@@ -124,8 +124,11 @@ public class PriseRDV extends Controlleur implements Initializable {
          * si on valide
          */
         validerEnseignant.setOnAction(event -> {
-            enseignant= (Enseignant) FieldEnseignant.getValue(); //pas sur si ça marche, à tester
+            String enseignant_nom_mail= (String) FieldEnseignant.getValue(); //pas sur si ça marche, à tester, on obtient prenom+nom , mail
+            String[] nom_mail = enseignant_nom_mail.split(",");
+            //enseignant=getUser(nom_mail[1]);//on get le mail
             liste_creneau=this.profRDV.gestionnaireCreneauDispo.pickDispoWeek(date_calendrier,enseignant); //a remplacer par la foction de Thomas getCreneauProf
+
             Calendar c = Calendar.getInstance();
             int dayOfWeek;
             int weekOfYear;
