@@ -28,7 +28,9 @@ On ferme ensuite les connections, dans l'ordre : resultset, statement, connectio
 
 Nous sommes conscients que notre bdd n'est pas sécurisée (injection) et a une structure très sommaire. Néanmoins, vu le temps que nous avions nous avons décidé de ne pas en tenir compte.
 
+#Front
 
+Pour la partie front, on a tout d'abord dessiné les "captures d'écran" des différentes fenêtres constituant l'application. Pour implémenter l'interface, on a utilisé javafxml et scène builder. Ainsi, on a tout d'abord créé les fichiers fxml avec scène builder pour chaque fenêtre et ensuite on a créé les contrôleurs correspondants. Les contrôleurs sont liés au modèle. En ce qui concerne les informations a à afficher, on peut les obtenir grâces
 
 ## Template Gradle JDK/JavaFX
 
