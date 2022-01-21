@@ -15,7 +15,7 @@ public class AccesPages {
     private ProfRDV profRDV;
     private MenuBarConnexion menuBarConnexion;
     private Connexion connexionController;
-    private AccueilEtudiant accueilEtudiant;
+    private PriseRDV accueilEtudiant;
     private MenuBarController menuBarController;
     private Calendrier calendrier;
     private AccueilEnseignant accueilEnseignant;
@@ -42,7 +42,7 @@ public class AccesPages {
         this.profRDV = profRDV;
         menuBarConnexion = new MenuBarConnexion(profRDV);
         connexionController = new Connexion(profRDV);
-        accueilEtudiant = new AccueilEtudiant(profRDV);
+        accueilEtudiant = new PriseRDV(profRDV);
         menuBarController = new MenuBarController(profRDV);
         calendrier = new Calendrier(profRDV);
         accueilEnseignant = new AccueilEnseignant(profRDV);
@@ -51,7 +51,6 @@ public class AccesPages {
         disponibilites = new Disponibilites(profRDV);
         historiqueRDV = new HistoriqueRDV(profRDV);
         priseRDV = new PriseRDV(profRDV);
-        recapRDV = new RecapRDV(profRDV);
         adminAjoutUtilisateur = new AdminAjoutUtilisateur(profRDV);
         adminModifierUtilisateur = new AdminModifierUtilisateur(profRDV);
         adminArchive = new AdminArchive(profRDV);
@@ -142,7 +141,8 @@ public class AccesPages {
         loadPage(path);
     }
 
-    public void accesRecapRDV(){
+    public void accesRecapRDV(RDV rdv){
+        this.recapRDV = new RecapRDV(profRDV,rdv);
         String path = "/fxml/EtudiantRecapRDV.fxml";
         loadPage(path);
     }

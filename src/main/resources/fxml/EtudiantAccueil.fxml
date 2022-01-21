@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="eu.telecomnancy.javafx.controller.AccueilEtudiant">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="eu.telecomnancy.javafx.controller.PriseRDV">
    <top>
       <fx:include fx:id="menuBar" source="MenuBar.fxml" BorderPane.alignment="CENTER" />
    </top>
@@ -28,11 +28,11 @@
            <top>
                <HBox alignment="CENTER" prefHeight="65.0" prefWidth="600.0" BorderPane.alignment="CENTER">
                    <children>
-                       <Button fx:id="dernier" mnemonicParsing="false" text="&lt;">
+                       <Button fx:id="dernier" mnemonicParsing="false" onAction="#dernier" text="&lt;">
                            <HBox.margin>
                                <Insets right="400.0" top="-10.0" />
                            </HBox.margin></Button>
-                       <Button fx:id="prochain" mnemonicParsing="false" text="&gt;">
+                       <Button fx:id="prochain" mnemonicParsing="false" onAction="#prochain" text="&gt;">
                            <HBox.margin>
                                <Insets top="-10.0" />
                            </HBox.margin></Button>
