@@ -78,6 +78,9 @@ public class PriseRDV extends Controlleur implements Initializable {
     public Label labelDate;
 
     @FXML
+    public Label labelYear;
+
+    @FXML
     private GridPane grille;
 
     @FXML
@@ -105,8 +108,6 @@ public class PriseRDV extends Controlleur implements Initializable {
         });
 
 
-
-
         /**
          * enseignants, choiceBox
          */
@@ -132,6 +133,7 @@ public class PriseRDV extends Controlleur implements Initializable {
          * si on valide
          */
         validerEnseignant.setOnAction(event -> {
+            setDays();
             ProfLabel label = fieldEnseignant.getValue();
             enseignant = label.enseignant;
             String date_string= DateConversion.dateToString(date_calendrier);
@@ -145,16 +147,16 @@ public class PriseRDV extends Controlleur implements Initializable {
 
             Calendar c = Calendar.getInstance();
             int dayOfWeek;
-            int weekOfYear;
+           /* int weekOfYear;
             weekOfYear=c.get(Calendar.DAY_OF_WEEK);
-            labelSemaine.setText("Semaine "+weekOfYear); //on set le label Semaine sur le Calendrier
+            labelSemaine.setText("Semaine "+weekOfYear); //on set le label Semaine sur le Calendrier*/
 
             for(Creneau creneau_i : liste_creneau) {
                 c.setTime(creneau_i.date);
                 dayOfWeek = c.get(Calendar.DAY_OF_WEEK);
                 //int dayOfWeek = c.get(Calendar.DAY_OF_WEEK); //day of the week (1=sunday)
-                Button b = new javafx.scene.control.Button();
-                b.setText("Rendez-Vous " + creneau.getHeure());
+                Button b = new Button("Rendez-Vous " + creneau_i.getHeure());
+                //b.setText();
                 b.setOnAction(e-> {
                     creneau=creneau_i;
                     fieldHeure.setText(creneau.getHeure());  //si on sélectionne un RDV (boutton), on change les labels date et heure
@@ -177,8 +179,6 @@ public class PriseRDV extends Controlleur implements Initializable {
             etudiant= (Etudiant) profRDV.utilisateur;
 
 
-
-
         /**
          * valider
          */
@@ -188,10 +188,9 @@ public class PriseRDV extends Controlleur implements Initializable {
         });
 
 
-
-
     }
     private void update_page() {
+        grille.getChildren().clear();
         ProfLabel label = fieldEnseignant.getValue();
         enseignant = label.enseignant;
         String date_string= DateConversion.dateToString(date_calendrier);
@@ -225,6 +224,70 @@ public class PriseRDV extends Controlleur implements Initializable {
             grille.setValignment(b, VPos.CENTER); // To align vertically in the cell
 
         }}
+
+    public String convertDateDay(Date date_d){
+        //String pattern = "yyyy-MM-dd";
+        String pattern = "DD";
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+        String date = simpleDateFormat.format(date_d);
+        return date;
+    }
+
+    public String convertDateMonth(Date date_d){
+        //String pattern = "yyyy-MM-dd";
+        String pattern = "MM-YYYY";
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+        String date = simpleDateFormat.format(date_d);
+
+        return date;
+    }
+
+    public void setDays(){
+        Calendar c = Calendar.getInstance();
+        c.setTime(date_calendrier);
+
+        c.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
+        Date monday=c.getTime();
+        Label Lundi= new Label("Lundi "+convertDateDay(monday));
+        grille.add(Lundi, 0, 0);
+        grille.setHalignment(Lundi, HPos.CENTER); // To align horizontally in the cell
+        grille.setValignment(Lundi, VPos.CENTER); // To align vertically in the cell
+        labelYear.setText(convertDateMonth(monday));
+
+
+        c.set(Calendar.DAY_OF_WEEK, Calendar.TUESDAY);
+        Date tuesday=c.getTime();
+        Label Mardi= new Label("Mardi "+convertDateDay(tuesday));
+        grille.add(Mardi, 1, 0);
+        grille.setHalignment(Mardi, HPos.CENTER); // To align horizontally in the cell
+        grille.setValignment(Mardi, VPos.CENTER); // To align vertically in the cell
+
+
+
+        c.set(Calendar.DAY_OF_WEEK, Calendar.WEDNESDAY);
+        Date wednesday=c.getTime();
+        Label Mercredi= new Label("Mercredi "+convertDateDay(wednesday));
+        grille.add(Mercredi, 2, 0);
+        grille.setHalignment(Mercredi, HPos.CENTER); // To align horizontally in the cell
+        grille.setValignment(Mercredi, VPos.CENTER); // To align vertically in the cell
+
+
+        c.set(Calendar.DAY_OF_WEEK, Calendar.THURSDAY);
+        Date thursday=c.getTime();
+        Label Jeudi= new Label("Jeudi "+convertDateDay(thursday));
+        grille.add(Jeudi, 3, 0);
+        grille.setHalignment(Jeudi, HPos.CENTER); // To align horizontally in the cell
+        grille.setValignment(Jeudi, VPos.CENTER); // To align vertically in the cell
+
+
+        c.set(Calendar.DAY_OF_WEEK, Calendar.FRIDAY);
+        Date friday=c.getTime();
+        Label Vendredi= new Label("Vendredi "+convertDateDay(friday));
+        grille.add(Vendredi, 4, 0);
+        grille.setHalignment(Vendredi, HPos.CENTER); // To align horizontally in the cell
+        grille.setValignment(Vendredi, VPos.CENTER); // To align vertically in the cell
+
+    }
 
 
 
