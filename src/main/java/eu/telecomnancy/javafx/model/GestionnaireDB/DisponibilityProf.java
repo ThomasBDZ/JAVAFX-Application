@@ -108,4 +108,30 @@ public class DisponibilityProf {
         }
         return id;
     }
+
+    public Creneau getCreneau(int id_creneau){
+
+        String sql = "SELECT * FROM availableRDV WHERE id = " + id_creneau +";";
+        int id_prof = 0,indice = 0;
+        String date = "";
+
+        try {
+            Connection connection = ConnectionClass.getInstance().getConnection();
+            PreparedStatement statement = connection.prepareStatement(sql);
+            ResultSet rs = statement.executeQuery();
+            while (rs.next()){
+                id_prof = rs.getInt("id_prof");
+                indice = rs.getInt("indice");
+                date = rs.getString("date");
+            }
+            rs.close();
+            statement.close();
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        Creneau creneau = new Creneau(indice,date,id_prof );
+        return creneau;
+    }
+
 }

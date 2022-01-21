@@ -45,7 +45,7 @@ public class GetterRdv {
                 rdv.lieu=(rs.getString("lieu"));
                 // rdv.creneau.id_prof = rs.getInt("id_prof"); NullPointerException
                 rdv.enseignant=(GetterUser.getInfoProf(rs.getInt("id_prof")));
-                //rdv.setEtudiants((getInfoEleve(rs.getInt("id_eleve")))); NullPointerException
+                rdv.etudiant = ((getInfoEleve(rs.getInt("id_eleve")))); NullPointerException
                 ListeRDV.add(rdv);
             }
         } catch (SQLException e) {
