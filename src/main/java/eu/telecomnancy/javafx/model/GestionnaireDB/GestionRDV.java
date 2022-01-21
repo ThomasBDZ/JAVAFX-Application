@@ -28,9 +28,9 @@ public class GestionRDV {
         int id_prof = creneau.id_prof; //= getId(prof);
         int id_eleve = getId(etudiant);
 
-        String sql = "INSERT INTO rdv (id_prof, id_dispo, id_eleve, status, archive, lieu, libelle, date, heure) values " +
+        String sql = "INSERT INTO rdv (id_prof, id_dispo, id_eleve, status, archive, lieu, libelle) values " +
                 "('" + id_prof + "','"+id_creneau+"','"+id_eleve+"','"+status+ "','"+archive+ "','"+
-                lieu+ "','"+libelle+ "','"+date+ "','"+creneau.getHeure()+ "')";
+                lieu+ "','"+libelle+ "')";
 
         try {
             Connection connection = ConnectionClass.getInstance().getConnection();
