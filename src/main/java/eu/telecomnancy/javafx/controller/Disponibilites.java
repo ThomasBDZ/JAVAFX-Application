@@ -274,10 +274,12 @@ public class Disponibilites extends Controlleur implements Initializable {
 
         ObservableList<Node> childrens = gridPane.getChildren();
         for(Node node : childrens) {
-            if(node instanceof Button && gridPane.getRowIndex(node) == row && gridPane.getColumnIndex(node) == column) {
-                Button b= (Button) node; // use what you want to remove
-                gridPane.getChildren().remove(b);
-                break;
+            //if(node instanceof Button && gridPane.getRowIndex(node) == row && gridPane.getColumnIndex(node) == column) {
+                if(gridPane.getRowIndex(node) == row && gridPane.getColumnIndex(node) == column) {
+                    //Button b= (Button) node; // use what you want to remove
+                    gridPane.getChildren().remove(node);
+                    //gridPane.getChildren().remove(b);
+                    break;
             }
         }
     }
