@@ -16,24 +16,23 @@ public class GetterRdv {
 
     public GetterRdv(){}
 
-    /** Renvoie la liste des rdv pour le user pour la semaine de la date en entrée**/
-    public ArrayList<RDV> getRDVWeek( Utilisateur user, String date) throws SQLException {
+    /** Renvoie la liste des rdv pour le user pour la semaine de la date en entrée - Format de la date : yyyy-MM-dd **/
+    public static ArrayList<RDV> getRDVWeek(Utilisateur user, String date) throws SQLException {
 
         int id = getId(user);
+        DisponibilityProf getterCreneau = new DisponibilityProf();
 
         String typeId;
-        if (user.etudiant){
+        if (user instanceof Etudiant){
             typeId="id_eleve";
         } else {
             typeId="id_prof";
         }
-        int week = getWeek(date);
+
+        String[] dateElement = date.split("-");
+        int week = DateConversion.getWeek(date);
 
         ArrayList<RDV> ListeRDV = new ArrayList<>();
-
-
-
-
         String sql = "SELECT * FROM rdv inner join availableRDV on rdv.id_prof = availableRDV.id_prof WHERE rdv."+typeId+" = '"+id+"' AND status = 1 "+
                 "AND ((4*(CAST(SUBSTR(availableRDV.date,6,2) as decimal)-1)+1+CAST(SUBSTR(availableRDV.date,9,2) as decimal)/7) == "+week+")";
 
@@ -42,20 +41,15 @@ public class GetterRdv {
             Statement statement = connection.createStatement();
             ResultSet rs = statement.executeQuery(sql);
             while (rs.next()){
-                System.out.println("l79");
                 RDV rdv = new RDV();
-                rdv.setArchive(rs.getBoolean("archive"));
-                rdv.setLibelle(rs.getString("libelle"));
-                rdv.setLieu(rs.getString("lieu"));
-                System.out.println("l82");
+                rdv.archive=(rs.getBoolean("archive"));
+                rdv.libelle=(rs.getString("libelle"));
+                rdv.lieu=(rs.getString("lieu"));
                 // rdv.creneau.id_prof = rs.getInt("id_prof"); NullPointerException
-
-                System.out.println("l85");
-                rdv.setEnseignant(getInfoProf(rs.getInt("id_prof")));
-                //rdv.setEtudiants((getInfoEleve(rs.getInt("id_eleve")))); NullPointerException
-                System.out.println("l86");
+                rdv.enseignant=(GetterUser.getInfoProf(rs.getInt("id_prof")));
+                rdv.creneau = getterCreneau.getCreneau(rs.getInt("id_dispo"));
+                rdv.etudiant = ((GetterUser.getInfoEleve(rs.getInt("id_eleve"))));
                 ListeRDV.add(rdv);
-                System.out.println("l87");
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -63,7 +57,6 @@ public class GetterRdv {
         System.out.println(ListeRDV.size());
         return ListeRDV;
     }
-
 
     public static int getId(Utilisateur user){
 
