@@ -3,6 +3,7 @@ package eu.telecomnancy.javafx.model.GestionnaireDB;
 import java.sql.*;
 import java.util.ArrayList;
 import eu.telecomnancy.javafx.ConnectionClass;
+import eu.telecomnancy.javafx.controller.Erreurs.InsertionException;
 import eu.telecomnancy.javafx.model.*;
 import eu.telecomnancy.javafx.model.utils.DateConversion;
 
@@ -19,41 +20,48 @@ public class DisponibilityProf {
         int heureDebut = creneauDebut.indice;
         int heureFin = creneauFin.indice;
         String date = DateConversion.dateToString(creneauDebut.date);
-
-        String sql = "INSERT INTO availableRDV ( id_prof, indice, date) values (?,?,?);";
-
         int id_prof = getIdProf(prof);
+
+        String preQuerySql = "SELECT * from availableRDV where indice >= "+heureDebut+" and indice <= "+heureFin+" " +
+                "and (CAST(SUBSTR(date,6,2) as decimal)) == "+DateConversion.getMonth(date)+" and (CAST(SUBSTR(date,9,2) as decimal)) == "+DateConversion.getDay(date)+";";
+        String sql = "INSERT INTO availableRDV ( id_prof, indice, date) values (?,?,?);";
 
         try {
             Connection connection = ConnectionClass.getInstance().getConnection();
-            PreparedStatement statement = connection.prepareStatement(sql);
-
-            for (int indice = heureDebut+1;indice<heureFin+1;indice++){
-                statement.setInt(1,id_prof);
-                statement.setInt(2, indice);
-                statement.setString(3, date);
-                statement.addBatch();
-                if (indice == heureFin){
-                    statement.executeBatch();
+            Statement statement2 = connection.createStatement();
+            ResultSet rs = statement2.executeQuery(preQuerySql);
+            if(!rs.next()){ // Si les créneaux ne sont pas déjà présents
+                rs.close();
+                System.out.println("I'm in");
+                PreparedStatement statement = connection.prepareStatement(sql);
+                for (int indice = heureDebut;indice<heureFin;indice++){
+                    statement.setInt(1,id_prof);
+                    statement.setInt(2, indice);
+                    statement.setString(3, date);
+                    statement.addBatch();
+                    if (indice == heureFin-1){
+                        statement.executeBatch();
+                    }
                 }
+                statement.close();
+                connection.close();
             }
-            statement.close();
-            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
-    public ArrayList<Creneau> getProfCreneau(Enseignant prof){
 
-        String profName = prof.nom;
-        String profPrenom = prof.prenom;
-        String profMail = prof.mail;
+    public ArrayList<Creneau> getProfCreneau(String mailProf, String dateCreneau) throws Exception {
 
-        int id_prof = getIdProf(prof);
-        String sql = "SELECT * FROM availableRDV WHERE id_prof = '" + id_prof + "';";
+        int id_prof = PickUser.Pick(mailProf);
         String date;
-        int indice= 0;
+        int indice;
+        int week = DateConversion.getWeek(dateCreneau);
+
+        String sql = "SELECT * FROM availableRDV WHERE id_prof = " + id_prof + " AND "+
+                "(4*(CAST(SUBSTR(date,6,2) as decimal)-1)+1+CAST(SUBSTR(date,9,2) as decimal)/7) == "+week+";";
+
 
         ArrayList<Creneau> ListeCreneau = new ArrayList<>();
 

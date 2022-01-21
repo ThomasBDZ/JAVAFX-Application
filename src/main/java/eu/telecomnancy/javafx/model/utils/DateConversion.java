@@ -35,6 +35,20 @@ public class DateConversion {
         String dateBis = df.format(date);
         return dateBis;
     }
+    
+    public static int getMonth(String date){
+        String[] dateElement = date.split("-");
+        String mois = dateElement[1];
+        int moisInt = Integer.parseInt(mois);
+        return moisInt;
+    }
+
+    public static int getDay(String date){
+        String[] dateElement = date.split("-");
+        String jour = dateElement[2];
+        int dayInt = Integer.parseInt(jour);
+        return dayInt;
+    }
 }
 
 
