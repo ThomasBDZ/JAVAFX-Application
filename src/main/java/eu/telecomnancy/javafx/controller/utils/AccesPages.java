@@ -88,8 +88,9 @@ public class AccesPages {
             stage.setScene(scene);
             stage.show();
         } catch (Exception e) {
-            System.out.println("exception chargement page " + path );
+            System.out.println("exception chargement page " + path + " set e.printStackTrace in AccesPages to see more");
             System.out.println(e.getMessage());
+            // e.printStackTrace();
         }
 
     }

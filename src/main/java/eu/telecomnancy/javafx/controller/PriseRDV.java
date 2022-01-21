@@ -1,6 +1,7 @@
 package eu.telecomnancy.javafx.controller;
 
 
+import eu.telecomnancy.javafx.controller.utils.ProfLabel;
 import eu.telecomnancy.javafx.model.*;
 import eu.telecomnancy.javafx.model.GestionnaireDB.DisponibilityProf;
 import eu.telecomnancy.javafx.model.GestionnaireDB.GetterUser;
@@ -23,7 +24,6 @@ import javafx.scene.layout.GridPane;
 import org.w3c.dom.Text;
 
 
-import java.awt.*;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -66,11 +66,10 @@ public class PriseRDV extends Controlleur implements Initializable {
     public Button validerEtudiant;
 
     @FXML
-    public ChoiceBox fieldEnseignant;
+    public ChoiceBox<ProfLabel> fieldEnseignant;
 
     @FXML
     public TextField fieldEtudiant;
-
 
     @FXML
     public Label fieldHeure;
@@ -114,26 +113,33 @@ public class PriseRDV extends Controlleur implements Initializable {
         /**
          * enseignants, choiceBox
          */
-        ArrayList<Enseignant> arrayEnseignants = new ArrayList<>();
+        ArrayList<Enseignant> arrayEnseignants = new ArrayList<Enseignant>();
+        ArrayList<ProfLabel> labels = new ArrayList<ProfLabel>() ;
         arrayEnseignants = GetterUser.getAllProfs();
-        ArrayList<String> arrayEnseignants_nom = new ArrayList<>();
         for(Enseignant e : arrayEnseignants){
-            arrayEnseignants_nom.add( e.prenom+" "+e.nom+","+e.mail);
+            ProfLabel labelBis = new ProfLabel();
+            labelBis.mail = e.mail;
+            labelBis.nom = e.nom;
+            labelBis.prenom = e.prenom;
+            labelBis.enseignant = e;
+            labels.add(labelBis);
         }
-        ObservableList<String> obvs_enseignants = FXCollections.observableArrayList(arrayEnseignants_nom);
-        fieldEnseignant.setItems(obvs_enseignants);
+
+        ObservableList<ProfLabel> items = FXCollections.observableArrayList(labels);
+        fieldEnseignant.setItems(items);
+
+        
+
 
         /**
          * si on valide
          */
         validerEnseignant.setOnAction(event -> {
-            String enseignant_nom_mail= (String) fieldEnseignant.getValue(); //pas sur si ça marche, à tester, on obtient prenom+nom , mail
-            String[] nom_mail = enseignant_nom_mail.split(",");
-            int id_prof = PickUser.Pick(nom_mail[1]);
-            enseignant= GetterUser.getInfoProf(id_prof);
+            ProfLabel label = fieldEnseignant.getValue();
+            enseignant = label.enseignant;
             String date_string= DateConversion.dateToString(date_calendrier);
             try {
-                liste_creneau= DisponibilityProf.getProfCreneau(nom_mail[1],date_string);
+                liste_creneau= DisponibilityProf.getProfCreneau(enseignant.mail,date_string);
             } catch (Exception e) {
                 e.printStackTrace();
                 System.out.println("erreur pour get les disponibilités du prof");
@@ -189,13 +195,11 @@ public class PriseRDV extends Controlleur implements Initializable {
 
     }
     private void update_page() {
-        String enseignant_nom_mail= (String) fieldEnseignant.getValue(); //pas sur si ça marche, à tester, on obtient prenom+nom , mail
-        String[] nom_mail = enseignant_nom_mail.split(",");
-        int id_prof = PickUser.Pick(nom_mail[1]);
-        enseignant= GetterUser.getInfoProf(id_prof);
+        ProfLabel label = fieldEnseignant.getValue();
+        enseignant = label.enseignant;
         String date_string= DateConversion.dateToString(date_calendrier);
         try {
-            liste_creneau= DisponibilityProf.getProfCreneau(nom_mail[1],date_string);
+            liste_creneau= DisponibilityProf.getProfCreneau(enseignant.mail,date_string);
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println("erreur pour get les disponibilités du prof");
@@ -224,10 +228,6 @@ public class PriseRDV extends Controlleur implements Initializable {
             grille.setValignment(b, VPos.CENTER); // To align vertically in the cell
 
         }}
-
-
-
-
 
 
 
