@@ -43,15 +43,6 @@ public class AccueilEtudiant extends Controlleur implements Initializable {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
     }
 
-    @FXML
-    public void Historique(){
-
-    }
-
-    @FXML
-    public void ajouterRDV(){
-
-    }
 
     @FXML
     public Button prochain;
@@ -59,12 +50,25 @@ public class AccueilEtudiant extends Controlleur implements Initializable {
     @FXML
     public Button dernier;
 
+    @FXML
+    public Button ajouterRDV;
+
+    @FXML
+    public Button Historique;
 
     @FXML
     private GridPane grille;
 
     @FXML
     public void initialize(URL url, ResourceBundle rb){
+
+        ajouterRDV.setOnAction(event -> {
+            profRDV.getAccesPages().accesPriseRDV();
+        });
+
+        Historique.setOnAction(event -> {
+            profRDV.getAccesPages().accesHistoriqueRDV();
+        });
 
 
         prochain.setOnAction(event -> {
