@@ -3,11 +3,13 @@ package eu.telecomnancy.javafx.model.GestionnaireDB;
 import eu.telecomnancy.javafx.ConnectionClass;
 import eu.telecomnancy.javafx.model.Enseignant;
 import eu.telecomnancy.javafx.model.Etudiant;
+import eu.telecomnancy.javafx.model.Utilisateur;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 public class GetterUser {
 
@@ -60,5 +62,31 @@ public class GetterUser {
             throwables.printStackTrace();
         }
         return eleve;
+    }
+
+
+    public static String getMdp(Utilisateur user){
+
+        String mail = user.mail;
+        String userType;
+        if(user instanceof Etudiant){
+            userType= "eleve";
+        } else{
+            userType = "prof";
+        }
+        String mdp ="empty MDP";
+        try {
+            Connection connection = ConnectionClass.getInstance().getConnection();
+            Statement statement = connection.createStatement();
+            String sql = "SELECT MDP FROM connection WHERE mail = '"+mail+"' AND typeUser = '"+userType+ "';";
+            ResultSet rs = statement.executeQuery(sql);
+            mdp = rs.getString("mdp");
+            rs.close();
+            statement.close();
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return mdp;
     }
 }
