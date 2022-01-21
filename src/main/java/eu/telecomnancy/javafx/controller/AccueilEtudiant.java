@@ -37,6 +37,7 @@ public class AccueilEtudiant extends Controlleur implements Initializable {
     private Date date;
     int noOfDays = 7;
     ArrayList<RDV> liste_rdv = new ArrayList<>();
+    GridPane grilleOG;
 
     public AccueilEtudiant(ProfRDV profRDV) {
         super(profRDV);
@@ -62,9 +63,30 @@ public class AccueilEtudiant extends Controlleur implements Initializable {
     @FXML
     private GridPane grille;
 
+
+    @FXML
+    private Label labelYear;
+
+   /*@FXML
+    private Label labelLundi;
+
+
+
+    @FXML
+    private Label labelMardi;
+
+    @FXML
+    private Label labelMercredi;
+
+    @FXML
+    private Label labelJeudi;
+
+    @FXML
+    private Label labelVendredi;*/
+
     @FXML
     public void initialize(URL url, ResourceBundle rb){
-
+        grilleOG=grille;
         ajouterRDV.setOnAction(event -> {
             profRDV.getAccesPages().accesPriseRDV();
         });
@@ -91,12 +113,16 @@ public class AccueilEtudiant extends Controlleur implements Initializable {
         });
 
 
+
+        setDays();
         try {
             liste_rdv= GetterRdv.getRDVWeek(this.profRDV.utilisateur, DateConversion.dateToString(date));
         } catch (SQLException e) {
             e.printStackTrace();
             System.out.println("could not getRDVWeek ");
         }
+
+
         Calendar c = Calendar.getInstance();
         int dayOfWeek;
         for(RDV rdv : liste_rdv) {
@@ -107,7 +133,9 @@ public class AccueilEtudiant extends Controlleur implements Initializable {
             Button b = new Button();
             b.setText("Rendez-Vous " + rdv.creneau.getHeure());
             //System.out.println("dayOfWeek; "+c.get(Calendar.DAY_OF_WEEK)+"indice: "+rdv.creneau.indice+"\n");
-            b.setOnAction(event-> profRDV.getAccesPages().accesDescriptionRDV(rdv));
+            b.setOnAction(event-> {
+                profRDV.getAccesPages().accesDescriptionRDV(rdv);
+            });
 
             grille.add(b, dayOfWeek - 2, rdv.creneau.indice);
             grille.setHalignment(b, HPos.CENTER); // To align horizontally in the cell
@@ -119,6 +147,9 @@ public class AccueilEtudiant extends Controlleur implements Initializable {
         }
 
     public void update_page() {
+
+        grille.getChildren().clear();
+        setDays();
         try {
             liste_rdv= GetterRdv.getRDVWeek(this.profRDV.utilisateur, DateConversion.dateToString(date));
         } catch (SQLException e) {
@@ -144,7 +175,74 @@ public class AccueilEtudiant extends Controlleur implements Initializable {
 
     }
 
+    public String convertDateDay(Date date_d){
+        //String pattern = "yyyy-MM-dd";
+        String pattern = "DD";
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+        String date = simpleDateFormat.format(date_d);
+        return date;
+    }
+
+    public String convertDateMonth(Date date_d){
+        //String pattern = "yyyy-MM-dd";
+        String pattern = "MM-YYYY";
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+        String date = simpleDateFormat.format(date_d);
+
+        return date;
+    }
+
+    public void setDays(){
+        Calendar c = Calendar.getInstance();
+        c.setTime(date);
+
+        c.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
+        Date monday=c.getTime();
+        Label Lundi= new Label("Lundi "+convertDateDay(monday));
+        grille.add(Lundi, 0, 0);
+        grille.setHalignment(Lundi, HPos.CENTER); // To align horizontally in the cell
+        grille.setValignment(Lundi, VPos.CENTER); // To align vertically in the cell
+        labelYear.setText(convertDateMonth(monday));
+
+
+        c.set(Calendar.DAY_OF_WEEK, Calendar.TUESDAY);
+        Date tuesday=c.getTime();
+        Label Mardi= new Label("Mardi "+convertDateDay(tuesday));
+        grille.add(Mardi, 1, 0);
+        grille.setHalignment(Mardi, HPos.CENTER); // To align horizontally in the cell
+        grille.setValignment(Mardi, VPos.CENTER); // To align vertically in the cell
+
+
+
+        c.set(Calendar.DAY_OF_WEEK, Calendar.WEDNESDAY);
+        Date wednesday=c.getTime();
+        Label Mercredi= new Label("Mercredi "+convertDateDay(wednesday));
+        grille.add(Mercredi, 2, 0);
+        grille.setHalignment(Mercredi, HPos.CENTER); // To align horizontally in the cell
+        grille.setValignment(Mercredi, VPos.CENTER); // To align vertically in the cell
+
+
+        c.set(Calendar.DAY_OF_WEEK, Calendar.THURSDAY);
+        Date thursday=c.getTime();
+        Label Jeudi= new Label("Jeudi "+convertDateDay(thursday));
+        grille.add(Jeudi, 3, 0);
+        grille.setHalignment(Jeudi, HPos.CENTER); // To align horizontally in the cell
+        grille.setValignment(Jeudi, VPos.CENTER); // To align vertically in the cell
+
+
+        c.set(Calendar.DAY_OF_WEEK, Calendar.FRIDAY);
+        Date friday=c.getTime();
+        Label Vendredi= new Label("Vendredi "+convertDateDay(friday));
+        grille.add(Vendredi, 4, 0);
+        grille.setHalignment(Vendredi, HPos.CENTER); // To align horizontally in the cell
+        grille.setValignment(Vendredi, VPos.CENTER); // To align vertically in the cell
 
     }
+
+
+    }
+
+
+
 
 
