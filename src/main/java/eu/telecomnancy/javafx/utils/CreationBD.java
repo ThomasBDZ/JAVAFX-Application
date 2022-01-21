@@ -78,6 +78,7 @@ public class CreationBD {
                     "  archive BOOLEAN NOT NULL,\n" +
                     "  lieu TEXT NOT NULL,\n" +
                     "  libelle TEXT NOT NULL,\n" +
+                    "  description TEXT,\n" +
                     "  PRIMARY KEY (id),\n" +
                     "  FOREIGN KEY (id_prof) REFERENCES prof(id),\n" +
                     "  FOREIGN KEY (id_eleve) REFERENCES eleve(id),\n" +
@@ -138,156 +139,156 @@ public class CreationBD {
             statement.executeUpdate("insert into availableRDV values(6, 1, 9, '2022-01-21')");
             statement.executeUpdate("insert into availableRDV values(7, 1, 10, '2022-01-21')");
 
-            statement.executeUpdate("insert into availableRDV values(8, 4, 1, '2022-01-21')");
-            statement.executeUpdate("insert into availableRDV values(9, 4, 2, '2022-01-21')");
-            statement.executeUpdate("insert into availableRDV values(10, 4, 3, '2022-01-21')");
-            statement.executeUpdate("insert into availableRDV values(11, 4, 4, '2022-01-21')");
-            statement.executeUpdate("insert into availableRDV values(12, 4, 5, '2022-01-21')");
-            statement.executeUpdate("insert into availableRDV values(13, 4, 6, '2022-01-21')");
+            statement.executeUpdate("insert into availableRDV values(8, 4, 1, '2022-01-24')");
+            statement.executeUpdate("insert into availableRDV values(9, 4, 2, '2022-01-24')");
+            statement.executeUpdate("insert into availableRDV values(10, 4, 3, '2022-01-24')");
+            statement.executeUpdate("insert into availableRDV values(11, 4, 4, '2022-01-24')");
+            statement.executeUpdate("insert into availableRDV values(12, 4, 5, '2022-01-24')");
+            statement.executeUpdate("insert into availableRDV values(13, 4, 6, '2022-01-24')");
 
-            statement.executeUpdate("insert into availableRDV values(14, 8, 20, '2022-01-21')");
-            statement.executeUpdate("insert into availableRDV values(15, 8, 21, '2022-01-21')");
-            statement.executeUpdate("insert into availableRDV values(16, 8, 22, '2022-01-21')");
-            statement.executeUpdate("insert into availableRDV values(17, 8, 23, '2022-01-21')");
-            statement.executeUpdate("insert into availableRDV values(18, 8, 24, '2022-01-21')");
-            statement.executeUpdate("insert into availableRDV values(19, 8, 25, '2022-01-21')");
-            statement.executeUpdate("insert into availableRDV values(20, 8, 26, '2022-01-21')");
-            statement.executeUpdate("insert into availableRDV values(21, 8, 27, '2022-01-21')");
-            statement.executeUpdate("insert into availableRDV values(22, 8, 28, '2022-01-21')");
+            statement.executeUpdate("insert into availableRDV values(14, 8, 20, '2022-01-25')");
+            statement.executeUpdate("insert into availableRDV values(15, 8, 21, '2022-01-25')");
+            statement.executeUpdate("insert into availableRDV values(16, 8, 22, '2022-01-25')");
+            statement.executeUpdate("insert into availableRDV values(17, 8, 23, '2022-01-25')");
+            statement.executeUpdate("insert into availableRDV values(18, 8, 24, '2022-01-25')");
+            statement.executeUpdate("insert into availableRDV values(19, 8, 25, '2022-01-25')");
+            statement.executeUpdate("insert into availableRDV values(20, 8, 26, '2022-01-25')");
+            statement.executeUpdate("insert into availableRDV values(21, 8, 27, '2022-01-25')");
+            statement.executeUpdate("insert into availableRDV values(22, 8, 28, '2022-01-25')");
 
-            statement.executeUpdate("insert into availableRDV values(23, 1, 10, '2022-01-21')");
-            statement.executeUpdate("insert into availableRDV values(24, 1, 11, '2022-01-21')");
-            statement.executeUpdate("insert into availableRDV values(25, 1, 12, '2022-01-21')");
-            statement.executeUpdate("insert into availableRDV values(26, 1, 13, '2022-01-21')");
-            statement.executeUpdate("insert into availableRDV values(27, 1, 14, '2022-01-21')");
-            statement.executeUpdate("insert into availableRDV values(28, 1, 15, '2022-01-21')");
-            statement.executeUpdate("insert into availableRDV values(29, 1, 16, '2022-01-21')");
+            statement.executeUpdate("insert into availableRDV values(23, 1, 10, '2022-01-26')");
+            statement.executeUpdate("insert into availableRDV values(24, 1, 11, '2022-01-26')");
+            statement.executeUpdate("insert into availableRDV values(25, 1, 12, '2022-01-26')");
+            statement.executeUpdate("insert into availableRDV values(26, 1, 13, '2022-01-26')");
+            statement.executeUpdate("insert into availableRDV values(27, 1, 14, '2022-01-26')");
+            statement.executeUpdate("insert into availableRDV values(28, 1, 15, '2022-01-26')");
+            statement.executeUpdate("insert into availableRDV values(29, 1, 16, '2022-01-26')");
 
-            statement.executeUpdate("insert into availableRDV values(30, 2, 4, '2022-01-21')");
-            statement.executeUpdate("insert into availableRDV values(31, 2, 5, '2022-01-21')");
-            statement.executeUpdate("insert into availableRDV values(32, 2, 6, '2022-01-21')");
-            statement.executeUpdate("insert into availableRDV values(33, 2, 7, '2022-01-21')");
-            statement.executeUpdate("insert into availableRDV values(34, 2, 8, '2022-01-21')");
-            statement.executeUpdate("insert into availableRDV values(35, 2, 9, '2022-01-21')");
-            statement.executeUpdate("insert into availableRDV values(36, 2, 10, '2022-01-21')");
+            statement.executeUpdate("insert into availableRDV values(30, 2, 4, '2022-01-24')");
+            statement.executeUpdate("insert into availableRDV values(31, 2, 5, '2022-01-24')");
+            statement.executeUpdate("insert into availableRDV values(32, 2, 6, '2022-01-24')");
+            statement.executeUpdate("insert into availableRDV values(33, 2, 7, '2022-01-24')");
+            statement.executeUpdate("insert into availableRDV values(34, 2, 8, '2022-01-24')");
+            statement.executeUpdate("insert into availableRDV values(35, 2, 9, '2022-01-24')");
+            statement.executeUpdate("insert into availableRDV values(36, 2, 10, '2022-01-24')");
 
-            statement.executeUpdate("insert into availableRDV values(37, 5, 15, '2022-01-21')");
-            statement.executeUpdate("insert into availableRDV values(38, 5, 16, '2022-01-21')");
-            statement.executeUpdate("insert into availableRDV values(39, 5, 17, '2022-01-21')");
-            statement.executeUpdate("insert into availableRDV values(40, 5, 18, '2022-01-21')");
-            statement.executeUpdate("insert into availableRDV values(41, 5, 19, '2022-01-21')");
-            statement.executeUpdate("insert into availableRDV values(42, 5, 20, '2022-01-21')");
-            statement.executeUpdate("insert into availableRDV values(43, 5, 21, '2022-01-21')");
-            statement.executeUpdate("insert into availableRDV values(44, 5, 22, '2022-01-21')");
-            statement.executeUpdate("insert into availableRDV values(45, 5, 23, '2022-01-21')");
-            statement.executeUpdate("insert into availableRDV values(46, 5, 24, '2022-01-21')");
-            statement.executeUpdate("insert into availableRDV values(47, 5, 25, '2022-01-21')");
+            statement.executeUpdate("insert into availableRDV values(37, 5, 15, '2022-01-27')");
+            statement.executeUpdate("insert into availableRDV values(38, 5, 16, '2022-01-27')");
+            statement.executeUpdate("insert into availableRDV values(39, 5, 17, '2022-01-27')");
+            statement.executeUpdate("insert into availableRDV values(40, 5, 18, '2022-01-27')");
+            statement.executeUpdate("insert into availableRDV values(41, 5, 19, '2022-01-27')");
+            statement.executeUpdate("insert into availableRDV values(42, 5, 20, '2022-01-27')");
+            statement.executeUpdate("insert into availableRDV values(43, 5, 21, '2022-01-27')");
+            statement.executeUpdate("insert into availableRDV values(44, 5, 22, '2022-01-27')");
+            statement.executeUpdate("insert into availableRDV values(45, 5, 23, '2022-01-27')");
+            statement.executeUpdate("insert into availableRDV values(46, 5, 24, '2022-01-27')");
+            statement.executeUpdate("insert into availableRDV values(47, 5, 25, '2022-01-27')");
 
-            statement.executeUpdate("insert into availableRDV values(48, 10, 26, '2022-01-21')");
-            statement.executeUpdate("insert into availableRDV values(49, 10, 27, '2022-01-21')");
-            statement.executeUpdate("insert into availableRDV values(50, 10, 28, '2022-01-21')");
-            statement.executeUpdate("insert into availableRDV values(51, 10, 29, '2022-01-21')");
-            statement.executeUpdate("insert into availableRDV values(52, 10, 30, '2022-01-21')");
-            statement.executeUpdate("insert into availableRDV values(53, 10, 31, '2022-01-21')");
+            statement.executeUpdate("insert into availableRDV values(48, 10, 26, '2022-01-26')");
+            statement.executeUpdate("insert into availableRDV values(49, 10, 27, '2022-01-26')");
+            statement.executeUpdate("insert into availableRDV values(50, 10, 28, '2022-01-26')");
+            statement.executeUpdate("insert into availableRDV values(51, 10, 29, '2022-01-26')");
+            statement.executeUpdate("insert into availableRDV values(52, 10, 30, '2022-01-26')");
+            statement.executeUpdate("insert into availableRDV values(53, 10, 31, '2022-01-26')");
 
-            statement.executeUpdate("insert into availableRDV values(54, 9, 1, '2022-01-21')");
-            statement.executeUpdate("insert into availableRDV values(55, 9, 2, '2022-01-21')");
-            statement.executeUpdate("insert into availableRDV values(56, 9, 3, '2022-01-21')");
-            statement.executeUpdate("insert into availableRDV values(57, 9, 4, '2022-01-21')");
-            statement.executeUpdate("insert into availableRDV values(58, 9, 5, '2022-01-21')");
-            statement.executeUpdate("insert into availableRDV values(59, 9, 6, '2022-01-21')");
-            statement.executeUpdate("insert into availableRDV values(60, 9, 7, '2022-01-21')");
-            statement.executeUpdate("insert into availableRDV values(61, 9, 8, '2022-01-21')");
-            statement.executeUpdate("insert into availableRDV values(62, 9, 9, '2022-01-21')");
-            statement.executeUpdate("insert into availableRDV values(63, 9, 10, '2022-01-21')");
-            statement.executeUpdate("insert into availableRDV values(64, 9, 11, '2022-01-21')");
-            statement.executeUpdate("insert into availableRDV values(65, 9, 12, '2022-01-21')");
-            statement.executeUpdate("insert into availableRDV values(66, 9, 16, '2022-01-21')");
-            statement.executeUpdate("insert into availableRDV values(67, 9, 17, '2022-01-21')");
-            statement.executeUpdate("insert into availableRDV values(68, 9, 18, '2022-01-21')");
-            statement.executeUpdate("insert into availableRDV values(69, 9, 19, '2022-01-21')");
-            statement.executeUpdate("insert into availableRDV values(70, 9, 20, '2022-01-21')");
-            statement.executeUpdate("insert into availableRDV values(71, 9, 21, '2022-01-21')");
-
-
-            statement.executeUpdate("insert into availableRDV values(72, 7, 16, '2022-01-21')");
-            statement.executeUpdate("insert into availableRDV values(73, 7, 17, '2022-01-21')");
-            statement.executeUpdate("insert into availableRDV values(74, 7, 18, '2022-01-21')");
-            statement.executeUpdate("insert into availableRDV values(75, 7, 19, '2022-01-21')");
-            statement.executeUpdate("insert into availableRDV values(76, 7, 20, '2022-01-21')");
-            statement.executeUpdate("insert into availableRDV values(77, 7, 21, '2022-01-21')");
-            statement.executeUpdate("insert into availableRDV values(78, 7, 22, '2022-01-21')");
-
-            statement.executeUpdate("insert into availableRDV values(79, 8, 6, '2022-01-21')");
-            statement.executeUpdate("insert into availableRDV values(80, 8, 7, '2022-01-21')");
-            statement.executeUpdate("insert into availableRDV values(81, 8, 8, '2022-01-21')");
-            statement.executeUpdate("insert into availableRDV values(82, 8, 9, '2022-01-21')");
-            statement.executeUpdate("insert into availableRDV values(83, 8, 10, '2022-01-21')");
-            statement.executeUpdate("insert into availableRDV values(84, 11, 4, '2022-01-21')");
-
-            statement.executeUpdate("insert into availableRDV values(85, 11, 4, '2022-01-21')");
-            statement.executeUpdate("insert into availableRDV values(86, 11, 5, '2022-01-21')");
-            statement.executeUpdate("insert into availableRDV values(87, 11, 6, '2022-01-21')");
-            statement.executeUpdate("insert into availableRDV values(88, 11, 7, '2022-01-21')");
-            statement.executeUpdate("insert into availableRDV values(89, 11, 8, '2022-01-21')");
-            statement.executeUpdate("insert into availableRDV values(90, 11, 9, '2022-01-21')");
-            statement.executeUpdate("insert into availableRDV values(91, 11, 10, '2022-01-21')");
-            statement.executeUpdate("insert into availableRDV values(92, 11, 11, '2022-01-21')");
-            statement.executeUpdate("insert into availableRDV values(93, 11, 12, '2022-01-21')");
-            statement.executeUpdate("insert into availableRDV values(94, 11, 13, '2022-01-21')");
-            statement.executeUpdate("insert into availableRDV values(95, 11, 14, '2022-01-21')");
-
-            statement.executeUpdate("insert into availableRDV values(96, 1, 14, '2022-01-21')");
-            statement.executeUpdate("insert into availableRDV values(97, 2 ,14, '2022-01-21')");
-            statement.executeUpdate("insert into availableRDV values(98, 3, 14, '2022-01-21')");
-            statement.executeUpdate("insert into availableRDV values(99, 4, 14, '2022-01-21')");
-            statement.executeUpdate("insert into availableRDV values(100, 5, 14, '2022-01-21')");
-            statement.executeUpdate("insert into availableRDV values(101, 6, 14, '2022-01-21')");
-            statement.executeUpdate("insert into availableRDV values(102, 7, 14, '2022-01-21')");
-            statement.executeUpdate("insert into availableRDV values(103, 8, 14, '2022-01-21')");
-            statement.executeUpdate("insert into availableRDV values(104, 9, 14, '2022-01-21')");
-            statement.executeUpdate("insert into availableRDV values(105, 10, 14, '2022-01-21')");
+            statement.executeUpdate("insert into availableRDV values(54, 9, 1, '2022-01-28')");
+            statement.executeUpdate("insert into availableRDV values(55, 9, 2, '2022-01-28')");
+            statement.executeUpdate("insert into availableRDV values(56, 9, 3, '2022-01-28')");
+            statement.executeUpdate("insert into availableRDV values(57, 9, 4, '2022-01-28')");
+            statement.executeUpdate("insert into availableRDV values(58, 9, 5, '2022-01-28')");
+            statement.executeUpdate("insert into availableRDV values(59, 9, 6, '2022-01-28')");
+            statement.executeUpdate("insert into availableRDV values(60, 9, 7, '2022-01-28')");
+            statement.executeUpdate("insert into availableRDV values(61, 9, 8, '2022-01-28')");
+            statement.executeUpdate("insert into availableRDV values(62, 9, 9, '2022-01-28')");
+            statement.executeUpdate("insert into availableRDV values(63, 9, 10, '2022-01-28')");
+            statement.executeUpdate("insert into availableRDV values(64, 9, 11, '2022-01-28')");
+            statement.executeUpdate("insert into availableRDV values(65, 9, 12, '2022-01-28')");
+            statement.executeUpdate("insert into availableRDV values(66, 9, 16, '2022-01-28')");
+            statement.executeUpdate("insert into availableRDV values(67, 9, 17, '2022-01-28')");
+            statement.executeUpdate("insert into availableRDV values(68, 9, 18, '2022-01-28')");
+            statement.executeUpdate("insert into availableRDV values(69, 9, 19, '2022-01-28')");
+            statement.executeUpdate("insert into availableRDV values(70, 9, 20, '2022-01-28')");
+            statement.executeUpdate("insert into availableRDV values(71, 9, 21, '2022-01-28')");
 
 
+            statement.executeUpdate("insert into availableRDV values(72, 7, 16, '2022-01-24')");
+            statement.executeUpdate("insert into availableRDV values(73, 7, 17, '2022-01-24')");
+            statement.executeUpdate("insert into availableRDV values(74, 7, 18, '2022-01-24')");
+            statement.executeUpdate("insert into availableRDV values(75, 7, 19, '2022-01-24')");
+            statement.executeUpdate("insert into availableRDV values(76, 7, 20, '2022-01-24')");
+            statement.executeUpdate("insert into availableRDV values(77, 7, 21, '2022-01-24')");
+            statement.executeUpdate("insert into availableRDV values(78, 7, 22, '2022-01-24')");
 
-            statement.executeUpdate("insert into rdv values(1, 1, 1, 1, 0, 0, 'Le lieu est Nancy', 'Rdv reorientation')");
-            statement.executeUpdate("insert into rdv values(2, 1, 2, 2, 1, 0, 'Le lieu est Nancy', 'Projet')");
-            statement.executeUpdate("insert into rdv values(3, 2, 5, 5, 1, 1, 'Le lieu est Nancy', 'Consolidation')");
-            statement.executeUpdate("insert into rdv values(4, 2, 10, 7, 1, 0, 'Le lieu est Nancy', 'Rdv pédagogique')");
-            statement.executeUpdate("insert into rdv values(5, 2, 15, 1, 1, 0, 'Le lieu est Nancy', 'Conseil des élèves')");
-            statement.executeUpdate("insert into rdv values(6, 2, 23, 1, 1, 0, 'Le lieu est Nancy', 'Rencontre parent')");
-            statement.executeUpdate("insert into rdv values(7, 2, 37, 2, 1, 0, 'Le lieu est Nancy', 'Journée du Numérique')");
-            statement.executeUpdate("insert into rdv values(8, 2, 45, 10, 1, 0, 'Le lieu est Nancy', 'Rdv business')");
-            statement.executeUpdate("insert into rdv values(9, 2, 50, 9, 1, 0, 'Le lieu est Nancy', 'Avant projet')");
-            statement.executeUpdate("insert into rdv values(10, 1, 58, 8, 0, 0, 'Le lieu est Nancy', 'Préparation exam')");
-            statement.executeUpdate("insert into rdv values(11, 1, 69, 1, 1, 0, 'Le lieu est Nancy', 'Examen')");
-            statement.executeUpdate("insert into rdv values(12, 1, 70, 3, 1, 0, 'Le lieu est Nancy', 'Réunion pédagogique')");
-            statement.executeUpdate("insert into rdv values(13, 1, 75, 4, 1, 0, 'Le lieu est Nancy', 'RDV mobilité académique')");
-            statement.executeUpdate("insert into rdv values(14, 1, 3, 5, 1, 0, 'Le lieu est Nancy', 'BBQ entre prof chez Suzanne')");
+            statement.executeUpdate("insert into availableRDV values(79, 8, 6, '2022-01-25')");
+            statement.executeUpdate("insert into availableRDV values(80, 8, 7, '2022-01-25')");
+            statement.executeUpdate("insert into availableRDV values(81, 8, 8, '2022-01-25')");
+            statement.executeUpdate("insert into availableRDV values(82, 8, 9, '2022-01-25')");
+            statement.executeUpdate("insert into availableRDV values(83, 8, 10, '2022-01-25')");
+            statement.executeUpdate("insert into availableRDV values(84, 11, 4, '2022-01-25')");
 
-            statement.executeUpdate("insert into rdv values(15, 1, 96, 1, 1, 0, 'Hotel de ville - Nancy', 'Cérémonie des diplômes')");
-            statement.executeUpdate("insert into rdv values(17, 2, 97, 1, 1, 0, 'Hotel de ville - Nancy', 'Cérémonie des diplômes')");
-            statement.executeUpdate("insert into rdv values(18, 3, 98, 1, 1, 0, 'Hotel de ville - Nancy', 'Cérémonie des diplômes')");
-            statement.executeUpdate("insert into rdv values(19, 4, 99, 1, 1, 0, 'Hotel de ville - Nancy', 'Cérémonie des diplômes')");
-            statement.executeUpdate("insert into rdv values(20, 5, 100, 1, 1, 0, 'Hotel de ville - Nancy', 'Cérémonie des diplômes')");
-            statement.executeUpdate("insert into rdv values(21, 6, 101, 1, 1, 0, 'Hotel de ville - Nancy', 'Cérémonie des diplômes')");
-            statement.executeUpdate("insert into rdv values(22, 7, 102, 1, 1, 0, 'Hotel de ville - Nancy', 'Cérémonie des diplômes')");
-            statement.executeUpdate("insert into rdv values(23, 8, 103, 1, 1, 0, 'Hotel de ville - Nancy', 'Cérémonie des diplômes')");
-            statement.executeUpdate("insert into rdv values(24, 9, 104, 1, 1, 0, 'Hotel de ville - Nancy', 'Cérémonie des diplômes')");
-            statement.executeUpdate("insert into rdv values(25, 10, 105, 1, 1, 0, 'Hotel de ville - Nancy', 'Cérémonie des diplômes')");
+            statement.executeUpdate("insert into availableRDV values(85, 11, 4, '2022-01-26')");
+            statement.executeUpdate("insert into availableRDV values(86, 11, 5, '2022-01-26')");
+            statement.executeUpdate("insert into availableRDV values(87, 11, 6, '2022-01-26')");
+            statement.executeUpdate("insert into availableRDV values(88, 11, 7, '2022-01-26')");
+            statement.executeUpdate("insert into availableRDV values(89, 11, 8, '2022-01-26')");
+            statement.executeUpdate("insert into availableRDV values(90, 11, 9, '2022-01-26')");
+            statement.executeUpdate("insert into availableRDV values(91, 11, 10, '2022-01-26')");
+            statement.executeUpdate("insert into availableRDV values(92, 11, 11, '2022-01-26')");
+            statement.executeUpdate("insert into availableRDV values(93, 11, 12, '2022-01-26')");
+            statement.executeUpdate("insert into availableRDV values(94, 11, 13, '2022-01-26')");
+            statement.executeUpdate("insert into availableRDV values(95, 11, 14, '2022-01-26')");
+
+            statement.executeUpdate("insert into availableRDV values(96, 1, 14, '2022-01-26')");
+            statement.executeUpdate("insert into availableRDV values(97, 2 ,14, '2022-01-26')");
+            statement.executeUpdate("insert into availableRDV values(98, 3, 14, '2022-01-26')");
+            statement.executeUpdate("insert into availableRDV values(99, 4, 14, '2022-01-26')");
+            statement.executeUpdate("insert into availableRDV values(100, 5, 14, '2022-01-26')");
+            statement.executeUpdate("insert into availableRDV values(101, 6, 14, '2022-01-26')");
+            statement.executeUpdate("insert into availableRDV values(102, 7, 14, '2022-01-26')");
+            statement.executeUpdate("insert into availableRDV values(103, 8, 14, '2022-01-26')");
+            statement.executeUpdate("insert into availableRDV values(104, 9, 14, '2022-01-26')");
+            statement.executeUpdate("insert into availableRDV values(105, 10, 14, '2022-01-26')");
 
 
-            statement.executeUpdate("insert into rdv values(27, 11, 85, 1, 1, 0, 'Hotel de ville - Nancy', 'Cérémonie des diplômes')");
-            statement.executeUpdate("insert into rdv values(28, 11, 86, 2, 1, 0, 'Hotel de ville - Nancy', 'Cérémonie des diplômes')");
-            statement.executeUpdate("insert into rdv values(29, 11, 87, 3, 1, 0, 'Hotel de ville - Nancy', 'Cérémonie des diplômes')");
-            statement.executeUpdate("insert into rdv values(30, 11, 88, 4, 1, 0, 'Hotel de ville - Nancy', 'Cérémonie des diplômes')");
-            statement.executeUpdate("insert into rdv values(31, 11, 89, 5, 1, 0, 'Hotel de ville - Nancy', 'Cérémonie des diplômes')");
-            statement.executeUpdate("insert into rdv values(32, 11, 90, 6, 1, 0, 'Hotel de ville - Nancy', 'Cérémonie des diplômes')");
-            statement.executeUpdate("insert into rdv values(33, 11, 91, 7, 1, 0, 'Hotel de ville - Nancy', 'Cérémonie des diplômes')");
-            statement.executeUpdate("insert into rdv values(34, 11, 92, 8, 1, 0, 'Hotel de ville - Nancy', 'Cérémonie des diplômes')");
-            statement.executeUpdate("insert into rdv values(35, 11, 93, 9, 1, 0, 'Hotel de ville - Nancy', 'Cérémonie des diplômes')");
-            statement.executeUpdate("insert into rdv values(36, 11, 94, 10, 1, 0, 'Hotel de ville - Nancy', 'Cérémonie des diplômes')");
-            statement.executeUpdate("insert into rdv values(37, 11, 95, 11, 1, 0, 'Hotel de ville - Nancy', 'Cérémonie des diplômes')");
+
+            statement.executeUpdate("insert into rdv values(1, 1, 1, 1, 0, 0, 'Le lieu est Nancy', 'Rdv reorientation', '')");
+            statement.executeUpdate("insert into rdv values(2, 1, 2, 2, 1, 0, 'Le rdv se passe au CNRS', 'Projet', '')");
+            statement.executeUpdate("insert into rdv values(3, 2, 5, 5, 1, 1, 'Viller', 'Consolidation', '')");
+            statement.executeUpdate("insert into rdv values(4, 2, 10, 7, 0, 1, 'Telecom Nancy', 'Rdv pédagogique', '')");
+            statement.executeUpdate("insert into rdv values(5, 2, 15, 1, 0, 1, 'Salle gazeau', 'Conseil des élèves', '')");
+            statement.executeUpdate("insert into rdv values(6, 2, 23, 1, 1, 0, 'Salle 0.15', 'Rencontre parent', '')");
+            statement.executeUpdate("insert into rdv values(7, 2, 37, 2, 1, 0, 'Telecom Nancy', 'Journée du Numérique', '')");
+            statement.executeUpdate("insert into rdv values(8, 2, 45, 10, 1, 1, 'Mairie', 'Rdv business', '')");
+            statement.executeUpdate("insert into rdv values(9, 2, 50, 9, 0, 0, 'Salle 1.18', 'Avant projet', '')");
+            statement.executeUpdate("insert into rdv values(10, 1, 58, 8, 1, 0, 'Telecom Nancy', 'Préparation exam', '')");
+            statement.executeUpdate("insert into rdv values(11, 1, 69, 1, 1, 0, 'Le lieu est Nancy', 'Examen', '')");
+            statement.executeUpdate("insert into rdv values(12, 1, 70, 3, 0, 0, 'Bureau Festor', 'Réunion pédagogique', '')");
+            statement.executeUpdate("insert into rdv values(13, 1, 75, 4, 1, 0, 'All around the world (Bureau Vanessa Nau)', 'RDV mobilité académique', '')");
+            statement.executeUpdate("insert into rdv values(14, 1, 3, 5, 0, 1, 'Chez Gerald', 'BBQ entre prof chez Suzanne', '')");
+
+            statement.executeUpdate("insert into rdv values(15, 1, 96, 1, 0, 0, 'Hotel de ville - Nancy', 'Cérémonie des diplômes', '')");
+            statement.executeUpdate("insert into rdv values(17, 2, 97, 1, 1, 0, 'Hotel de ville - Nancy', 'Cérémonie des diplômes', '')");
+            statement.executeUpdate("insert into rdv values(18, 3, 98, 1, 1, 0, 'Hotel de ville - Nancy', 'Cérémonie des diplômes', '')");
+            statement.executeUpdate("insert into rdv values(19, 4, 99, 1, 1, 0, 'Hotel de ville - Nancy', 'Cérémonie des diplômes', '')");
+            statement.executeUpdate("insert into rdv values(20, 5, 100, 1, 1, 0, 'Hotel de ville - Nancy', 'Cérémonie des diplômes', '')");
+            statement.executeUpdate("insert into rdv values(21, 6, 101, 1, 1, 0, 'Hotel de ville - Nancy', 'Cérémonie des diplômes', '')");
+            statement.executeUpdate("insert into rdv values(22, 7, 102, 1, 1, 0, 'Hotel de ville - Nancy', 'Cérémonie des diplômes', '')");
+            statement.executeUpdate("insert into rdv values(23, 8, 103, 1, 1, 0, 'Hotel de ville - Nancy', 'Cérémonie des diplômes', '')");
+            statement.executeUpdate("insert into rdv values(24, 9, 104, 1, 1, 0, 'Hotel de ville - Nancy', 'Cérémonie des diplômes', '')");
+            statement.executeUpdate("insert into rdv values(25, 10, 105, 1, 1, 0, 'Hotel de ville - Nancy', 'Cérémonie des diplômes', '')");
+
+
+            statement.executeUpdate("insert into rdv values(27, 11, 85, 1, 1, 0, 'Hotel de ville - Nancy', 'Cérémonie des diplômes', '')");
+            statement.executeUpdate("insert into rdv values(28, 11, 86, 2, 1, 0, 'Hotel de ville - Nancy', 'Cérémonie des diplômes', '')");
+            statement.executeUpdate("insert into rdv values(29, 11, 87, 3, 1, 0, 'Hotel de ville - Nancy', 'Cérémonie des diplômes', '')");
+            statement.executeUpdate("insert into rdv values(30, 11, 88, 4, 1, 0, 'Hotel de ville - Nancy', 'Cérémonie des diplômes', '')");
+            statement.executeUpdate("insert into rdv values(31, 11, 89, 5, 1, 0, 'Hotel de ville - Nancy', 'Cérémonie des diplômes', '')");
+            statement.executeUpdate("insert into rdv values(32, 11, 90, 6, 1, 0, 'Hotel de ville - Nancy', 'Cérémonie des diplômes', '')");
+            statement.executeUpdate("insert into rdv values(33, 11, 91, 7, 1, 0, 'Hotel de ville - Nancy', 'Cérémonie des diplômes', '')");
+            statement.executeUpdate("insert into rdv values(34, 11, 92, 8, 1, 0, 'Hotel de ville - Nancy', 'Cérémonie des diplômes', '')");
+            statement.executeUpdate("insert into rdv values(35, 11, 93, 9, 1, 0, 'Hotel de ville - Nancy', 'Cérémonie des diplômes', '')");
+            statement.executeUpdate("insert into rdv values(36, 11, 94, 10, 1, 0, 'Hotel de ville - Nancy', 'Cérémonie des diplômes', '')");
+            statement.executeUpdate("insert into rdv values(37, 11, 95, 11, 1, 0, 'Hotel de ville - Nancy', 'Cérémonie des diplômes', '')");
 
 
             ResultSet rs = statement.executeQuery("select * from admin");

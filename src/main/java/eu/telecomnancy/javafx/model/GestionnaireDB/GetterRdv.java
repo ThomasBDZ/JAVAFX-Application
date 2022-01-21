@@ -49,6 +49,7 @@ public class GetterRdv {
                 rdv.enseignant=(GetterUser.getInfoProf(rs.getInt("id_prof")));
                 rdv.creneau = getterCreneau.getCreneau(rs.getInt("id_dispo"));
                 rdv.etudiant = ((GetterUser.getInfoEleve(rs.getInt("id_eleve"))));
+                rdv.description = rs.getString("description");
                 ListeRDV.add(rdv);
             }
         } catch (SQLException e) {
@@ -56,6 +57,31 @@ public class GetterRdv {
         }
         System.out.println(ListeRDV.size());
         return ListeRDV;
+    }
+
+    public static RDV getInfoRdv(int idRdv){
+
+        DisponibilityProf getterCreneau = new DisponibilityProf();
+        String sql = "SELECT * FROM rdv WHERE id = '"+idRdv+"';";
+        RDV rdv = new RDV();
+        try {
+            Connection connection = ConnectionClass.getInstance().getConnection();
+            Statement statement = connection.createStatement();
+            ResultSet rs = statement.executeQuery(sql);
+            while (rs.next()){
+                rdv.archive=(rs.getBoolean("archive"));
+                rdv.libelle=(rs.getString("libelle"));
+                rdv.lieu=(rs.getString("lieu"));
+                rdv.enseignant=(GetterUser.getInfoProf(rs.getInt("id_prof")));
+                rdv.creneau = getterCreneau.getCreneau(rs.getInt("id_dispo"));
+                rdv.etudiant = ((GetterUser.getInfoEleve(rs.getInt("id_eleve"))));
+                rdv.status = (rs.getBoolean("status"));
+                rdv.description = rs.getString("description");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return rdv;
     }
 
     public static int getId(Utilisateur user){
@@ -90,8 +116,8 @@ public class GetterRdv {
         return id;
     }
 
-     /** Renvoie la liste des rdv validés non archivés pour le user donné en entrée**/
-     public static ArrayList<RDV> getAllRdvValide(Utilisateur user) throws SQLException {
+    /** Renvoie la liste des rdv validés non archivés pour le user donné en entrée**/
+    public static ArrayList<RDV> getAllRdvValide(Utilisateur user) throws SQLException {
 
         GetterRdv getterRdv = new GetterRdv();
         GetterUser getterUser = new GetterUser();
@@ -127,6 +153,7 @@ public class GetterRdv {
                 rdv.etudiant = ((getterUser.getInfoEleve(rs.getInt("id_eleve"))));
                 rdv.status = (rs.getBoolean("status"));
                 rdv.creneau = getterCreneau.getCreneau(rs.getInt("id_dispo"));
+                rdv.description = rs.getString("description");
                 ListeRDV.add(rdv);
             }
         } catch (SQLException e) {
@@ -173,6 +200,7 @@ public class GetterRdv {
                 rdv.etudiant = ((getterUser.getInfoEleve(rs.getInt("id_eleve"))));
                 rdv.status = (rs.getBoolean("status"));
                 rdv.creneau = getterCreneau.getCreneau(rs.getInt("id_dispo"));
+                rdv.description = rs.getString("description");
                 ListeRDV.add(rdv);
             }
         } catch (SQLException e) {
@@ -182,8 +210,8 @@ public class GetterRdv {
     }
 
 
-     /** Renvoie la liste des rdv non validés non archivés pour le user donné en entrée**/
-     public static ArrayList<RDV> getAllRdvNonValide(Utilisateur user) throws SQLException {
+    /** Renvoie la liste des rdv non validés non archivés pour le user donné en entrée**/
+    public static ArrayList<RDV> getAllRdvNonValide(Utilisateur user) throws SQLException {
 
         GetterRdv getterRdv = new GetterRdv();
         GetterUser getterUser = new GetterUser();
@@ -219,6 +247,7 @@ public class GetterRdv {
                 rdv.etudiant = ((getterUser.getInfoEleve(rs.getInt("id_eleve"))));
                 rdv.status = (rs.getBoolean("status"));
                 rdv.creneau = getterCreneau.getCreneau(rs.getInt("id_dispo"));
+                rdv.description = rs.getString("description");
                 ListeRDV.add(rdv);
             }
         } catch (SQLException e) {
