@@ -58,16 +58,16 @@ public class GestionRDV {
 
         String table;
         if (typeUser){
-            table="prof";
-        } else {
             table="eleve";
+        } else {
+            table="prof";
         }
 
         int id = 0;
         try {
             Connection connection = ConnectionClass.getInstance().getConnection();
             Statement statement = connection.createStatement();
-            String sql = "SELECT id FROM "+table+" WHERE nom = '"+nom+"' AND prenom = '"+prenom+"' AND mail = '"+mail+"';";
+            String sql = "SELECT id FROM "+table+" WHERE mail = '"+mail+"';";
             ResultSet rs = statement.executeQuery(sql);
             while (rs.next()){
                 id = rs.getInt("id");
