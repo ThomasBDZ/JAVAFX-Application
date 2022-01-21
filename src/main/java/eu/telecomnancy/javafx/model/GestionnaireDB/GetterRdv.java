@@ -17,7 +17,7 @@ public class GetterRdv {
     public GetterRdv(){}
 
     /** Renvoie la liste des rdv pour le user pour la semaine de la date en entrée - Format de la date : yyyy-MM-dd **/
-    public ArrayList<RDV> getRDVWeek(Utilisateur user, String date) throws SQLException {
+    public static ArrayList<RDV> getRDVWeek(Utilisateur user, String date) throws SQLException {
 
         int id = getId(user);
 
@@ -55,7 +55,7 @@ public class GetterRdv {
         return ListeRDV;
     }
 
-    public int getId(Utilisateur user){
+    public static int getId(Utilisateur user){
 
         String nom = user.nom;
         String prenom = user.prenom;

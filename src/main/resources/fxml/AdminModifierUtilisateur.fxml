@@ -9,42 +9,36 @@
       <fx:include source="MenuBar.fxml" BorderPane.alignment="CENTER" />
    </top>
    <center>
-      <ListView prefHeight="400.0" prefWidth="302.0" BorderPane.alignment="CENTER" />
+      <ListView fx:id="listeView" prefHeight="400.0" prefWidth="302.0" BorderPane.alignment="CENTER" />
    </center>
    <right>
-      <VBox prefHeight="400.0" prefWidth="415.0" BorderPane.alignment="CENTER_LEFT">
+      <VBox fx:id="vbox" prefHeight="400.0" prefWidth="415.0" BorderPane.alignment="CENTER_LEFT">
          <children>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
                <children>
-                  <CheckBox mnemonicParsing="false" text="Etudiant" />
-                  <CheckBox mnemonicParsing="false" text="Enseigant" />
+                  <RadioButton fx:id="etudiant" text="Etudiant" onAction="chargerListeEtudiants"/>
+                  <RadioButton fx:id="enseignant" text="Enseignant" onAction="chargerListeEnseignants" />
                </children>
             </HBox>
             <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="5.0">
                <children>
                   <Label text="Utilisateur" />
-                  <TextField />
+                  <TextField fx:id="mail" />
                </children>
             </HBox>
             <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="5.0">
                <children>
                   <Label text="Nouveau téléphone" />
-                  <TextField />
-               </children>
-            </HBox>
-            <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="5.0">
-               <children>
-                  <Label text="Nouvelle adresse mail" />
-                  <TextField />
+                  <TextField fx:id="telephone"/>
                </children>
             </HBox>
             <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="5.0">
                <children>
                   <Label text="Nouvelle adresse" />
-                  <TextField />
+                  <TextField fx:id="adresse"/>
                </children>
             </HBox>
-            <Button mnemonicParsing="false" text="Valider">
+            <Button fx:id="valider" mnemonicParsing="false" onAction="#modifUser" text="Valider">
                <VBox.margin>
                   <Insets left="150.0" />
                </VBox.margin></Button>
