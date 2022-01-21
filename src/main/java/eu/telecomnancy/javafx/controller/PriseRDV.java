@@ -69,9 +69,6 @@ public class PriseRDV extends Controlleur implements Initializable {
     public ChoiceBox<ProfLabel> fieldEnseignant;
 
     @FXML
-    public TextField fieldEtudiant;
-
-    @FXML
     public Label fieldHeure;
 
     @FXML
@@ -144,7 +141,7 @@ public class PriseRDV extends Controlleur implements Initializable {
                 e.printStackTrace();
                 System.out.println("erreur pour get les disponibilités du prof");
             }
-            liste_creneau=this.profRDV.gestionnaireCreneauDispo.pickDispoWeek(date_calendrier,enseignant); //a remplacer par la foction de Thomas getCreneauProf
+            //liste_creneau=this.profRDV.gestionnaireCreneauDispo.pickDispoWeek(date_calendrier,enseignant); //a remplacer par la foction de Thomas getCreneauProf
 
             Calendar c = Calendar.getInstance();
             int dayOfWeek;
@@ -174,12 +171,12 @@ public class PriseRDV extends Controlleur implements Initializable {
         /**
          * etudiant, text field (l'étudiant insère son mail)
          */
-        validerEtudiant.setOnAction(event -> {
-            String etudiant_mail=fieldEtudiant.getText();
-            int id_etudiant=PickUser.Pick(etudiant_mail);
-            etudiant=GetterUser.getInfoEleve(id_etudiant);
 
-        });
+
+
+            etudiant= (Etudiant) profRDV.utilisateur;
+
+
 
 
         /**
@@ -204,7 +201,7 @@ public class PriseRDV extends Controlleur implements Initializable {
             e.printStackTrace();
             System.out.println("erreur pour get les disponibilités du prof");
         }
-        liste_creneau=this.profRDV.gestionnaireCreneauDispo.pickDispoWeek(date_calendrier,enseignant); //a remplacer par la foction de Thomas getCreneauProf
+        //liste_creneau=this.profRDV.gestionnaireCreneauDispo.pickDispoWeek(date_calendrier,enseignant); //a remplacer par la foction de Thomas getCreneauProf
 
         Calendar c = Calendar.getInstance();
         int dayOfWeek;

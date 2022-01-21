@@ -1,13 +1,16 @@
 package eu.telecomnancy.javafx.controller;
 
 import eu.telecomnancy.javafx.model.Creneau;
+import eu.telecomnancy.javafx.model.GestionnaireDB.GetterRdv;
 import eu.telecomnancy.javafx.model.ProfRDV;
 import eu.telecomnancy.javafx.model.RDV;
+import eu.telecomnancy.javafx.model.utils.DateConversion;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 
 import java.net.URL;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
@@ -47,7 +50,12 @@ public class Calendrier extends Controlleur{
         c.setTime(date);
         int dayOfWeek = c.get(Calendar.DAY_OF_WEEK);
 
-        liste_rdv=this.profRDV.gestionnaireRDV.pickRDVWeek(date,this.profRDV.utilisateur);
+        try {
+            liste_rdv= GetterRdv.getRDVWeek(this.profRDV.utilisateur, DateConversion.dateToString(date));
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("could not getRDVWeek");
+        }
 
         ArrayList<Creneau> liste_creneau_dispnibles= new ArrayList<>();
         liste_creneau_dispnibles=this.profRDV.gestionnaireCreneauDispo.pickDispoWeek(date,this.profRDV.utilisateur);

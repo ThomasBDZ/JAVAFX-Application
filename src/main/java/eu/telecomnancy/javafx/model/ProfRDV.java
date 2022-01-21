@@ -16,7 +16,7 @@ public class ProfRDV {
     AccesPages accesPages;
 
     public Utilisateur utilisateur; 
-    public GestionnaireRDV gestionnaireRDV;
+    public GestionRDV gestionnaireRDV;
     public GestionnaireCreneauDispo gestionnaireCreneauDispo;
     String instance = ""; // Soit "eleve", "prof", "admin", soit ""
     Stage stage;
@@ -28,7 +28,7 @@ public class ProfRDV {
 
         this.accesPages = new AccesPages(this);
         this.gestionnaireCreneauDispo= new GestionnaireCreneauDispo();
-        this.gestionnaireRDV = new GestionnaireRDV();
+        this.gestionnaireRDV = new GestionRDV();
         this.modificationUsers = new ModificationUsers();
     }
 

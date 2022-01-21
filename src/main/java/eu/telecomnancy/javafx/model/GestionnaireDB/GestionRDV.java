@@ -14,7 +14,7 @@ public class GestionRDV {
 
     public GestionRDV(){}
 
-    public void AddRdv(RDV rdv) throws SQLException{
+    public  void AddRdv(RDV rdv) throws SQLException{
 
         Boolean status = rdv.status;
         Boolean archive = rdv.archive;

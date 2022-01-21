@@ -1,9 +1,11 @@
 package eu.telecomnancy.javafx.controller;
 
 import eu.telecomnancy.javafx.model.Creneau;
+import eu.telecomnancy.javafx.model.GestionnaireDB.GetterRdv;
 import eu.telecomnancy.javafx.model.ProfRDV;
 
 import eu.telecomnancy.javafx.model.RDV;
+import eu.telecomnancy.javafx.model.utils.DateConversion;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.geometry.HPos;
@@ -23,6 +25,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 
 import java.net.URL;
+import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -88,7 +91,12 @@ public class AccueilEtudiant extends Controlleur implements Initializable {
         });
 
 
-        liste_rdv=this.profRDV.gestionnaireRDV.pickRDVWeek(date,this.profRDV.utilisateur);
+        try {
+            liste_rdv= GetterRdv.getRDVWeek(this.profRDV.utilisateur, DateConversion.dateToString(date));
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("could not getRDVWeek ");
+        }
         Calendar c = Calendar.getInstance();
         int dayOfWeek;
         for(RDV rdv : liste_rdv) {
@@ -111,7 +119,12 @@ public class AccueilEtudiant extends Controlleur implements Initializable {
         }
 
     public void update_page() {
-        liste_rdv=this.profRDV.gestionnaireRDV.pickRDVWeek(date,this.profRDV.utilisateur);
+        try {
+            liste_rdv= GetterRdv.getRDVWeek(this.profRDV.utilisateur, DateConversion.dateToString(date));
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("could not getRDVWeek");
+        }
         Calendar c = Calendar.getInstance();
         int dayOfWeek;
         for(RDV rdv : liste_rdv) {
