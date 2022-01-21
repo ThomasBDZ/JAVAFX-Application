@@ -2,6 +2,7 @@ package eu.telecomnancy.javafx.model.utils;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 
@@ -11,12 +12,21 @@ public class DateConversion {
     public DateConversion(){}
 
     public static int getWeek(String date){
-        String[] dateElement = date.split("-");
-        String jour = dateElement[2];
-        String mois = dateElement[1];
-        int jourInt = Integer.parseInt(jour);
-        int moisInt = Integer.parseInt(mois);
-        return 4*(moisInt-1)+1+(jourInt)/7;
+        String input = date;
+        String format = "yyyy-MM-dd";
+        SimpleDateFormat df = new SimpleDateFormat(format);
+        Date dateBis = new Date();
+        try {
+            dateBis = df.parse(input);
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+            System.err.println("FCT getWeek");
+        }
+
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(dateBis);
+        int week = cal.get(Calendar.WEEK_OF_YEAR);
+        return week;
     }
 
     public static Date stringToDate(String date){

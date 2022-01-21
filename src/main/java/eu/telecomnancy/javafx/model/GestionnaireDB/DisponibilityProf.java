@@ -19,16 +19,16 @@ public class DisponibilityProf {
         String profMail = prof.mail;
         int id_prof = getIdProf(prof);
 
-        String preQuerySql = "SELECT * from availableRDV where indice >= "+heureDebut+" and indice <= "+heureFin+" " +
-                "and (CAST(SUBSTR(date,6,2) as decimal)) == "+DateConversion.getMonth(date)+" and (CAST(SUBSTR(date,9,2) as decimal)) == "+DateConversion.getDay(date)+";";
+        // String preQuerySql = "SELECT * from availableRDV WHERE id_prof = "+id_prof+" and indice >= "+heureDebut+" and indice <= "+heureFin+" " +
+        //         "and (CAST(SUBSTR(date,6,2) as decimal)) == "+DateConversion.getMonth(date)+" and (CAST(SUBSTR(date,9,2) as decimal)) == "+DateConversion.getDay(date)+";";
         String sql = "INSERT INTO availableRDV ( id_prof, indice, date) values (?,?,?);";
 
         try {
             Connection connection = ConnectionClass.getInstance().getConnection();
-            Statement statement2 = connection.createStatement();
-            ResultSet rs = statement2.executeQuery(preQuerySql);
-            if(!rs.next()){ // Si les créneaux ne sont pas déjà présents
-                rs.close();
+            // Statement statement2 = connection.createStatement();
+            // ResultSet rs = statement2.executeQuery(preQuerySql);
+            // if(!rs.next()){ // Si les créneaux ne sont pas déjà présents
+            //     rs.close();
                 PreparedStatement statement = connection.prepareStatement(sql);
                 for (int indice = heureDebut;indice<heureFin;indice++){
                     statement.setInt(1,id_prof);
@@ -41,7 +41,7 @@ public class DisponibilityProf {
                 }
                 statement.close();
                 connection.close();
-            }
+            // }
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -55,11 +55,11 @@ public class DisponibilityProf {
         int indice;
         int week = DateConversion.getWeek(dateCreneau);
 
-        String sql = "SELECT * FROM availableRDV WHERE id_prof = " + id_prof + " AND "+
-                "(4*(CAST(SUBSTR(date,6,2) as decimal)-1)+1+CAST(SUBSTR(date,9,2) as decimal)/7) == "+week+";";
+        String sql = "SELECT * FROM availableRDV WHERE id_prof = " + id_prof + ";";
 
 
         ArrayList<Creneau> ListeCreneau = new ArrayList<>();
+        ArrayList<Creneau> listeCreneau2 = new ArrayList<>();
 
         try {
             Connection connection = ConnectionClass.getInstance().getConnection();
@@ -76,10 +76,17 @@ public class DisponibilityProf {
             rs.close();
             statement.close();
             connection.close();
+
+            for(Creneau creneau : ListeCreneau){
+                if(DateConversion.getWeek(DateConversion.dateToString(creneau.date))== week){
+                    listeCreneau2.add(creneau);
+                }
+            }
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return ListeCreneau;
+        return listeCreneau2;
     }
 
 
