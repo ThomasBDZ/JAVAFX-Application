@@ -24,12 +24,13 @@ public class PickUser {
     public static int Pick(String mail) {
 
         testRegex testeur = new testRegex();
-        try {
-            testeur.validateMail(mail);
-        } catch (InsertionException e1) {
-            // TODO Auto-generated catch block
-            e1.printStackTrace();
-        }
+        // try {
+        //     testeur.validateMail(mail);
+        // } catch (InsertionException e1) {
+        //     // TODO Auto-generated catch block
+        //     e1.getMessage();
+        //     e1.printStackTrace();
+        // }
 
         String typeUser = "";
         int id=0;
