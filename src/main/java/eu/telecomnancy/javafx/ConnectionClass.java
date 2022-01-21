@@ -17,7 +17,7 @@ public class ConnectionClass {
     public Connection getConnection(){
 
 
-        String connectDbString="jdbc:sqlite:BDD/TNRDV2.db";
+        String connectDbString="jdbc:sqlite:BDD/TNRDV.db";
         Connection connection = null;
 
         try {
