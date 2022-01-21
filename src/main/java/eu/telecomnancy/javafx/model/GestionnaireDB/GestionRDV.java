@@ -23,14 +23,15 @@ public class GestionRDV {
         Enseignant prof = rdv.enseignant;
         Etudiant etudiant = rdv.etudiant;
         Creneau creneau = rdv.creneau;
+        String description = rdv.description;
         int id_creneau = creneau.indice;
         String date = DateConversion.dateToString(creneau.date);
         int id_prof = creneau.id_prof; //= getId(prof);
         int id_eleve = getId(etudiant);
 
-        String sql = "INSERT INTO rdv (id_prof, id_dispo, id_eleve, status, archive, lieu, libelle) values " +
+        String sql = "INSERT INTO rdv (id_prof, id_dispo, id_eleve, status, archive, lieu, libelle, description) values " +
                 "('" + id_prof + "','"+id_creneau+"','"+id_eleve+"','"+status+ "','"+archive+ "','"+
-                lieu+ "','"+libelle+ "')";
+                lieu+ "','"+libelle+ "','"+description+"')";
 
         try {
             Connection connection = ConnectionClass.getInstance().getConnection();
