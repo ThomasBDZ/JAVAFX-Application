@@ -20,39 +20,22 @@ public class GestionRDV {
         Boolean archive = rdv.archive;
         String lieu = rdv.lieu;
         String libelle = rdv.libelle;
-        Enseignant prof = rdv.Enseignant;
-        ArrayList<Etudiant> ListeEtudiant;
-        ListeEtudiant = rdv.Etudiants;
+        Enseignant prof = rdv.enseignant;
+        Etudiant etudiant = rdv.etudiant;
         Creneau creneau = rdv.creneau;
-        Date date = creneau.date;
+        int id_creneau = creneau.indice;
+        String date = DateConversion.dateToString(creneau.date);
         int id_prof = creneau.id_prof; //= getId(prof);
-
-        DateConversion newDate = new DateConversion(date);
-
-        java.sql.Date datesql = newDate.javaToSql(date);
-
-        ArrayList<Integer> ListeIdEleve = new ArrayList<>();
-        int count = 0;
-        for (Etudiant student : ListeEtudiant){
-            ListeIdEleve.set(count,getId(student));
-        }
-
-        ArrayList<Integer> ListeIdCreneau = getIdDispo(creneau);
+        int id_eleve = getId(etudiant);
 
         String sql = "INSERT INTO rdv (id_prof, id_dispo, id_eleve, status, archive, lieu, libelle, date, heure) values " +
-                "('" + id_prof + "',?,?,'"+status+ "','"+archive+ "','"+
-                lieu+ "','"+libelle+ "','"+datesql+ "','"+creneau.getHeure()+ "')";
+                "('" + id_prof + "','"+id_creneau+"','"+id_eleve+"','"+status+ "','"+archive+ "','"+
+                lieu+ "','"+libelle+ "','"+date+ "','"+creneau.getHeure()+ "')";
 
         try {
             Connection connection = ConnectionClass.getInstance().getConnection();
-            PreparedStatement statement = connection.prepareStatement(sql);
-            for (int i=0;i<ListeIdCreneau.size();i++){
-                for (int j=0;j<ListeIdEleve.size();j++){
-                    statement.setInt(1,ListeIdCreneau.get(i));
-                    statement.setInt(2,ListeIdEleve.get(j));
-                }
-                statement.executeBatch();
-            }
+            Statement statement = connection.createStatement();
+            int rs = statement.executeUpdate(sql);
             statement.close();
             connection.close();
         } catch (SQLException e) {

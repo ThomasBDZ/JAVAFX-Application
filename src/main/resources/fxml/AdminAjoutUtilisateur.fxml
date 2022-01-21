@@ -11,7 +11,7 @@
    <center>
       <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="413.0" prefWidth="600.0" vbarPolicy="ALWAYS" BorderPane.alignment="CENTER">
          <content>
-            <VBox alignment="CENTER" prefHeight="385.0" prefWidth="586.0" spacing="10.0">
+            <VBox fx:id="vbox" alignment="CENTER" prefHeight="385.0" prefWidth="586.0" spacing="10.0">
                <children>
                   <Label text="Ajouter un nouveau utilisateur" />
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">

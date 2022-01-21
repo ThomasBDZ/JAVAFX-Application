@@ -71,7 +71,7 @@ public class MenuBarController extends Controlleur {
      * --> Affiche la page pour changer son mot de passe
      */
     public void changeMdp(){
-        
+        profRDV.getAccesPages().AccesUtilisateurModifierMdp();
     }
 
     /**

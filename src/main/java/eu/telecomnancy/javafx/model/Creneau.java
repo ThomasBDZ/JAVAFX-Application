@@ -25,12 +25,13 @@ public class Creneau {
 
     }
 
-    public Creneau(int id, int id_prof, int indice, java.util.Date date){
+    public Creneau(int id, int id_prof, int indice, Date date){
         this.date = date;
         this.id = id;
         this.id_prof = id_prof;
         this.indice = indice;
     }
+
 
     public String getHeure(){
         int heure= indice/3+ GlobalVariables.HEURE_MIN;

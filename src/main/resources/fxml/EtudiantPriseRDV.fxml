@@ -11,7 +11,7 @@
    </top>
 
    <center>
-      <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" >
+      <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0">
          <top>
             <HBox alignment="CENTER" prefHeight="65.0" prefWidth="600.0" BorderPane.alignment="CENTER">
                <children>
@@ -19,6 +19,11 @@
                      <HBox.margin>
                         <Insets right="400.0" top="-10.0" />
                      </HBox.margin></Button>
+                  <Label text="Semaine ">
+                     <HBox.margin>
+                        <Insets right="100.0" />
+                     </HBox.margin>
+                  </Label>
                   <Button fx:id="prochain" mnemonicParsing="false" onAction="#prochain" text="&gt;">
                      <HBox.margin>
                         <Insets top="-10.0" />
@@ -119,23 +124,25 @@
          <children>
             <HBox prefHeight="26.0" prefWidth="231.0">
                <children>
-                  <TextField alignment="TOP_LEFT" prefHeight="26.0" prefWidth="203.0" promptText="Choissisez un eiseignant..." />
-                  <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="84.0" text="Valider" />
+                  <Label text="Enseignant " />
+                  <ChoiceBox fx:id="FieldEnseignant" prefWidth="150.0" />
+                  <Button fx:id="validerEnseignant" mnemonicParsing="false" text="Valider" />
                </children>
             </HBox>
-            <DatePicker prefHeight="26.0" prefWidth="265.0" promptText="Choissisez une date..." />
-            <VBox prefHeight="200.0" prefWidth="100.0">
+            <HBox alignment="CENTER" prefHeight="20.0" prefWidth="200.0" spacing="10.0">
                <children>
-                  <HBox prefHeight="28.0" prefWidth="264.0">
-                     <children>
-                        <TextField prefHeight="33.0" prefWidth="194.0" promptText="Choissisez les étudiants..." />
-                        <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="84.0" text="Valider" />
-                     </children>
-                  </HBox>
-                  <ListView editable="true" prefHeight="200.0" prefWidth="264.0" />
+                  <Label text="Heure :" />
+                  <Label fx:id="FieldHeure" text="Sélectionné un créneau" />
                </children>
-            </VBox>
-            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="Valider" textAlignment="CENTER">
+            </HBox>
+            <Label fx:id="labelDate" text="Date" />
+            <HBox prefHeight="28.0" prefWidth="264.0">
+               <children>
+                  <TextField fx:id="FieldEtudiant" onAction="#FieldEtudiant" prefHeight="33.0" prefWidth="194.0" promptText="Insérez votre mail..." />
+                  <Button fx:id="ValiderEtudiant" mnemonicParsing="false" onAction="#ValiderEtudiant" prefHeight="26.0" prefWidth="84.0" text="Valider" />
+               </children>
+            </HBox>
+            <Button fx:id="valider" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#valider" text="Valider" textAlignment="CENTER">
                <font>
                   <Font size="14.0" />
                </font>

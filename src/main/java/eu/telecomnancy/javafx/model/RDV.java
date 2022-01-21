@@ -9,17 +9,28 @@ public class RDV {
 
     public String lieu;
     public String libelle;
-    public Enseignant Enseignant;
-    public ArrayList<Etudiant> Etudiants;
+    public Enseignant enseignant;
+    public Etudiant etudiant;
     public Creneau creneau;
 
-    public RDV(Boolean status,Boolean archived,String lieu,String libelle,Enseignant Enseignant, ArrayList<Etudiant> Etudiants,Creneau creneau){
+    public RDV(){
+
+    }
+
+    public RDV(Boolean status,Boolean archived,String lieu,String libelle,Enseignant enseignant, Etudiant etudiant,Creneau creneau){
         this.status=status;
         this.archive=archived;
-        this.Enseignant=Enseignant;
-        this.Etudiants=Etudiants;
+        this.enseignant=enseignant;
+        this.etudiant=etudiant;
         this.libelle=libelle;
         this.lieu=lieu;
+        this.creneau=creneau;
+
+    }
+
+    public RDV(Enseignant enseignant, Etudiant etudiant,Creneau creneau){
+        this.enseignant=enseignant;
+        this.etudiant=etudiant;
         this.creneau=creneau;
     }
 

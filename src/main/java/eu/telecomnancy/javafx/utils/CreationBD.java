@@ -78,7 +78,7 @@ public class CreationBD {
                     "  archive BOOLEAN NOT NULL,\n" +
                     "  lieu TEXT NOT NULL,\n" +
                     "  libelle TEXT NOT NULL,\n" +
-                    "  date DATE NOT NULL,\n" +
+                    "  date TEXT NOT NULL,\n" +
                     "  heure TEXT NOT NULL,\n" +
                     "  PRIMARY KEY (id),\n" +
                     "  FOREIGN KEY (id_prof) REFERENCES prof(id),\n" +
@@ -106,6 +106,11 @@ public class CreationBD {
             statement.executeUpdate("insert into prof values(1, 'Oster', 'Gerald', 'M', '26/04/1980', '23 rue des collines', 'geroster@gmail.com', '0612343338')");
             statement.executeUpdate("insert into prof values(2, 'Dada', 'Seb', 'M', '26/04/1980', '23 rue des montagnes', 'sebdada@gmail.com', '0612345678')");
             statement.executeUpdate("insert into prof values(3, 'Suzi', 'Collin', 'F', '26/04/1980', '23 rue des plaines', 'suzicoco@gmail.com', '0671029384')");
+            statement.executeUpdate("insert into eleve values(1, 'Benoit', 'Martins', 'M', '26/04/2000', '23 rue des tilleuls', 'benoitmartins@gmail.com', '0638294739')");
+            statement.executeUpdate("insert into eleve values(2, 'Alice', 'Merveille', 'F', '26/04/2000', '23 rue des mers', 'alicemerveille@gmail.com', '0638114739')");
+            statement.executeUpdate("insert into eleve values(3, 'Lucie', 'Sel', 'F', '26/04/2000', '23 rue des ecoles', 'luciegoutsel@gmail.com', '0638293339')");
+            statement.executeUpdate("insert into availableRDV values(1, 1, 4, '06/06/2000')");
+            statement.executeUpdate("insert into rdv values(1, 1, 1, 1, 1, 0, 'Le lieu est Nancy', 'Rdv reorientation', '06/06/2000', 10-00)");
             ResultSet rs = statement.executeQuery("select * from admin");
             while(rs.next())
             {

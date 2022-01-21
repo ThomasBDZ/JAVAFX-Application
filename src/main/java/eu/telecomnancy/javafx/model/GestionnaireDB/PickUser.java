@@ -3,7 +3,14 @@ package eu.telecomnancy.javafx.model.GestionnaireDB;
 import eu.telecomnancy.javafx.ConnectionClass;
 import eu.telecomnancy.javafx.controller.Erreurs.InsertionException;
 
-import java.awt.*;
+
+
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -14,40 +21,47 @@ public class PickUser {
 
     public PickUser(){}
 
-    public void Pick(String nom,String prenom, String mail, String typeUser)throws InsertionException {
-
-        Connection connection = ConnectionClass.getInstance().getConnection();
+    public static int Pick(String mail) {
 
         testRegex testeur = new testRegex();
-        testeur.validateNom(nom);
-        testeur.validateNom(prenom);
-        testeur.validateMail(mail);
+        try {
+            testeur.validateMail(mail);
+        } catch (InsertionException e1) {
+            // TODO Auto-generated catch block
+            e1.printStackTrace();
+        }
 
-        String sexe = null, date = null, adresse = null, telephone = null;
+        String typeUser = "";
+        int id=0;
 
         try {
+            Connection connection = ConnectionClass.getInstance().getConnection();
             Statement statement = connection.createStatement();
-            String sql = "SELECT * FROM "+typeUser+" WHERE nom = '"+nom+"' AND prenom = '"+prenom+"' AND mail = '"+mail+"';";
+            String sql = "SELECT typeUser FROM connection WHERE mail = '"+mail+"';";
             ResultSet rs = statement.executeQuery(sql);
             while (rs.next()){
-                sexe = rs.getString("sexe");
-                date = rs.getString("date");
-                adresse = rs.getString("adresse");
-                telephone = rs.getString("telephone");
+                typeUser = rs.getString("typeUser");
             }
             rs.close();
             statement.close();
-            //initialiser un client ici avec les données
-            System.out.println(new Label(String.format("%s %s %s %s %s %s %s %s ", nom, prenom, mail, sexe, date, adresse,telephone,typeUser)));
+            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
-        }finally {
-            if (connection != null) {
-                try {
-                    connection.close();
-                } catch (SQLException e) {
-                }
-            }
         }
+        System.out.println(typeUser);
+        try {
+            Connection connection = ConnectionClass.getInstance().getConnection();
+            Statement statement = connection.createStatement();
+            String sql = "SELECT id FROM "+typeUser+" WHERE mail = '"+mail+"';";
+            ResultSet rs = statement.executeQuery(sql);
+            while (rs.next()){
+                id = rs.getInt("id");
+            }
+            rs.close();
+            statement.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return id;
     }
 }

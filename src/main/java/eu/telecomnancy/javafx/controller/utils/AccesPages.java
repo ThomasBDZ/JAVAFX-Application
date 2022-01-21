@@ -24,18 +24,19 @@ public class AccesPages {
 
     //ADMIN
     private AccueilAdmin accueilAdmin;
-    private ChangementMDP changementMDP;
+    private AdminAjoutUtilisateur adminAjoutUtilisateur;
+    private AdminModifierUtilisateur adminModifierUtilisateur;
+    private AdminArchive adminArchive;
+
+
+    
     private Demandes demandes;
     private DescriptionRDV descriptionRDV;
     private Disponibilites disponibilites;
     private HistoriqueRDV historiqueRDV;
     private PriseRDV priseRDV;
     private RecapRDV recapRDV;
-
-
-    private AdminAjoutUtilisateur adminAjoutUtilisateur;
-    private AdminModifierUtilisateur adminModifierUtilisateur;
-    private AdminArchive adminArchive;
+    private UtilisateurModifierMdp utilisateurModifierMdp;
 
     public AccesPages(ProfRDV profRDV){
         this.profRDV = profRDV;
@@ -46,15 +47,14 @@ public class AccesPages {
         calendrier = new Calendrier(profRDV);
         accueilEnseignant = new AccueilEnseignant(profRDV);
         accueilAdmin = new AccueilAdmin(profRDV);
-        changementMDP = new ChangementMDP(profRDV);
         demandes = new Demandes(profRDV);
         disponibilites = new Disponibilites(profRDV);
         historiqueRDV = new HistoriqueRDV(profRDV);
         priseRDV = new PriseRDV(profRDV);
-        recapRDV = new RecapRDV(profRDV);
         adminAjoutUtilisateur = new AdminAjoutUtilisateur(profRDV);
         adminModifierUtilisateur = new AdminModifierUtilisateur(profRDV);
         adminArchive = new AdminArchive(profRDV);
+        utilisateurModifierMdp = new UtilisateurModifierMdp(profRDV);
     }
 
     public void loadPage(String path){
@@ -69,7 +69,6 @@ public class AccesPages {
         if (ic.equals(eu.telecomnancy.javafx.controller.Calendrier.class)) return calendrier;
         if (ic.equals(eu.telecomnancy.javafx.controller.AccueilEnseignant.class)) return accueilEnseignant;
         if (ic.equals(eu.telecomnancy.javafx.controller.AccueilAdmin.class)) return accueilAdmin;
-        if (ic.equals(eu.telecomnancy.javafx.controller.ChangementMDP.class)) return changementMDP;
         if (ic.equals(eu.telecomnancy.javafx.controller.Demandes.class)) return demandes;
         if (ic.equals(eu.telecomnancy.javafx.controller.DescriptionRDV.class)) return descriptionRDV;
         if (ic.equals(eu.telecomnancy.javafx.controller.Disponibilites.class)) return disponibilites;
@@ -79,11 +78,12 @@ public class AccesPages {
         if (ic.equals(eu.telecomnancy.javafx.controller.AdminAjoutUtilisateur.class)) return adminAjoutUtilisateur;
         if (ic.equals(eu.telecomnancy.javafx.controller.AdminModifierUtilisateur.class)) return adminModifierUtilisateur;
         if (ic.equals(eu.telecomnancy.javafx.controller.AdminArchive.class)) return adminArchive;
+        if (ic.equals(eu.telecomnancy.javafx.controller.UtilisateurModifierMdp.class)) return utilisateurModifierMdp;
         else return null ;
         });
         try {
             Parent root = loader.load();
-            Scene scene = new Scene(root, 600, 600);
+            Scene scene = new Scene(root, 1000, 600);
             // scene.getStylesheets().add(getClass().getResource("/stylesheet/style.css").toExternalForm());
             stage.setScene(scene);
             stage.show();
@@ -120,11 +120,6 @@ public class AccesPages {
         profRDV.setInstance("admin");
     }
 
-    public void accesChangementMDP(RDV rdv){
-        String path = "/fxml/UtilisateurChangementMDP.fxml";
-        loadPage(path);
-    }
-
     public void accesDescriptionRDV(RDV rdv){
         this.descriptionRDV = new DescriptionRDV(profRDV,rdv);
         String path = "/fxml/UtilisateurDescriptionRDV.fxml";
@@ -146,8 +141,9 @@ public class AccesPages {
         loadPage(path);
     }
 
-    public void accesRecapRDV(){
+    public void accesRecapRDV(RDV rdv){
         String path = "/fxml/EtudiantRecapRDV.fxml";
+        recapRDV = new RecapRDV(profRDV,rdv);
         loadPage(path);
     }
 
@@ -167,6 +163,11 @@ public class AccesPages {
 
     public void AdminModifierUtilisateur(){
         String path = "/fxml/AdminModifierUtilisateur.fxml";
+        loadPage(path);
+    }
+
+    public void AccesUtilisateurModifierMdp(){
+        String path = "/fxml/UtilisateurModifierMdp.fxml";
         loadPage(path);
     }
 

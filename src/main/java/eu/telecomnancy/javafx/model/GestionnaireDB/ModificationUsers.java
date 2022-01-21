@@ -78,8 +78,8 @@ public class ModificationUsers {
         }
     }
 
-    /** Ici Oldelement = mail, telephone ou adresse, newElement aussi (le nouveau), table = eleve ou professeur**/
-    public void update(Utilisateur user, String newElementValeur,  String oldElement) throws InsertionException{
+    /** Ici Champ = mail, telephone ou adresse, newElement aussi (le nouveau), table = eleve ou professeur**/
+    public void update(Utilisateur user, String newElementValeur,  String champ) throws InsertionException{
 
         String nom = user.nom;
         String prenom = user.prenom;
@@ -94,6 +94,13 @@ public class ModificationUsers {
         testeur.validateNom(nom);
         testeur.validateNom(prenom);
 
+        if(champ.equals("telephone")){
+            testeur.validateTel(newElementValeur);
+        }
+        else if(champ.equals("adresse")){
+            testeur.validateAddress(newElementValeur);
+        }
+        
         String table;
         if (!typeUser){
             table="prof";
@@ -103,11 +110,11 @@ public class ModificationUsers {
 
         try {
             Statement statement = connection.createStatement();
-            String sql = "UPDATE '"+table+"' SET '"+oldElement+"' = '"+newElementValeur+"' WHERE nom = '"+nom+"' AND prenom = '"+prenom+"';";
+            String sql = "UPDATE '"+table+"' SET '"+champ+"' = '"+newElementValeur+"' WHERE nom = '"+nom+"' AND prenom = '"+prenom+"';";
             statement.executeUpdate(sql);
-            if (oldElement.equals("mail")){
+            if (champ.equals("mail")){
                 Statement updateMail = connection.createStatement();
-                String sqlUpdate = "UPDATE connection SET mail = '"+newElementValeur+"' WHERE MDP = '"+nom+"';";
+                String sqlUpdate = "UPDATE connection SET mail = '"+newElementValeur+"' WHERE MDP = '"+nom+"' AND typeUser = '"+typeUser+"';";
                 updateMail.executeUpdate(sqlUpdate);
             }
         } catch (SQLException e) {
@@ -175,5 +182,23 @@ public class ModificationUsers {
                 }
             }
         }
+    }
+
+    public void modifMdp(Utilisateur user, String newMdp) throws InsertionException {
+
+        String mail = user.mail;
+        testRegex testeur = new testRegex();
+        testeur.validateMail(mail);
+
+        String sql = "UPDATE connection SET MDP = '"+newMdp+"' WHERE mail = '"+mail+"';";
+
+        try {
+            Connection connection = ConnectionClass.getInstance().getConnection();
+            Statement statement = connection.createStatement();
+            statement.executeUpdate(sql);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
     }
 }
