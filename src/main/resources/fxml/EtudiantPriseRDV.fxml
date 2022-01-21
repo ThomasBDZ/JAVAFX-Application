@@ -136,12 +136,6 @@
                </children>
             </HBox>
             <Label fx:id="labelDate" text="Date" />
-            <HBox prefHeight="28.0" prefWidth="264.0">
-               <children>
-                  <TextField fx:id="fieldEtudiant" prefHeight="33.0" prefWidth="194.0" promptText="Insérez votre mail..." />
-                  <Button fx:id="validerEtudiant" mnemonicParsing="false" prefHeight="26.0" prefWidth="84.0" text="Valider" />
-               </children>
-            </HBox>
             <Button fx:id="valider" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="Valider" textAlignment="CENTER">
                <font>
                   <Font size="14.0" />

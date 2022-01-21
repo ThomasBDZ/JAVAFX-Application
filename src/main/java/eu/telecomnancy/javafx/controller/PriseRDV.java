@@ -69,9 +69,6 @@ public class PriseRDV extends Controlleur implements Initializable {
     public ChoiceBox<ProfLabel> fieldEnseignant;
 
     @FXML
-    public TextField fieldEtudiant;
-
-    @FXML
     public Label fieldHeure;
 
     @FXML
@@ -174,12 +171,12 @@ public class PriseRDV extends Controlleur implements Initializable {
         /**
          * etudiant, text field (l'étudiant insère son mail)
          */
-        validerEtudiant.setOnAction(event -> {
-            String etudiant_mail=fieldEtudiant.getText();
-            int id_etudiant=PickUser.Pick(etudiant_mail);
-            etudiant=GetterUser.getInfoEleve(id_etudiant);
 
-        });
+
+
+            etudiant= (Etudiant) profRDV.utilisateur;
+
+
 
 
         /**
