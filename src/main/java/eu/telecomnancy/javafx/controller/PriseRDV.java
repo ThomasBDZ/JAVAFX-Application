@@ -1,9 +1,7 @@
 package eu.telecomnancy.javafx.controller;
 
 
-import eu.telecomnancy.javafx.model.Creneau;
-import eu.telecomnancy.javafx.model.ProfRDV;
-import eu.telecomnancy.javafx.model.RDV;
+import eu.telecomnancy.javafx.model.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -33,26 +31,24 @@ public class PriseRDV extends Controlleur implements Initializable {
     private Date date_calendrier;
     int noOfDays = 7;
     ArrayList<Creneau> liste_creneau = new ArrayList<>();
-    private ArrayList<String> arrayEtudiants;
-    private ArrayList<String> arrayEnseignants;
+    private Etudiant etudiant;
+    private Enseignant enseignant;
+    private Creneau creneau;
 
     public PriseRDV(ProfRDV profRDV) {
         super(profRDV);
-        arrayEtudiants=new ArrayList<>();
-        arrayEnseignants=new ArrayList<>();
         LocalDate date_now= LocalDate.now(); //get the current date
         ZoneId defaultZoneId = ZoneId.systemDefault();
         date_calendrier = Date.from(date_now.atStartOfDay(defaultZoneId).toInstant());
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+        //SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
     }
 
 
+    @FXML
+    public Button prochain;
 
     @FXML
-    public javafx.scene.control.Button prochain;
-
-    @FXML
-    public javafx.scene.control.Button dernier;
+    public Button dernier;
 
     @FXML
     public Button valider;
@@ -64,24 +60,22 @@ public class PriseRDV extends Controlleur implements Initializable {
     public Button validerEtudiant;
 
     @FXML
-    public ChoiceBox enseignant;
+    public ChoiceBox FieldEnseignant;
 
     @FXML
-    public TextField etudiant;
+    public TextField FieldEtudiant;
 
     @FXML
-    public Label heure;
+    public Label FieldDate;
+
+    @FXML
+    public Label FieldHeure;
 
     @FXML
     public Label semaine;
 
-
-   /* @FXML
-    public DatePicker datePicker;*/
-
     @FXML
-    public ListView listeEtudiant;
-
+    public Label LabelDate;
 
     @FXML
     private GridPane grille;
@@ -114,29 +108,42 @@ public class PriseRDV extends Controlleur implements Initializable {
 
 
         /**
-         * enseignants
+         * enseignants, choiceBox
          */
-    // arrayEnseignants=;
-        ObservableList<String> obvs_enseignants = FXCollections.observableArrayList(arrayEnseignants);
-        enseignant=new ChoiceBox<String>();
-        enseignant.setItems(obvs_enseignants);
+        ArrayList<Enseignant> arrayEnseignants=new ArrayList<>();
+        //arrayEnseignants=getAllProfs();  on get tous les profs de la DB
+        ArrayList<String> arrayEnseignants_nom=new ArrayList<>();
+        for(Enseignant e : arrayEnseignants){
+            arrayEnseignants_nom.add( e.prenom+" "+e.nom+","+e.mail);
+        }
+        ObservableList<String> obvs_enseignants = FXCollections.observableArrayList(arrayEnseignants_nom);
+        //FieldEnseignant=new ChoiceBox<String>();
+        FieldEnseignant.setItems(obvs_enseignants);
 
+        /**
+         * si on valide
+         */
         validerEnseignant.setOnAction(event -> {
-            liste_creneau=this.profRDV.gestionnaireCreneauDispo.pickDispoWeek(date_calendrier,this.profRDV.utilisateur);
+            enseignant= (Enseignant) FieldEnseignant.getValue(); //pas sur si ça marche, à tester
+            liste_creneau=this.profRDV.gestionnaireCreneauDispo.pickDispoWeek(date_calendrier,enseignant); //a remplacer par la foction de Thomas getCreneauProf
             Calendar c = Calendar.getInstance();
             int dayOfWeek;
             int weekOfYear;
             weekOfYear=c.get(Calendar.DAY_OF_WEEK);
-            semaine.setText("Semaine "+weekOfYear);
+            semaine.setText("Semaine "+weekOfYear); //on set le label Semaine sur le Calendrier
 
-            for(Creneau creneau : liste_creneau) {
-                c.setTime(creneau.date);
+            for(Creneau creneau_i : liste_creneau) {
+                c.setTime(creneau_i.date);
                 dayOfWeek = c.get(Calendar.DAY_OF_WEEK);
                 //int dayOfWeek = c.get(Calendar.DAY_OF_WEEK); //day of the week (1=sunday)
-                javafx.scene.control.Button b = new javafx.scene.control.Button();
+                Button b = new javafx.scene.control.Button();
                 b.setText("Rendez-Vous " + creneau.getHeure());
-                b.setOnAction(e-> heure.setText(creneau.getHeure()));
-                grille.add(b, dayOfWeek - 2, creneau.indice);
+                b.setOnAction(e-> {
+                    creneau=creneau_i;
+                    FieldHeure.setText(creneau.getHeure());  //si on sélectionne un RDV (boutton), on change les labels date et heure
+                    FieldDate.setText(creneau.date.toString()); //à vérifier
+                });
+                grille.add(b, dayOfWeek - 2, creneau_i.indice);
                 grille.setHalignment(b, HPos.CENTER); // To align horizontally in the cell
                 grille.setValignment(b, VPos.CENTER); // To align vertically in the cell
 
@@ -145,11 +152,12 @@ public class PriseRDV extends Controlleur implements Initializable {
         });
 
         /**
-         * etudiants
+         * etudiant, text field (l'étudiant insère son mail)
          */
         validerEtudiant.setOnAction(event -> {
-            arrayEtudiants.add(etudiant.getText());
-            //update_list_view();
+            String etudiant_mail=FieldEtudiant.getText();
+            //etudiant=getUser(etudiant_mail);
+
         });
 
 
@@ -157,7 +165,8 @@ public class PriseRDV extends Controlleur implements Initializable {
          * valider
          */
        valider.setOnAction(event -> {
-
+           RDV rdv=new RDV(enseignant,etudiant,creneau);
+            profRDV.getAccesPages().accesRecapRDV(rdv);
         });
 
 
@@ -166,28 +175,31 @@ public class PriseRDV extends Controlleur implements Initializable {
     }
 
     private void update_page() {
-        liste_creneau=this.profRDV.gestionnaireCreneauDispo.pickDispoWeek(date_calendrier,this.profRDV.utilisateur);
+        enseignant= (Enseignant) FieldEnseignant.getValue(); //pas sur si ça marche, à tester
+        liste_creneau=this.profRDV.gestionnaireCreneauDispo.pickDispoWeek(date_calendrier,enseignant); //a remplacer par la foction de Thomas getCreneauProf
         Calendar c = Calendar.getInstance();
         int dayOfWeek;
-        for(Creneau creneau : liste_creneau) {
+        int weekOfYear;
+        weekOfYear=c.get(Calendar.DAY_OF_WEEK);
+        semaine.setText("Semaine "+weekOfYear); //on set le label Semaine sur le Calendrier
 
-            c.setTime(creneau.date);
+        for(Creneau creneau_i : liste_creneau) {
+            c.setTime(creneau_i.date);
             dayOfWeek = c.get(Calendar.DAY_OF_WEEK);
             //int dayOfWeek = c.get(Calendar.DAY_OF_WEEK); //day of the week (1=sunday)
-            javafx.scene.control.Button b = new javafx.scene.control.Button();
+            Button b = new javafx.scene.control.Button();
             b.setText("Rendez-Vous " + creneau.getHeure());
-            //System.out.println("dayOfWeek; "+c.get(Calendar.DAY_OF_WEEK)+"indice: "+rdv.creneau.indice+"\n");
-            b.setOnAction(e-> heure.setText(creneau.getHeure()));
-
-            grille.add(b, dayOfWeek - 2, creneau.indice);
+            b.setOnAction(e-> {
+                creneau=creneau_i;
+                FieldHeure.setText(creneau.getHeure());  //si on sélectionne un RDV (boutton), on change les labels date et heure
+                FieldDate.setText(creneau.date.toString()); //à vérifier
+            });
+            grille.add(b, dayOfWeek - 2, creneau_i.indice);
             grille.setHalignment(b, HPos.CENTER); // To align horizontally in the cell
             grille.setValignment(b, VPos.CENTER); // To align vertically in the cell
     }}
 
-    private void update_list_view() {
-        ObservableList<String> obvs_etudiants = FXCollections.observableArrayList(arrayEtudiants);
-        listeEtudiant.setItems(obvs_etudiants);
-    }
+
 
 
 

@@ -125,20 +125,20 @@
             <HBox prefHeight="26.0" prefWidth="231.0">
                <children>
                   <Label text="Enseignant " />
-                  <ChoiceBox fx:id="enseignant" prefWidth="150.0" />
+                  <ChoiceBox fx:id="FieldEnseignant" prefWidth="150.0" />
                   <Button fx:id="validerEnseignant" mnemonicParsing="false" text="Valider" />
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="20.0" prefWidth="200.0" spacing="10.0">
                <children>
                   <Label text="Heure :" />
-                  <Label text="Sélectionné un créneau" />
+                  <Label fx:id="FieldHeure" text="Sélectionné un créneau" />
                </children>
             </HBox>
-            <Label text="Date" />
+            <Label fx:id="labelDate" text="Date" />
             <HBox prefHeight="28.0" prefWidth="264.0">
                <children>
-                  <TextField fx:id="etudiant" onAction="#etudiant" prefHeight="33.0" prefWidth="194.0" promptText="Choissisez l'étudiant..." />
+                  <TextField fx:id="FieldEtudiant" onAction="#FieldEtudiant" prefHeight="33.0" prefWidth="194.0" promptText="Insérez votre mail..." />
                   <Button fx:id="ValiderEtudiant" mnemonicParsing="false" onAction="#ValiderEtudiant" prefHeight="26.0" prefWidth="84.0" text="Valider" />
                </children>
             </HBox>

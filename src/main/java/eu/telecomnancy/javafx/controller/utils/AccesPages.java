@@ -51,7 +51,6 @@ public class AccesPages {
         disponibilites = new Disponibilites(profRDV);
         historiqueRDV = new HistoriqueRDV(profRDV);
         priseRDV = new PriseRDV(profRDV);
-        recapRDV = new RecapRDV(profRDV);
         adminAjoutUtilisateur = new AdminAjoutUtilisateur(profRDV);
         adminModifierUtilisateur = new AdminModifierUtilisateur(profRDV);
         adminArchive = new AdminArchive(profRDV);
@@ -79,6 +78,7 @@ public class AccesPages {
         if (ic.equals(eu.telecomnancy.javafx.controller.AdminAjoutUtilisateur.class)) return adminAjoutUtilisateur;
         if (ic.equals(eu.telecomnancy.javafx.controller.AdminModifierUtilisateur.class)) return adminModifierUtilisateur;
         if (ic.equals(eu.telecomnancy.javafx.controller.AdminArchive.class)) return adminArchive;
+            if (ic.equals(eu.telecomnancy.javafx.controller.ChangementMDP.class)) return changementMDP;
         else return null ;
         });
         try {
@@ -120,7 +120,7 @@ public class AccesPages {
         profRDV.setInstance("admin");
     }
 
-    public void accesChangementMDP(RDV rdv){
+    public void accesChangementMDP(){
         String path = "/fxml/UtilisateurChangementMDP.fxml";
         loadPage(path);
     }
@@ -146,7 +146,8 @@ public class AccesPages {
         loadPage(path);
     }
 
-    public void accesRecapRDV(){
+    public void accesRecapRDV(RDV rdv){
+        this.recapRDV = new RecapRDV(profRDV,rdv);
         String path = "/fxml/EtudiantRecapRDV.fxml";
         loadPage(path);
     }

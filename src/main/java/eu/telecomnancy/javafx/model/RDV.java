@@ -23,4 +23,10 @@ public class RDV {
         this.creneau=creneau;
     }
 
+    public RDV(Enseignant enseignant, Etudiant etudiant,Creneau creneau){
+        this.Enseignant=Enseignant;
+        this.Etudiants=Etudiants;
+        this.creneau=creneau;
+    }
+
 }
