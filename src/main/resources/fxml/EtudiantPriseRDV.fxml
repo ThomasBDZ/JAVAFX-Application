@@ -15,16 +15,16 @@
          <top>
             <HBox alignment="CENTER" prefHeight="65.0" prefWidth="600.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button fx:id="dernier" mnemonicParsing="false" onAction="#dernier" text="&lt;">
+                  <Button fx:id="dernier" mnemonicParsing="false" text="&lt;">
                      <HBox.margin>
                         <Insets right="400.0" top="-10.0" />
                      </HBox.margin></Button>
-                  <Label text="Semaine ">
+                  <Label fx:id="LabelSemaine" text="Semaine ">
                      <HBox.margin>
                         <Insets right="100.0" />
                      </HBox.margin>
                   </Label>
-                  <Button fx:id="prochain" mnemonicParsing="false" onAction="#prochain" text="&gt;">
+                  <Button fx:id="prochain" mnemonicParsing="false" text="&gt;">
                      <HBox.margin>
                         <Insets top="-10.0" />
                      </HBox.margin></Button>
@@ -139,10 +139,10 @@
             <HBox prefHeight="28.0" prefWidth="264.0">
                <children>
                   <TextField fx:id="FieldEtudiant" onAction="#FieldEtudiant" prefHeight="33.0" prefWidth="194.0" promptText="Insérez votre mail..." />
-                  <Button fx:id="ValiderEtudiant" mnemonicParsing="false" onAction="#ValiderEtudiant" prefHeight="26.0" prefWidth="84.0" text="Valider" />
+                  <Button fx:id="ValiderEtudiant" mnemonicParsing="false" prefHeight="26.0" prefWidth="84.0" text="Valider" />
                </children>
             </HBox>
-            <Button fx:id="valider" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#valider" text="Valider" textAlignment="CENTER">
+            <Button fx:id="valider" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="Valider" textAlignment="CENTER">
                <font>
                   <Font size="14.0" />
                </font>

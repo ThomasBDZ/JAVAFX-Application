@@ -2,6 +2,10 @@ package eu.telecomnancy.javafx.controller;
 
 
 import eu.telecomnancy.javafx.model.*;
+import eu.telecomnancy.javafx.model.GestionnaireDB.DisponibilityProf;
+import eu.telecomnancy.javafx.model.GestionnaireDB.GetterUser;
+import eu.telecomnancy.javafx.model.GestionnaireDB.PickUser;
+import eu.telecomnancy.javafx.model.utils.DateConversion;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -72,7 +76,7 @@ public class PriseRDV extends Controlleur implements Initializable {
     public Label FieldHeure;
 
     @FXML
-    public Label semaine;
+    public Label LabelSemaine;
 
     @FXML
     public Label LabelDate;
@@ -110,9 +114,9 @@ public class PriseRDV extends Controlleur implements Initializable {
         /**
          * enseignants, choiceBox
          */
-        ArrayList<Enseignant> arrayEnseignants=new ArrayList<>();
-        //arrayEnseignants=getAllProfs();  on get tous les profs de la DB
-        ArrayList<String> arrayEnseignants_nom=new ArrayList<>();
+        ArrayList<Enseignant> arrayEnseignants = new ArrayList<>();
+        arrayEnseignants = GetterUser.getAllProfs();
+        ArrayList<String> arrayEnseignants_nom = new ArrayList<>();
         for(Enseignant e : arrayEnseignants){
             arrayEnseignants_nom.add( e.prenom+" "+e.nom+","+e.mail);
         }
@@ -126,14 +130,22 @@ public class PriseRDV extends Controlleur implements Initializable {
         validerEnseignant.setOnAction(event -> {
             String enseignant_nom_mail= (String) FieldEnseignant.getValue(); //pas sur si ça marche, à tester, on obtient prenom+nom , mail
             String[] nom_mail = enseignant_nom_mail.split(",");
-            //enseignant=getUser(nom_mail[1]);//on get le mail
+            int id_prof = PickUser.Pick(nom_mail[1]);
+            enseignant= GetterUser.getInfoProf(id_prof);
+            String date_string= DateConversion.dateToString(date_calendrier);
+            try {
+                liste_creneau= DisponibilityProf.getProfCreneau(nom_mail[1],date_string);
+            } catch (Exception e) {
+                e.printStackTrace();
+                System.out.println("erreur pour get les disponibilités du prof");
+            }
             liste_creneau=this.profRDV.gestionnaireCreneauDispo.pickDispoWeek(date_calendrier,enseignant); //a remplacer par la foction de Thomas getCreneauProf
 
             Calendar c = Calendar.getInstance();
             int dayOfWeek;
             int weekOfYear;
             weekOfYear=c.get(Calendar.DAY_OF_WEEK);
-            semaine.setText("Semaine "+weekOfYear); //on set le label Semaine sur le Calendrier
+            LabelSemaine.setText("Semaine "+weekOfYear); //on set le label Semaine sur le Calendrier
 
             for(Creneau creneau_i : liste_creneau) {
                 c.setTime(creneau_i.date);
@@ -178,13 +190,24 @@ public class PriseRDV extends Controlleur implements Initializable {
     }
 
     private void update_page() {
-        enseignant= (Enseignant) FieldEnseignant.getValue(); //pas sur si ça marche, à tester
+        String enseignant_nom_mail= (String) FieldEnseignant.getValue(); //pas sur si ça marche, à tester, on obtient prenom+nom , mail
+        String[] nom_mail = enseignant_nom_mail.split(",");
+        int id_prof = PickUser.Pick(nom_mail[1]);
+        enseignant= GetterUser.getInfoProf(id_prof);
+        String date_string= DateConversion.dateToString(date_calendrier);
+        try {
+            liste_creneau= DisponibilityProf.getProfCreneau(nom_mail[1],date_string);
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("erreur pour get les disponibilités du prof");
+        }
         liste_creneau=this.profRDV.gestionnaireCreneauDispo.pickDispoWeek(date_calendrier,enseignant); //a remplacer par la foction de Thomas getCreneauProf
+
         Calendar c = Calendar.getInstance();
         int dayOfWeek;
         int weekOfYear;
         weekOfYear=c.get(Calendar.DAY_OF_WEEK);
-        semaine.setText("Semaine "+weekOfYear); //on set le label Semaine sur le Calendrier
+        LabelSemaine.setText("Semaine "+weekOfYear); //on set le label Semaine sur le Calendrier
 
         for(Creneau creneau_i : liste_creneau) {
             c.setTime(creneau_i.date);
@@ -200,7 +223,8 @@ public class PriseRDV extends Controlleur implements Initializable {
             grille.add(b, dayOfWeek - 2, creneau_i.indice);
             grille.setHalignment(b, HPos.CENTER); // To align horizontally in the cell
             grille.setValignment(b, VPos.CENTER); // To align vertically in the cell
-    }}
+
+        }}
 
 
 

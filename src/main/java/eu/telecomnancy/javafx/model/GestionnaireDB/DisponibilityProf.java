@@ -52,7 +52,7 @@ public class DisponibilityProf {
     }
 
 
-    public ArrayList<Creneau> getProfCreneau(String mailProf, String dateCreneau) throws Exception {
+    public static ArrayList<Creneau> getProfCreneau(String mailProf, String dateCreneau) throws Exception {
 
         int id_prof = PickUser.Pick(mailProf);
         String date;
