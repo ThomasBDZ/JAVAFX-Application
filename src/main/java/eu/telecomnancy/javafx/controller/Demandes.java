@@ -28,10 +28,7 @@ import javafx.scene.text.TextFlow;
 public class Demandes extends Controlleur{
 
     @FXML
-    private VBox listeRDV;
-
-    @FXML
-    private VBox vbox;
+    private ListView<Label> listeView;
 
     @FXML
     private TextArea raisonRefus;
@@ -47,6 +44,8 @@ public class Demandes extends Controlleur{
 
     public void confirmer(){
 
+        
+
     }
 
     public void refuser(){
@@ -58,7 +57,11 @@ public class Demandes extends Controlleur{
         Utilisateur user = profRDV.utilisateur;
         ArrayList<Label> labels = new ArrayList<Label>() ;
         try {
+            
             liste = GetterRdv.getAllRdvNonValide(user);
+            for(RDV rdv : liste){
+                System.out.println(rdv.lieu + " " + rdv.libelle);
+            }
         } catch (Exception e) {
             System.out.println(e.getMessage());
             e.printStackTrace();
@@ -86,15 +89,13 @@ public class Demandes extends Controlleur{
             
 
         }
-        ListView<Label> listeView = new ListView<Label>();
         ObservableList<Label> items = FXCollections.observableArrayList(labels);
         listeView.setItems(items);
-        vbox.getChildren().add(listeView);
         
-
-        
-
 
     }
+
+
+
 
 }
