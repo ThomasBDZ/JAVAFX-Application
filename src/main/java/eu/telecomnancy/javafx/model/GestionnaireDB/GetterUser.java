@@ -8,6 +8,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class GetterUser {
 
@@ -61,4 +62,34 @@ public class GetterUser {
         }
         return eleve;
     }
+
+    public ArrayList<Enseignant> getAllProfs(){
+
+        String sql = "SELECT * FROM prof";
+        ArrayList<Enseignant> listeProf = new ArrayList<>();
+
+        try {
+            Connection connection = ConnectionClass.getInstance().getConnection();
+            PreparedStatement statement = connection.prepareStatement(sql);
+            ResultSet rs = statement.executeQuery();
+            while (rs.next()){
+                Enseignant prof = new Enseignant();
+                prof.setAddresse(rs.getString("adresse"));
+                prof.setBirthDate(rs.getString("date"));
+                prof.setPrenom(rs.getString("prenom"));
+                prof.setNom(rs.getString("nom"));
+                prof.setMail(rs.getString("mail"));
+                prof.setSexe(rs.getString("sexe"));
+                prof.setTelephone(rs.getString("telephone"));
+                listeProf.add(prof);
+            }
+            rs.close();
+            statement.close();
+            connection.close();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return listeProf;
+    }
+
 }
