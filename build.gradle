@@ -48,7 +48,7 @@ wrapper {
 }
 
 javafx {
-    version = "17"
+    sdk="/Library/Java/JavaVirtualMachines/javafx-sdk-17"
     modules = [ 'javafx.base', 'javafx.controls', 'javafx.fxml', 'javafx.graphics', 'javafx.media', 'javafx.web' ]
 }
 
@@ -78,4 +78,4 @@ task runApp(type:JavaExec) {
     main = project.hasProperty("mainClass") ? project.getProperty("mainClass") : "package.MyDefaultMain"
 }
 
-// gradle -PmainClass='eu.telecomnancy.javafx.CreationBD' runApp
+// gradle -PmainClass='eu.telecomnancy.javafx.utils.CreationBD' runApp

@@ -1,5 +1,6 @@
 package eu.telecomnancy.javafx.model.GestionnaireDB;
 
+
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -9,6 +10,7 @@ import java.util.ArrayList;
 import eu.telecomnancy.javafx.ConnectionClass;
 import eu.telecomnancy.javafx.controller.Erreurs.ConnexionException;
 import eu.telecomnancy.javafx.controller.Erreurs.InsertionException;
+import eu.telecomnancy.javafx.model.GestionnaireDB.*;
 import eu.telecomnancy.javafx.model.*;
 import eu.telecomnancy.javafx.model.GestionnaireDB.DisponibilityProf;
 import eu.telecomnancy.javafx.model.GestionnaireDB.GetterRdv;
@@ -26,10 +28,8 @@ public class getAllRdv {
     /** Renvoie la liste des rdv validés non archivés pour le user donné en entrée**/
     public ArrayList<RDV> getAllRdvUser(Utilisateur user) throws SQLException {
 
-        GetterRdv getterRdv = new GetterRdv();
-        GetterUser getterUser = new GetterUser();
         DisponibilityProf getterCreneau = new DisponibilityProf();
-        int id = getterRdv.getId(user);
+        int id = GetterRdv.getId(user);
 
         Boolean typeUser = false;
         if(user instanceof Etudiant){
@@ -56,8 +56,8 @@ public class getAllRdv {
                 rdv.archive = (rs.getBoolean("archive"));
                 rdv.libelle = (rs.getString("libelle"));
                 rdv.lieu = (rs.getString("lieu"));
-                rdv.enseignant = (getterUser.getInfoProf(rs.getInt("id_prof")));
-                rdv.etudiant = ((getterUser.getInfoEleve(rs.getInt("id_eleve"))));
+                rdv.enseignant = (GetterUser.getInfoProf(rs.getInt("id_prof")));
+                rdv.etudiant = ((GetterUser.getInfoEleve(rs.getInt("id_eleve"))));
                 rdv.status = (rs.getBoolean("status"));
                 rdv.creneau = getterCreneau.getCreneau(rs.getInt("id_dispo"));
                 ListeRDV.add(rdv);
@@ -71,10 +71,8 @@ public class getAllRdv {
     /** Renvoie la liste de tous les RDV pour le user donné en entrée**/
     public ArrayList<RDV> getAllRDV(Utilisateur user) throws SQLException {
 
-        GetterRdv getterRdv = new GetterRdv();
-        GetterUser getterUser = new GetterUser();
         DisponibilityProf getterCreneau = new DisponibilityProf();
-        int id = getterRdv.getId(user);
+        int id = GetterRdv.getId(user);
 
 
         Boolean typeUser = false;
@@ -102,8 +100,8 @@ public class getAllRdv {
                 rdv.archive = (rs.getBoolean("archive"));
                 rdv.libelle = (rs.getString("libelle"));
                 rdv.lieu = (rs.getString("lieu"));
-                rdv.enseignant = (getterUser.getInfoProf(rs.getInt("id_prof")));
-                rdv.etudiant = ((getterUser.getInfoEleve(rs.getInt("id_eleve"))));
+                rdv.enseignant = (GetterUser.getInfoProf(rs.getInt("id_prof")));
+                rdv.etudiant = ((GetterUser.getInfoEleve(rs.getInt("id_eleve"))));
                 rdv.status = (rs.getBoolean("status"));
                 rdv.creneau = getterCreneau.getCreneau(rs.getInt("id_dispo"));
                 ListeRDV.add(rdv);

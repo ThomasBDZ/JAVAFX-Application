@@ -259,13 +259,13 @@ public class CreationBD {
             statement.executeUpdate("insert into rdv values(7, 2, 37, 2, 1, 0, 'Le lieu est Nancy', 'Journée du Numérique')");
             statement.executeUpdate("insert into rdv values(8, 2, 45, 10, 1, 0, 'Le lieu est Nancy', 'Rdv business')");
             statement.executeUpdate("insert into rdv values(9, 2, 50, 9, 1, 0, 'Le lieu est Nancy', 'Avant projet')");
-            statement.executeUpdate("insert into rdv values(10, 1, 58, 8, 1, 0, 'Le lieu est Nancy', 'Préparation exam')");
+            statement.executeUpdate("insert into rdv values(10, 1, 58, 8, 0, 0, 'Le lieu est Nancy', 'Préparation exam')");
             statement.executeUpdate("insert into rdv values(11, 1, 69, 1, 1, 0, 'Le lieu est Nancy', 'Examen')");
             statement.executeUpdate("insert into rdv values(12, 1, 70, 3, 1, 0, 'Le lieu est Nancy', 'Réunion pédagogique')");
             statement.executeUpdate("insert into rdv values(13, 1, 75, 4, 1, 0, 'Le lieu est Nancy', 'RDV mobilité académique')");
             statement.executeUpdate("insert into rdv values(14, 1, 3, 5, 1, 0, 'Le lieu est Nancy', 'BBQ entre prof chez Suzanne')");
 
-            statement.executeUpdate("insert into rdv values(15, 1, 96, 1, 0, 0, 'Hotel de ville - Nancy', 'Cérémonie des diplômes')");
+            statement.executeUpdate("insert into rdv values(15, 1, 96, 1, 1, 0, 'Hotel de ville - Nancy', 'Cérémonie des diplômes')");
             statement.executeUpdate("insert into rdv values(17, 2, 97, 1, 1, 0, 'Hotel de ville - Nancy', 'Cérémonie des diplômes')");
             statement.executeUpdate("insert into rdv values(18, 3, 98, 1, 1, 0, 'Hotel de ville - Nancy', 'Cérémonie des diplômes')");
             statement.executeUpdate("insert into rdv values(19, 4, 99, 1, 1, 0, 'Hotel de ville - Nancy', 'Cérémonie des diplômes')");
