@@ -26,7 +26,6 @@ public class AccesPages {
     private AccueilAdmin accueilAdmin;
     private AdminAjoutUtilisateur adminAjoutUtilisateur;
     private AdminModifierUtilisateur adminModifierUtilisateur;
-    private AdminArchive adminArchive;
 
 
     
@@ -53,7 +52,6 @@ public class AccesPages {
         priseRDV = new PriseRDV(profRDV);
         adminAjoutUtilisateur = new AdminAjoutUtilisateur(profRDV);
         adminModifierUtilisateur = new AdminModifierUtilisateur(profRDV);
-        adminArchive = new AdminArchive(profRDV);
         utilisateurModifierMdp = new UtilisateurModifierMdp(profRDV);
     }
 
@@ -77,7 +75,6 @@ public class AccesPages {
         if (ic.equals(eu.telecomnancy.javafx.controller.RecapRDV.class)) return recapRDV;
         if (ic.equals(eu.telecomnancy.javafx.controller.AdminAjoutUtilisateur.class)) return adminAjoutUtilisateur;
         if (ic.equals(eu.telecomnancy.javafx.controller.AdminModifierUtilisateur.class)) return adminModifierUtilisateur;
-        if (ic.equals(eu.telecomnancy.javafx.controller.AdminArchive.class)) return adminArchive;
         if (ic.equals(eu.telecomnancy.javafx.controller.UtilisateurModifierMdp.class)) return utilisateurModifierMdp;
         else return null ;
         });

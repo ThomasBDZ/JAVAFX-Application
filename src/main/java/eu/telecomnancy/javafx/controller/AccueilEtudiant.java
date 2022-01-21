@@ -58,7 +58,7 @@ public class AccueilEtudiant extends Controlleur implements Initializable {
     public Button ajouterRDV;
 
     @FXML
-    public Button Historique;
+    public Button historique;
 
     @FXML
     private GridPane grille;
@@ -91,10 +91,9 @@ public class AccueilEtudiant extends Controlleur implements Initializable {
             profRDV.getAccesPages().accesPriseRDV();
         });
 
-        Historique.setOnAction(event -> {
+        historique.setOnAction(event -> {
             profRDV.getAccesPages().accesHistoriqueRDV();
         });
-
 
         prochain.setOnAction(event -> {
             Calendar calendar = Calendar.getInstance();

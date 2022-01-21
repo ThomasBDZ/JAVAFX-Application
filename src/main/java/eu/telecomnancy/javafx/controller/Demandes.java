@@ -49,7 +49,6 @@ public class Demandes extends Controlleur{
     public void confirmer(){
 
         Label label = listeView.getSelectionModel().getSelectedItem();
-        listeView.getItems().remove(label);
         int idRdv = Integer.parseInt(label.getId());
         RDV rdv = GetterRdv.getInfoRdv(idRdv);
         try {
@@ -58,6 +57,7 @@ public class Demandes extends Controlleur{
             System.out.println("Demandes --> changeStatus.rdvReady(rdv);");
             System.out.println(e.getMessage());
         }
+        listeView.getItems().remove(label);
         
 
     }
@@ -65,10 +65,10 @@ public class Demandes extends Controlleur{
     public void refuser(){
 
         Label label = listeView.getSelectionModel().getSelectedItem();
-        listeView.getItems().remove(label);
         int idRdv = Integer.parseInt(label.getId());
         RDV rdv = GetterRdv.getInfoRdv(idRdv);
         changeStatus.archiveYes(rdv);;
+        listeView.getItems().remove(label);
 
     }
 

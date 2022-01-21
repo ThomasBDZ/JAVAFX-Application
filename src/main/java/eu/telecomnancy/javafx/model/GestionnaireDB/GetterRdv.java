@@ -255,4 +255,5 @@ public class GetterRdv {
         }
         return ListeRDV;
     }
+
 }

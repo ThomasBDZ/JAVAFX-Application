@@ -96,6 +96,7 @@
          <children>
             <Button fx:id="buttonDispo" mnemonicParsing="false" text="Disponibilités" />
             <Button mnemonicParsing="false" onAction="#accesDemandes" text="Demandes" />
+            <Button fx:id="historique" text="Historique" />
          </children>
          <BorderPane.margin>
             <Insets right="200.0" />

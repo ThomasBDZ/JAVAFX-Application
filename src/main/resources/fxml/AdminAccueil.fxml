@@ -13,8 +13,7 @@
          <children>
             <Button onAction="#addUser" mnemonicParsing="false" prefHeight="26.0" prefWidth="144.0" text="Ajouter un utilisateur" />
             <Button onAction="#modifUser" mnemonicParsing="false" prefHeight="26.0" prefWidth="144.0" text="Modifier un utilisateur" />
-            <Button onAction="#delUser" mnemonicParsing="false" prefHeight="26.0" prefWidth="144.0" text="Supprimer un utilisateur" />
-            <Button onAction="#showArchive" mnemonicParsing="false" prefHeight="26.0" prefWidth="144.0" text="Archive" />
+            <!-- <Button onAction="#delUser" mnemonicParsing="false" prefHeight="26.0" prefWidth="144.0" text="Supprimer un utilisateur" /> -->
          </children></VBox>
    </center>
 </BorderPane>

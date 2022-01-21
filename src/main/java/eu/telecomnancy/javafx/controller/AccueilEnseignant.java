@@ -40,8 +40,8 @@ public class AccueilEnseignant extends Controlleur implements Initializable {
 
     }
 
-   @FXML
-   private Label labelYear;
+    @FXML
+    private Label labelYear;
 
     @FXML
     private GridPane grille;
@@ -56,7 +56,14 @@ public class AccueilEnseignant extends Controlleur implements Initializable {
     private Button buttonDispo;
 
     @FXML
+    public Button historique;
+
+    @FXML
     public void initialize(URL url, ResourceBundle rb){
+
+        historique.setOnAction(event -> {
+            profRDV.getAccesPages().accesHistoriqueRDV();
+        });
 
         buttonDispo.setOnAction(event -> profRDV.getAccesPages().accesDisponibilites());
 
