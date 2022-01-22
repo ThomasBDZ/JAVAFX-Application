@@ -1,10 +1,12 @@
 
 # Utilisation 
 
+Vidéo de présentation: https://drive.google.com/file/d/1y2NLSnDiAntJHGBb4HHjUEGu2KHgmpMW/view?usp=sharing
+
 ## Creation de la base de donnée:
 
 ```
-gradle -PmainClass='eu.telecomnancy.javafx.CreationBD' runApp
+gradle -PmainClass='eu.telecomnancy.javafx.utils.CreationBD' runApp
 ```
 ## Lancement de l'application
 
